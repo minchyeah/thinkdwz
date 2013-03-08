@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html>
+<head>
+<title>错误信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<if condition="$jumpUrl=='javascript:history.back(-1);'">
+<script type="text/javascript">
+  setTimeout("javascript:history.back(-1);", {$waitSecond*1000});
+</script>
+<else />
+<meta http-equiv="Refresh" content="{$waitSecond};URL={$jumpUrl}" />
+</if>
+<style type="text/css">
+* { font-size:12px}
+.message { width:300px; height:80px; top:50%; left:50%; margin-left:-150px; margin-top:-40px; position:absolute; border:#d2071f solid 1px; padding:3px}
+.message .title{ background:#d2071f; font-size:14px; padding:5px; color:#fff; font-weight:bold}
+.message .content { padding:5px;}
+.message .content .row { margin:10px 0px}
+</style>
+</head>
+<body>
+  <div class="message">
+	<div class="title">错误提示</div>
+	<div class="content">
+	  <div class="row">{$message}{$error|htmlspecialchars|nl2br}</div>
+	</div>
+  </div>
+</body>
+</html>
