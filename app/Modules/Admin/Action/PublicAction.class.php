@@ -15,10 +15,10 @@ class PublicAction extends AdminAction
     
     public function _before_checkLogin(){
     	$this->assign("jumpUrl", U('Public/login'));
-    	if (empty($_POST['login_name'])) {
+    	if (empty($_POST['account'])) {
     		$this->error('管理员帐号必须填写！');
     	}
-    	if (empty($_POST['login_pwd'])) {
+    	if (empty($_POST['password'])) {
     		$this->error('管理员密码必须填写！');
     	}
     }
@@ -28,14 +28,14 @@ class PublicAction extends AdminAction
     public function checkLogin()
     {
     	$where = array();
-    	$where['username'] = $_POST['login_name'];
+    	$where['username'] = $_POST['account'];
     	$rs  = D("Users");
     	$admin = $rs->where($where)->find();
     	//使用用户名、密码和状态的方式进行认证
     	if (!$admin) {
     		$this->error('管理员帐号不存在！');
     	}
-    	if ($admin['password'] != md5(trim($_POST['login_pwd']))) {
+    	if ($admin['password'] != md5(trim($_POST['password']))) {
     		$this->error('用户密码错误,请重新输入！');
     	}
     	// 记录登录信息
