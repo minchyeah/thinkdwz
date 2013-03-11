@@ -2,7 +2,7 @@
 /**
  * @name 系统配置模块
  */
-class ConfigAction extends AdminAction
+class SettingAction extends AdminAction
 {
 	// 基本信息设置
     public function index(){

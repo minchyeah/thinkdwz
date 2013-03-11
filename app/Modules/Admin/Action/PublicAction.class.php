@@ -69,5 +69,9 @@ class PublicAction extends AdminAction
     	Image::buildImageVerify();
     }
     
+    public function clearCache()
+    {
+    	$this->success('d');
+    }
 }
 ?>

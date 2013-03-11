@@ -29,16 +29,21 @@
 $(function(){
 	DWZ.init("{$static_url}/js/dwz/dwz.frag.xml", {
 		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
-		statusCode:{ok:200, error:300, timeout:301}, //【可选】
+		//statusCode:{ok:200, error:300, timeout:301}, //【可选】
+		statusCode:{ok:1,error:0},
+		ui:{sbar:false},
 		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
 		debug:true,	// 调试模式 【true|false】
 		callback:function(){
 			initEnv();
-			$("#themeList").theme({themeBase:"themes"}); // themeBase 相对于index页面的主题base路径
 		}
 	});
 });
 
+//清理浏览器内存,只对IE起效，FF不需要
+if ($.browser.msie) {
+	window.setInterval("CollectGarbage();", 10000);
+}
 </script>
 </head>
 
@@ -46,17 +51,17 @@ $(function(){
   <div id="layout">
     <div id="header">
       <div class="headerNav">
-        <div class="logo"><a href="__GROUP__">后台管理系统</a></div>
+        <div class="logo"><a href="__GROUP__/">后台管理系统</a></div>
         <div id="navMenu">
           <ul>
-            <li><a href="__APP__/Ui/menu/group/{$key}"><span>管理首页</span></a></li>
-            <li><a href="__APP__/Ui/menu/group/{$key}"><span>用户管理</span></a></li>
-            <li><a href="__APP__/Ui/menu/group/{$key}"><span>系统设置</span></a></li>
+            <li><a href="{:U('Index/main')}" target="navTab" rel="main"><span>管理首页</span></a></li>
+            <li><a href="{:U('User/index')}" target="navTab" rel="user"><span>用户管理</span></a></li>
+            <li><a href="{:U('Setting/index')}" target="navTab" rel="setting" external="true"><span>系统设置</span></a></li>
           </ul>
         </div>
         <ul class="nav">
 		  <li class="first"><a href="{:U('/')}" target="_blank">前台首页</a></li>
-          <li><a href="{:U('Public/clearCache')}" target="dialog" width="580" height="500" rel="sysInfo">更新缓存</a></li>
+          <li><a href="{:U('Public/clearCache')}" target="dialog" width="300" height="160" mask="true" maxable="false" minable="false" resizable="false" drawable="false" rel="sysInfo">更新缓存</a></li>
           <li><a href="{:U('Public/password')}" target="dialog" width="520" height="270" mask="true">修改密码</a></li>
           <li><a href="{:U('Public/profile')}" target="dialog" width="560" height="300" mask="true">修改资料</a></li>
           <li><a href="{:U('Public/logout')}">退出</a></li>
