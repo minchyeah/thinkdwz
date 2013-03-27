@@ -15,11 +15,14 @@ class PublicAction extends AdminAction
     
     public function _before_checkLogin(){
     	$this->assign("jumpUrl", U('Public/login'));
-    	if (empty($_POST['account'])) {
+    	if (empty($_POST['username'])) {
     		$this->error('管理员帐号必须填写！');
     	}
     	if (empty($_POST['password'])) {
     		$this->error('管理员密码必须填写！');
+    	}
+    	if(!$this->checkCaptcha()){
+    		$this->error('验证码错误');
     	}
     }
     /**
@@ -28,7 +31,7 @@ class PublicAction extends AdminAction
     public function checkLogin()
     {
     	$where = array();
-    	$where['username'] = $_POST['account'];
+    	$where['username'] = $_POST['username'];
     	$rs  = D("Users");
     	$admin = $rs->where($where)->find();
     	//使用用户名、密码和状态的方式进行认证
@@ -58,15 +61,6 @@ class PublicAction extends AdminAction
     	session('admin', null);
     	
     	redirect(U('Public/login'));
-    }
-    
-    /**
-     * 验证码
-     */
-    public function captcha()
-    {
-    	import("ORG.Util.Image");
-    	Image::buildImageVerify();
     }
     
     public function clearCache()

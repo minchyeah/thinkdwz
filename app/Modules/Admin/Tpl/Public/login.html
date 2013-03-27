@@ -72,6 +72,7 @@ body{
 }
 .main ul li span.img img{
 	cursor:pointer;
+	margin-top:-2px;
 }
 .main ul li input.text{
 	float:left;
@@ -112,7 +113,7 @@ span.button input{
         <ul style="padding-left:15px;">
           <li>
             <span class="label">用户名：</span>
-            <input name="account" type="text" class="text" />
+            <input name="username" type="text" class="text" />
           </li>
           <li>
             <span class="label">密&nbsp;&nbsp;&nbsp; 码：</span>
@@ -120,8 +121,8 @@ span.button input{
           </li>
           <li>
             <span class="label">验证码：</span>
-            <input name="verify" type="text" class="text verify" onkeydown="keydown(event)" maxlength="6" />
-            <span class="img"><img class="code" id="verifyImg" src="__URL__/verify/" onclick="this.src='__URL__/verify/?' + Math.random();" alt="点击刷新验证码" /></span>
+            <input name="captcha" type="text" class="text verify" onkeydown="keydown(event)" maxlength="6" />
+            <span class="img"><img class="code" id="verifyImg" src="{:U('Public/captcha')}" onclick="this.src='{:U('Public/captcha')}?' + Math.random();" alt="验证码" title="点击刷新验证码" /></span>
           </li>
           <li class="btn">
           	<span class="button"><input type="submit" value="登录"/></span>
@@ -133,7 +134,7 @@ span.button input{
   </div>
   <input type="hidden" name="returnUrl" value="{$Think.get.returnUrl|htmlspecialchars}" />
 </form>
-<script language="JavaScript">
+<script type="text/javascript" language="JavaScript">
 function keydown(e){
 	var e = e || event;
 	if (e.keyCode==13)
@@ -141,7 +142,7 @@ function keydown(e){
 		document.login.submit();
 	}
 }
-document.login.account.focus();
+document.login.username.focus();
 </script>
 </body>
 </html>
