@@ -54,9 +54,9 @@ if ($.browser.msie) {
         <div class="logo"><a href="__GROUP__/">后台管理系统</a></div>
         <div id="navMenu">
           <ul>
-            <li><a href="{:U('Index/main')}" target="navTab" rel="main"><span>管理首页</span></a></li>
-            <li><a href="{:U('User/index')}" target="navTab" rel="user"><span>用户管理</span></a></li>
-            <li><a href="{:U('Setting/index')}" target="navTab" rel="setting" external="true"><span>系统设置</span></a></li>
+            <volist name="topmenus" id="vo">
+            <li><a href="{:U('Index/menu', 'id='.$key)}"><span>{$vo.title}</span></a></li>
+            </volist>
           </ul>
         </div>
         <ul class="nav">
@@ -143,5 +143,6 @@ if ($.browser.msie) {
 	  </div>
 	</div>
   </div>
+  <div id="footer">Copyright &copy; 2013</div>
 </body>
 </html>

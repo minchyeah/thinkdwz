@@ -8,8 +8,6 @@ class AdminAction extends CommonAction
 	public function _initialize()
 	{
 		parent::_initialize();
-		C('TMPL_ACTION_ERROR', 'Public:error'); // 默认错误跳转对应的模板文件
-		C('TMPL_ACTION_SUCCESS', 'Public:success'); // 默认成功跳转对应的模板文件
 		$this->_login();
 		$this->_privileges();
 		$this->assign('username', session('username'));
