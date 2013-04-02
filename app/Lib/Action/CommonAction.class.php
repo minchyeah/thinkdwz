@@ -17,7 +17,7 @@ class CommonAction extends Action
 	 */
 	public function _initialize()
 	{
-		$this->assign('static_url', __ROOT__.'/data');
+		$this->assign('static_url', __ROOT__.'/static');
 	    $settings=M('Settings');
 	    $sys=$settings->where(array('category'=>'sys'))->select();
 	    if(is_array($sys)){
