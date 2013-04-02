@@ -19,9 +19,9 @@ class AdminAction extends CommonAction
 	 */
 	private function _login()
 	{
-		if(!session('admin_id') && MODULE_NAME != 'Public'){
-			$this->redirect('Admin/Public/login');
-		}
+    	if (!session('admin_id') && 'Public' != MODULE_NAME) {
+    		$this->redirect('Public/login');
+    	}
 	}
 	
 	/**
