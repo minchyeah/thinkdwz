@@ -1,69 +1,303 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>测试DWZ</title>
-
-<link href="{$static_url}/js/dwz/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="{$static_url}/js/dwz/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="{$static_url}/js/uploadify/css/uploadify.css" rel="stylesheet" type="text/css" media="screen"/>
-<!--[if IE]>
-<link href="{$static_url}/js/dwz/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
-<![endif]-->
-
-<!--[if lte IE 9]>
-<script src="{$static_url}/js/speedup.js" type="text/javascript"></script>
-<![endif]-->
-
-<script src="{$static_url}/js/jquery-1.7.2.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.validate.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.bgiframe.js" type="text/javascript"></script>
-<script src="{$static_url}/js/xheditor/xheditor-1.1.14-zh-cn.min.js" type="text/javascript"></script>
-<script src="{$static_url}/js/uploadify/jquery.uploadify.js" type="text/javascript"></script>
-<script src="/dwz/bin/dwz.min.compiler.packer.js?{:uniqid()}" type="text/javascript"></script>
-<script src="{$static_url}/js/dwz/dwz.regional.zh.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-$(function(){
-	DWZ.init("{$static_url}/js/dwz/dwz.frag.xml", {
-		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
-		//statusCode:{ok:200, error:300, timeout:301}, //【可选】
-		statusCode:{ok:1,error:0},
-		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
-		debug:true,	// 调试模式 【true|false】
-		callback:function(){
-			initEnv();
-		}
-	});
-});
-
-//清理浏览器内存,只对IE起效，FF不需要
-if ($.browser.msie) {
-	window.setInterval("CollectGarbage();", 10000);
-}
-
-function pup()
-{
-	$.pdialog.open("#layout", "dialogid", "title", {width:'300',height:'200'});
-}
-</script>
+<include file="Public:header_meta" />
 </head>
-<body scroll="no">
-<div id="layout">
-<form action="">
-<ul>
-  <li><a href="##" target="ajaxTodo" title="确定要删除吗?">删除</a></li>
-  <li><a href="{:U('Admin/Public/login')}" target="dialog" rel="page2">弹出窗口</a></li>
-  <li><span onclick="pup();">弹出窗口</span></li>
-  <li><input name="xxx" alt="请输入客户名称"/></li>
-  <li><input type="text" name="date" class="date" minDate="2000-01-15" maxDate="2012-12-15" /></li>
-</ul>
-<textarea class="editor" name="description" rows="15" cols="100">内容</textarea>
-<input type="submit" value="submit" />
-</form>
 
+<body>
+<include file="Public:header" />
+<div class="jz sy">
+  <div class="syl">
+    <div id="slider">
+      <div id="slider_name">
+        <ul class="silder_con bs">
+          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+        </ul>
+        <ul class="silder_nav">
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ggy"><b>想订餐？</b>外卖网收录南宁外卖10804家。简单3步，先选择或搜索你的位置：</div>
+    <div class="fq">
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <div class="clr"></div>
+    </div>
+    <div class="syggw"></div>
+    <div class="fq mdf">
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <div class="clr"></div>
+    </div>
+    <div class="syggw"></div>
+    <div class="fq mdf">
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <div class="clr"></div>
+    </div>
+    <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
+    <div class="fq mdf">
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <div class="clr"></div>
+    </div>
+    <div class="syggw"></div>
+    <div class="fq mdf">
+      <dl>
+        <dt><a href="dfy.html">埌东区</a></dt>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">海口</a>199</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd><a href="lby.html">国贸</a>103</dd>
+        <dd><a href="lby.html">望京</a>173</dd>
+        <dd><a href="lby.html">双井</a>99</dd>
+        <dd><a href="lby.html">上下九</a>119</dd>
+        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+      </dl>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="syr">
+    <div class="sysos heis">
+      <h2>找外卖<b>Find takeaway</b></h2>
+      <form name="form" id="form">
+        <div class="sysosk"> <b></b>
+          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'请输入餐馆名或地址...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#c4c4c4';" value="请输入餐馆名或地址..."/>
+          <b class="sysoskh"></b> </div>
+        <div class="sysosa"> <a href="tjwmd.html"></a>
+          <input name="cz" type="button" value="" onclick="javascript:location='#'"/>
+        </div>
+      </form>
+      <dl>
+        <dt>常选地点</dt>
+        <!--<dd>还没有查看过任何地点:(</dd>-->
+        <dd><a href="lby.html">上下九</a></dd>
+        <dd><a href="lby.html">上下九</a></dd>
+        <dd><a href="lby.html">国贸</a></dd>
+        <dd><a href="lby.html">望京</a></dd>
+        <dd><a href="lby.html">国贸</a></dd>
+        <dd><a href="lby.html">望京</a></dd>
+        <div class="clr"></div>
+      </dl>
+      <dl>
+        <dt>常选店铺</dt>
+        <!--<dd>还没有查看过任何店铺:(</dd>-->
+        <dd><a href="dmy.html">西区比萨（民大店）</a></dd>
+        <dd><a href="dmy.html">吉野家外卖</a></dd>
+        <dd><a href="dmy.html">丽华快餐</a></dd>
+        <dd><a href="dmy.html">桂林米粉</a></dd>
+        <div class="clr"></div>
+      </dl>
+    </div>
+    <div class="sycbl heis">
+      <h2>最新外卖店<b>Latest takeaway</b></h2>
+      <ul>
+        <li><span>大良<b>+</b><a href="dmy.html">上冠烧味</a></span><i>2013-02-22</i></li>
+        <li><span>慧中路<b>+</b><a href="dmy.html">一鸣真鲜奶吧</a></span><i>2013-02-23</i></li>
+        <li><span>骡马市<b>+</b><a href="dmy.html">大厨房（只送罗马国际）</a></span><i>2013-02-22</i></li>
+        <li><span>铃铛阁街<b>+</b><a href="dmy.html">云鼎食府</a></span><i>2013-02-22</i></li>
+        <li><span>大良<b>+</b><a href="dmy.html">上冠烧味</a></span><i>2013-02-22</i></li>
+        <li><span>慧中路<b>+</b><a href="dmy.html">一鸣真鲜奶吧</a></span><i>2013-02-23</i></li>
+        <li><span>骡马市<b>+</b><a href="dmy.html">大厨房（只送罗马国际）</a></span><i>2013-02-22</i></li>
+        <li><span>铃铛阁街<b>+</b><a href="dmy.html">云鼎食府</a></span><i>2013-02-22</i></li>
+      </ul>
+    </div>
+    <div class="sycbl hs">
+      <h2>人气美食<b>Popular dishes</b></h2>
+      <dl>
+        <dt><a href="dmy.html"><img src="images/cp1.jpg" /></a><b></b></dt>
+        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
+          <b>￥9：00</b>/份<br />
+          点击量：320</dd>
+      </dl>
+      <dl>
+        <dt><a href="dmy.html"><img src="images/cp2.jpg" /></a><b></b></dt>
+        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
+          <b>￥9：00</b>/份<br />
+          点击量：320</dd>
+      </dl>
+      <dl>
+        <dt><a href="dmy.html"><img src="images/cp3.jpg" /></a><b></b></dt>
+        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
+          <b>￥9：00</b>/份<br />
+          点击量：320</dd>
+      </dl>
+    </div>
+    <div class="sycbl heis">
+      <h2>战略合作<b>Cooperation</b></h2>
+      <ol>
+        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
+        <li><a href="#" target="_blank">丽华快餐</a></li>
+        <li><a href="#" target="_blank">南京特色</a></li>
+        <li><a href="#" target="_blank">必胜客</a></li>
+        <li><a href="#" target="_blank">吉野家</a></li>
+        <li><a href="#" target="_blank">麦当劳</a></li>
+        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
+        <li><a href="#" target="_blank">丽华快餐</a></li>
+        <li><a href="#" target="_blank">南京特色</a></li>
+        <li><a href="#" target="_blank">必胜客</a></li>
+        <li><a href="#" target="_blank">吉野家</a></li>
+        <li><a href="#" target="_blank">麦当劳</a></li>
+        <div class="clr"></div>
+      </ol>
+    </div>
+    <div class="sycbl heis">
+      <h2>友情链接<b>Links</b></h2>
+      <ol>
+        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
+        <li><a href="#" target="_blank">丽华快餐</a></li>
+        <li><a href="#" target="_blank">南京特色</a></li>
+        <li><a href="#" target="_blank">必胜客</a></li>
+        <li><a href="#" target="_blank">吉野家</a></li>
+        <li><a href="#" target="_blank">麦当劳</a></li>
+        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
+        <li><a href="#" target="_blank">丽华快餐</a></li>
+        <li><a href="#" target="_blank">南京特色</a></li>
+        <li><a href="#" target="_blank">必胜客</a></li>
+        <li><a href="#" target="_blank">吉野家</a></li>
+        <li><a href="#" target="_blank">麦当劳</a></li>
+        <div class="clr"></div>
+      </ol>
+    </div>
+  </div>
+  <div class="clr"></div>
 </div>
+<include file="Public:footer" />
+<include file="Public:loginform" />
+<include file="Public:bshare" />
 </body>
 </html>

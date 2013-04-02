@@ -1,0 +1,381 @@
+@charset "utf-8";
+/* CSS Document */
+.sy{
+	background:url(../images/syr.jpg) repeat-y right 0;
+}
+.sy .syl{
+	width:710px;
+	overflow:hidden;
+	float:left;
+	padding-top:20px;
+	padding-right:20px;
+}
+.sy .syr{
+	overflow:hidden;
+	width:255px;
+	float:left;
+}
+/*幻灯片*/
+#slider {
+	height:168px;
+	width:710px;
+	margin-bottom:18px;
+}
+#slider_name {
+	width:710px;
+	height:168px;
+	overflow: hidden;
+	position: relative;
+}
+.silder_con {
+	height:168px;
+	overflow: hidden;
+	position: absolute;
+}
+.silder_panel {
+	width:710px;
+	height:168px;
+	overflow: hidden;
+	float: left;
+	position: relative;
+	background:#FFF;
+}
+.silder_nav {
+	display:block;
+	bottom:0px;
+	position: absolute;
+	right:12px;
+}
+.silder_nav li {
+	float: left;
+	margin-right:8px;
+	display: block;
+	height:26px;
+	line-height:26px;
+	width:24px;
+	overflow: hidden;
+	background:#f0eded;
+	text-align: center;
+}
+.silder_nav li.current {
+	background:#d8d6d6;
+	height:29px;
+	width:26px;
+	margin-top:-4px;
+	font-size:14px;
+	position: relative;
+	color:#780002;
+	cursor:pointer;
+	font-weight: bolder;
+	border-bottom:1px solid #c8c8c8;
+}
+/*广告语*/
+.ggy{
+	padding:0 22px;
+	color:#780002;
+	font-size:14px;
+	height:50px;
+	line-height:50px;
+	background:#FFF;
+	margin-bottom:1px;
+	letter-spacing: 1px;
+}
+/*分区*/
+.fq{
+	background:#FFF;
+	padding:20px 2px;
+	margin-bottom:18px;
+	display: inline-block;
+}
+.fq dl{
+	float:left;
+	width:305px;
+	height:110px;
+	overflow:hidden;
+	margin-left:32px;
+	margin-bottom:22px;
+	*_display:inline;
+}
+.fq dl dt a{
+	display:block;
+	height:28px;
+	line-height:28px;
+	font-weight: bolder;
+	font-size:14px;
+	padding:0 3px;
+}
+.fq dl dt a:link,.fq dl dt a:visited {
+	color:#dc8100;
+	border-bottom:2px solid #dc8100;
+}
+.fq dl dt a:hover {
+	color:#7b4800;
+	text-decoration: none;
+	border-bottom:2px solid #7b4800;
+}
+.fq dl dt a:active {
+	color:#780002;
+	border-bottom:2px solid #780002;
+}
+.fq dl dd{
+	padding-right:7px;
+	color:#a3a3a3;
+	border-right:1px solid #dcdcdc;
+	float:left;
+	margin:7px 4px 2px;
+	white-space: nowrap;
+}
+.fq dl dd.hs{
+	border:none;
+}
+.fq dl dd a{
+	margin-right:3px;
+	letter-spacing: 1px;
+}
+.syl .mdf{
+	padding:8px 2px;
+}
+.syl .mdf dl{
+	margin:0 21px 0;
+	*_margin-left:8px;
+	*_margin-right:0px;
+	padding-bottom:20px;
+	width:auto;
+	height:auto;
+}
+.syl .mdf dl dt a{
+	width:658px;
+	height:32px;
+	line-height:32px;
+}
+.syggw img{
+	margin-bottom:18px;
+}
+/*侧边栏sos*/
+.sysos{
+	padding:18px 1px 10px;
+}
+.sysos h2{
+	font-size:16px;
+	letter-spacing: 2px;
+	color:#1c1c1c;
+	padding:0 19px 3px;
+}
+.sysos h2 b{
+	font-size: 12px;
+	font-weight: normal;
+	color: #606060;
+	letter-spacing:0px;
+	margin-left:10px;
+}
+.sysosk{
+	padding:0 19px 7px;
+	height:49px;
+}
+.sysosk b{
+	width:11px;
+	height:49px;
+	font-size:1px;
+	overflow:hidden;
+	float:left;
+	background:url(../images/sos.jpg);
+}
+.sysosk b.sysoskh{
+	background-position: -11px 0px;
+}
+.sysosk input{
+	border:none;
+	background:url(../images/sosc.jpg);
+	float:left;
+	font-size: 16px;
+	height:25px;
+	padding:12px 0;
+	width:193px;
+	*padding-top:15px;
+	*height:22px;
+}
+.sysosa{
+	height:39px;
+	padding:0 21px 19px;
+}
+.sysosa a{
+	width:101px;
+	height:39px;
+	float:left;
+	margin-right:9px;
+	background:url(../images/tjwmd.jpg);
+}
+.sysosa input{
+	width:101px;
+	height:39px;
+	float:left;
+	background:url(../images/sosan.jpg);
+	border:none;
+	cursor:pointer;
+}
+.sysos dl{
+	clear: left;
+	width:233px;
+	padding-bottom:18px;
+}
+.sysos dl dt{
+	background:url(../images/sycbl.jpg) #960202;
+	height:24px;
+	line-height:24px;
+	width:94px;
+	overflow:hidden;
+	text-align: center;
+	font-weight: bolder;
+	color: #FFF;
+	letter-spacing: 1px;
+}
+.sysos dl dd{
+	float:left;
+	margin:4px 0px 1px 20px;
+	white-space:nowrap;
+}
+.sycbl{
+	padding:0 1px 28px;
+}
+.sycbl h2{
+	height:40px;
+	line-height:40px;
+	padding:0 17px;
+	color:#fff;
+	font-size:16px;
+	background:url(../images/sycbl.jpg) #9c0202;
+}
+.sycbl h2 b{
+	margin-left:25px;
+	font-size:12px;
+	font-weight: normal;
+	color:#d19797;
+}
+.sycbl ul{
+	padding:4px 18px;
+}
+.sycbl ul li{
+	border-bottom:1px solid #efefef;
+	height:29px;
+	line-height:28px;
+	overflow:hidden;
+}
+.sycbl ul li span{
+	float:left;
+	width:130px;
+	overflow:hidden;
+	border-bottom:1px solid #b0b0b0;
+	height:28px;
+	padding-right:15px;
+	padding-left:4px;
+}
+.sycbl ul li span b{
+	font-size:16px;
+	color:#a40001;
+	margin:0 3px;
+}
+.sycbl ul li i{
+	height:28px;
+	float:left;
+	width:65px;
+	text-align: right;
+	color:#8b8b8b;
+	border-bottom:1px solid #b0b0b0;
+	padding-right:3px;
+}
+.sycbl dl{
+	margin:11px 19px 0;
+	height:80px;
+	border-bottom:1px solid #efefef;
+}
+.sycbl dl dt{
+	float:left;
+	width:92px;
+	height:69px;
+	overflow:hidden;
+	text-align:center;
+	display:table-cell;
+	vertical-align:middle;
+	padding-bottom:10px;
+	border-bottom:1px solid #b0b0b0;
+}
+.sycbl dl dt b{
+	display:inline-block;
+	height:100%;
+	vertical-align:middle;
+}
+.sycbl dl dt img{
+	vertical-align:middle;
+	max-width:92px;
+	max-height:69px;
+ _width:expression(this.width > 92 && this.width > this.height ?92: true);
+ _height:expression(this.height > 69 ? 69 : true);
+}
+.sycbl dl dd{
+	float:left;
+	overflow:hidden;
+	width:109px;
+	height:64px;
+	padding:5px 3px 10px 11px;
+	border-bottom:1px solid #b0b0b0;
+}
+.sycbl dl dd b{
+	color:#a50102;
+	margin-right:3px;
+	font-size:16px;
+}
+.sycbl ol{
+	padding:8px 19px 0;
+	display:inline-block;
+}
+.sycbl ol li{
+	float:left;
+	border-right:1px solid #aeaeae;
+	padding-right:8px;
+	margin:5px 8px 1px 0;
+	white-space:nowrap;
+}
+/*地方页*/
+.sy .mdf dl dd.dfyfl{
+	float:none;
+	border:none;
+	font-size:30px;
+	font-weight: bolder;
+	margin-bottom:-8px;
+	clear: left;
+	padding-top:22px;
+}
+/*文章内容*/
+.wznr{
+	padding:20px 20px 68px;
+	background:#FFF;
+	margin-bottom:18px;
+}
+.wznr .wznrbt{
+	padding:16px 30px 10px;
+	margin-bottom:10px;
+	border-bottom:1px solid #f0eded;
+	text-align: center;
+}
+.wznr .wznrbt h1{
+	font-size:20px;
+	*_font-size:18px;
+	padding-bottom:8px;
+	color:#3b3b3b;
+}
+.wznr .wznrbt span{
+	margin:0 12px;
+	color:#a3a3a3;
+}
+.wznr .wznrzw{
+	color:#616161;
+	line-height:200%;
+	padding:0 12px;
+}
+.wznr .wznrzw img{
+	border:1px solid #f0eded;
+	padding:2px;
+	margin:12px 6px;
+	cursor:pointer;
+	cursor:-moz-zoom-in;
+}
