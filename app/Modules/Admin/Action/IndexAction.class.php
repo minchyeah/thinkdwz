@@ -2,36 +2,12 @@
 
 class IndexAction extends AdminAction
 {
-	private $menus = array(
-			array(
-				'id'=>1,
-				'title'=>'管理首页',
-				'subs'=>array(),
-			),
-			array(
-				'id'=>2,
-				'title'=>'用户管理',
-				'subs'=>array(),
-			),
-			array(
-				'id'=>3,
-				'title'=>'分类管理',
-				'subs'=>array(),
-			),
-			array(
-				'id'=>4,
-				'title'=>'内容管理',
-				'subs'=>array(),
-			),
-			array(
-				'id'=>5,
-				'title'=>'管理首页',
-				'subs'=>array(),
-			),
-		);
     public function index()
     {
-    	$this->assign('topmenus', $this->menus);
+    	$model = D('AdminMenus');
+    	$this->assign('ctop', $model->find(1));
+    	$this->assign('topmenus', $model->topMenus());
+    	$this->assign('leftmenus', $model->leftMenus(1));
         $this->display();
     }
     
@@ -43,7 +19,11 @@ class IndexAction extends AdminAction
     public function menu()
     {
     	$id = intval($_GET['id']);
+    	$model = D('AdminMenus');
+    	$this->assign('ctop', $model->find($id));
+    	$this->assign('leftmenus', $model->leftMenus($id));
     	$this->display();
     }
+
 }
 ?>
