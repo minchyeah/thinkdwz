@@ -32,7 +32,16 @@ class AdminMenusAction extends AdminAction
     	if(!$model->create()){
     		$this->error($model->getError());
     	}
-    	//$this->display('add');
+    	if ($model->id) {
+    		$rs = $model->add();
+    	}else{
+    		$rs = $model->save();
+    	}
+    	if(false !== $rs){
+    		$this->success('保存成功！');
+    	}else{
+    		$this->error('保存失败！');
+    	}
     }
 }
 ?>

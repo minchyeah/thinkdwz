@@ -5,11 +5,11 @@
 		  <div class="accordionContent">
 			<ul class="tree">
 			  <volist name="leftmenus" id="vo">
-			  <li><a href="{:U($vo['module_name'].'/'.$vo['action_name'])}" target="navTab">{$vo.title}</a>
+			  <li><a href="{:U($vo['module_name'].'/'.$vo['action_name'])}" target="navTab" rel="tab_{$vo.id}">{$vo.title}</a>
 			    <notempty name="vo['subs']">
 			    <ul>
 			      <volist name="vo['subs']" id="svo">
-					<li><a href="main.html" target="navTab" rel="main">{$svo.title}</a></li>
+					<li><a href="main.html" target="navTab" rel="tab_{$vo.id}">{$svo.title}</a></li>
 				  </volist>
 			    </ul>
 			    </notempty>

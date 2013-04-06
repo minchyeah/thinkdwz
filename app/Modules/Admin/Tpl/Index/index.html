@@ -62,7 +62,7 @@ if ($.browser.msie) {
         <div id="navMenu">
           <ul>
             <volist name="topmenus" id="vo">
-            <li><a href="{:U('Index/menu', 'id='.$vo['id'])}"><span>{$vo.title}</span></a></li>
+            <li class="<eq name="i" value="1">selected</eq>"><a href="{:U('Index/menu', 'id='.$vo['id'])}"><span>{$vo.title}</span></a></li>
             </volist>
           </ul>
         </div>
