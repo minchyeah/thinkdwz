@@ -22,6 +22,16 @@
 <script src="{$static_url}/js/dwz/dwz.min.js" type="text/javascript"></script>
 <script src="{$static_url}/js/dwz/dwz.regional.zh.js" type="text/javascript"></script>
 <script type="text/javascript">
+function dialogAjaxMenu(json){
+	json.statusCode = json.status;
+	json.message = json.info;
+	dialogAjaxDone(json);
+}
+function navTabAjaxMenu(json){
+	json.statusCode = json.status;
+	json.message = json.info;
+	navTabAjaxDone(json);
+}
 $(function(){
 	DWZ.init("{$static_url}/js/dwz/dwz.frag.xml", {
 		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
