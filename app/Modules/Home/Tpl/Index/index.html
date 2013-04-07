@@ -44,10 +44,6 @@ if ($.browser.msie) {
 	window.setInterval("CollectGarbage();", 10000);
 }
 
-function pup()
-{
-	$.pdialog.open("#layout", "dialogid", "title", {width:'300',height:'200'});
-}
 </script>
 </head>
 <body scroll="no">
@@ -56,14 +52,9 @@ function pup()
 <ul>
   <li><a href="##" target="ajaxTodo" title="确定要删除吗?">删除</a></li>
   <li><a href="{:U('Admin/Public/login')}" target="dialog" rel="page2">弹出窗口</a></li>
-  <li><span onclick="pup();">弹出窗口</span></li>
-  <li><input name="xxx" alt="请输入客户名称"/></li>
   <li><input type="text" name="date" class="date" minDate="2000-01-15" maxDate="2012-12-15" /></li>
 </ul>
-<textarea class="editor" name="description" rows="15" cols="100">内容</textarea>
-<input type="submit" value="submit" />
 </form>
-
 </div>
 </body>
 </html>
