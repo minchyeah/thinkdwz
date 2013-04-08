@@ -5,8 +5,17 @@ class AdminMenusAction extends AdminAction
     public function index()
     {
     	$model = D('AdminMenus');
-    	$menus = $model->order('pid ASC,sort_order ASC')->select();
+    	$totalCount = $model->count();
+    	$currentPage = intval($_REQUEST['pageNum']);
+    	$currentPage = $currentPage ? $currentPage : 1;
+    	$numPerPage = 20;
+    	$rowOffset = ($currentPage-1) * $numPerPage;
+    	$menus = $model->order('pid ASC,sort_order ASC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	
     	$this->assign('list', $menus);
+    	$this->assign('totalCount', $totalCount);
+    	$this->assign('numPerPage', $numPerPage);
+    	$this->assign('currentPage', $currentPage);
         $this->display();
     }
     
@@ -29,10 +38,13 @@ class AdminMenusAction extends AdminAction
     public function save()
     {
     	$model = D('AdminMenus');
-    	if(!$model->create()){
+    	$data = $model->create();
+    	$data['params'] = '';
+    	$data['group_name'] = '';
+    	if(!$data){
     		$this->error($model->getError());
     	}
-    	if ($model->id) {
+    	if (!$data['id']) {
     		$rs = $model->add();
     	}else{
     		$rs = $model->save();
@@ -40,7 +52,7 @@ class AdminMenusAction extends AdminAction
     	if(false !== $rs){
     		$this->success('保存成功！');
     	}else{
-    		$this->error('保存失败！');
+    		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
     }
 }

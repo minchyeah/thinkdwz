@@ -26,6 +26,14 @@ function dialogAjaxMenu(json){
 	json.statusCode = json.status;
 	json.message = json.info;
 	dialogAjaxDone(json);
+	if (json.statusCode == DWZ.statusCode.ok){
+        if (json.navTabId){
+        	navTab.reload(json.forwardUrl, {}, json.navTabId);
+        }else{
+        	navTab.reload();
+        }
+        $.pdialog.closeCurrent();
+	}
 }
 function navTabAjaxMenu(json){
 	json.statusCode = json.status;

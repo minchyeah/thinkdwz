@@ -17,6 +17,7 @@ class AdminMenusModel extends Model
 	{
 		$where = array();
 		$where['pid'] = $id;
+		$where['display'] = 1;
 		return $this->where($where)->order('pid ASC,sort_order ASC')->select();
 	}
 }

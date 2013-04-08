@@ -1,100 +1,152 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>网站信息设置</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel='stylesheet' type='text/css' href='{$static_url}/css/admin_style.css' />
-<script language="JavaScript" charset="utf-8" type="text/javascript" src="{$static_url}/js/jquery.js"></script>
-<style type="text/css">
-<!--
-.red{color:#f03;}
--->
-</style>
-</head>
-<body>
-<form action="{:U('Config/update')}"  method="post" id="gxform">
-<table width="98%" border="0" cellpadding="4" cellspacing="1" class="table">
-<tr class="table_title"><td colspan="2">网站信息设置</td></tr>
-<tr class="ji">
-  <td class="left">网站名称</td>
-  <td><input type="text" name="sitename" size="35" maxlength="50" value="{$sitename}" /> *</td>
-</tr>
-<tr class="tr">
-  <td class="left">站长Email</td>
-  <td><input type="text" name="admin_email" size="35" value="{$admin_email}" />
-  </td>
-</tr>
- <tr class="tr">
-  <td class="left">站长QQ</td>
-  <td><input type="text" name="admin_qq" size="35" value="{$admin_qq}" />
-  </td>
-</tr>   
- <tr class="ji">
-  <td class="left">ICP备案信息</td>
-  <td><input type="text" name="icp_info" size="35" value="{$icp_info}" /></td>
-</tr>
-<tr class="tr">
-  <td class="left">热门关键词</td>
-  <td><input name="hot_keywords"  type="text" value="{$hot_keywords}" style="width:495px" maxlength="255" title="关键司以 | 线分隔" />
-  </td>
-</tr>
-<tr class="tr">
-  <td class="left">SEO关键字描述</td>
-  <td><input name="seo_keywords"  type="text" value="{$seo_keywords}" style="width:495px" maxlength="255" />
-  </td>
-</tr>
-<tr class="ji">
-  <td class="left">SEO网页内容信息描述</td>
-  <td><input name="seo_description" type="text" value="{$seo_description}" style="width:495px" maxlength="255" />
-  </td>
-</tr>          
-<tr class="tr">
-  <td class="left">版权信息</td>
-  <td title="设置本网站相关版权信息">
-    <textarea name="copyright" style="width:500px;height:50px">{$copyright}</textarea>
-  </td>
-</tr>
-<tr class="ji">
-  <td class="left">第三方统计代码</td>
-  <td>
-    <textarea name="stat_code" style="width:500px; height:50px">{$stat_code}</textarea>
-  </td>
-</tr>
-<tr class="table_title">
-  <td colspan="2">其它参数设置</td>
-</tr>
-<tr class="ji">
-  <td class="left">推广提现伐值</td>
-  <td>
-    <input type="text" name="min_withdraw" size="5" maxlength="5" value="{$min_withdraw}" style="text-align:center" /> 最小达到此数额后方可提现
-  </td>
-</tr>
-<tr class="ji">
-  <td class="left">分页数</td>
-  <td>
-    <input type="text" name="web_admin_pagenum" size="5" maxlength="5" value="{$web_admin_pagenum}" style="text-align:center" /> 每一页显示的记录数
-  </td>
-</tr>
-<tr class="ji">
-  <td class="left">客户端版本</td>
-  <td>
-    <input type="text" name="client_version" size="5" maxlength="5" value="{$client_version}" />
-  </td>
-</tr>
-<tr class="ji">
-  <td class="left">客户端升级地址</td>
-  <td>
-    <input type="text" name="client_update_url" size="80" value="{$client_update_url}" />
-  </td>
-</tr>
-<tr class="tr">
-  <td colspan="2">
-    <input type="hidden" name="setting_sub" value="true" />
-    <input class="bginput" type="submit" name="submit" value="提交" />
-    <input class="bginput" type="reset" name="Input" value="重置" />
-  </td>
-</tr>
-</table>
-</form>
-</body>
-</html>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<li><a class="add" href="demo_page4.html" target="navTab"><span>添加</span></a></li>
+			<li><a class="delete" href="demo/common/ajaxDone.html?uid={sid_user}" target="ajaxTodo" title="确定要删除吗?"><span>删除</span></a></li>
+			<li><a class="edit" href="demo_page4.html?uid={sid_user}" target="navTab"><span>修改</span></a></li>
+			<li class="line">line</li>
+			<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="75">
+		<thead>
+			<tr>
+				<th width="80"></th>
+				<th width="120">客户号</th>
+				<th>客户名称</th>
+				<th width="100">客户类型</th>
+				<th width="150">证件号码</th>
+				<th width="80" align="center">信用等级</th>
+				<th width="80">所属行业</th>
+				<th width="80">建档日期</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr target="sid_user" rel="1">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="1">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="2">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="3">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="4">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="5">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="6">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="7">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="8">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="9">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+			<tr target="sid_user" rel="10">
+				<td>天津农信社</td>
+				<td>A120113196309052434</td>
+				<td>天津市华建装饰工程有限公司</td>
+				<td>联社营业部</td>
+				<td>29385739203816293</td>
+				<td>5级</td>
+				<td>政府机构</td>
+				<td>2009-05-21</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panelBar">
+		<div class="pages">
+			<span>显示</span>
+			<select class="combox" name="numPerPage" onchange="navTabPageBreak({numPerPage:this.value})">
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+			</select>
+			<span>条，共${totalCount}条</span>
+		</div>
+		
+		<div class="pagination" targetType="navTab" totalCount="200" numPerPage="20" pageNumShown="10" currentPage="1"></div>
+
+	</div>
+</div>

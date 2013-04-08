@@ -1,43 +1,47 @@
-<div class="page">
-	<div class="layoutBox">
-		<div class="panelBar">
-			<ul class="toolBar">
-				<li><a class="add" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>新增</span></a></li>
-			</ul>
-		</div>
-		<table class="list" width="100%">
-			<thead>
-			<tr>
-				<th><input type="checkbox" group="id" class="checkboxCtrl"></th>
-				<th>编号</th>
-				<th>名称</th>
-				<th>模块</th>
-				<th>操作</th>
-				<th>参数</th>
-				<th>父节点</th>
-				<th>排序</th>
-				<th>显示</th>
-				<th>备注</th>
-				<th>操作</th>
-			</tr>
-			</thead>
-			<tbody>
-			<volist id="vo" name="list">
-				<tr target="sid_article" rel="{$vo['id']}">
-					<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
-					<td>{$vo['id']}</td>
-					<td><a class="edit" href="__URL__/edit/id/{$vo['id']}" target="navTab">{$vo.title}</a></td>
-					<td>{$vo.module_name}</td>
-					<td>{$vo.action_name}</td>
-					<td>{$vo.params}</td>
-					<td>{$vo.pid}</td>
-					<td>{$vo.sort_order}</td>
-					<td><if condition="$vo['display']">显示<else />不显示</if></td>
-					<td>{$vo.remark}</td>
-					<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
-				</tr>
-			</volist>
-			</tbody>
-		</table>
-	</div>
+<form id="pagerForm" method="post" action="{:U('AdminMenus/index')}">
+	<input type="hidden" name="pageNum" value="1" />
+</form>
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+      <li><a class="add" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>新增</span></a></li>
+    </ul>
+  </div>
+  <table class="table" width="100%" layoutH="75">
+    <thead>
+	  <tr>
+		<th><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th>编号</th>
+		<th>名称</th>
+		<th>模块</th>
+		<th>操作</th>
+		<th>参数</th>
+		<th>父节点</th>
+		<th>排序</th>
+		<th>显示</th>
+		<th>备注</th>
+		<th>操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo['id']}</td>
+		<td><a class="edit" href="__URL__/edit/id/{$vo['id']}" target="dialog" width="500" height="300" mask="true" maxable="false">{$vo.title}</a></td>
+		<td>{$vo.module_name}</td>
+		<td>{$vo.action_name}</td>
+		<td>{$vo.params}</td>
+		<td>{$vo.pid}</td>
+		<td>{$vo.sort_order}</td>
+		<td><if condition="$vo['display']">显示<else />不显示</if></td>
+		<td>{$vo.remark}</td>
+		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
 </div>
