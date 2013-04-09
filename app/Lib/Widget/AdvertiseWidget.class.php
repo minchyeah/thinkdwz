@@ -13,9 +13,7 @@ class AdvertiseWidget extends Widget
 		$ad = $model->where($where)->find();
 		$result = '';
 		if($ad){
-			$width = $data['width'] ? ' width="'.$data['width'].'"' : '';
-			$height = $data['height'] ? ' height="'.$data['height'].'"' : '';
-			$result = '<a href="'. $ad['link'] .'" target="_blank"><img src="'. $ad['image'] .'" '.$width.$height.'/></a>';
+			$result = $ad['code'];
 		}
 		return $result;
 	}
