@@ -4,7 +4,7 @@ class DistrictAction extends AdminAction
 {
     public function index()
     {
-    	$model = D('Users');
+    	$model = D('District');
     	$totalCount = $model->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
@@ -16,31 +16,27 @@ class DistrictAction extends AdminAction
     	$this->assign('totalCount', $totalCount);
     	$this->assign('numPerPage', $numPerPage);
     	$this->assign('currentPage', $currentPage);
+    	$this->assign('type', array('region'=>'行政城区', 'custom'=>'自定义'));
         $this->display();
     }
     
     public function add()
     {
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
     	$this->display();
     }
     
     public function edit()
     {
     	$id =  intval($_GET['id']);
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
+    	$model = D('District');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
     
     public function save()
     {
-    	$model = D('Users');
+    	$model = D('District');
     	$data = $model->create();
-    	$data['params'] = '';
-    	$data['group_name'] = '';
     	if(!$data){
     		$this->error($model->getError());
     	}

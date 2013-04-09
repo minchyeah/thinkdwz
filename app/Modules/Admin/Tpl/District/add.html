@@ -1,0 +1,36 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<div class="pageFormContent">
+			<div class="unit">
+				<label class="tar">节点名称：</label>
+				<input name="title" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">别名：</label>
+				<input name="alias" type="text" class="required" value="{$vo.alias}" size="20"/> <span>拼音或其它英文别名</span>
+			</div>
+			<div class="unit">
+				<label class="tar">区域类型：</label>
+				<select name="type">
+					<option value="region<eq name="vo['type']" value="region">" selected="selected</eq>">行政城区</option>
+					<option value="custom<eq name="vo['type']" value="custom">" selected="selected</eq>">自定义</option>
+				</select>
+				<label class="tar">显示排序：</label>
+				<input name="sort_order" type="text" value="{$vo.sort_order}" size="5"/>
+			</div>
+			<div class="unit">
+				<label class="tar">描述：</label>
+				<textarea name="remark" rows="3" cols="50">{$vo.remark}</textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</form>
+	</div>
+</div>
