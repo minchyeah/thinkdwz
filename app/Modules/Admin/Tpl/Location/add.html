@@ -1,0 +1,35 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<div class="pageFormContent">
+			<div class="unit">
+				<label class="tar">商圈名称：</label>
+				<input name="title" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">所属区域：</label>
+				<select name="district">
+				  <volist name="district" id="svo">
+				  <option value="{$svo.id}<eq name="vo['district']" value="svo['id']">" selected="selected</eq>">{$svo.title}</option>
+				  </volist>
+				</select>
+			</div>
+			<div class="unit">
+				<label class="tar">显示排序：</label>
+				<input name="sort_order" type="text" value="{$vo.sort_order}" size="10"/>
+			</div>
+			<div class="unit">
+				<label class="tar">描述：</label>
+				<textarea name="remark" rows="3" cols="50">{$vo.remark}</textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</form>
+	</div>
+</div>
