@@ -1,0 +1,53 @@
+<form id="pagerForm" action="{:U('Store/lookup')}">
+	<input type="hidden" name="pageNum" value="1" />
+	<input type="hidden" name="numPerPage" value="${model.numPerPage}" />
+	<input type="hidden" name="orderField" value="${param.orderField}" />
+	<input type="hidden" name="orderDirection" value="${param.orderDirection}" />
+</form>
+
+<div class="pageHeader">
+	<form rel="pagerForm" method="post" action="{:U('Store/lookup')}" onsubmit="return dwzSearch(this, 'dialog');">
+	<div class="searchBar">
+		<ul class="searchContent">
+			<li>
+				<label>名称:</label>
+				<input class="textInput" name="orgName" value="" type="text">
+			</li>
+		</ul>
+		<div class="subBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">查询</button></div></div></li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="pageContent">
+
+	<table class="table" layoutH="118" targetType="dialog" width="100%">
+		<thead>
+			<tr>
+				<th orderfield="orgName">店面ID</th>
+				<th orderfield="orgNum">店面名称</th>
+				<th orderfield="leader">地址</th>
+				<th width="80">查找带回</th>
+			</tr>
+		</thead>
+		<tbody>
+		  <volist name="list" id="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td>{$vo.name}</td>
+				<td>{$vo.address}</td>
+				<td>
+					<a class="btnSelect" href="javascript:$.bringBack({id:'{$vo.id}', orgName:'{$vo.name}', orgNum:'{$vo.id}'})" title="查找带回">选择</a>
+				</td>
+			</tr>
+		  </volist>
+		</tbody>
+	</table>
+
+	<div class="panelBar">
+		<div class="pagination" targetType="dialog" totalCount="2" numPerPage="10" pageNumShown="1" currentPage="1"></div>
+	</div>
+</div>

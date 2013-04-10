@@ -1,0 +1,40 @@
+<div class="pageContent">
+	<form method="post" action="{:U('StoreMenus/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+		<div class="pageFormContent" layoutH="57">
+			<dl class="nowrap">
+				<dt>所属店面：</dt>
+				<dd>
+				  <input type="hidden" value="{$store_id}" name="store_id">
+				  <input class="required textInput" type="text" lookupgroup="orgLookup" suggesturl="{:U('Store/lookupSuggest')}" suggestfields="id,name" value="" name="orgLookup.orgName" autocomplete="off">
+				  <a class="btnLook" lookupgroup="orgLookup" href="{:U('Store/lookup')}">查找带回</a>
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>菜谱名称：</dt>
+				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>价格：</dt>
+				<dd><input class="required" type="text" size="30" name="price" value="{$vo.price}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>菜谱照片：</dt>
+				<dd>
+				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
+				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
+			</dl>
+			<div class="divider"></div>
+			<dl class="nowrap">
+				<dt>备注：</dt>
+				<dd><textarea cols="80" rows="5" name="remark">{$vo.remark}</textarea></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input name="id" type="hidden" value="{$vo.id}" />
+	</form>
+</div>
