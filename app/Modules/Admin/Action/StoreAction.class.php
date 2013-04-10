@@ -4,7 +4,7 @@ class StoreAction extends AdminAction
 {
     public function index()
     {
-    	$model = D('Users');
+    	$model = D('Stores');
     	$totalCount = $model->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
@@ -21,26 +21,28 @@ class StoreAction extends AdminAction
     
     public function add()
     {
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
+    	$model = D('Stores');
     	$this->display();
     }
     
     public function edit()
     {
     	$id =  intval($_GET['id']);
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
+    	$model = D('Stores');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
     
     public function save()
     {
-    	$model = D('Users');
+    	$model = D('Stores');
+    	if ($_FILES['imgfile']['name']) {
+    		$image = $this->saveImage($_FILES['imgfile']);
+    		if ($image) {
+    			$_POST['image'] = $image;
+    		}
+    	}
     	$data = $model->create();
-    	$data['params'] = '';
-    	$data['group_name'] = '';
     	if(!$data){
     		$this->error($model->getError());
     	}
