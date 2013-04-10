@@ -53,4 +53,30 @@ class CommonAction extends Action
 		$captcha = $captcha ? $captcha : strval($_REQUEST['captcha']);
 		return md5(strtoupper($captcha)) == session('captcha');
 	}
+
+	/**
+	 * 保存图片方法
+	 * @param array $file 上传的文件
+	 * @return string|boolean
+	 */
+	protected function saveImage($file)
+	{
+		if(!empty($file['name'])){
+			import("ORG.Net.UploadFile");
+			$upload = new UploadFile();
+			$upload->maxSize  = 1048576 * 4;
+			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');
+			$upload->savePath =  DATA_PATH.'upload/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz1234567890'), 20, 1).'/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz'), 6, 2).'/';;
+			if(!is_dir($upload->savePath)) {
+				mkdir($upload->savePath,0777,true);
+			}
+			$upload->saveRule = 'uniqid';
+			$upload->uploadReplace = false;
+			if($upload->upload()) {
+				$imgs = $upload->getUploadFileInfo();
+				return str_replace(DATA_PATH, '', $imgs[0]['savepath'].$imgs[0]['savename']);
+			}
+		}
+		return false;
+	}
 }

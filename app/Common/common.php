@@ -21,3 +21,27 @@ function getStatus($status, $imageShow = true) {
 	}
 	return ($imageShow) ?  $showImg  : $showText;
 }
+
+function imgsrc($file, $width = '', $height = '')
+{
+	$width = intval($width);
+	$height = intval($height);
+	$realFile = DATA_PATH.$file;
+	if (is_file($realFile)) {
+		if($width>0 && $height>0){
+			$arrtmp = explode('.', $file);
+			$ext = end($arrtmp);
+			$thumbFile = str_replace('.'.$ext, '_'.$width.'x'.$height.'.'.$ext, $realFile);
+			if(is_file($thumbFile)){
+				$imgfile = str_replace(DATA_PATH, '', $thumbFile);
+			}elseif(is_file($realFile)){
+				import('ORG.Util.Image');
+				Image::thumb($realFile, $thumbFile, '', $width, $height);
+				$imgfile = str_replace(DATA_PATH, '', $thumbFile);
+			}
+		}else{
+			$imgfile = $file;
+		}
+	}
+	return empty($imgfile) ? __ROOT__.'/static/images/noimg.jpg' : $imgfile;
+}
