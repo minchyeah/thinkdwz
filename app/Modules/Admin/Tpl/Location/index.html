@@ -4,7 +4,7 @@
 <div class="pageContent">
   <div class="panelBar">
     <ul class="toolBar">
-      <li><a class="add" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>新增</span></a></li>
+      <li><a class="add" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="500" height="250" mask="true" maxable="false"><span>新增</span></a></li>
     </ul>
   </div>
   <table class="table" width="100%" layoutH="75">
@@ -34,7 +34,7 @@
 		<td>{$vo.sort_order}</td>
 		<td>{$vo.store_count}</td>
 		<td>{$vo.remark}</td>
-		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="250" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>
     </tbody>
