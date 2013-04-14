@@ -1,0 +1,35 @@
+<form id="pagerForm" method="post" action="{:U('Store/type')}">
+	<input type="hidden" name="pageNum" value="1" />
+</form>
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+      <li><a class="add" href="__URL__/addtype/tid/{$Think.request.tid}" target="dialog" width="360" height="150" mask="true" maxable="false"><span>新增</span></a></li>
+    </ul>
+  </div>
+  <table class="list" width="100%" layoutH="53">
+    <thead>
+	  <tr>
+		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="50">编号</th>
+		<th>名称</th>
+		<th>店铺数量</th>
+		<th width="60">操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo['id']}</td>
+		<td>{$vo.type_name}</td>
+		<td>{$vo.store_count}</td>
+		<td><a href="__URL__/edittype/id/{$vo.id}"  target="dialog" width="360" height="150" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/deletetype/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
+</div>

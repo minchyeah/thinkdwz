@@ -1,0 +1,17 @@
+<div class="pageContent">
+	<form method="post" action="{:U('Store/savetype')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+		<div class="pageFormContent" layoutH="57">
+			<dl style="width:auto;">
+				<dt style="width:auto;">菜式名称：</dt>
+				<dd><input class="required" name="type_name" type="text" size="30" value="{$vo.type_name}"/></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input name="id" type="hidden" value="{$vo.id}" />
+	</form>
+</div>

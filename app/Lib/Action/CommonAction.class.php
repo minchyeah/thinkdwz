@@ -26,6 +26,7 @@ class CommonAction extends Action
 	    		C(strtoupper($v['skey']),$v['svalue']);
 	    	}
 	    }
+	    load('extend');
 	}
 	
 	/**

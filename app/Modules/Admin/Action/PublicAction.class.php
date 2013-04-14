@@ -38,7 +38,7 @@ class PublicAction extends AdminAction
     	if (!$admin) {
     		$this->error('管理员帐号不存在！');
     	}
-    	if ($admin['password'] != md5(trim($_POST['password']))) {
+    	if ($admin['password'] != md5(md5($_POST['password']).$admin['passwdkey'])) {
     		$this->error('用户密码错误,请重新输入！');
     	}
     	// 记录登录信息
