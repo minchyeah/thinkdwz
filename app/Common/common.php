@@ -45,3 +45,19 @@ function imgsrc($file, $width = '', $height = '')
 	}
 	return empty($imgfile) ? __ROOT__.'/static/images/noimg.jpg' : $imgfile;
 }
+
+function ids2str($ids, $data, $map = array(), $delimiter = ',')
+{
+	if (is_string($ids)) {
+		$ids = explode(',', $ids);
+	}
+	$tmpdata = array();
+	foreach ($data as $v){
+		$tmpdata[$v[$map[0]]] = $v[$map[1]];
+	}
+	$str = '';
+	foreach ($ids as $id){
+		$str .= ','.$tmpdata[$id];
+	}
+	return trim($str, ',');
+}

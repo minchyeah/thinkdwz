@@ -30,7 +30,7 @@
 		<td><a class="edit" href="__URL__/edit/id/{$vo['id']}" target="dialog" width="500" height="300" mask="true" maxable="false">{$vo.title}</a></td>
 		<td>{$vo.alias}</td>
 		<td>{$vo.letter}</td>
-		<td>{$district[$vo['district']]['title']}</td>
+		<td>{$vo.district|ids2str=###,$district,array('id','title')}</td>
 		<td>{$vo.sort_order}</td>
 		<td>{$vo.store_count}</td>
 		<td>{$vo.remark}</td>

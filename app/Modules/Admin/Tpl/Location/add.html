@@ -8,11 +8,9 @@
 			</div>
 			<div class="unit">
 				<label class="tar">所属区域：</label>
-				<select name="district">
-				  <volist name="district" id="svo">
-				  <option value="{$svo.id}<eq name="vo['district']" value="svo['id']">" selected="selected</eq>">{$svo.title}</option>
-				  </volist>
-				</select>
+				<a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('District/multiselect', 'selparent=0&selmore=1&cid=district&cname=district_name')}">选择区域</a>&nbsp;
+				<input id="district_name" class="required textInput readonly" type="text" value="{$vo.district_name}" readonly="readonly" size="40">
+				<input id="district" class="required" type="hidden" value="{$vo.district}" name="district">
 			</div>
 			<div class="unit">
 				<label class="tar">显示排序：</label>

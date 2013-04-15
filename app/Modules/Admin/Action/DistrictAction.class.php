@@ -29,7 +29,8 @@ class DistrictAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('District');
-    	$this->assign('vo', $model->find($id));
+    	$vo = $model->find($id);
+    	$this->assign('vo', $vo);
     	$this->display('add');
     }
     
@@ -50,6 +51,16 @@ class DistrictAction extends AdminAction
     	}else{
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
+    }
+    
+
+    public function multiselect()
+    {
+    	$model = D('District');
+    	$map = array();
+    	$tree = $model->tree($map,$_REQUEST['link'],$_REQUEST['selparent']);
+    	$this->assign('tree',$tree);
+    	$this->display('Public:multiselect');
     }
 }
 ?>
