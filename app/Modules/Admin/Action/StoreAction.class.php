@@ -29,7 +29,16 @@ class StoreAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('Stores');
-    	$this->assign('vo', $model->find($id));
+    	$store = $model->find($id);
+    	$locs = array();
+    	$rs = D('Locations')->field('title')->where('id IN ('.$store['location_id'].')')->select();
+    	if (is_array($rs)) {
+    		foreach ($rs as $k=>$v){
+    			$locs[] = $v['title'];
+    		}
+    	}
+    	$store['locations'] = implode(',', $locs);
+    	$this->assign('vo', $store);
     	$this->display('add');
     }
     

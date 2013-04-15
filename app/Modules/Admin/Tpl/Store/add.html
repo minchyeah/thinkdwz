@@ -23,7 +23,11 @@
 			</dl>
 			<dl class="nowrap">
 				<dt>送餐区域：</dt>
-				<dd><textarea class="required" cols="50" rows="1" name="location_id">{$vo.location_id}</textarea></dd>
+				<dd>
+				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'selparent=0&selmore=1&cid=tid_add_article&cname=categoryName_add_article')}">选择区域</a>&nbsp;
+				  <input id="categoryName_add_article" class="required textInput readonly" type="text" value="{$vo.locations}" readonly="readonly" size="40">
+				  <input id="tid_add_article" class="required" type="hidden" value="{$vo.location_id}" name="location_id">
+				</dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>送餐范围：</dt>

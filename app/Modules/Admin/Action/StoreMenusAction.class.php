@@ -28,13 +28,17 @@ class StoreMenusAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('StoreMenus');
-    	$this->assign('vo', $model->find($id));
+    	$vo = $model->find($id);
+    	$rs = D('Stores')->where(array('id'=>$vo['store_id']))->getField('name');
+    	$vo['store_name'] = $rs;
+    	$this->assign('vo', $vo);
     	$this->display('add');
     }
     
     public function save()
     {
     	$model = D('StoreMenus');
+    	$_POST['store_id'] = intval($_POST['orgLookup_id']);
     	if ($_FILES['imgfile']['name']) {
     		$image = $this->saveImage($_FILES['imgfile']);
     		if ($image) {
