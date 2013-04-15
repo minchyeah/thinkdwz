@@ -80,4 +80,24 @@ class CommonAction extends Action
 		}
 		return false;
 	}
+	
+	/**
+	 * 把ID转换为对应的名称
+	 * @param string $ids 主键ID
+	 * @param Object $model 模型
+	 * @param string $field 字段
+	 * @param string $delimiter 分隔符
+	 * @return string
+	 */
+	protected function ids2str($ids, $model, $field, $delimiter = ',', $pkfield = 'id')
+	{
+		$arrs = array();
+		$rs = $model->field($field)->where($pkfield.' IN ('.$ids.')')->select();
+		if (is_array($rs)) {
+			foreach ($rs as $k=>$v){
+				$arrs[] = $v[$field];
+			}
+		}
+		return implode($delimiter, $arrs);
+	}
 }

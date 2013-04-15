@@ -30,14 +30,8 @@ class StoreAction extends AdminAction
     	$id =  intval($_GET['id']);
     	$model = D('Stores');
     	$store = $model->find($id);
-    	$locs = array();
-    	$rs = D('Locations')->field('title')->where('id IN ('.$store['location_id'].')')->select();
-    	if (is_array($rs)) {
-    		foreach ($rs as $k=>$v){
-    			$locs[] = $v['title'];
-    		}
-    	}
-    	$store['locations'] = implode(',', $locs);
+    	$store['locations'] = $this->ids2str($store['location_id'], D('Locations'), 'title');
+    	$store['type_name'] = $this->ids2str($store['type_id'], D('StoreType'), 'type_name');
     	$this->assign('vo', $store);
     	$this->display('add');
     }
@@ -143,6 +137,15 @@ class StoreAction extends AdminAction
     	}else{
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
+    }
+    
+    public function seltype()
+    {
+    	$model = D('StoreType');
+    	$map = array();
+    	$tree = $model->tree($map,$_REQUEST['link'],$_REQUEST['selparent']);
+    	$this->assign('tree',$tree);
+    	$this->display('Public:multiselect');
     }
 }
 ?>

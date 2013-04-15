@@ -18,6 +18,14 @@
 				<dd><input class="required" type="text" size="30" name="shop_hours" value="{$vo.shop_hours}"/></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>主营菜式：</dt>
+				<dd>
+				  <a class="unit btn" height="420" width="300" title="选择菜式" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Store/seltype', 'selparent=0&selmore=1&cid=type_id&cname=type_name')}">选择菜式</a>&nbsp;
+				  <input id="type_name" class="required textInput readonly" type="text" value="{$vo.type_name}" readonly="readonly" size="40">
+				  <input id="type_id" class="required" type="hidden" value="{$vo.type_id}" name="type_id">
+				</dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>起送条件：</dt>
 				<dd><input class="required" type="text" size="30" name="sendup_prices" value="{$vo.sendup_prices}"/></dd>
 			</dl>
