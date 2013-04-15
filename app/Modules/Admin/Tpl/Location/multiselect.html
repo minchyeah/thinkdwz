@@ -1,0 +1,38 @@
+{//选择栏目，可多选即一篇文章属于多个栏目没有主从之分，可以设置父级栏目是否能选择}
+{$tree}
+<if condition="$Think.request.link neq 'edit'">
+<script type="text/javascript" language="javascript">
+function selectClass(cid,cname){
+	var selmore = '{$Think.request.selmore}';
+	var objcid = $('#{$Think.request.cid}', navTab.getCurrentPanel());
+	var objcname = $('#{$Think.request.cname}', navTab.getCurrentPanel());
+	if(!objcid[0]){
+		var objcid = $('#{$Think.request.cid}');
+		var objcname = $('#{$Think.request.cname}');
+	}
+	if(objcid.length>0){
+		if(selmore==1){	
+			var v = (","+objcid.val()+",").indexOf(","+cid+",")>-1 ? 
+			(","+objcid.val()+",").replace(eval('/,'+cid+',|,'+cid+'|'+cid+',/g'),',') : 
+			(objcid.val()+","+cid);
+			v = v.replace(/^,|,$/g,'');
+		}else{
+			var v = cid;
+		}
+		objcid.val(v);
+	}
+	if(objcname.length>0){
+		if(selmore==1){	
+			var v = (","+objcname.val()+",").indexOf(","+cname+",")>-1 ? 
+			(","+objcname.val()+",").replace(eval('/,'+cname+',|,'+cname+'|'+cname+',/g'),',') : 
+			(objcname.val()+","+cname);
+			v = v.replace(/^,|,$/g,'');
+		}else{
+			var v = cname;
+		}
+		objcname.val(v);
+	}
+	if(selmore==0) $.pdialog.closeCurrent();
+}
+</script>
+</if>

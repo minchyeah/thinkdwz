@@ -75,5 +75,15 @@ class LocationAction extends AdminAction
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
     }
+    
+    public function multiselect()
+    {
+    	$model = D('Locations');
+    	$map = array('classpid'=>0);
+    	if( !empty($_REQUEST['mod']) ) $map['classmodule'] = $_REQUEST['mod'];
+    	$tree = $model->tree($map,$_REQUEST['link'],$_REQUEST['selparent']);
+    	$this->assign('tree',$tree);
+    	$this->display();
+    }
 }
 ?>
