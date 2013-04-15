@@ -585,6 +585,7 @@ h3.contentTitle{margin-bottom:5px; line-height:25px; font-size:13px; border-bott
 #suggest li.selected{border:1px solid #0a246a; background-color:#b6bdd2}
 
 /* button */
+a.btn { background-color: #289FD2;color: #FFFFFF;display: block;float: left;margin-left: 2px; padding: 4px;text-align: center;text-decoration: none;}
 a.btnAdd, a.btnDel, a.btnView, a.btnEdit, a.btnSelect, a.btnInfo, a.btnAssign, a.btnLook, a.btnAttach{background:url(../default/images/button/imgX.gif) no-repeat; display:block; width:22px; height:20px; text-indent:-1000px; overflow:hidden; float:left; margin-right: 3px}
 a.btnAdd{background-position:0 0}
 a.btnDel{background-position: -23px 0}
