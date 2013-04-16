@@ -11,6 +11,26 @@ class ArticlePageAction extends AdminAction
     	$this->display('Article:page');
     }
     
+    public function save()
+    {
+    	$model = D('ArticlePage');
+    	$_POST['create_time'] = time();
+    	$data = $model->create();
+    	if(!$data){
+    		$this->error($model->getError());
+    	}
+    	if (!$data['id']) {
+    		$rs = $model->add();
+    	}else{
+    		$rs = $model->save();
+    	}
+    	if(false !== $rs){
+    		$this->success('保存成功！');
+    	}else{
+    		$this->error('保存失败！'.dump($data, false).$model->getDbError());
+    	}
+    }
+    
     public function contact()
     {
     	$this->page('contact');
