@@ -7,36 +7,27 @@
       <li><a class="add" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>新增</span></a></li>
     </ul>
   </div>
-  <table class="table" width="100%" layoutH="75">
+  <table class="list" width="100%" layoutH="53">
     <thead>
 	  <tr>
-		<th><input type="checkbox" group="id" class="checkboxCtrl"></th>
-		<th>编号</th>
-		<th>名称</th>
-		<th>模块</th>
-		<th>操作</th>
-		<th>参数</th>
-		<th>父节点</th>
-		<th>排序</th>
-		<th>显示</th>
-		<th>备注</th>
-		<th>操作</th>
+		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="40">编号</th>
+		<th>广告位置</th>
+		<th>广告类型</th>
+		<th>预览</th>
+		<th width="100">操作</th>
 	  </tr>
     </thead>
     <tbody>
 	  <volist id="vo" name="list">
+	  <php>$params = json_decode($vo['params'], true)</php>
 	  <tr target="sid_article" rel="{$vo['id']}">
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
-		<td><a class="edit" href="__URL__/edit/id/{$vo['id']}" target="dialog" width="500" height="300" mask="true" maxable="false">{$vo.title}</a></td>
-		<td>{$vo.module_name}</td>
-		<td>{$vo.action_name}</td>
-		<td>{$vo.params}</td>
-		<td>{$vo.pid}</td>
-		<td>{$vo.sort_order}</td>
-		<td><if condition="$vo['display']">显示<else />不显示</if></td>
-		<td>{$vo.remark}</td>
-		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+		<td>{$positions[$vo['position']]}</td>
+		<td><eq name="params.type" value="flash">Flash<else />图片</eq></td>
+		<td><eq name="params.type" value="flash">Flash广告请点预览查看<else /><img src="{$params.file|imgsrc=###,360,100}" /></eq></td>
+		<td><a href="__URL__/preview/id/{$vo.id}" target="_blank"><span>预览</span></a>&nbsp;|&nbsp;<a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>
     </tbody>
