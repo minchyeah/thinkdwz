@@ -2,9 +2,15 @@
 
 class LinkAction extends AdminAction
 {
+	public function _initialize()
+	{
+		parent::_initialize();
+		$this->assign('linktype', C('FRIENDLINK_TYPE'));
+	}
+	
     public function index()
     {
-    	$model = D('Users');
+    	$model = D('Links');
     	$totalCount = $model->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
@@ -21,26 +27,21 @@ class LinkAction extends AdminAction
     
     public function add()
     {
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
     	$this->display();
     }
     
     public function edit()
     {
     	$id =  intval($_GET['id']);
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
+    	$model = D('Links');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
     
     public function save()
     {
-    	$model = D('Users');
+    	$model = D('Links');
     	$data = $model->create();
-    	$data['params'] = '';
-    	$data['group_name'] = '';
     	if(!$data){
     		$this->error($model->getError());
     	}

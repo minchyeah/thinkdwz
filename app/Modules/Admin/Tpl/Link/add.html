@@ -1,0 +1,35 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<div class="pageFormContent">
+			<div class="unit">
+				<label class="tar">网站名称：</label>
+				<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">链接地址：</label>
+				<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
+			</div>
+			<div class="unit">
+				<label class="tar">网站LOGO：</label>
+				<input name="logo" type="text" value="{$vo.logo}" size="45"/>
+			</div>
+			<div class="unit">
+				<label class="tar">分类：</label>
+				<select name="category">
+				    <volist name="linktype" id="svo">
+				    <option value="{$key}<eq name="vo['category']" value="$key">" selected="selected</eq>">{$svo}</option>
+				    </volist>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</form>
+	</div>
+</div>
