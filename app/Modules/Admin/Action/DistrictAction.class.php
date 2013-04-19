@@ -20,8 +20,19 @@ class DistrictAction extends AdminAction
         $this->display();
     }
     
+    private function _assign_city()
+    {
+    	$model = D('District');
+    	$where = array();
+    	$where['pid'] = 0;
+    	$cities = $model->where($where)->select();
+    	$this->assign('cities', $cities);
+    }
+    
     public function add()
     {
+    	$this->_assign_city();
+    	$this->assign('type', $_REQUEST['type']);
     	$this->display();
     }
     
@@ -31,11 +42,17 @@ class DistrictAction extends AdminAction
     	$model = D('District');
     	$vo = $model->find($id);
     	$this->assign('vo', $vo);
+    	$this->_assign_city();
     	$this->display('add');
     }
     
     public function save()
     {
+    	if('city'==trim($_REQUEST['type'])){
+    		import('@.Util.Pinyin');
+	    	$pinyin = new Pinyin();
+	    	$_POST['alias'] = str_replace(' ', '', $pinyin->output($_REQUEST['title']));
+    	}
     	$model = D('District');
     	$data = $model->create();
     	if(!$data){
