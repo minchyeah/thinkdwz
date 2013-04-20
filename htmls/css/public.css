@@ -38,12 +38,26 @@ body {
 	height:39px;
 	padding:5px 21px;
 }
+.bt .csqh{
+	padding-top:22px;
+	width:130px;
+	float:left;
+	font-size:14px;
+	font-weight: bolder;
+	color:#fff;
+	text-align: center;
+}
+.bt .csqh a{
+	font-size:12px;
+	font-weight: normal;
+	margin-left:3px;
+}
 .bt .btr{
-	width:702px;
+	width:502px;
 	float:left;
 	color:#fff;
 	padding-top:3px;
-	text-align: center;
+	margin-left:70px;
 }
 .bt .btr dl dt{
 	text-align: right;
@@ -206,6 +220,41 @@ body {
 	height:140px;
 	margin-top:18px;
 	*margin-top:9px;
+}
+/*切换城市*/
+.faqdiv .qhcs{
+	margin-left:25px;
+	background:#e5e5e5;
+	height:429px;
+}
+.faqdiv .qhcs #qhcst{
+	background:#FFF;
+	padding-top:4px;
+	padding-bottom:24px;
+}
+.faqdiv .qhcs #qhcst ul li{
+	background:#db1c1e;
+	font-size:12px;
+	padding:2px 7px;
+	margin:10px 15px 0 0;
+	font-weight: normal;
+}
+.faqdiv .qhcs #qhcst ul li a:link, .faqdiv .qhcs #qhcst ul li a:visited, .faqdiv .qhcs #qhcst ul li a:hover, .faqdiv .qhcs #qhcst ul li a:active {
+	color:#fff;
+	text-decoration: none;
+}
+.faqdiv .qhcs #qhcst ul li.ztwdj{
+	background:#FFF;
+}
+.faqdiv .qhcs #qhcst ul li.ztwdj a:link, .faqdiv .qhcs #qhcst ul li.ztwdj a:visited, .faqdiv .qhcs #qhcst ul li.ztwdj a:hover, .faqdiv .qhcs #qhcst ul li.ztwdj a:active {
+	color:#970102;
+}
+.faqdiv .qhcs #qhcsb{
+	padding:13px 16px;
+}
+.faqdiv .qhcs #qhcsb li{
+	float:left;
+	padding:4px 10px;
 }
 /*版权*/
 .bq{
