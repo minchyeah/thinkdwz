@@ -4,15 +4,19 @@ class LocationAction extends AdminAction
 {
     public function index()
     {
+    	$title = trim(strval($_REQUEST['title']));
+    	$pid = intval($_REQUEST['pid']);
     	$model = D('Locations');
-    	$totalCount = $model->count();
+    	$where = 'FIND_IN_SET('.$pid.',`district`) ';
+    	$title && $where .= "AND title LIKE '%".$title."%'";
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
-    	
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	$model = D('District');
+    	$city_id = $model->where('id='.$pid)->getField('pid');
     	$rs = $model->select();
     	$district = array();
     	if (is_array($rs)) {
@@ -20,7 +24,7 @@ class LocationAction extends AdminAction
     			$district[$v['id']] = $v;
     		}
     	}
-    	
+    	$this->assign('city_id', $city_id);
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
     	$this->assign('numPerPage', $numPerPage);
@@ -31,7 +35,8 @@ class LocationAction extends AdminAction
     
     public function add()
     {
-    	$this->_assign_district();
+    	$city_id = intval($_REQUEST['city_id']);
+    	$this->assign('city_id', $city_id);
     	$this->display();
     }
     
@@ -44,6 +49,8 @@ class LocationAction extends AdminAction
     
     public function edit()
     {
+    	$city_id = intval($_REQUEST['city_id']);
+    	$this->assign('city_id', $city_id);
     	$id =  intval($_GET['id']);
     	$model = D('Locations');
     	$this->assign('vo', $model->find($id));

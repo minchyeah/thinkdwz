@@ -18,7 +18,7 @@ class DistrictModel extends Model
 		if($list){
 			$return .= '<ul class="tree treeFolder expand collapse">';
 			foreach($list as $rs){
-				if($rs['pid']==0){
+				if($rs['pid']==$map['pid']){
 					$strlink = '<a href="javascript:;" onclick="selectClass(\''.$rs['id'].'\',\''.$rs['title'].'\');")>'.$rs['title'].'</a>';
 					$return .= '<li>'.$strlink.'</li>';
 				}
