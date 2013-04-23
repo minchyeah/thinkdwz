@@ -1,6 +1,6 @@
 <div class="page">
 	<div class="layoutBox">
-	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxLoad)">
 		<div class="pageFormContent">
 			<div class="unit">
 				<label class="tar">商圈名称：</label>
@@ -27,6 +27,7 @@
 				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>
 		</div>
+		<input type="hidden" name="pid" value="{$Think.request.pid}"/>
 		<input type="hidden" name="id" value="{$vo.id}"/>
 	</form>
 	</div>

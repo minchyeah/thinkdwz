@@ -35,6 +35,22 @@ function dialogAjaxMenu(json){
         $.pdialog.closeCurrent();
 	}
 }
+function dialogAjaxLoad(json){
+	json.statusCode = json.status;
+	json.message = json.info;
+	json.loadId = json.loadId;
+	json.loadUrl = json.url;
+	dialogAjaxDone(json);
+	if (json.statusCode == DWZ.statusCode.ok){
+        $.pdialog.closeCurrent();
+        if(json.loadId && json.loadUrl){
+        	var $rel = $("#"+json.loadId);
+			$rel.loadUrl(json.loadUrl, {}, function(){
+				$rel.find("[layoutH]").layoutH();
+			});
+        }
+	}
+}
 function navTabAjaxMenu(json){
 	json.statusCode = json.status;
 	json.message = json.info;

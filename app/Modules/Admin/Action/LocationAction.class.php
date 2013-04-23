@@ -78,11 +78,17 @@ class LocationAction extends AdminAction
     	}else{
     		$rs = $model->save();
     	}
+    	$data = array();
     	if(false !== $rs){
-    		$this->success('保存成功！');
+    		$data['info'] = '保存成功！';
+    		$data['status'] =   1;
+    		$data['loadId'] =   'jbsxBox';
+    		$data['url']    =   U('Location/index', array('pid'=>$_REQUEST['pid']));
     	}else{
-    		$this->error('保存失败！'.dump($data, false).$model->getDbError());
+    		$data['info'] = '保存失败！';
+    		$data['status'] =   0;
     	}
+    	$this->ajaxReturn($data);
     }
     
     public function multiselect()
