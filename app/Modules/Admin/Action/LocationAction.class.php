@@ -51,9 +51,8 @@ class LocationAction extends AdminAction
     {
     	$city_id = intval($_REQUEST['city_id']);
     	$this->assign('city_id', $city_id);
-    	$id =  intval($_GET['id']);
+    	$id =  intval($_REQUEST['id']);
     	$model = D('Locations');
-    	$this->assign('vo', $model->find($id));
     	$vo = $model->find($id);
     	$vo['district_name'] = $this->ids2str($vo['district'], D('District'), 'title');
     	$this->assign('vo', $vo);

@@ -46,11 +46,24 @@ class DistrictAction extends AdminAction
     
     public function edit()
     {
+    	$type = trim($_REQUEST['type']);
+    	$pid = intval($_REQUEST['pid']);
+    	if($type=='city' && $pid){
+    		$this->assign('pid', $pid);
+    		$this->_assign_city($pid);
+    	}
+    	$this->_assign_province();
+    	$this->assign('type', $type);
+    	
     	$id =  intval($_GET['id']);
     	$model = D('District');
+    	$pvo = $model->find($pid);
+    	if('city' == $pvo['type']){
+    		$this->_assign_city($pvo['pid']);
+    	}
     	$vo = $model->find($id);
+    	$this->assign('pvo', $pvo);
     	$this->assign('vo', $vo);
-    	$this->_assign_city();
     	$this->display('add');
     }
     

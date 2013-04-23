@@ -17,18 +17,18 @@
 	<div class="tabs">
 		<div class="tabsContent">
 			<div>
-				<div style="float:left; display:block; overflow:auto; width:240px; border:solid 1px #CCC; line-height:21px; background:#fff">
+				<div id="districtTree" style="float:left; display:block; overflow:auto; width:235px; border:solid 1px #CCC; padding-right:5px; line-height:21px; background:#fff">
 				    <ul class="tree treeFolder">
 				      <volist name="list" id="vo">
-						<li><a href="javascript:;">{$vo.title}</a>
+						<li><a href="javascript:;" style="display:inline;">{$vo.title}<span class="treeDistrict" style="margin-left:5px;">删除</span><span url="{:U('District/edit', 'type=province&id='.$vo['id'])}" width="510" height="150" class="treeDistrict">编辑</span></a>
 						  <notempty name="vo.child">
 							<ul>
 							  <volist name="vo.child" id="svo">
-								<li><a href="javascript:;">{$svo.title}</a>
+								<li><a href="javascript:;">{$svo.title}<span class="treeDistrict" style="margin-left:5px;">删除</span><span url="{:U('District/edit', 'type=city&id='.$svo['id'].'&pid='.$vo['id'])}" width="510" height="200" class="treeDistrict">编辑</span></a>
 								  <notempty name="svo.child">
 									<ul>
 									  <volist name="svo.child" id="ssvo">
-										<li><a href="{:U('Location/index', 'pid='.$ssvo['id'])}" target="ajax" rel="jbsxBox">{$ssvo.title}</a></li>
+										<li><a href="{:U('Location/index', 'pid='.$ssvo['id'])}" target="ajax" rel="jbsxBox">{$ssvo.title}<span style="margin-left:5px;" class="treeRegion">删除</span><span url="{:U('District/edit', 'city_id='.$svo['id'].'&pid='.$svo['id'].'&id='.$ssvo['id'])}" class="treeRegion">编辑</span></a></li>
 									  </volist>
 									</ul>
 								  </notempty>
@@ -50,3 +50,31 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(function(){
+	$(".treeRegion,.treeDistrict").click(function(event){
+		var $this = $(this);
+		var url = $this.attr('url');
+		if(!url) return false;
+		var opt = {};
+		opt.width = $this.attr('width');
+		opt.height = $this.attr('height');
+		opt.minable = false;
+		opt.mixable = false;
+		opt.resizable = false;
+		$.pdialog.open(url, '', '编辑', opt);
+		event.stopPropagation();
+		return false;
+	});
+	$("#districtTree").css({height:($(window).height()-223)});
+	$(window).resize(function(){
+		$("#districtTree").css({height:($(window).height()-223)});
+	});
+});
+</script>
+<style type="text/css">
+.treeRegion,.treeDistrict{
+	display:block;
+	float:right;
+}
+</style>

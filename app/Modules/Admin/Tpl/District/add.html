@@ -33,7 +33,7 @@
 		        <select class="required combox" name="pid">
 		          <option value="">请选择</option>
 		          <volist name="provinces" id="svo">
-		          <option value="{$svo.id}">{$svo.title}</option>
+		          <option value="{$svo.id}<eq name="svo.id" value="$vo.pid">" selected="selected</eq>">{$svo.title}</option>
 		          </volist>
 		        </select>
 		    </div>
@@ -67,14 +67,14 @@
 		        <select class="required combox" name="province" ref="w_combox_city" refUrl="__URL__/combox/pid/{value}.html">
 		          <option value="">请选择</option>
 		          <volist name="provinces" id="svo">
-		          <option value="{$svo.id}">{$svo.title}</option>
+		          <option value="{$svo.id}<eq name="svo.id" value="$pvo.pid">" selected="selected</eq>">{$svo.title}</option>
 		          </volist>
 		        </select>
 		        <label class="tar" style="width:60px;">城市：</label>
 		        <select class="required combox" name="city" id="w_combox_city">
 		          <option value="">请选择</option>
 		          <volist name="cities" id="svo">
-		          <option value="{$svo.id}">{$svo.title}</option>
+		          <option value="{$svo.id}<eq name="svo.id" value="$pvo.id">" selected="selected</eq>">{$svo.title}</option>
 		          </volist>
 		        </select>
 		    </div>
