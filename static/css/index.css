@@ -73,12 +73,15 @@
 .ggy{
 	padding:0 22px;
 	color:#780002;
-	font-size:14px;
 	height:50px;
 	line-height:50px;
 	background:#FFF;
 	margin-bottom:1px;
 	letter-spacing: 1px;
+}
+.ggy b{
+	margin-right:6px;
+	font-size:14px;
 }
 /*分区*/
 .fq{
@@ -344,6 +347,37 @@
 	margin-bottom:-8px;
 	clear: left;
 	padding-top:22px;
+}
+/*文章列表*/
+.wzlb{
+	padding:10px 20px 68px 70px;
+	background:#FFF;
+	margin-bottom:18px;
+}
+.wzlb dl{
+	height:36px;
+	line-height:36px;
+	*height:34px;
+	*line-height:34px;
+	overflow:hidden;
+}
+.wzlb dl dt{
+	float:left;
+	width:460px;
+	overflow:hidden;
+}
+.wzlb dl dt a{
+	background:url(../images/bddd.jpg) no-repeat 0 3px;
+	padding-left:13px;
+}
+.wzlb dl dt a:hover{
+	background:url(../images/bddd.jpg) no-repeat 2px 3px;
+}
+.wzlb dl dd{
+	float:left;
+	width:70px;
+	font-weight: normal;
+	color:#8B8B8B;
 }
 /*文章内容*/
 .wznr{

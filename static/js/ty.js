@@ -66,6 +66,7 @@ function showTab(){
 	$.jqtab("#hydlt","#hydlx","click");
 	$.jqtab("#pxdj","#pxxz","click");
 	$.jqtab("#dmycdt","#dmycdn","click");
+	$.jqtab("#qhcst","#qhcsb","click");
 }
 /*设为首页*/
 function SetHome(obj){
