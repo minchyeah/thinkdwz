@@ -8,6 +8,7 @@ class HomeAction extends CommonAction
 	public function _initialize()
 	{
 		parent::_initialize();
+		$this->cityBoxTree();
 	}
 
 	/**
@@ -24,5 +25,22 @@ class HomeAction extends CommonAction
 			$user['role_id']=$_SESSION['role_id'];
 			return $user;
 		}
+	}
+	
+	/**
+	 * 省市选择框
+	 */
+	protected function cityBoxTree()
+	{
+		import('ORG.Util.Tree');
+		$model = D('District');
+		$rs = $model->order('pid ASC')->select();
+		$tree = new Tree($rs);
+		$this->assign('cityboxTree', $tree->leaf());
+	}
+	
+	protected function friendlink()
+	{
+		
 	}
 }
