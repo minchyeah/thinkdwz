@@ -19,17 +19,15 @@
       <b class="lbysosa"></b> </div>
     <div class="lbyfl">
       <ul>
-        <li class="xz"><a href="#">全部</a><span>(147)</span></li>
-        <li><a href="#">中餐</a><span>(107)</span></li>
-        <li><a href="#">西餐</a><span>(42)</span></li>
-        <li><a href="#">日韩菜</a><span>(88)</span></li>
-        <li><a href="#">饮品甜点</a><span>(70)</span></li>
-        <li><a href="#">粥粉</a><span>(202)</span></li>
+        <li class="xz"><a href="__APP__/{$city.alias}/{$district.alias}/{$location.alias}.html">全部</a><span>(147)</span></li>
+        <volist name="store_types" id="vo">
+        <li><a href="?type={$vo.id}">{$vo.type_name}</a><span>({$vo.store_count})</span></li>
+        </volist>
       </ul>
     </div>
   </div>
   <div class="lbyr">
-    <div class="dqwz heis">当前位置：<a href="index.html">首页</a>><a href="dfy.html">埌东外卖</a>><a href="lby.html">望京外卖</a></div>
+    <div class="dqwz heis">当前位置：<a href="__APP__/{$city.alias}/">首页</a>><a href="__APP__/{$city.alias}/{$district.alias}/">埌东外卖</a>><a href="__APP__/{$city.alias}/{$district.alias}/{$location.alias}.html">望京外卖</a></div>
     <div class="lbypl heis">
       <dl>
         <dt>外卖网为您找到了<b>656</b>家望京外卖：</dt>

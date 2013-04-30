@@ -51,6 +51,9 @@ class IndexAction extends HomeAction
     
     public function location()
     {
+    	$StoreTypeModel = D('StoreType');
+    	$store_types = $StoreTypeModel->order('sort_order ASC,id DESC')->select();
+    	$this->assign('store_types', $store_types);
     	$this->display('Index:location');
     }
     

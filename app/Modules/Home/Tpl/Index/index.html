@@ -24,11 +24,11 @@
     <div class="fq">
       <volist name="districts.region" id="vo">
       <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}.html">{$vo.title}</a></dt>
+        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
         <volist name="vo.locations" id="svo">
         <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.alias}.html">{$svo.title}</a>{$svo.store_count}</dd>
         </volist>
-        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}.html">更多>></a></dd>
+        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
       </dl>
       </volist>
       <div class="clr"></div>
@@ -37,11 +37,11 @@
     <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
     <div class="fq mdf">
       <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}.html">{$vo.title}</a></dt>
+        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
         <volist name="vo.locations" id="svo">
         <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.alias}.html">{$svo.title}</a>{$svo.store_count}</dd>
         </volist>
-        <dd class="hs">......<a href="dfy.html">更多>></a></dd>
+        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
       </dl>
       <div class="clr"></div>
     </div>

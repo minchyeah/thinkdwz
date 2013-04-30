@@ -47,14 +47,14 @@ class HomeAction extends CommonAction
 			redirect(__APP__.'/'.C('DEFAULT_CITY').'/');
 		}
 		$model = D('District');
-		$this->cities = $model->where("`type`='city'")->getField('alias,id,title');
+		$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
 		$city_alias = strtolower($_REQUEST['_URL_'][0]);
 		if (in_array($city_alias, array_keys($this->cities))) {
 			$this->city_alias = $city_alias;
 			$this->city = $this->cities[$city_alias];
 			$this->city_id = $this->cities[$city_alias]['id'];
 		}
-		$this->districts = $model->where("`pid`={$this->city_id} AND `type` IN ('region','custom')")->order('sort_order ASC')->getField('alias,id,title,type');
+		$this->districts = $model->where("`pid`={$this->city_id} AND `type` IN ('region','custom') AND `status`=1")->order('sort_order ASC')->getField('alias,id,title,type');
 		$this->assign('city', $this->city);
 	}
 
@@ -81,7 +81,7 @@ class HomeAction extends CommonAction
 	{
 		import('ORG.Util.Tree');
 		$model = D('District');
-		$rs = $model->order('pid ASC')->select();
+		$rs = $model->where('`status`=1')->order('pid ASC')->select();
 		$tree = new Tree($rs);
 		$this->assign('cityboxTree', $tree->leaf());
 	}
