@@ -4,6 +4,7 @@ $config = array(
     'APP_GROUP_LIST' 		=> 'Home,Admin,Api', // 项目分组设定,多个组之间用逗号分隔,例如'Home,Admin'
     'APP_GROUP_MODE' 		=> 1, // 分组模式 0 普通分组 1 独立分组，本项目不允许使用普通分组
     'APP_GROUP_PATH' 		=> 'Modules', // 分组目录 独立分组模式下面有效
+    'DEFAULT_CITY'			=> 'nanning', //默认城市
     'FRIENDLINK_TYPE' 		=> array( // 友情链接类型
 			'friendlink' 	=> '友情链接',
 			'business' 		=> '商务合作',
