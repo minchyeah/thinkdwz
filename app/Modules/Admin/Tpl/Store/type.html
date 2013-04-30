@@ -13,6 +13,7 @@
 		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="50">编号</th>
 		<th>名称</th>
+		<th>显示排序</th>
 		<th>店铺数量</th>
 		<th width="60">操作</th>
 	  </tr>
@@ -23,6 +24,7 @@
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
 		<td>{$vo.type_name}</td>
+		<td>{$vo.sort_order}</td>
 		<td>{$vo.store_count}</td>
 		<td><a href="__URL__/edittype/id/{$vo.id}"  target="dialog" width="360" height="150" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/deletetype/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>

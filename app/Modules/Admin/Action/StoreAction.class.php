@@ -98,7 +98,7 @@ class StoreAction extends AdminAction
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->order('sort_order ASC,id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
