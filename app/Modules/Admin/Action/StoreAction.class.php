@@ -4,13 +4,16 @@ class StoreAction extends AdminAction
 {
     public function index()
     {
+    	$location_id = intval($_REQUEST['location_id']);
+    	$where = '';
+    	$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
     	$model = D('Stores');
-    	$totalCount = $model->count();
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -22,6 +25,8 @@ class StoreAction extends AdminAction
     public function add()
     {
     	$model = D('Stores');
+    	$location_id = intval($_REQUEST['location_id']);
+    	$this->assign('location_id', $location_id);
     	$this->display();
     }
     
@@ -30,8 +35,8 @@ class StoreAction extends AdminAction
     	$id =  intval($_GET['id']);
     	$model = D('Stores');
     	$store = $model->find($id);
-    	$store['locations'] = $this->ids2str($store['location_id'], D('Locations'), 'title');
-    	$store['type_name'] = $this->ids2str($store['type_id'], D('StoreType'), 'type_name');
+    	$store['locationsName'] = $this->ids2str($store['locations'], D('Locations'), 'title');
+    	$store['type_name'] = $this->ids2str($store['types'], D('StoreType'), 'type_name');
     	$this->assign('vo', $store);
     	$this->display('add');
     }

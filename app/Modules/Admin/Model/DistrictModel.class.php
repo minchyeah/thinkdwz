@@ -9,11 +9,6 @@ class DistrictModel extends Model
 	 */
 	public function tree($map=array('pid'=>0)){
 		$return = '';
-		if($_REQUEST['cid']!='' || $_REQUEST['cname']!=''){ //附加“清空”按钮
-			$return .= '<ul class="tree treeFolder">';
-			$return .= '	<li><a href="javascript:;" style="color:red" onclick="if(\''.$_REQUEST['cid'].'\') $(\'#'.$_REQUEST['cid'].'\').val(\'\'); if(\''.$_REQUEST['cname'].'\') $(\'#'.$_REQUEST['cname'].'\', navTab.getCurrentPanel()).val(\'\');">清空重置</a></li>';
-			$return .= '</ul>';
-		}
 		$list = $this->field('id,title,pid,sort_order,type')->where($map)->order('sort_order ASC')->select();
 		if($list){
 			$return .= '<ul class="tree treeFolder expand collapse">';

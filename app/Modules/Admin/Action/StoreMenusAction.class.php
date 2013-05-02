@@ -4,13 +4,16 @@ class StoreMenusAction extends AdminAction
 {
     public function index()
     {
+    	$store_id = intval($_REQUEST['store_id']);
     	$model = D('StoreMenus');
-    	$totalCount = $model->count();
+    	$where = array();
+    	$where['store_id'] = $store_id;
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -21,6 +24,7 @@ class StoreMenusAction extends AdminAction
     
     public function add()
     {
+    	$store_id = intval($_REQUEST['store_id']);
     	$this->display();
     }
     

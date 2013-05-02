@@ -613,3 +613,18 @@ a.btnAttach{background-position: -183px 0}
 
 .sortDragPlaceholder {border:1px dashed #ccc;}
 #printBox {display:none}
+
+span.btn { background-color: #289FD2;color: #FFFFFF;display: block;float: left;margin-left: 2px; padding: 4px;text-align: center;text-decoration: none;}
+span.btnAdd, span.btnDel, span.btnView, span.btnEdit, span.btnSelect, span.btnInfo, span.btnAssign, span.btnLook, span.btnAttach{background:url(../default/images/button/imgX.gif) no-repeat; display:block; width:22px; height:20px; text-indent:-1000px; overflow:hidden; float:left; margin-right: 3px}
+span.btnAdd{background-position:0 0}
+span.btnDel{background-position: -23px 0}
+span.btnInfo{background-position: -46px 0}
+span.btnAssign{background-position: -69px 0}
+span.btnView{background-position: -115px 0}
+span.btnEdit{background-position: -138px 0}
+span.btnSelect{background-position: -92px 0}
+span.btnLook{background-position: -161px 0}
+span.btnAttach{background-position: -183px 0}
+
+
+a.btnList,span.btnList { background:url(./images/icon.png) no-repeat;}

@@ -48,7 +48,7 @@ class LocationsModel extends Model
 				$return .= '<ul class="tree treeFolder expand collapse">';
 			}
 			foreach($list as $rs){
-				if($rs['pid']==0){
+				if($rs['pid']==$map['pid']){
 					$strlink = '<a href="javascript:;" onclick="return false;")>'.$rs['title'].'</a>';
 					if($locs[$rs['id']]){
 						$return .= '<li>'.$strlink;

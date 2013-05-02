@@ -22,7 +22,7 @@
 				<dd>
 				  <a class="unit btn" height="420" width="300" title="选择菜式" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Store/seltype', 'selparent=0&selmore=1&cid=type_id&cname=type_name')}">选择菜式</a>&nbsp;
 				  <input id="type_name" class="required textInput readonly" type="text" value="{$vo.type_name}" readonly="readonly" size="40">
-				  <input id="type_id" class="required" type="hidden" value="{$vo.type_id}" name="type_id">
+				  <input id="type_id" class="required" type="hidden" value="{$vo.types}" name="types">
 				</dd>
 			</dl>
 			<dl class="nowrap">
@@ -32,9 +32,9 @@
 			<dl class="nowrap">
 				<dt>送餐区域：</dt>
 				<dd>
-				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'selparent=0&selmore=1&cid=tid_add_article&cname=categoryName_add_article')}">选择区域</a>&nbsp;
-				  <input id="categoryName_add_article" class="required textInput readonly" type="text" value="{$vo.locations}" readonly="readonly" size="40">
-				  <input id="tid_add_article" class="required" type="hidden" value="{$vo.location_id}" name="location_id">
+				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'selparent=0&selmore=1&cid=location_id&cname=location_name')}">选择区域</a>&nbsp;
+				  <input id="location_name" class="required textInput readonly" type="text" value="{$vo.locationsName}" readonly="readonly" size="40">
+				  <input id="location_id" class="required" type="hidden" value="{$vo.locations}" name="locations">
 				</dd>
 			</dl>
 			<dl class="nowrap">
@@ -42,9 +42,13 @@
 				<dd><textarea class="required" cols="50" rows="1" name="scope">{$vo.scope}</textarea></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>菜单分类：</dt>
+				<dd><textarea class="required" cols="30" rows="1" name="menu_category">{$vo.menu_category}</textarea>分类之间请用英文逗号分隔</dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>形象图片：</dt>
 				<dd>
-				  <img src="{$vo.image|imgsrc=###,100,100}" />
+				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
 				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
 			</dl>
 			<div class="divider"></div>

@@ -20,15 +20,15 @@
 				<div id="districtTree" style="float:left; display:block; overflow:auto; width:235px; border:solid 1px #CCC; padding-right:5px; line-height:21px; background:#fff">
 				    <ul class="tree treeFolder">
 				      <volist name="list" id="vo">
-						<li><a href="javascript:;" style="display:inline;">{$vo.title}<span class="treeDistrict" style="margin-left:5px;">删除</span><span url="{:U('District/edit', 'type=province&id='.$vo['id'])}" width="510" height="150" class="treeDistrict">编辑</span></a>
+						<li><a href="javascript:;" style="display:inline;">{$vo.title}<span class="btnDel treeDistrict" style="margin-left:5px;" title="删除">删除</span><span url="{:U('District/edit', 'type=province&id='.$vo['id'])}" width="510" height="150" class="btnEdit treeDistrict" title="编辑">编辑</span></a>
 						  <notempty name="vo.child">
 							<ul>
 							  <volist name="vo.child" id="svo">
-								<li><a href="javascript:;">{$svo.title}<span class="treeDistrict" style="margin-left:5px;">删除</span><span url="{:U('District/edit', 'type=city&id='.$svo['id'].'&pid='.$vo['id'])}" width="510" height="200" class="treeDistrict">编辑</span></a>
+								<li><a href="javascript:;">{$svo.title}<span class="btnDel treeDistrict" style="margin-left:5px;" title="删除">删除</span><span url="{:U('District/edit', 'type=city&id='.$svo['id'].'&pid='.$vo['id'])}" width="510" height="200" class="btnEdit treeDistrict" title="编辑">编辑</span></a>
 								  <notempty name="svo.child">
 									<ul>
 									  <volist name="svo.child" id="ssvo">
-										<li><a href="{:U('Location/index', 'pid='.$ssvo['id'])}" target="ajax" rel="jbsxBox">{$ssvo.title}<span style="margin-left:5px;" class="treeRegion">删除</span><span url="{:U('District/edit', 'city_id='.$svo['id'].'&pid='.$svo['id'].'&id='.$ssvo['id'])}" class="treeRegion">编辑</span></a></li>
+										<li><a href="{:U('Location/index', 'pid='.$ssvo['id'])}" target="ajax" rel="jbsxBox">{$ssvo.title}<span style="margin-left:5px;" class="btnDel treeRegion" title="删除">删除</span><span url="{:U('District/edit', 'city_id='.$svo['id'].'&pid='.$svo['id'].'&id='.$ssvo['id'])}" class="btnEdit treeRegion" title="编辑">编辑</span></a></li>
 									  </volist>
 									</ul>
 								  </notempty>
@@ -70,10 +70,16 @@ $(function(){
 	$(window).resize(function(){
 		$("#districtTree").css({height:($(window).height()-223)});
 	});
+	var $rel = $("#jbsxBox");
+	var $first = $("#districtTree a[rel='jbsxBox']:first");
+	$rel.loadUrl($first.attr("href"), {}, function(){
+		$rel.find("[layoutH]").layoutH();
+		$first.parent().addClass("selected");
+	});
 });
 </script>
 <style type="text/css">
-.treeRegion,.treeDistrict{
+span.treeRegion,span.treeDistrict{
 	display:block;
 	float:right;
 }
