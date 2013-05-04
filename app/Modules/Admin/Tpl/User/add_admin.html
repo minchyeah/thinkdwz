@@ -1,0 +1,47 @@
+<div class="page">
+	<div class="layoutBox">
+	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<div class="pageFormContent">
+		    <div class="unit">
+		        <label class="tar">所属省份：</label>
+		        <select class="required combox" name="province" ref="w_combox_city" refUrl="__GROUP__/District/combox/pid/{value}.html">
+		          <option value="">请选择</option>
+		          <volist name="provinces" id="svo">
+		          <option value="{$svo.id}<eq name="svo.id" value="$pvo.pid">" selected="selected</eq>">{$svo.title}</option>
+		          </volist>
+		        </select>
+		        <label class="tar" style="width:60px;">城市：</label>
+		        <select class="required combox" name="city" id="w_combox_city">
+		          <option value="">请选择</option>
+		          <volist name="cities" id="svo">
+		          <option value="{$svo.id}<eq name="svo.id" value="$pvo.id">" selected="selected</eq>">{$svo.title}</option>
+		          </volist>
+		        </select>
+		    </div>
+			<div class="unit">
+				<label class="tar">邮箱：</label>
+				<input name="email" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">用户名：</label>
+				<input name="username" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">密码：</label>
+				<input name="password" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">昵称：</label>
+				<input name="nickname" type="text" class="required" value="{$vo.title}" size="25"/>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</form>
+	</div>
+</div>

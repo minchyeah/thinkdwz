@@ -2,15 +2,47 @@
 
 class UserAction extends AdminAction
 {
+	public function admin()
+	{
+		$model = D('AdminView');
+		$where = array();
+		$where['is_admin'] = 1;
+		$totalCount = $model->where($where)->count();
+		$currentPage = intval($_REQUEST['pageNum']);
+		$currentPage = $currentPage ? $currentPage : 1;
+		$numPerPage = 20;
+		$rowOffset = ($currentPage-1) * $numPerPage;
+		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+
+		$this->assign('list', $list);
+		$this->assign('totalCount', $totalCount);
+		$this->assign('numPerPage', $numPerPage);
+		$this->assign('currentPage', $currentPage);
+		$this->display();
+	}
+	
+	public function add_admin()
+	{
+		$model = D('District');
+    	$where = array();
+    	$where['pid'] = 0;
+    	$provinces = $model->where($where)->select();
+    	$this->assign('provinces', $provinces);
+		$this->assign('type', $type);
+		$this->display();
+	}
+	
     public function index()
     {
     	$model = D('Users');
-    	$totalCount = $model->count();
+		$where = array();
+		$where['is_admin'] = 0;
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
