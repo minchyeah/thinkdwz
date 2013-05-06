@@ -31,21 +31,18 @@ class PublicAction extends AdminAction
     public function checkLogin()
     {
     	$where = array();
-    	$where['username'] = $_POST['username'];
-    	$rs  = D("Users");
-    	$admin = $rs->where($where)->find();
+    	$where['account'] = $_POST['username'];
+    	$model  = D('Admin');
+    	$admin = $model->where($where)->find();
     	//使用用户名、密码和状态的方式进行认证
     	if (!$admin) {
     		$this->error('管理员帐号不存在！');
     	}
-    	if ($admin['password'] != md5(md5($_POST['password']).$admin['passwdkey'])) {
+    	if ($admin['password'] != md5(md5($_POST['password']).$admin['pwdkey'])) {
     		$this->error('用户密码错误,请重新输入！');
     	}
     	// 记录登录信息
-    	session('admin_id', $admin['id']);
-    	session('role_id', $admin['role_id']);
-    	session('username', $admin['username']);
-    	session('admin', $admin);
+    	$model->setLogin($admin);
     	
     	redirect(U('Index/index'));
     }
@@ -55,11 +52,8 @@ class PublicAction extends AdminAction
      */
     public function logout()
     {
-    	session('admin_id', null);
-    	session('role_id', null);
-    	session('username', null);
-    	session('admin', null);
-    	
+    	$model  = D('Admin');
+    	$model->logout();
     	redirect(U('Public/login'));
     }
     
