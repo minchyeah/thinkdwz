@@ -329,6 +329,10 @@ table.list a:hover {text-decoration:underline; line-height:20px;}
 table.list td span.error {z-index:-1}
 table.nowrap tbody tr {border-bottom:solid 1px #ededed;}
 
+table.form {border:none;}
+table.form th {padding:5px 2px; font-weight:bolder;}
+table.form td {padding:5px 2px;}
+
 /* Taskbar */
 #taskbar { overflow:hidden; height:29px; border-style:solid; border-width: 0; border-color:#0f3255; background-color:#112746; background-repeat:repeat-x; position:absolute; z-index:30;}
 #taskbar .taskbarContent { display:block; overflow:hidden; height:29px; position:relative;}
@@ -497,7 +501,7 @@ body { overflow:hidden;}
 .pageFormContent .radioGroup { float:left; display:block; overflow:hidden;}
 .pageFormContent label { float:left; width:120px; padding:0 5px; line-height:21px;}
 .pageFormContent label.radioButton { float:left; width:auto; padding:0 10px 0 0; line-height:21px;}
-.pageFormContent .textInput { float:left;}
+.pageFormContent .textInput {padding:3px; float:left;}
 .pageFormContent select { float:left;}
 .pageFormContent .inputInfo { padding:0 5px; line-height:21px;}
 .pageFormContent span.unit, .pageFormContent a.unit { padding:0 5px; line-height:21px;}

@@ -58,9 +58,71 @@ class PublicAction extends AdminAction
     	redirect(U('Public/login'));
     }
     
-    public function clearCache()
+    public function chpasswd()
     {
-    	$this->success('d');
+    	if(IS_POST){
+    		$orgpwd = strval($_POST['orgpassword']);
+    		$pwd = strval($_POST['password']);
+    		$repwd = strval($_POST['repassword']);
+    		if(!$orgpwd){
+    			$this->error('请输入当前密码');
+    		}
+    		if(!$pwd){
+    			$this->error('请输入设置密码');
+    		}
+    		if(!$repwd){
+    			$this->error('请输入确认密码');
+    		}
+    		if($pwd!=$repwd){
+    			$this->error('两次设置的密码不一至，请重新输入');
+    		}
+    		$model = D('Admin');
+    		$admin = $model->find(session('admin_id'));
+    		if($admin['password'] != md5(md5($orgpwd).$admin['pwdkey'])){
+    			$this->error('当前密码错误');
+    		}
+    		$data = array();
+    		$data['pwdkey'] = rand_string(8);
+    		$data['password'] = md5(md5($pwd).$data['pwdkey']);
+    		if ($model->where(array('id'=>$admin['id']))->save($data)) {
+    			$this->success('密码修改成功');
+    		}else{
+    			$this->error('密码修改失败');
+    		}
+    	}
+    	$this->display();
+    }
+    
+    public function profile()
+    {
+    	if(IS_POST){
+    		$username = strval($_POST['username']);
+    		$email = strval($_POST['email']);
+    		$model = D('Admin');
+    		$data = array();
+    		$data['username'] = $username;
+    		$data['email'] = $email;
+    		if ($model->where(array('id'=>session('admin_id')))->save($data)) {
+    			$this->success('资料保存成功');
+    		}else{
+    			$this->error('资料保存失败');
+    		}
+    	}else{
+    		$model = D('Admin');
+    		$admin = $model->find(session('admin_id'));
+    		$this->assign('vo', $admin);
+    		$this->display();
+    	}
+    }
+    
+    public function clear_cache()
+    {
+    	echo <<<JS
+    	<script type="text/javascript">
+    	$.pdialog.closeCurrent();
+    	alertMsg.correct('缓存更新成功！');
+    	</script>
+JS;
     }
 }
 ?>

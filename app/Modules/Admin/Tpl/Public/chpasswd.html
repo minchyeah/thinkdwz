@@ -1,0 +1,26 @@
+<div class="pageContent">
+	<form method="post" action="{:U('Public/chpasswd')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+		<div class="pageFormContent" layoutH="57">
+		  <table class="form">
+			<tr class="unit">
+				<td width="80" class="tar">当前密码：</td>
+				<td><input name="orgpassword" type="password" class="textInput" size="25"/></td>
+			</tr>
+			<tr class="unit">
+				<td class="tar">设置密码：</td>
+				<td><input name="password" type="password" class="textInput" size="25"/></td>
+			</tr>
+			<tr class="unit">
+				<td class="tar">确认密码：</td>
+				<td><input name="repassword" type="password" class="textInput" size="25"/></td>
+			</tr>
+		  </table>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+</div>
