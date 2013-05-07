@@ -2,147 +2,146 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录页面 - 后台管理系统</title>
+<title>用户登录-管理中心</title>
+<script language="javascript" type="text/javascript" src="{$static_url}/js/jquery-1.7.2.min.js"></script>
 <style type="text/css">
-html{
-	height:100%;
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: middle
 }
-*{
-	margin:0;
-	padding:0;
-	border:0;
+
+body {
+	background: #3a6ea5;
 }
-body{
-	background:#c4e5f8;
-	font-size:14px;
-	font-family:"微软雅黑", Arial, Helvetica, sans-serif;
-	color:#000;
+
+img {
+	vertical-align: middle
 }
-#login {
-	width:100%;
-	height:600px;
-	position:absolute;
-	top:150px;
-	background: url({$static_url}/images/login/body_bg.gif) center 0 no-repeat;
+
+.login_box {
+	width: 580px;
+	height: 320px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -290px;
+	margin-top: -160px;
 }
-#content{
-	width:861px;
-	height:100%;
-	position:relative;
+
+.login_box_top {
+	background:	url({$static_url}/images/admin/login_box_top.gif)	no-repeat;
+	width: 580px;
+	height: 13px;
+	overflow: hidden
 }
-.container {
-	width:700px;
-	height:322px;
-	position:relative;
-	margin:0 auto;
-	background-image:url( {$static_url}/images/login/loginbg.png);
-	background-repeat:no-repeat;
-	background-position:center;
+
+.login_box_mid {
+	background:	url({$static_url}/images/admin/login_box_mid.gif)	repeat-y;
+	width: 580px;
+	height: 289px;
 }
-.container .main {
-	width:360px;
-	padding-left:250px;
-	padding-top:50px;
+
+.login_box_bot {
+	background:	url({$static_url}/images/admin/login_box_bot.gif)	no-repeat;
+	width: 580px;
+	height: 13px;
 }
-.main .errmsg {
-	width:300px;
-	height:28px;
-	margin-top:10px;
-	padding-left:60px;
-	color:#cf0000;
-	overflow:hidden;
+
+.login_logo {
+	float: left;
+	display: inline;
+	background:	url({$static_url}/images/admin/login_logo.gif) no-repeat;
+	width: 97px;
+	height: 67px;
+	margin: 30px 20px 0px 60px;
 }
-.main ul li {
-	list-style-type:none;
-	height:36px;
+
+.logo_content {
+	float: left;
+	width: 360px;
+	overflow: hidden;
+	margin-top: 36px;
 }
-.main ul li.btn {
-	padding:10px 0 0 60px;
+
+.logo_content .tit {
+	margin: 0 0 30px
 }
-.main ul li span.label{
-	display:block;
-	float:left;
-	width:70px;
-	padding-top:3px;
+
+.logo_content p {
+	color: #464646;
 }
-.main ul li span.img{
-	display:block;
-	float:left;
-	padding:3px 0 0 10px;
+
+.login_input {
+	background:	url({$static_url}/images/admin/login_input.gif) no-repeat;
+	height: 19px;
+	border: 1px solid #ccc;
+	padding: 2px 0px 2px 4px;
+	font-family: Arial, Helvetica, sans-serif
 }
-.main ul li span.img img{
-	cursor:pointer;
-	margin-top:-2px;
+
+.login_list li {
+	margin-bottom: 10px;
+	display: inline;
+	font-size: 14px;
+	width: 360px;
+	float: left;
+	line-height: 24px
 }
-.main ul li input.text{
-	float:left;
-	padding:5px;
-	width:180px;
-	border:1px solid #999;
+
+.login_list li label {
+	display: inline-block;
+	display: -moz-inline-stack;
+	zoom: 1;
+	*display: inline;
+	width: 55px;
+	font-family: "宋体";
+	font-size: 14px;
 }
-.main ul li input.verify{
-	width:60px;
+
+.login_button {
+	background:	url({$static_url}/images/admin/login_button.gif) no-repeat;
+	width: 60px;
+	height: 28px;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 55px;
 }
-span.button {
-	float:left;
-	display:block;
-	width:70px;
-	height:27px;
-	line-height:27px;
-	text-align:center;
-	background:url( {$static_url}/images/login/btn_bg.gif) 0 0 no-repeat;
-	margin-right:10px;
-}
-span.button input{
-	float:left;
-	display:block;
-	width:70px;
-	height:27px;
-	background:none;
+img#captcha_img{
 	cursor:pointer;
 }
 </style>
 </head>
 <body>
-<form method='post' name="login" id="loginform" action="__URL__/checkLogin/">
-  <div id="login">
-    <div class="container">
-      <div class="main">
-    	<h3>用户登录</h3>
-        <p class="errmsg">{$errmsg}</p>
-        <ul style="padding-left:15px;">
-          <li>
-            <span class="label">用户名：</span>
-            <input name="username" type="text" class="text" />
-          </li>
-          <li>
-            <span class="label">密&nbsp;&nbsp;&nbsp; 码：</span>
-            <input type="password" class="text" name="password" />
-          </li>
-          <li>
-            <span class="label">验证码：</span>
-            <input name="captcha" type="text" class="text verify" onkeydown="keydown(event)" maxlength="6" />
-            <span class="img"><img class="code" id="verifyImg" src="{:U('Public/captcha')}" onclick="this.src='{:U('Public/captcha')}?' + Math.random();" alt="验证码" title="点击刷新验证码" /></span>
-          </li>
-          <li class="btn">
-          	<span class="button"><input type="submit" value="登录"/></span>
-          	<span class="button"><input type="reset" value="重置" /></span>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="login_box">
+	<div class="login_box_top"></div>
+	<div class="login_box_mid">
+	  <div class="login_logo"></div>
+	  <div class="logo_content">
+		<div class="tit">
+		  <img src="{$static_url}/images/admin/guanli_center.gif" />
+		</div>
+		<form action="{:U('Public/checkLogin')}" method="post">
+		  <input type="hidden" name="forward" value="" />
+		  <ul class="login_list">
+			<li><label>用户名</label><input type="text" class="login_input" name="username" id="username" size="24" /></li>
+			<li><label>密&nbsp;&nbsp;码</label><input type="password" class="login_input" name="password" id="password" size="24" /></li>
+			<li><label>验证码</label><input name="captcha" type="text" class="login_input" size="4" /><span>&nbsp;<img id="captcha_img" onclick="this.src='{:U('Public/captcha','background=F6F6F6')}?'+Math.random()" src="{:U('Public/captcha','background=F6F6F6')}" /></span></li>
+			<li><input type="submit" class="login_button" value="登&nbsp;录" /></li>
+			<li>{$errmsg}</li>
+		  </ul>
+		</form>
+	  </div>
+	  <script type="text/javascript">
+		$(function() {
+			$('#username').focus();
+		})
+	  </script>
+	</div>
+	<div class="login_box_bot"></div>
   </div>
-  <input type="hidden" name="returnUrl" value="{$Think.get.returnUrl|htmlspecialchars}" />
-</form>
-<script type="text/javascript" language="JavaScript">
-function keydown(e){
-	var e = e || event;
-	if (e.keyCode==13)
-	{
-		document.login.submit();
-	}
-}
-document.login.username.focus();
-</script>
 </body>
 </html>

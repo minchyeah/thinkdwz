@@ -14,7 +14,8 @@ class PublicAction extends AdminAction
     }
     
     public function _before_checkLogin(){
-    	$this->assign("jumpUrl", U('Public/login'));
+    	$this->assign('jumpUrl', U('Public/login'));
+    	$this->assign('waitSecond', 1);
     	if (empty($_POST['username'])) {
     		$this->error('管理员帐号必须填写！');
     	}
