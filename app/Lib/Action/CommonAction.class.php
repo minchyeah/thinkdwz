@@ -34,14 +34,20 @@ class CommonAction extends Action
 	 */
 	public function captcha()
 	{
-		import('ORG.Util.Image');
-		$length = intval($_GET['length']) ? intval($_GET['length']) : 4;
-		$mode = 2;
-		$type = 'png';
-		$width = intval($_GET['width']) ? intval($_GET['width']) : 50;
-		$height = intval($_GET['height']) ? intval($_GET['height']) : 25;
-		$sessame = 'captcha';
-		Image::buildImageVerify($length, $mode, $type, $width, $height, $sessame);
+		import('Util.Captcha', LIB_PATH);
+		$config = new stdClass();
+		intval($_REQUEST['length']) && $config->length = intval($_REQUEST['length']);
+		intval($_REQUEST['width']) && $config->width = intval($_REQUEST['width']);
+		intval($_REQUEST['height']) && $config->height = intval($_REQUEST['height']);
+		strval($_REQUEST['background']) && $config->background = strval($_REQUEST['background']);
+		strval($_REQUEST['font']) && $config->font = strval($_REQUEST['font']);
+		strval($_REQUEST['font_color']) && $config->font_color = strval($_REQUEST['font_color']);
+		strval($_REQUEST['font_size']) && $config->font_size = strval($_REQUEST['font_size']);
+		strval($_REQUEST['charset']) && $config->charset = strval($_REQUEST['charset']);
+		$captcha = new Captcha($config);
+		$code = $captcha->rand_string();
+		session('_captcha_', md5(strtoupper($code)));
+		$captcha->show();
 	}
 	
 	/**
@@ -52,7 +58,7 @@ class CommonAction extends Action
 	protected function checkCaptcha($captcha = '')
 	{
 		$captcha = $captcha ? $captcha : strval($_REQUEST['captcha']);
-		return md5(strtoupper($captcha)) == session('captcha');
+		return md5(strtoupper($captcha)) == session('_captcha_');
 	}
 
 	/**
