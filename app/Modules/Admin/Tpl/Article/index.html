@@ -2,7 +2,7 @@
 	<input type="hidden" name="pageNum" value="1" />
 </form>
 <div class="pageContent">
-	<div id="districtTree" style="float:left; display:block; overflow:auto; width:200px; border-right:solid 1px #CCC;line-height:21px; background:#fff">
+	<div id="categoryTree" style="float:left; display:block; overflow:auto; width:200px; border-right:solid 1px #CCC;line-height:21px; background:#fff">
 	    {$treeCode}
 	</div>
 	<div id="alistBox" class="unitBox" style="margin-left:200px;">
@@ -11,6 +11,14 @@
 </div>
 <script type="text/javascript">
 $(function(){
+	$("#categoryTree").loadUrl("{:U('cateTree')}", {}, function(){
+		var $rel = $("#alistBox");
+		var $first = $("#categoryTree a[rel='alistBox']:first");
+		$rel.loadUrl($first.attr("href"), {}, function(){
+			$rel.find("[layoutH]").layoutH();
+			$first.parent().addClass("selected");
+		});
+	});
 	$(".treeRegion,.treeDistrict").click(function(event){
 		var $this = $(this);
 		var url = $this.attr('url');
@@ -25,16 +33,9 @@ $(function(){
 		event.stopPropagation();
 		return false;
 	});
-	$("#districtTree").css({height:($(window).height()-120)});
+	$("#categoryTree").css({height:($(window).height()-120)});
 	$(window).resize(function(){
-		$("#districtTree").css({height:($(window).height()-120)});
-	});
-	return;
-	var $rel = $("#alistBox");
-	var $first = $("#districtTree a[rel='jbsxBox']:first");
-	$rel.loadUrl($first.attr("href"), {}, function(){
-		$rel.find("[layoutH]").layoutH();
-		$first.parent().addClass("selected");
+		$("#categoryTree").css({height:($(window).height()-120)});
 	});
 });
 </script>
