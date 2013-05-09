@@ -4,19 +4,43 @@ class ArticleAction extends AdminAction
 {
     public function index()
     {
-    	$model = D('Users');
+    	import('ORG.Util.Tree');
+    	$model = D('ArticleCategory');
+    	$cates = $model->order('pid ASC')->select();
+    	$tree = new Tree($cates, array('id','pid','subcates'));
+    	$this->assign('treeCode', $this->buildCateTree($tree->leaf(), true));
+        $this->display();
+    }
+    
+    private function buildCateTree($tree, $root = false)
+    {
+    	$html = $root ? '<ul class="tree">' : '<ul>';
+    	foreach ($tree as $k=>$v){
+    		$html .= '<li><a href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox">'.$v['cate_name'].'</a>';
+    		if(!empty($v['subcates'])){
+    			$html .= $this->buildCateTree($v['subcates']);
+    		}
+    		$html .= '</li>';
+    	}
+    	$html .= '</ul>';
+    	return $html;
+    }
+    
+    public function alist()
+    {
+    	$model = D('Articles');
     	$totalCount = $model->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
     	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
-    	
+    	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
     	$this->assign('numPerPage', $numPerPage);
     	$this->assign('currentPage', $currentPage);
-        $this->display();
+    	$this->display();
     }
     
     public function add()
