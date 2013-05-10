@@ -2,11 +2,15 @@
 
 class AdminMenusModel extends Model
 {
-	public function topMenus()
+	/**
+	 * 顶级菜单
+	 * @param boolean $all	是否查询全部
+	 */
+	public function topMenus($all = false)
 	{
 		$where = array();
 		$where['pid'] = 0;
-		$where['display'] = 1;
+		!$all && $where['display'] = 1;
 		return $this->where($where)->order('sort_order ASC')->select();
 	}
 	
