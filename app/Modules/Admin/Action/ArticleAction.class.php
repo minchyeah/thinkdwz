@@ -49,26 +49,21 @@ class ArticleAction extends AdminAction
     
     public function add()
     {
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
     	$this->display();
     }
     
     public function edit()
     {
     	$id =  intval($_GET['id']);
-    	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
+    	$model = D('Articles');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
     
     public function save()
     {
-    	$model = D('Users');
+    	$model = D('Articles');
     	$data = $model->create();
-    	$data['params'] = '';
-    	$data['group_name'] = '';
     	if(!$data){
     		$this->error($model->getError());
     	}
@@ -82,6 +77,64 @@ class ArticleAction extends AdminAction
     	}else{
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
+    }
+    
+    public function category()
+    {
+    	import('ORG.Util.Tree');
+    	$model = D('ArticleCategory');
+    	$cates = $model->order('pid ASC')->select();
+    	$tree = new Tree($cates, array('id','pid','subcates'));
+    	$category = $tree->leaf();
+    	$this->assign('category', $this->buildCategoryTree($category, true));
+    	$this->display();
+    }
+    
+    private function buildCategoryTree($tree, $root = false)
+    {
+    	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a data-id="0" data-pic="0">栏目管理<span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></li>' : '<ul>';
+    	foreach ($tree as $k=>$v){
+    		$havesub = !empty($v['subcates']);
+    		$delable = $havesub ? 'disable' : 'delete_cate';
+    		$html .= '<li><a href="javascript:;" onclick="return false;" data-id="'.$v['id'].'" data-pid="'.$v['pid'].'">'.$v['cate_name'].'';
+    		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a>';
+    		if($havesub){
+    			$html .= $this->buildCategoryTree($v['subcates']);
+    		}
+    		$html .= '</li>';
+    	}
+    	$html .= '</ul>';
+    	return $html;
+    }
+    
+    public function addCategory()
+    {
+    	$this->display('category_add');
+    }
+    
+    public function editCategory()
+    {
+    	$this->display('category_add');
+    }
+    
+    public function saveCategory()
+    {
+    	
+    }
+    
+    public function deleteCategory()
+    {
+    	$id = intval($_REQUEST['id']);
+    	if($id){
+    		$model = D('ArticleCategory');
+    		if(!$model->where(array('pid'=>$id))->count()){
+    			$rs = $model->where(array('id'=>$id))->delete();
+    			false !== $rs && $this->success('删除成功');
+    		}else{
+    			$this->error('该栏目下还有子栏目不可删除！');
+    		}
+    	}
+    	$this->error('操作失败');
     }
 }
 ?>

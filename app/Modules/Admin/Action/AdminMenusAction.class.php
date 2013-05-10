@@ -22,7 +22,7 @@ class AdminMenusAction extends AdminAction
     public function add()
     {
     	$model = D('AdminMenus');
-    	$this->assign('topmenus', $model->topMenus());
+    	$this->assign('topmenus', $model->topMenus(true));
     	$this->display();
     }
     
@@ -30,7 +30,7 @@ class AdminMenusAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('AdminMenus');
-    	$this->assign('topmenus', $model->topMenus());
+    	$this->assign('topmenus', $model->topMenus(true));
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }

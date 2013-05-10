@@ -1,0 +1,21 @@
+<div class="pageContent">
+<form method="post" action="{:U('ArticlePage/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+  <div class="pageFormContent" layoutH="55">
+	<div class="unit">
+	  <label>文章标题：</label>
+	  <input name="title" value="{$vo.title}" class="required" size="50" />
+	</div>
+	<div class="unit">
+		<textarea class="editor" name="content" style="height:400px;width:98%" upLinkUrl="upload.php" upLinkExt="zip,rar,txt" upImgUrl="upload.php" upImgExt="jpg,jpeg,gif,png"  upFlashUrl="upload.php" upFlashExt="swf" upMediaUrl="upload.php" upMediaExt="avi">{$vo.content}</textarea>
+	</div>
+  </div>
+  <div class="formBar">
+	<ul>
+		<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+		<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+	</ul>
+  </div>
+  <input type="hidden" name="page_code" value="{$vo.page_code}">
+  <input type="hidden" name="id" value="{$vo.id}">
+</form>
+</div>
