@@ -46,10 +46,19 @@ class HomeAction extends CommonAction
 		if(!count($_REQUEST['_URL_'])){
 			redirect(__APP__.'/'.C('DEFAULT_CITY').'/');
 		}
+		$this->cities = F('cities');
 		$model = D('District');
-		$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
+		if($this->cities){
+			$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
+			F('cities', $this->cities);
+		}
 		$city_alias = strtolower($_REQUEST['_URL_'][0]);
 		if (in_array($city_alias, array_keys($this->cities))) {
+			$this->city_alias = $city_alias;
+			$this->city = $this->cities[$city_alias];
+			$this->city_id = $this->cities[$city_alias]['id'];
+		}else{
+			$city_alias = C('DEFAULT_CITY');
 			$this->city_alias = $city_alias;
 			$this->city = $this->cities[$city_alias];
 			$this->city_id = $this->cities[$city_alias]['id'];
