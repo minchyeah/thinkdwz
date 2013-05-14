@@ -1,4 +1,4 @@
-<div id="article_category" class="pageContent">
+<div id="article_category" class="pageContent" style="clear:none;">
   {$category}
 </div>
 <script type="text/javascript">
@@ -14,7 +14,7 @@ $(function(){
 	$("#categoryTree a span.edit_cate", navTab.getCurrentPanel()).click(function(){
 		var data = $(this).parent().data();
 		var opt = {mask:true,maxable:false,minable:false,resizable:false};
-		$.pdialog.open("{:U('Article/addCategory')}"+"?id="+data.id, "dialogAddCate", "编辑栏目", opt);
+		$.pdialog.open("{:U('Article/editCategory')}"+"?id="+data.id, "dialogAddCate", "编辑栏目", opt);
 		opt.param = data;
 		return false;
 	});
@@ -39,11 +39,14 @@ $(function(){
 </script>
 
 <style type="text/css">
-#article_category #categoryTree div {
-    display: block;
-    overflow: hidden;
+
+#article_category .tree li > div{
+	display: block;
+	clear:both;
+	width:100%;
 }
-#article_category #categoryTree div{
+#article_category #categoryTree div {
+    overflow: hidden;
     display: inherit;
     height: 25px;
     line-height: 25px;

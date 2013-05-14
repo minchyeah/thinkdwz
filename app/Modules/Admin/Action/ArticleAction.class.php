@@ -92,7 +92,7 @@ class ArticleAction extends AdminAction
     
     private function buildCategoryTree($tree, $root = false)
     {
-    	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a data-id="0" data-pic="0">栏目管理<span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></li>' : '<ul>';
+    	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a href="javascript:;" onclick="return false" data-id="0" data-pic="0">栏目管理<span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></li>' : '<ul>';
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
     		$delable = $havesub ? 'disable' : 'delete_cate';
@@ -109,17 +109,61 @@ class ArticleAction extends AdminAction
     
     public function addCategory()
     {
+    	import('ORG.Util.Tree');
+    	$model = D('ArticleCategory');
+    	$cates = $model->order('pid ASC')->select();
+    	$tree = new Tree($cates, array('id','pid','subcates'));
+    	$this->assign('cateOptions', $this->buildCateOptions($tree->leaf(), 0, 0));
     	$this->display('category_add');
     }
     
     public function editCategory()
     {
+    	import('ORG.Util.Tree');
+    	$model = D('ArticleCategory');
+    	$id = intval($_REQUEST['id']);
+    	$vo = $model->find($id);
+    	$cates = $model->order('pid ASC')->select();
+    	$tree = new Tree($cates, array('id','pid','subcates'));
+    	$this->assign('cateOptions', $this->buildCateOptions($tree->leaf(), $vo['pid'], 0));
+    	$this->assign('vo', $vo);
     	$this->display('category_add');
+    }
+    
+    private function buildCateOptions($tree, $selected = 0, $level = 0)
+    {
+    	$html = '';
+    	for ($i=0; $i<$level; $i++){
+    		$indent = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;|', $level).'--';
+    	}
+    	foreach ($tree as $k=>$v){
+    		$havesub = !empty($v['subcates']);
+    		$selstr = $selected == $v['id'] ? ' selected="selected"' : '';
+    		$html .= '<option value="'.$v['id'].'"'.$selstr.'>'.$indent.$v['cate_name'].'</option>';
+    		if($havesub){
+    			$html .= $this->buildCateOptions($v['subcates'], $selected, $level+1);
+    		}
+    	}
+    	return $html;
     }
     
     public function saveCategory()
     {
-    	
+    	$model = D('ArticleCategory');
+    	$data = $model->create();
+    	if(!$data){
+    		$this->error($model->getError());
+    	}
+    	if (!$data['id']) {
+    		$rs = $model->add();
+    	}else{
+    		$rs = $model->save();
+    	}
+    	if(false !== $rs){
+    		$this->success('保存成功！');
+    	}else{
+    		$this->error('保存失败！'.dump($data, false).$model->getDbError());
+    	}
     }
     
     public function deleteCategory()

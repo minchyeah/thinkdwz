@@ -63,7 +63,7 @@ $(function(){
 		statusCode:{ok:1,error:0},
 		ui:{sbar:false},
 		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
-		debug:true,	// 调试模式 【true|false】
+		debug:false,	// 调试模式 【true|false】
 		callback:function(){
 			initEnv();
 		}
@@ -84,6 +84,31 @@ if ($.browser.msie) {
 }
 .tac{
 	text-align: center;
+}
+#article_category #categoryTree div {
+    display: block;
+    overflow: hidden;
+}
+#article_category #categoryTree div{
+    display: inherit;
+    height: 25px;
+    line-height: 25px;
+}
+#article_category #categoryTree a, #categoryTree span {
+    display: inherit;
+    height: 24px;
+    line-height: 24px;
+}
+#article_category #categoryTree a{
+	border-bottom:1px solid #CCC;
+}
+#article_category #categoryTree a span.cate_act{
+	display:block;
+	float:right;
+	margin-right:10px;
+}
+#article_category #categoryTree a span.disable{
+	color: #DDD;
 }
 </style>
 </head>

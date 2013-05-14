@@ -1,3 +1,36 @@
 <div class="pageContent">
-  
+	<form method="post" action="{:U('Article/saveCategory')}" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		<div class="pageFormContent">
+		    <div class="unit">
+		        <label class="tar">上级栏目：</label>
+		        <select class="required combox" name="pid">
+		          <option value="0">顶级栏目</option>
+		          {$cateOptions}
+		        </select>
+		    </div>
+			<div class="unit">
+				<label class="tar">分类名称：</label>
+				<input name="cate_name" type="text" class="required" value="{$vo.cate_name}" size="25"/>
+			</div>
+			<div class="unit">
+				<label class="tar">目录：</label>
+				<input name="code" type="text" class="required" value="{$vo.code}" size="20"/> <span>拼音或其它英文数字组合</span>
+			</div>
+			<div class="unit">
+				<label class="tar">显示排序：</label>
+				<input name="sort_order" type="text" value="{$vo.sort_order}" size="5"/>
+			</div>
+			<div class="unit">
+				<label class="tar">描述：</label>
+				<textarea name="remark" rows="3" cols="50">{$vo.remark}</textarea>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+		<input type="hidden" name="id" value="{$vo.id}"/>
+	</form>
 </div>
