@@ -92,7 +92,7 @@ class ArticleAction extends AdminAction
     
     private function buildCategoryTree($tree, $root = false)
     {
-    	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a href="javascript:;" onclick="return false" data-id="0" data-pic="0">栏目管理<span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></li>' : '<ul>';
+    	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a href="javascript:;" onclick="return false" data-id="0" data-pic="0">栏目管理<span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a></li>' : '<ul>';
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
     		$delable = $havesub ? 'disable' : 'delete_cate';
