@@ -51,16 +51,23 @@ $(function(){
     height: 25px;
     line-height: 25px;
 }
-#article_category #categoryTree a, #categoryTree span {
+#article_category #categoryTree a, #article_category #categoryTree span {
     display: inherit;
     height: 24px;
     line-height: 24px;
 }
 #article_category #categoryTree a{
 	border-bottom:1px solid #CCC;
+    *display: block;
+}
+#article_category #categoryTree a span{
+	display:block;
+	cursor:pointer;	
+}
+#article_category #categoryTree a span.cate_title{
+	float:left;
 }
 #article_category #categoryTree a span.cate_act{
-	display:block;
 	float:right;
 	margin-right:10px;
 }
