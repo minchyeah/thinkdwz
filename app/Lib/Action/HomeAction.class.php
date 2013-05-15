@@ -43,14 +43,19 @@ class HomeAction extends CommonAction
 	 */
 	private function _detect_city()
 	{
-		if(!count($_REQUEST['_URL_'])){
-			redirect(__APP__.'/'.C('DEFAULT_CITY').'/');
-		}
 		$this->cities = F('cities');
 		$model = D('District');
 		if($this->cities){
 			$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
 			F('cities', $this->cities);
+		}
+		if(!count($_REQUEST['_URL_'])){
+			$city_alias = cookie('city_alias');
+			if(in_array($city_alias, array_keys($this->cities))){
+				redirect(__APP__.'/'.$city_alias.'/');
+			}else{
+				redirect(__APP__.'/'.C('DEFAULT_CITY').'/');
+			}
 		}
 		$city_alias = strtolower($_REQUEST['_URL_'][0]);
 		if (in_array($city_alias, array_keys($this->cities))) {
@@ -63,6 +68,9 @@ class HomeAction extends CommonAction
 			$this->city = $this->cities[$city_alias];
 			$this->city_id = $this->cities[$city_alias]['id'];
 		}
+		cookie('city', $this->city);
+		cookie('city_id', $this->city_id);
+		cookie('city_alias', $this->city_alias);
 		$this->districts = $model->where("`pid`={$this->city_id} AND `type` IN ('region','custom') AND `status`=1")->order('sort_order ASC')->getField('alias,id,title,type');
 		$this->assign('city', $this->city);
 	}
