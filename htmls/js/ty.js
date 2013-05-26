@@ -3,48 +3,29 @@
  * http://www.liluokj.com
  * 立络科技 - 联系电话0771-3839314
  */
-jQuery(document).ready(function(){
-	jQuery(".nav ul li").hover(
-		function(){
-			jQuery(this).children(".drop_dwon").slideDown(200);
-			jQuery(this).children(".nav ul li a").attr("id","currlayout")
-		},
-		function(){
-			jQuery(this).children(".drop_dwon").slideUp(100);
-			jQuery(this).children(".nav ul li a").attr("id","")
-		}
-	);
+  /*2级导航*/
+$(function(){
+	$(".nav ul li").hover(function(){
+		$(this).children('.drop_dwon').stop(true, true).slideDown(200);
+        $(this).children('.nav ul li a').addClass("currlayout");
+    }, function () {
+        $(this).children('.drop_dwon').stop(true, true).slideUp(200);
+        $(this).children('.nav ul li a').removeClass(); 
+	})
 	showTab();
-	 //点击弹出
-	$(".but").click(function(){
-		var name = $(this).attr("href");
-    	$("#faqbg").css({display:"block",height:$(document).height()});
-    	var yscroll =document.documentElement.scrollTop;
-    	$("div[name='"+name+"']").css("top","17%");
-    	var $Object = $(this).attr("rel");
-		if($Object==0 || $Object==1){
-        	if ($Object) {
-            	$.jqtab("#hydlt", "#hydlx", "click", $Object);
-            	$(this).attr("checked", false);
-        	}
-		}
-   		$("div[name='"+name+"']").css("display","block");
-   		document.documentElement.scrollTop=0;
-		
-		return false;
-   });
-   
-		   
-   //公共关闭
-  $(".close").click(function(){
-  	$("#faqbg").css("display","none");
-	var name = $(this).attr("rel");
-  	$("div[name='"+name+"']").css("display","none");
- });
- 
-//弹出结束
-});
-
+})
+ jQuery(function(){
+	$(".CategoryTree > ul > li").hover(function(){
+		$(this).addClass("selected");
+		$(this).children("a:eq(0)").addClass("h2-tit");
+		$(this).children("ul").show();
+	},function(){
+		$(this).removeClass("selected");
+		$(this).children(".tit").removeClass("h2-tit");
+		$(this).children("ul").hide();
+	})
+    showTab();
+})
  //区块切换
 function showTab(){
 	jQuery.jqtab = function(tabtit,tab_conbox,shijian,index) {
@@ -63,10 +44,8 @@ function showTab(){
 		}
 	};
 	/*调用方法如下：*/
-	$.jqtab("#hydlt","#hydlx","click");
-	$.jqtab("#pxdj","#pxxz","click");
-	$.jqtab("#dmycdt","#dmycdn","click");
-	$.jqtab("#qhcst","#qhcsb","click");
+	$.jqtab("#rczpl","#rczpr","click");
+	$.jqtab("#cpnrx","#cpnrd","click");
 }
 /*设为首页*/
 function SetHome(obj){
@@ -92,83 +71,85 @@ function AddUrl(){
         }
     }
 }
-/*回到顶部*/
-$(function() {
-	$.fn.manhuatoTop = function(options) {
-		var defaults = {			
-			showHeight : 150,
-			speed : 1000
-		};
-		var options = $.extend(defaults,options);
-		$("body").prepend("<div id='totop'><a>返回</a></div>");
-		var $toTop = $(this);
-		var $top = $("#totop");
-		var $ta = $("#totop a");
-		$toTop.scroll(function(){
-			var scrolltop=$(this).scrollTop();		
-			if(scrolltop>=options.showHeight){				
-				$top.show();
-			}
-			else{
-				$top.hide();
-			}
-		});	
-		$ta.hover(function(){ 		
-			$(this).addClass("cur");	
-		},function(){			
-			$(this).removeClass("cur");		
-		});	
-		$top.click(function(){
-			$("html,body").animate({scrollTop: 0}, options.speed);	
-		});
-	}
-});
-/*小图看大图*/
-$(document).ready(function(){
-			$(".group1").colorbox({rel:'group1'});			
-			$("#click").click(function(){ 
-				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-				return false;
-			});
-		});		
-/*回到顶部*/	
-$(function (){
-	$(window).manhuatoTop({
-		showHeight : 100,//设置滚动高度时显示
-		speed : 500 //返回顶部的速度以毫秒为单位
-	});
-	//alert($("#hxtdk").width());
-});
-/*移入弹出*/
+/*点击切换*/
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}} 
+function ISL_GoUp(){
+ if(MoveLock) return; 
+ clearInterval(AutoPlayObj); 
+ MoveLock = true; 
+ MoveTimeObj = setInterval('ISL_ScrUp();',Speed); 
+} 
+function ISL_StopUp(){
+ clearInterval(MoveTimeObj); 
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){ 
+  Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth); 
+  CompScr(); 
+ }else{ 
+  MoveLock = false; 
+ } 
+} 
+function ISL_ScrUp(){
+ if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth} 
+ GetObj('ISL_Cont').scrollLeft -= Space ; 
+} 
+function ISL_GoDown(){
+ clearInterval(MoveTimeObj); 
+ if(MoveLock) return; 
+ clearInterval(AutoPlayObj); 
+ MoveLock = true; 
+ ISL_ScrDown(); 
+ MoveTimeObj = setInterval('ISL_ScrDown()',Speed); 
+} 
+function ISL_StopDown(){
+ clearInterval(MoveTimeObj); 
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){ 
+  Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill; 
+  CompScr(); 
+ }else{ 
+  MoveLock = false; 
+ } 
+} 
+function ISL_ScrDown(){
+ if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;} 
+ GetObj('ISL_Cont').scrollLeft += Space ; 
+} 
+function CompScr(){ 
+ var num; 
+ if(Comp == 0){MoveLock = false;return;} 
+ if(Comp < 0){
+  if(Comp < -Space){ 
+   Comp += Space; 
+   num = Space; 
+  }else{ 
+   num = -Comp; 
+   Comp = 0; 
+  } 
+  GetObj('ISL_Cont').scrollLeft -= num; 
+  setTimeout('CompScr()',Speed); 
+ }else{
+  if(Comp > Space){ 
+   Comp -= Space; 
+   num = Space; 
+  }else{ 
+   num = Comp; 
+   Comp = 0; 
+  }
+  GetObj('ISL_Cont').scrollLeft += num; 
+  setTimeout('CompScr()',Speed); 
+ } 
+}
+/*移入向上渐出*/
 $(function(){
-    $(".fytjsp li:odd").addClass("even");
-    $(".fytjsp li").each(function(){
-        $this = $(this);
-        $this.mouseover(function(){
-          if($(this).hasClass("cur")){return true;}
-         $(this).siblings("li").removeClass("cur");
-         $(this).siblings("li").find("h4").css("display", "none");
-		 $(this).siblings("li").find("h1").css("display", "none");
-		 $(this).siblings("li").find("dl").css("display", "none");
-         $(this).siblings("li").find("span").css("display", "none");
-         $(this).addClass("cur");
-         $(this).find("h4").css("display", "block");
-		 $(this).find("h1").css("display", "block");
-         $(this).find("span").css("display", "block");
-          return false;
-        });
-    });
-    $(".fytjsp li h4,.fytjsp li h4 h1,.fytjsp li h4 dl,.fytjsp li span").css("display", "none");
-    $(".fytjsp li.cur h4,.fytjsp li.cur h4 h1,.fytjsp li.cur h4 dl,.fytjsp li.cur span").css("display", "block");
-    
-    $(".tabtitle li").each(function(){
-        $this = $(this);
-        $this.mouseover(function(){
-            $(this).siblings("li").removeClass("cur");
-            $(this).addClass("cur");
-            var $cur_id_num = $(this).attr("id").slice(-1);
-            $(".fytjsp").removeClass("cur_fytjsp");
-            $(".fytjsp" + $cur_id_num).addClass("cur_fytjsp");
-        });
-    });
-});
+		move(".pic");
+	});
+	function move(name){
+	$(name).hover(function(){
+			var $lefty =$(this);
+			var move = $lefty.outerWidth()-$lefty.find("div").height();
+			$lefty.find("div[name='title']").stop(true,false).animate({ top:parseInt(move)},200);//children
+		},function(){
+			var $lefty =$(this);
+			var move = $lefty.outerWidth();
+			$lefty.find("div[name='title']").stop(true,false).animate({ top: parseInt(move) },200);
+		});
+}
