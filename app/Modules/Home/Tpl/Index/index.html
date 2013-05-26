@@ -6,168 +6,181 @@
 
 <body>
 <include file="Public:header" />
-<div class="jz sy">
-  <div class="syl">
-    <div id="slider">
-      <div id="slider_name">
-        <ul class="silder_con bs">
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-        </ul>
-        <ul class="silder_nav">
-          <li>1</li>
-          <li>2</li>
-        </ul>
+<div class="jz">
+  <div id="slider">
+    <div id="slider_name">
+      <ul class="silder_con">
+        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+      </ul>
+      <ul class="silder_nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+  </div>
+  <div id="cpzsk">
+    <div class="LeftBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
+    <div id="ISL_Cont">
+      <div  class="ScrCont">
+        <div id="List1" class="djsb">
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp1.png" /><b></b></dt>
+            <dd>产品1</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp2.png" /><b></b></dt>
+            <dd>产品2</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp3.png" /><b></b></dt>
+            <dd>产品3</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp4.png" /><b></b></dt>
+            <dd>产品4</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp1.png" /><b></b></dt>
+            <dd>产品1</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp2.png" /><b></b></dt>
+            <dd>产品2</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp3.png" /><b></b></dt>
+            <dd>产品3</dd>
+            </a>
+          </dl>
+          <dl>
+            <a href="cpnr.html" target="_blank" title="当前标题">
+            <dt><img src="images/cp4.png" /><b></b></dt>
+            <dd>产品4</dd>
+            </a>
+          </dl>
+        </div>
+        <div id="List2"></div>
       </div>
     </div>
-    <div class="ggy"><b>想订餐？</b>外卖网收录南宁外卖10804家。简单3步，先选择或搜索你的位置：</div>
-    <div class="fq">
-      <volist name="districts.region" id="vo">
-      <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
-        <volist name="vo.locations" id="svo">
-        <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.alias}.html">{$svo.title}</a>{$svo.store_count}</dd>
-        </volist>
-        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
-      </dl>
-      </volist>
-      <div class="clr"></div>
-    </div>
-    <volist name="districts.custom" id="vo">
-    <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
-    <div class="fq mdf">
-      <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
-        <volist name="vo.locations" id="svo">
-        <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.alias}.html">{$svo.title}</a>{$svo.store_count}</dd>
-        </volist>
-        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
-      </dl>
-      <div class="clr"></div>
-    </div>
-    </volist>
+    <div class="RightBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
+    <script language="javascript" type="text/javascript"> 
+var Speed = 10;
+var Space = 5;
+var PageWidth = 360; 
+var fill = 0;
+var MoveLock = false; 
+var MoveTimeObj; 
+var Comp = 0; 
+var AutoPlayObj = null; 
+GetObj("List2").innerHTML = GetObj("List1").innerHTML; 
+GetObj('ISL_Cont').scrollLeft = fill; 
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);} 
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();} 
+AutoPlay(); 
+</script> 
   </div>
-  <div class="syr">
-    <div class="sysos heis">
-      <h2>找外卖<b>Find takeaway</b></h2>
-      <form name="form" id="form">
-        <div class="sysosk"> <b></b>
-          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'请输入餐馆名或地址...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#c4c4c4';" value="请输入餐馆名或地址..."/>
-          <b class="sysoskh"></b> </div>
-        <div class="sysosa"> <a href="tjwmd.html"></a>
-          <input name="cz" type="button" value="" onclick="javascript:location='#'"/>
+  <div class="sysg">
+    <div class="sysgk">
+      <div class="spjs">
+        <div class="sysgt hs">
+          <h1>视频介绍</h1>
+          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+        <div class="sysgx">
+          <dl>
+            <dt>
+              <embed src="http://player.youku.com/player.php/sid/XNTUzOTQ2OTMy/v.swf" allowFullScreen="true" quality="high" width="230" height="175" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+            </dt>
+            <dd>
+              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
+              <span>23'25'</span></dd>
+            <dd>
+              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
+              <span>23'25'</span></dd>
+            <dd>
+              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
+              <span>23'25'</span></dd>
+          </dl>
         </div>
-      </form>
-      <dl>
-        <dt>常选地点</dt>
-        <!--<dd>还没有查看过任何地点:(</dd>-->
-        <dd><a href="lby.html">上下九</a></dd>
-        <dd><a href="lby.html">上下九</a></dd>
-        <dd><a href="lby.html">国贸</a></dd>
-        <dd><a href="lby.html">望京</a></dd>
-        <dd><a href="lby.html">国贸</a></dd>
-        <dd><a href="lby.html">望京</a></dd>
-        <div class="clr"></div>
-      </dl>
-      <dl>
-        <dt>常选店铺</dt>
-        <!--<dd>还没有查看过任何店铺:(</dd>-->
-        <dd><a href="dmy.html">西区比萨（民大店）</a></dd>
-        <dd><a href="dmy.html">吉野家外卖</a></dd>
-        <dd><a href="dmy.html">丽华快餐</a></dd>
-        <dd><a href="dmy.html">桂林米粉</a></dd>
-        <div class="clr"></div>
-      </dl>
-    </div>
-    <div class="sycbl heis">
-      <h2>最新外卖店<b>Latest takeaway</b></h2>
-      <ul>
-        <li><span>大良<b>+</b><a href="dmy.html">上冠烧味</a></span><i>2013-02-22</i></li>
-        <li><span>慧中路<b>+</b><a href="dmy.html">一鸣真鲜奶吧</a></span><i>2013-02-23</i></li>
-        <li><span>骡马市<b>+</b><a href="dmy.html">大厨房（只送罗马国际）</a></span><i>2013-02-22</i></li>
-        <li><span>铃铛阁街<b>+</b><a href="dmy.html">云鼎食府</a></span><i>2013-02-22</i></li>
-        <li><span>大良<b>+</b><a href="dmy.html">上冠烧味</a></span><i>2013-02-22</i></li>
-        <li><span>慧中路<b>+</b><a href="dmy.html">一鸣真鲜奶吧</a></span><i>2013-02-23</i></li>
-        <li><span>骡马市<b>+</b><a href="dmy.html">大厨房（只送罗马国际）</a></span><i>2013-02-22</i></li>
-        <li><span>铃铛阁街<b>+</b><a href="dmy.html">云鼎食府</a></span><i>2013-02-22</i></li>
-      </ul>
-    </div>
-    <div class="sycbl hs">
-      <h2>人气美食<b>Popular dishes</b></h2>
-      <dl>
-        <dt><a href="dmy.html"><img src="images/cp1.jpg" /></a><b></b></dt>
-        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
-          <b>￥9：00</b>/份<br />
-          点击量：320</dd>
-      </dl>
-      <dl>
-        <dt><a href="dmy.html"><img src="images/cp2.jpg" /></a><b></b></dt>
-        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
-          <b>￥9：00</b>/份<br />
-          点击量：320</dd>
-      </dl>
-      <dl>
-        <dt><a href="dmy.html"><img src="images/cp3.jpg" /></a><b></b></dt>
-        <dd>韦氏烤鸭&nbsp;&nbsp;的&nbsp;&nbsp;<a href="dmy.html">烤鸭饭</a><br />
-          <b>￥9：00</b>/份<br />
-          点击量：320</dd>
-      </dl>
-    </div>
-    <div class="sycbl heis">
-      <h2>健康饮食<b>Healthy Eating</b></h2>
-      <ul>
-        <li><span><a href="wznr.html">走进神奇巴马----世界长寿之乡</a></span><i>2013-02-22</i></li>
-        <li><span><a href="wznr.html">巴马人长寿的五大秘密---阳光、空气、水...</a></span><i>2013-02-23</i></li>
-        <li><span><a href="wznr.html">巴马人长寿有什么秘密---天然氧吧、碱性...</a></span><i>2013-02-22</i></li>
-        <li><span><a href="wznr.html">巴马人长寿缘于水---原生态健康水</a></span><i>2013-02-22</i></li>
-        <li><span><a href="wznr.html">巴马养生疗养效果明显，许多人赞叹不已</a></span><i>2013-02-22</i></li>
-        <li><span><a href="wznr.html">一鸣真鲜奶吧</a></span><i>2013-02-23</i></li>
-        <li><span><a href="wznr.html">大厨房（只送罗马国际）</a></span><i>2013-02-22</i></li>
-        <li><span><a href="wznr.html">云鼎食府</a></span><i>2013-02-22</i></li>
-      </ul>
-    </div>
-    <div class="sycbl heis">
-      <h2>战略合作<b>Cooperation</b></h2>
-      <ol>
-        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
-        <li><a href="#" target="_blank">丽华快餐</a></li>
-        <li><a href="#" target="_blank">南京特色</a></li>
-        <li><a href="#" target="_blank">必胜客</a></li>
-        <li><a href="#" target="_blank">吉野家</a></li>
-        <li><a href="#" target="_blank">麦当劳</a></li>
-        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
-        <li><a href="#" target="_blank">丽华快餐</a></li>
-        <li><a href="#" target="_blank">南京特色</a></li>
-        <li><a href="#" target="_blank">必胜客</a></li>
-        <li><a href="#" target="_blank">吉野家</a></li>
-        <li><a href="#" target="_blank">麦当劳</a></li>
-        <div class="clr"></div>
-      </ol>
-    </div>
-    <div class="sycbl heis">
-      <h2>友情链接<b>Links</b></h2>
-      <ol>
-        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
-        <li><a href="#" target="_blank">丽华快餐</a></li>
-        <li><a href="#" target="_blank">南京特色</a></li>
-        <li><a href="#" target="_blank">必胜客</a></li>
-        <li><a href="#" target="_blank">吉野家</a></li>
-        <li><a href="#" target="_blank">麦当劳</a></li>
-        <li><a href="#" target="_blank">韦氏烤鸭</a></li>
-        <li><a href="#" target="_blank">丽华快餐</a></li>
-        <li><a href="#" target="_blank">南京特色</a></li>
-        <li><a href="#" target="_blank">必胜客</a></li>
-        <li><a href="#" target="_blank">吉野家</a></li>
-        <li><a href="#" target="_blank">麦当劳</a></li>
-        <div class="clr"></div>
-      </ol>
+      </div>
+      <div class="sylb">
+        <div class="sysgt hs">
+          <h1>最新资讯</h1>
+          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+        <div class="sysgx">
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+          <dl>
+            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
+            <dd>2013/05/07</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="lxwm">
+        <div class="sysgt hs">
+          <h1>联系我们</h1>
+          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+        <div class="sysgx">
+          <dl>
+            <dt><img src="images/dt.jpg" /></dt>
+            <dd>联系地址：广西南宁大学东路170号科德五金机电城 7栋B2-B4号 <br />联系电话：0771-2537725 / 13877177878<br />服务至上&nbsp;&nbsp;&nbsp;诚信为本</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="clr"></div>
     </div>
   </div>
-  <div class="clr"></div>
 </div>
 <include file="Public:footer" />
-<include file="Public:loginform" />
-<include file="Public:city_selbox" />
-<include file="Public:bshare" />
+<include file="Public:service" />
 </body>
 </html>

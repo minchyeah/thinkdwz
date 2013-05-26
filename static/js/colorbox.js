@@ -763,7 +763,7 @@
 			.addClass(prefix + 'Photo')
 			.error(function () {
 				settings.title = false;
-				prep($tag(div, 'Error').text('This image could not be loaded'));
+				prep($tag(div, 'Error').text('此图片无法加载...'));
 			})
 			.load(function () {
 				var percent;
