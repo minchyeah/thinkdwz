@@ -1,0 +1,47 @@
+<form id="pagerForm" method="post" action="{:U('Users/index')}">
+	<input type="hidden" name="pageNum" value="1" />
+</form>
+<div class="pageContent">
+	<div id="categoryTree" style="float:left; display:block; overflow:auto; width:200px; border-right:solid 1px #CCC;line-height:21px; background:#fff">
+	    {$treeCode}
+	</div>
+	<div id="alistBox" class="unitBox" style="margin-left:200px;">
+		<!--#include virtual="list1.html" -->
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("#categoryTree", navTab.getCurrentPanel()).loadUrl("{:U('cateTree')}", {}, function(){
+		var $rel = $("#alistBox");
+		var $first = $("#categoryTree a[rel='alistBox']:first");
+		$rel.loadUrl($first.attr("href"), {}, function(){
+			$rel.find("[layoutH]").layoutH();
+			$first.parent().addClass("selected");
+		});
+	});
+	$(".treeRegion,.treeDistrict", navTab.getCurrentPanel()).click(function(event){
+		var $this = $(this);
+		var url = $this.attr('url');
+		if(!url) return false;
+		var opt = {};
+		opt.width = $this.attr('width');
+		opt.height = $this.attr('height');
+		opt.minable = false;
+		opt.mixable = false;
+		opt.resizable = false;
+		$.pdialog.open(url, '', '编辑', opt);
+		event.stopPropagation();
+		return false;
+	});
+	$("#categoryTree", navTab.getCurrentPanel()).css({height:($(window).height()-120)});
+	$(window).resize(function(){
+		$("#categoryTree", navTab.getCurrentPanel()).css({height:($(window).height()-120)});
+	});
+});
+</script>
+<style type="text/css">
+span.treeRegion,span.treeDistrict{
+	display:block;
+	float:right;
+}
+</style>
