@@ -96,8 +96,9 @@ class ArticleAction extends AdminAction
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
     		$delable = $havesub ? 'disable' : 'delete_cate';
+    		$addable = $v['pid'] ? 'disable' : 'add_cate';
     		$html .= '<li><a href="javascript:;" onclick="return false;" data-id="'.$v['id'].'" data-pid="'.$v['pid'].'"><span class="cate_title">'.$v['cate_name'].'</span>';
-    		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a>';
+    		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act '.$addable.'">添加子栏目</span></a>';
     		if($havesub){
     			$html .= $this->buildCategoryTree($v['subcates']);
     		}

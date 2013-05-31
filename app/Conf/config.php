@@ -21,6 +21,13 @@ $config = array(
 	'URL_MODEL'             => 2,       // URL访问模式,0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式，提供最好的用户体验和SEO支持
 	'URL_HTML_SUFFIX'       => '.html',  // URL伪静态后缀设置
     'URL_404_REDIRECT'      =>  '', // 404 跳转页面 部署模式有效
+	'URL_ROUTER_ON'			=> true, // 开启路由
+	'URL_ROUTE_RULES' 		=> array( //定义路由规则
+			'products'               => 'Product/category',
+			'about'          => 'Article/index',
+			'news'          => 'Article/index',
+			'contact'          => array('Article/page','code=contact'),
+		),
 );
 
 $dbconfig = require ROOT_PATH.'/config.php';
