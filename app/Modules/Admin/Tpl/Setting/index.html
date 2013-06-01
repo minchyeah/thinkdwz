@@ -5,121 +5,32 @@
 				<ul>
 					<li><a href="javascript:;"><span>基本设置</span></a></li>
 					<li><a href="javascript:;"><span>其它设置</span></a></li>
-					<li><a href="javascript:;"><span>标题3</span></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="tabsContent layoutBox" layoutH="38" style="position: relative;">
 		  <div>
-			<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+			<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxMenu)">
 			<div class="pageFormContent">
 				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
 					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
+					<input name="sitename" class="textInput" type="text" value="{$sitename}" size="45">
 				</div>
 				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
+					<label class="tar">公司地址：</label>
+					<input name="address" class="textInput" type="text" value="{$address}" size="60">
 				</div>
 				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
+					<label class="tar">联系电话：</label>
+					<input name="contact_phone" type="text" value="{$contact_phone}" size="45"/>
 				</div>
 				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
+					<label class="tar">客服电话：</label>
+					<input name="kefu_phone" type="text" class="" value="{$kefu_phone}" size="25"/>
 				</div>
 				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">分类：</label>
-					<select name="category">
-					    <volist name="linktype" id="svo">
-					    <option value="{$key}<eq name="vo['category']" value="$key">" selected="selected</eq>">{$svo}</option>
-					    </volist>
-					</select>
+					<label class="tar">版权信息：</label>
+					<input name="copyright" type="text" value="{$copyright}" size="45"/>
 				</div>
 			</div>
 			<div class="formBar">
@@ -132,85 +43,6 @@
 		  <div>
 		  	<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
 			<div class="pageFormContent">
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">分类：</label>
-					<select name="category">
-					    <volist name="linktype" id="svo">
-					    <option value="{$key}<eq name="vo['category']" value="$key">" selected="selected</eq>">{$svo}</option>
-					    </volist>
-					</select>
-				</div>
-			</div>
-			<div class="formBar">
-				<ul>
-					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保 存</button></div></div></li>
-				</ul>
-			</div>
-			</form>
-		  </div>
-		  <div>
-		  	<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
-			<div class="pageFormContent">
-				<div class="unit">
-					<label class="tar">网站名称：</label>
-					<input name="sitename" type="text" class="required" value="{$vo.sitename}" size="25"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">链接地址：</label>
-					<input name="address" class="required textInput" type="text" value="{$vo.address}" size="45">
-				</div>
-				<div class="unit">
-					<label class="tar">网站LOGO：</label>
-					<input name="logo" type="text" value="{$vo.logo}" size="45"/>
-				</div>
-				<div class="unit">
-					<label class="tar">分类：</label>
-					<select name="category">
-					    <volist name="linktype" id="svo">
-					    <option value="{$key}<eq name="vo['category']" value="$key">" selected="selected</eq>">{$svo}</option>
-					    </volist>
-					</select>
-				</div>
-				<div class="unit">
-					<label class="tar">分类：</label>
-					<select name="category">
-					    <volist name="linktype" id="svo">
-					    <option value="{$key}<eq name="vo['category']" value="$key">" selected="selected</eq>">{$svo}</option>
-					    </volist>
-					</select>
-				</div>
 			</div>
 			<div class="formBar">
 				<ul>

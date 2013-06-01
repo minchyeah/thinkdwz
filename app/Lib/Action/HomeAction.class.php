@@ -8,6 +8,7 @@ class HomeAction extends CommonAction
 	public function _initialize()
 	{
 		parent::_initialize();
+		$this->assign('sys_setting', $this->sysSetting);
 		$this->initHeader();
 	}
 	

@@ -8,11 +8,11 @@ class SettingAction extends AdminAction
     public function index(){
 		$model = D('Settings');
 		$where = array();
-		$where['category'] = 'sys';
-		$oldSettings = $model->field('id,skey,svalue')->where($where)->select();
+		//$where['category'] = '';
+		$oldSettings = $model->where($where)->getField('skey,svalue');
 		if (is_array($oldSettings)){
 			foreach ($oldSettings as $k=>$v){
-				$this->assign($v['skey'], $v['svalue']);
+				$this->assign($k, $v);
 			}
 		}
 	    $this->display();
@@ -45,7 +45,7 @@ class SettingAction extends AdminAction
 	/**
 	 * 更新配置项
 	 */
-    public function update(){
+    public function save(){
 		$config['sitename'] = trim($_POST['sitename']);
 		$config['admin_email'] = trim($_POST['admin_email']);
 		$config['admin_qq'] = trim($_POST['admin_qq']);
@@ -55,10 +55,9 @@ class SettingAction extends AdminAction
 		$config['seo_description'] = trim($_POST['seo_description']);
 		$config['copyright'] = trim($_POST['copyright']);
 		$config['stat_code'] = trim($_POST['stat_code']);
-		$config['min_withdraw'] = intval($_POST['min_withdraw']);
-		$config['web_admin_pagenum'] = intval($_POST['web_admin_pagenum']);
-		$config['client_version'] = strval($_POST['client_version']);
-		$config['client_update_url'] = strval($_POST['client_update_url']);
+		$config['contact_phone'] = strval($_POST['contact_phone']);
+		$config['kefu_phone'] = strval($_POST['kefu_phone']);
+		$config['address'] = strval($_POST['address']);
 		$this->updateconfig($config);
 	}
 	/**
