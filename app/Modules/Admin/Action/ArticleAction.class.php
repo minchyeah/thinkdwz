@@ -4,16 +4,21 @@ class ArticleAction extends AdminAction
 {
     public function index()
     {
+    	$this->assign('treeCode', $this->cateTree(false));
         $this->display();
     }
     
-    public function cateTree()
+    public function cateTree($echo = true)
     {
     	import('ORG.Util.Tree');
     	$model = D('ArticleCategory');
     	$cates = $model->order('pid ASC')->select();
     	$tree = new Tree($cates, array('id','pid','subcates'));
-    	echo $this->buildCateTree($tree->leaf(), true);
+    	if ($echo) {
+    		echo $this->buildCateTree($tree->leaf(), true);
+    	}else{
+    		return $this->buildCateTree($tree->leaf(), true);
+    	}
     }
     
     private function buildCateTree($tree, $root = false)
