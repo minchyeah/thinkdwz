@@ -23,9 +23,10 @@ class ArticleAction extends AdminAction
     
     private function buildCateTree($tree, $root = false)
     {
-    	$html = $root ? '<ul class="tree">' : '<ul>';
+    	$html = $root ? '<ul class="tree expand">' : '<ul>';
     	foreach ($tree as $k=>$v){
-    		$html .= '<li><a href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox">'.$v['cate_name'].'</a>';
+    		$aAttr = $root ? '' : ' href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox"';
+    		$html .= '<li><a'.$aAttr.'>'.$v['cate_name'].'</a>';
     		if(!empty($v['subcates'])){
     			$html .= $this->buildCateTree($v['subcates']);
     		}
@@ -37,13 +38,16 @@ class ArticleAction extends AdminAction
     
     public function alist()
     {
+    	$cate_id = intval($_GET['cate_id']);
     	$model = D('Articles');
-    	$totalCount = $model->count();
+    	$where = array();
+    	$where['cate_id'] = $cate_id;
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -54,6 +58,8 @@ class ArticleAction extends AdminAction
     
     public function add()
     {
+    	$vo['cate_id'] = intval($_GET['cate_id']);
+    	$this->assign('vo', $vo);
     	$this->display();
     }
     
@@ -73,6 +79,8 @@ class ArticleAction extends AdminAction
     		$this->error($model->getError());
     	}
     	if (!$data['id']) {
+    		$data['create_time'] = time();
+    		$data['user_id'] = session('user_id');
     		$rs = $model->add();
     	}else{
     		$rs = $model->save();
