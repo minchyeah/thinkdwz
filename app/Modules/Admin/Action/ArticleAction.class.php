@@ -80,8 +80,8 @@ class ArticleAction extends AdminAction
     	}
     	if (!$data['id']) {
     		$data['create_time'] = time();
-    		$data['user_id'] = session('user_id');
-    		$rs = $model->add();
+    		$data['user_id'] = intval(session('admin_id'));
+    		$rs = $model->add($data);
     	}else{
     		$rs = $model->save();
     	}
