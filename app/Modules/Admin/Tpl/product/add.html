@@ -1,12 +1,56 @@
 <div class="pageContent">
-<form method="post" action="{:U('ArticlePage/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+<form method="post" action="{:U('Product/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
   <div class="pageFormContent" layoutH="55">
 	<div class="unit">
-	  <label>文章标题：</label>
-	  <input name="title" value="{$vo.title}" class="required" size="50" />
+	  <label>产品名称：</label>
+	  <input name="product_name" value="{$vo.product_name}" class="required" size="50" />
 	</div>
 	<div class="unit">
-		<textarea class="editor" name="content" style="height:400px;width:98%" upLinkUrl="upload.php" upLinkExt="zip,rar,txt" upImgUrl="upload.php" upImgExt="jpg,jpeg,gif,png"  upFlashUrl="upload.php" upFlashExt="swf" upMediaUrl="upload.php" upMediaExt="avi">{$vo.content}</textarea>
+	  <label>状态：</label>
+	  <select name="status">
+	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">启用</option>
+	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">禁用</option>
+	  </select>
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品图片：</label>
+	  <input name="imgfile[]" type="file" class="" size="35" />
+	</div>
+	<div class="unit">
+	  <label>产品说明：</label>
+	  <textarea name="description" class="required" style="width:480px;">{$vo.description}</textarea>
+	</div>
+	<div class="unit">
+	  <label>基本信息：</label>
+	  <textarea name="product_attrs" class="required" style="width:480px;">{$vo.product_attrs}</textarea>
+	</div>
+	<div class="unit">
+	  <label>产品详情：</label>
+	  <textarea class="editor" name="detail" style="height:200px;width:800px" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.detail}</textarea>
 	</div>
   </div>
   <div class="formBar">
@@ -15,7 +59,7 @@
 		<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 	</ul>
   </div>
-  <input type="hidden" name="page_code" value="{$vo.page_code}">
+  <input type="hidden" name="cate_id" value="{$vo.cate_id}">
   <input type="hidden" name="id" value="{$vo.id}">
 </form>
 </div>
