@@ -19,21 +19,21 @@
       <li><a href="__APP__/about/">关于我们</a>
         <div class="drop_dwon">
           <volist name="header_about" id="vo">
-          <div class="onemenulayout"><a href="__APP__/about/{$vo.id}-0-0-0-0.html" target="_blank">{$vo.cate_name}</a></div>
+          <div class="onemenulayout"><a href="__APP__/about/cate-{$vo.pid|0}-{$vo.id}-0.html">{$vo.cate_name}</a></div>
           </volist>
         </div>
       </li>
       <li><a href="__APP__/products/">产品与技术</a>
         <div class="drop_dwon">
           <volist name="header_products" id="vo">
-          <div class="onemenulayout"><a href="__APP__/products/{$vo.id}-0-0-0-0.html">{$vo.cate_name}</a></div>
+          <div class="onemenulayout"><a href="__APP__/products/cate-{$vo.pid}-{$vo.id}-0.html">{$vo.cate_name}</a></div>
           </volist>
         </div>
       </li>
       <li><a href="__APP__/news/">新闻中心</a>
         <div class="drop_dwon">
           <volist name="header_news" id="vo">
-          <div class="onemenulayout"><a href="__APP__/news/{$vo.id}-0-0-0-0.html">{$vo.cate_name}</a></div>
+          <div class="onemenulayout"><a href="__APP__/news/cate-{$vo.pid|0}-{$vo.id}-0.html">{$vo.cate_name}</a></div>
           </volist>
         </div>
       </li>
