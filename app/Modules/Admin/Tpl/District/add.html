@@ -62,6 +62,7 @@
 	<div class="layoutBox">
 	<form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
 		<div class="pageFormContent">
+		    <if condition="!$city_id">
 		    <div class="unit">
 		        <label class="tar">所属省份：</label>
 		        <select class="required combox" name="province" ref="w_combox_city" refUrl="__URL__/combox/pid/{value}.html">
@@ -78,6 +79,9 @@
 		          </volist>
 		        </select>
 		    </div>
+		    <else />
+		    <input type="hidden" name="city" value="{$city_id}" />
+		    </if>
 			<div class="unit">
 				<label class="tar">区域名称：</label>
 				<input name="title" type="text" class="required" value="{$vo.title}" size="25"/>

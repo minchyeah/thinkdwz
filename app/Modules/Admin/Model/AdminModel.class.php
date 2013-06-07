@@ -19,6 +19,7 @@ class AdminModel extends Model
 		session('admin_id', $admin['id']);
 		session('admin_account', $admin['account']);
 		session('admin_name', $admin['username']);
+		session('city_id', $admin['city_ids']);
 		session('admin', $admin);
 		
 		$data = array();

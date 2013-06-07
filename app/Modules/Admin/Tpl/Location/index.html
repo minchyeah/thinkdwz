@@ -50,7 +50,7 @@
 			<td>
 			  <a href="{:U('Store/index','location_id='.$vo['id'])}" target="navTab" rel="storeList{$vo.id}" class="btnInfo" title="({$vo.title})店铺列表">店铺店铺</a>
 			  <a href="__URL__/edit/city_id/{$city_id}/pid/{$Think.request.pid}/id/{$vo.id}" target="dialog" width="500" height="250" mask="true" maxable="false" class="btnEdit" title="编辑">编辑</a>
-			  <a href="__URL__/foreverdelete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
+			  <a href="__URL__/delete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
 			</td>
 		  </tr>
 		  </volist>

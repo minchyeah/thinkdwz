@@ -4,7 +4,7 @@
 <div class="pageContent">
   <div class="panelBar">
     <ul class="toolBar">
-      <li><a class="add" href="__URL__/addtype/tid/{$Think.request.tid}" target="dialog" width="360" height="150" mask="true" maxable="false"><span>新增</span></a></li>
+      <li><a class="add" href="__URL__/addtype/tid/{$Think.request.tid}" target="dialog" width="360" height="180" mask="true" maxable="false"><span>新增</span></a></li>
     </ul>
   </div>
   <table class="list" width="100%" layoutH="53">
@@ -27,7 +27,7 @@
 		<td>{$vo.sort_order}</td>
 		<td>{$vo.store_count}</td>
 		<td>
-		  <a href="__URL__/edittype/id/{$vo.id}"  target="dialog" width="360" height="150" mask="true" maxable="false" class="btnEdit" title="编辑({$vo.type_name})">编辑</a>
+		  <a href="__URL__/edittype/id/{$vo.id}"  target="dialog" width="360" height="180" mask="true" maxable="false" class="btnEdit" title="编辑({$vo.type_name})">编辑</a>
 		  <a href="__URL__/deletetype/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" class="btnDel" title="确定要删这条记录吗？">删除</a>
 		</td>
 	  </tr>

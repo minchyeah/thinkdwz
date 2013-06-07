@@ -6,11 +6,17 @@
 	<div class="panel" defH="30">
 		<h1>基本操作</h1>
 		<div>
+		    <if condition="$city_id">
+			<ul class="leftTools">
+				<li style="padding:0 10px;"><a class="button" target="dialog" href="__URL__/add/tid/{$city_id}" target="dialog" width="510" height="280" mask="true" maxable="false"><span>新增区域</span></a></li>
+			</ul>
+			<else />
 			<ul class="leftTools">
 			    <li><a class="button" target="dialog" href="__URL__/add/type/province/tid/{$Think.request.tid}" target="dialog" width="510" height="150" mask="true" maxable="false"><span>新增省</span></a></li>
 				<li><a class="button" target="dialog" href="__URL__/add/type/city/tid/{$Think.request.tid}" target="dialog" width="510" height="200" mask="true" maxable="false"><span>新增城市</span></a></li>
 				<li style="padding:0 10px;"><a class="button" target="dialog" href="__URL__/add/tid/{$Think.request.tid}" target="dialog" width="510" height="280" mask="true" maxable="false"><span>新增区域</span></a></li>
 			</ul>
+			</if>
 		</div>
 	</div>
 	<div class="divider"></div>
@@ -18,6 +24,13 @@
 		<div class="tabsContent">
 			<div>
 				<div id="districtTree" style="float:left; display:block; overflow:auto; width:235px; border:solid 1px #CCC; padding-right:5px; line-height:21px; background:#fff">
+				    <if condition="$city_id">
+				     <ul class="tree treeFolder">
+				      <volist name="list" id="vo">
+						<li><a href="{:U('Location/index', 'pid='.$vo['id'])}" target="ajax" rel="jbsxBox">{$vo.title}<span style="margin-left:5px;" class="btnDel treeRegion" title="删除">删除</span><span url="{:U('District/edit', 'city_id='.$vo['id'].'&pid='.$vo['id'].'&id='.$vo['id'])}" class="btnEdit treeRegion" title="编辑">编辑</span></a></li>
+					  </volist>
+				     </ul>
+				    <else />
 				    <ul class="tree treeFolder">
 				      <volist name="list" id="vo">
 						<li><a href="javascript:;" style="display:inline;">{$vo.title}<span class="btnDel treeDistrict" style="margin-left:5px;" title="删除">删除</span><span url="{:U('District/edit', 'type=province&id='.$vo['id'])}" width="510" height="150" class="btnEdit treeDistrict" title="编辑">编辑</span></a>
@@ -39,6 +52,7 @@
 						</li>
 					  </volist>
 				     </ul>
+				     </if>
 				</div>
 				<div id="jbsxBox" class="unitBox" style="margin-left:246px;">
 					<!--#include virtual="list1.html" -->
@@ -52,7 +66,7 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	$(".treeRegion,.treeDistrict").click(function(event){
+	$(".btnEdit").click(function(event){
 		var $this = $(this);
 		var url = $this.attr('url');
 		if(!url) return false;

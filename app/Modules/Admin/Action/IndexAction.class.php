@@ -6,8 +6,22 @@ class IndexAction extends AdminAction
     {
     	$model = D('AdminMenus');
     	$this->assign('ctop', $model->find(1));
-    	$this->assign('topmenus', $model->topMenus());
-    	$this->assign('leftmenus', $model->leftMenus(1));
+    	$topMenus = $model->topMenus();
+    	if(1 != $this->admin_id){
+    		$tmp = array();
+    		foreach ($topMenus as $v){
+    			if($v['id'] != 2){
+    				continue;
+    			}else{
+    				$tmp[] = $v;
+    			}
+    		}
+    		$topMenus = $tmp;
+    		$this->assign('leftmenus', $model->leftMenus(2));
+    	}else{
+    		$this->assign('leftmenus', $model->leftMenus(1));
+    	}
+    	$this->assign('topmenus', $topMenus);
         $this->display();
     }
     

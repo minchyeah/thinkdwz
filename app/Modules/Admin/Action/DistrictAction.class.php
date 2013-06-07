@@ -9,7 +9,12 @@ class DistrictAction extends AdminAction
     	$where = array();
     	$list = $model->where($where)->order('pid ASC')->select();
     	$tree = new Tree($list);
-    	$this->assign('list', $tree->leaf());
+    	if(1 != $this->admin_id){
+    		$this->assign('city_id', $this->city_id);
+    		$this->assign('list', $tree->leaf($this->city_id));
+    	}else{
+    		$this->assign('list', $tree->leaf());
+    	}
         $this->display();
     }
     
@@ -41,6 +46,7 @@ class DistrictAction extends AdminAction
     	}
     	$this->_assign_province();
     	$this->assign('type', $type);
+    	$this->assign('city_id', $this->city_id);
     	$this->display();
     }
     
@@ -64,6 +70,7 @@ class DistrictAction extends AdminAction
     	$vo = $model->find($id);
     	$this->assign('pvo', $pvo);
     	$this->assign('vo', $vo);
+    	$this->assign('city_id', $this->city_id);
     	$this->display('add');
     }
     

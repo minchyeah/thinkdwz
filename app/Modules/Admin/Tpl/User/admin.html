@@ -4,7 +4,7 @@
 <div class="pageContent">
   <div class="panelBar">
     <ul class="toolBar">
-      <li><a class="add" href="{:U('User/add_admin')}" target="dialog" width="510" height="250" mask="true" maxable="false"><span>新增管理员</span></a></li>
+      <li><a class="add" href="{:U('User/add_admin')}" target="dialog" width="510" height="300" mask="true" maxable="false"><span>新增管理员</span></a></li>
     </ul>
   </div>
   <table class="table" width="100%" layoutH="75">
@@ -31,7 +31,7 @@
 		<td>{$cities[$vo['city_ids']]|default="超级管理员"}</td>
 		<td><eq name="vo.status" value="1"><span style="color:green;">启用</span><else /><span style="color:red;">禁用</span></eq></td>
 		<td>
-		  <a href="{:U('User/edit_admin','id='.$vo['id'])}" target="dialog" width="510" height="250" mask="true" maxable="false" class="btnEdit">编辑</a>
+		  <a href="{:U('User/edit_admin','id='.$vo['id'])}" target="dialog" width="510" height="300" mask="true" maxable="false" class="btnEdit">编辑</a>
 		  <a href="{:U('User/delete_admin','id='.$vo['id'])}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
 		</td>
 	  </tr>

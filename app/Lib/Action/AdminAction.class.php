@@ -2,6 +2,9 @@
 
 class AdminAction extends CommonAction
 {
+	protected $admin_id;
+	protected $city_id;
+	
 	/**
 	 * 初始化方法
 	 */
@@ -22,6 +25,8 @@ class AdminAction extends CommonAction
     	if (!session('admin_id') && 'Public' != MODULE_NAME) {
     		$this->redirect('Public/login');
     	}
+    	$this->admin_id = session('admin_id');
+    	$this->city_id = session('city_id');
 	}
 	
 	/**
