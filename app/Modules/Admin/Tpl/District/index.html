@@ -25,13 +25,13 @@
 			<div>
 				<div id="districtTree" style="float:left; display:block; overflow:auto; width:235px; border:solid 1px #CCC; padding-right:5px; line-height:21px; background:#fff">
 				    <if condition="$city_id">
-				     <ul class="tree treeFolder">
+				     <ul class="tree expand">
 				      <volist name="list" id="vo">
 						<li><a href="{:U('Location/index', 'pid='.$vo['id'])}" target="ajax" rel="jbsxBox">{$vo.title}<span style="margin-left:5px;" class="btnDel treeRegion" title="删除">删除</span><span url="{:U('District/edit', 'city_id='.$vo['id'].'&pid='.$vo['id'].'&id='.$vo['id'])}" class="btnEdit treeRegion" title="编辑">编辑</span></a></li>
 					  </volist>
 				     </ul>
 				    <else />
-				    <ul class="tree treeFolder">
+				    <ul class="tree expand">
 				      <volist name="list" id="vo">
 						<li><a href="javascript:;" style="display:inline;">{$vo.title}<span class="btnDel treeDistrict" style="margin-left:5px;" title="删除">删除</span><span url="{:U('District/edit', 'type=province&id='.$vo['id'])}" width="510" height="150" class="btnEdit treeDistrict" title="编辑">编辑</span></a>
 						  <notempty name="vo.child">
