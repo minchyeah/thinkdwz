@@ -19,13 +19,18 @@ class StoreAction extends AdminAction
     	$this->assign('totalCount', $totalCount);
     	$this->assign('numPerPage', $numPerPage);
     	$this->assign('currentPage', $currentPage);
+    	$this->assign('location_id', $location_id);
         $this->display();
     }
     
     public function add()
     {
-    	$model = D('Stores');
     	$location_id = intval($_REQUEST['location_id']);
+    	$location = D('Locations')->find($location_id);
+    	$vo['city_id'] = $location['city_id'];;
+    	$vo['locations'] = $location_id;
+    	$vo['locationsName'] = $location['title'];
+    	$this->assign('vo', $vo);
     	$this->assign('location_id', $location_id);
     	$this->display();
     }

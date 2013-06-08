@@ -25,6 +25,10 @@ class StoreMenusAction extends AdminAction
     public function add()
     {
     	$store_id = intval($_REQUEST['store_id']);
+    	$store = D('stores')->find($store_id);
+    	$vo['store_id'] = $store['id'];
+    	$vo['store_name'] = $store['name'];
+    	$this->assign('vo', $vo);
     	$this->display();
     }
     
@@ -42,7 +46,6 @@ class StoreMenusAction extends AdminAction
     public function save()
     {
     	$model = D('StoreMenus');
-    	$_POST['store_id'] = intval($_POST['orgLookup_id']);
     	if ($_FILES['imgfile']['name']) {
     		$image = $this->saveImage($_FILES['imgfile']);
     		if ($image) {
@@ -62,6 +65,19 @@ class StoreMenusAction extends AdminAction
     		$this->success('保存成功！');
     	}else{
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
+    	}
+    }
+    
+    public function delete()
+    {
+    	$id = intval($_GET['id']);
+    	$model = D('StoreMenus');
+    	$rs = $model->where(array('id'=>$id))->delete();
+
+    	if(false !== $rs){
+    		$this->success('保存成功！');
+    	}else{
+    		$this->error('保存失败！'.$model->getDbError());
     	}
     }
 }

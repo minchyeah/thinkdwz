@@ -4,9 +4,7 @@
 			<dl class="nowrap">
 				<dt>所属店面：</dt>
 				<dd>
-				  <input type="hidden" value="{$vo.store_id}" name="orgLookup.id">
-				  <input class="required textInput" type="text" lookupgroup="orgLookup" suggesturl="{:U('Store/lookupSuggest')}" suggestfields="id,name" value="{$vo.store_name}" name="orgLookup.orgName" autocomplete="off">
-				  <a class="btnLook" lookupgroup="orgLookup" href="{:U('Store/lookup')}">查找带回</a>
+				  <input type="hidden" name="store_id" value="{$vo.store_id}" />{$vo.store_name}
 				</dd>
 			</dl>
 			<dl class="nowrap">

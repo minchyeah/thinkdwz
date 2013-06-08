@@ -32,7 +32,7 @@
 			<dl class="nowrap">
 				<dt>送餐区域：</dt>
 				<dd>
-				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'selparent=0&selmore=1&cid=location_id&cname=location_name')}">选择区域</a>&nbsp;
+				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'city_id='.$vo['city_id'].'&selparent=0&selmore=1&cid=location_id&cname=location_name')}">选择区域</a>&nbsp;
 				  <input id="location_name" class="required textInput readonly" type="text" value="{$vo.locationsName}" readonly="readonly" size="40">
 				  <input id="location_id" class="required" type="hidden" value="{$vo.locations}" name="locations">
 				</dd>
@@ -63,6 +63,7 @@
 				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>
 		</div>
+		<input name="city_id" type="hidden" value="{$vo.city_id}" />
 		<input name="id" type="hidden" value="{$vo.id}" />
 	</form>
 </div>

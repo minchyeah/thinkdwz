@@ -92,8 +92,9 @@ class LocationAction extends AdminAction
     
     public function multiselect()
     {
+    	$city_id = intval($_GET['city_id']);
     	$model = D('Locations');
-    	$map = array('pid'=>3);
+    	$map = array('pid'=>$city_id);
     	if( !empty($_REQUEST['mod']) ) $map['classmodule'] = $_REQUEST['mod'];
     	$tree = $model->tree($map,$_REQUEST['link'],$_REQUEST['selparent']);
     	$this->assign('tree',$tree);
