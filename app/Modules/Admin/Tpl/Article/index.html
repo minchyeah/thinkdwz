@@ -13,10 +13,12 @@
 $(function(){
 	var $rel = $("#alistBox", navTab.getCurrentPanel());
 	var $first = $("#categoryTree a[rel='alistBox']:first", navTab.getCurrentPanel());
-	$rel.loadUrl($first.attr("href"), {}, function(){
-		$rel.find("[layoutH]").layoutH();
-		$first.parent().addClass("selected");
-	});
+	if(/alist/.test($first.attr("href"))){
+		$rel.loadUrl($first.attr("href"), {}, function(){
+			$rel.find("[layoutH]").layoutH();
+			$first.parent().addClass("selected");
+		});
+	}
 	$(".treeRegion,.treeDistrict", navTab.getCurrentPanel()).click(function(event){
 		var $this = $(this);
 		var url = $this.attr('url');
