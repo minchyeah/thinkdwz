@@ -10,6 +10,7 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->assign('sys_setting', $this->sysSetting);
 		$this->initHeader();
+		$this->initHeaderProduct();
 	}
 	
 	protected function initHeader()
@@ -37,5 +38,14 @@ class HomeAction extends CommonAction
 		}
 		$this->assign('header_about', $about['subs']);
 		$this->assign('header_news', $news['subs']);
+	}
+	
+	protected function initHeaderProduct()
+	{
+		$model = D('ProductCategory');
+		$where = array();
+		$where['pid'] = array('neq', 0);
+		$cates = $model->where($where)->order('pid ASC,sort_order ASC')->getField('id,cate_name,pid');
+		$this->assign('header_products', $cates);
 	}
 }
