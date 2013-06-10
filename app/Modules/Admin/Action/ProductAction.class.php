@@ -67,13 +67,17 @@ class ProductAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('Products');
-    	$this->assign('vo', $model->find($id));
+    	$vo = $model->find($id);
+    	$vo['images'] = explode(',', $vo['images']);
+    	$this->assign('vo', $vo);
     	$this->display('add');
     }
     
     public function save()
     {
     	$model = D('Products');
+    	$_POST['thumb'] = $_POST['images'][0];
+    	$_POST['images'] = implode(',', $_POST['images']);
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());

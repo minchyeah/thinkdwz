@@ -16,8 +16,11 @@
 					if(rs.error){
 						alertMsg.error(rs.info+rs.uprs+rs.file);
 					}else{
-						$('<img />').attr('src', rs.thumb).css({margin:'0 5px'}).appendTo('#uploadifyResult');
-						$('<input />').attr('type', 'hidden').attr('name','images[]').val(rs.src).appendTo('#uploadifyResult');
+						var li = $('<li />');
+						$('<img />').attr('src', rs.thumb).appendTo(li);
+						$('<input />').attr('type', 'hidden').attr('name','images[]').val(rs.src).appendTo(li);
+						$('<a>删除</a>').attr('href','javascript:;').addClass('unit btn delimg').click(function(){$(this).parent().remove();}).appendTo(li);
+						li.appendTo('#uploadifyResult #imageList');
 					}
 				},
 			onQueueComplete:function(queueData){

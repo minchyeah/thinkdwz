@@ -14,31 +14,18 @@
 	</div>
 	<div class="unit">
 	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
+	  <a class="unit btn" href="{:U('Public/uploadform')}" target="dialog" rel="uploadform" width="420" height="220" mask="true">上传图片</a>
 	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
-	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
-	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
-	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
-	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
-	</div>
-	<div class="unit">
-	  <label>产品图片：</label>
-	  <input name="imgfile[]" type="file" class="" size="35" />
+	<div id="uploadifyResult" class="unit">
+	  <ul id="imageList">
+		<volist name="vo.images" id="svo">
+		  <li>
+			<img src="{:imgsrc($svo, 100, 100)}"/>
+			<input type="hidden" name="images[]" value="{$svo}" />
+			<a class="unit btn delimg" href="javascript:;">删除</a>
+		  </li>
+		</volist>
+	  </ul>
 	</div>
 	<div class="unit">
 	  <label>产品说明：</label>
@@ -63,3 +50,22 @@
   <input type="hidden" name="id" value="{$vo.id}">
 </form>
 </div>
+<script type="text/javascript">
+$(function(){
+	$("#imageList .delimg", navTab.getCurrentPanel()).click(function(event){
+		$(this).parent().remove();
+		event.stopPropagation();
+		return false;
+	});
+});
+</script>
+<style type="text/css">
+ul#imageList li{
+	width:100px;
+	height:125px;
+	margin:0 5px;
+	display:block;
+	float:left;
+	text-align:center;
+}
+</style>
