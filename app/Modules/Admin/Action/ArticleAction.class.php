@@ -4,16 +4,21 @@ class ArticleAction extends AdminAction
 {
     public function index()
     {
+    	$this->assign('treeCode', $this->cateTree(false));
         $this->display();
     }
     
-    public function cateTree()
+    public function cateTree($echo = true)
     {
     	import('ORG.Util.Tree');
     	$model = D('ArticleCategory');
     	$cates = $model->order('pid ASC')->select();
     	$tree = new Tree($cates, array('id','pid','subcates'));
-    	echo $this->buildCateTree($tree->leaf(), true);
+    	if($echo){
+    		echo $this->buildCateTree($tree->leaf(), true);
+    	}else{
+    		return $this->buildCateTree($tree->leaf(), true);
+    	}
     }
     
     private function buildCateTree($tree, $root = false)
@@ -32,13 +37,16 @@ class ArticleAction extends AdminAction
     
     public function alist()
     {
+    	$cate_id = intval($_GET['cate_id']);
     	$model = D('Articles');
-    	$totalCount = $model->count();
+    	$where = array();
+    	$where['cate_id'] = $cate_id;
+    	$totalCount = $model->where($where)->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -49,6 +57,8 @@ class ArticleAction extends AdminAction
     
     public function add()
     {
+    	$vo['cate_id'] = intval($_GET['cate_id']);
+    	$this->assign('vo', $vo);
     	$this->display();
     }
     
@@ -68,7 +78,9 @@ class ArticleAction extends AdminAction
     		$this->error($model->getError());
     	}
     	if (!$data['id']) {
-    		$rs = $model->add();
+    		$data['create_time'] = time();
+    		$data['user_id'] = intval(session('admin_id'));
+    		$rs = $model->add($data);
     	}else{
     		$rs = $model->save();
     	}

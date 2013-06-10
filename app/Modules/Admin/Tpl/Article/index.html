@@ -11,13 +11,11 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	$("#categoryTree", navTab.getCurrentPanel()).loadUrl("{:U('cateTree')}", {}, function(){
-		var $rel = $("#alistBox");
-		var $first = $("#categoryTree a[rel='alistBox']:first");
-		$rel.loadUrl($first.attr("href"), {}, function(){
-			$rel.find("[layoutH]").layoutH();
-			$first.parent().addClass("selected");
-		});
+	var $rel = $("#alistBox", navTab.getCurrentPanel());
+	var $first = $("#categoryTree a[rel='alistBox']:first", navTab.getCurrentPanel());
+	$rel.loadUrl($first.attr("href"), {}, function(){
+		$rel.find("[layoutH]").layoutH();
+		$first.parent().addClass("selected");
 	});
 	$(".treeRegion,.treeDistrict", navTab.getCurrentPanel()).click(function(event){
 		var $this = $(this);
