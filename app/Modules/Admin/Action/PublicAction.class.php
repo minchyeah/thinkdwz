@@ -115,6 +115,23 @@ class PublicAction extends AdminAction
     	}
     }
     
+    public function uploadify()
+    {
+    	$rs = $this->saveImage($_FILES['upfile']);
+    	$data = array();
+    	$data['uprs'] = $rs;
+    	$data['file'] = $_FILES;
+    	if ($rs){
+    		$data['error'] = 0;
+    		$data['thumb'] = __ROOT__.'/data/'.imgsrc($rs, 100, 100);
+    		$data['src'] = $rs;
+    	}else{
+    		$data['error'] = 1;
+    		$data['info'] = '上传失败';
+    	}
+    	exit(json_encode($data));
+    }
+    
     public function clear_cache()
     {
     	echo <<<JS

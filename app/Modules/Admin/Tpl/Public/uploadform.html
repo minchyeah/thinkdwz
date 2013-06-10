@@ -1,0 +1,30 @@
+<div class="pageContent" layoutH="8">
+  <div class="pageFormContent">
+	<input id="testFileInput" type="file" name="upfile" 
+		uploaderOption="{
+			swf:'{$static_url}/js/uploadify/uploadify.swf',
+			uploader:'{:U('Public/uploadify')}',
+			formData:{ PHPSESSID:'{:session_id()}', ajax:1},
+			buttonText:'请选择文件',
+			fileSizeLimit:'8000KB',
+			fileTypeDesc:'*.jpg;*.jpeg;*.gif;*.png;',
+			fileTypeExts:'*.jpg;*.jpeg;*.gif;*.png;',
+			auto:true,
+			multi:true,
+			onUploadSuccess:function (file, data, response){
+					var rs = $.parseJSON(data);
+					if(rs.error){
+						alertMsg.error(rs.info+rs.uprs+rs.file);
+					}else{
+						$('<img />').attr('src', rs.thumb).css({margin:'0 5px'}).appendTo('#uploadifyResult');
+						$('<input />').attr('type', 'hidden').attr('name','images[]').val(rs.src).appendTo('#uploadifyResult');
+					}
+				},
+			onQueueComplete:function(queueData){
+					$.pdialog.close('uploadform'); 
+				}
+		}"
+	/>
+	<div class="divider"></div>
+  </div>
+</div>

@@ -67,7 +67,7 @@ class CommonAction extends Action
 			$upload = new UploadFile();
 			$upload->maxSize  = 1048576 * 4;
 			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');
-			$upload->savePath =  DATA_PATH.'upload/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz1234567890'), 20, 1).'/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz'), 6, 2).'/';;
+			$upload->savePath =  DATA_PATH.'upload/'.str_pad(rand(0, 99), 2, '0', STR_PAD_LEFT).'/'.str_pad(rand(0, 99), 2, '0', STR_PAD_LEFT).'/';;
 			if(!is_dir($upload->savePath)) {
 				mkdir($upload->savePath,0777,true);
 			}
