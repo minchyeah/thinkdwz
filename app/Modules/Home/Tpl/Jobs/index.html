@@ -2,13 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <include file="Public:header_meta" />
-<script type="text/javascript" src="js/colorbox.js"></script>
 <script>
 	$(document).ready(function(){
-     	$(".group1").colorbox({rel:'group1'});			
-		$("#click").click(function(){ 
-		$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-			return false;
+		$("ul#jobsTitle li").click(function(){
+			var index = $(this).index();
+			if(index){
+				$("ol#jobsList > li").hide().eq(index-1).show();
+			}else{
+				$("ol#jobsList > li").show();
+			}
 		});
 	});
 </script>
@@ -19,161 +21,39 @@
 <div class="jz">
   <div class="cbl" id="rczpl">
     <h3>招聘职位</h3>
-    <ul>
+    <ul id="jobsTitle">
       <li>»&nbsp;全部</li>
-      <li class="ztwdj">»&nbsp;业务员</li>
-      <li class="ztwdj">»&nbsp;技术员</li>
-      <li class="ztwdj">»&nbsp;公司前台</li>
+      <volist name="jobs" id="vo">
+      <li class="ztwdj">»&nbsp;{$vo.title}</li>
+      </volist>
     </ul>
   </div>
   <div class="nry">
     <div class="dqwz">
       <div class="dqwzs">
         <h1>招贤纳士</h1>
-        <h2>当前位置：<a href="index.html">首页</a>><a href="rczp.html">招贤纳士</a></h2>
+        <h2>当前位置：<a href="__APP__/">首页</a>><a href="rczp.html">招贤纳士</a></h2>
       </div>
       <div class="dqwzx">在新兴经济体，卡特彼勒机械正被用来建设道路，机场，医院和排污系统，创造经济机会和提高生活水平。在发达经济体，卡特彼勒网络的经销商与顾客一起共同创新解决方案。</div>
     </div>
     <div id="rczpr">
-      <ol>
+      <ol id="jobsList">
+        <volist name="jobs" id="vo">
         <li>
           <dl>
-            <dt>职位：业务员<i>人数：10人</i></dt>
-            <dd><b>专业要求：</b>服务专业</dd>
-            <dd><b>学历要求：</b>中专以上</dd>
-            <dd><b>年龄要求：</b>18—35岁</dd>
-            <dd><b>性别要求：</b>男性</dd>
-            <dd><b>工作性质：</b>全职</dd>
-            <dd><b>工作区域：</b>全国</dd>
-            <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-            <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
+            <dt>职位：{$vo.title}<i>人数：{$vo.number}人</i></dt>
+            <volist name="vo.requirement" id="svo">
+            <dd><b>{$key}：</b>{$svo}</dd>
+            </volist>
           </dl>
           <div class="clr"></div>
           <dl class="zpxx">
             <dt>工作简介及其它要求：</dt>
-            <dd>岗位职责：<br />
-              1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-              2、对产品销售过程的管理；<br />
-              3、草拟年季月度销售和预算计划；<br />
-              4、负责账务的核对；<br />
-              5、监督、协调各网点的营运情况。</dd>
+            <dd>{$vo.description|nl2br}</dd>
           </dl>
         </li>
-        <li>
-          <dl>
-            <dt>职位：技术员<i>人数：1人</i></dt>
-            <dd><b>专业要求：</b>服务专业</dd>
-            <dd><b>学历要求：</b>中专以上</dd>
-            <dd><b>年龄要求：</b>18—35岁</dd>
-            <dd><b>性别要求：</b>女性</dd>
-            <dd><b>工作性质：</b>广西.南宁</dd>
-            <dd><b>工作区域：</b>-</dd>
-            <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-            <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
-          </dl>
-          <div class="clr"></div>
-          <dl class="zpxx">
-            <dt>工作简介及其它要求：</dt>
-            <dd>岗位职责：<br />
-              1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-              2、对产品销售过程的管理；</dd>
-          </dl>
-        </li>
-        <li>
-          <dl>
-            <dt>职位：公司前台<i>人数：10人</i></dt>
-            <dd><b>专业要求：</b>服务专业</dd>
-            <dd><b>学历要求：</b>中专以上</dd>
-            <dd><b>年龄要求：</b>18—35岁</dd>
-            <dd><b>性别要求：</b>男性</dd>
-            <dd><b>工作性质：</b>广西.巴马</dd>
-            <dd><b>工作区域：</b>全国</dd>
-            <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-            <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
-          </dl>
-          <div class="clr"></div>
-          <dl class="zpxx">
-            <dt>工作简介及其它要求：</dt>
-            <dd>岗位职责：<br />
-              1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-              2、对产品销售过程的管理；<br />
-              3、草拟年季月度销售和预算计划；<br />
-              4、负责账务的核对；</dd>
-          </dl>
-        </li>
+        </volist>
       </ol>
-      <ol>
-          <li>
-            <dl>
-              <dt>职位：业务员<i>人数：10人</i></dt>
-              <dd><b>专业要求：</b>服务专业</dd>
-              <dd><b>学历要求：</b>中专以上</dd>
-              <dd><b>年龄要求：</b>18—35岁</dd>
-              <dd><b>性别要求：</b>男性</dd>
-              <dd><b>工作性质：</b>全职</dd>
-              <dd><b>工作区域：</b>全国</dd>
-              <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-              <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
-            </dl>
-            <div class="clr"></div>
-            <dl class="zpxx">
-              <dt>工作简介及其它要求：</dt>
-              <dd>岗位职责：<br />
-                1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-                2、对产品销售过程的管理；<br />
-                3、草拟年季月度销售和预算计划；<br />
-                4、负责账务的核对；<br />
-                5、监督、协调各网点的营运情况。</dd>
-            </dl>
-          </li>
-        </ol>
-        <ol>
-          <li>
-            <dl>
-              <dt>职位：技术员<i>人数：1人</i></dt>
-              <dd><b>专业要求：</b>服务专业</dd>
-              <dd><b>学历要求：</b>中专以上</dd>
-              <dd><b>年龄要求：</b>18—35岁</dd>
-              <dd><b>性别要求：</b>女性</dd>
-              <dd><b>工作性质：</b>广西.南宁</dd>
-              <dd><b>工作区域：</b>-</dd>
-              <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-              <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
-            </dl>
-            <div class="clr"></div>
-
-            <dl class="zpxx">
-              <dt>工作简介及其它要求：</dt>
-              <dd>岗位职责：<br />
-                1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-                2、对产品销售过程的管理；</dd>
-            </dl>
-          </li>
-        </ol>
-        <ol>
-          <li>
-            <dl>
-              <dt>职位：公司前台<i>人数：10人</i></dt>
-              <dd><b>专业要求：</b>服务专业</dd>
-              <dd><b>学历要求：</b>中专以上</dd>
-              <dd><b>年龄要求：</b>18—35岁</dd>
-              <dd><b>性别要求：</b>男性</dd>
-              <dd><b>工作性质：</b>广西.巴马</dd>
-              <dd><b>工作区域：</b>全国</dd>
-              <dd><b>工作经验：</b>有一年以上工作经验者优先</dd>
-              <dd><b>薪酬待遇：</b>年薪5-10万（基本工资+绩效考核+年功工资+提成工资+六险+补贴+激励奖+年终奖）</dd>
-            </dl>
-            <div class="clr"></div>
-            <dl class="zpxx">
-              <dt>工作简介及其它要求：</dt>
-              <dd>岗位职责：<br />
-                1、建立、管理、维护销售部文件数据档案，为部门制定正确的销售方案、销售计划提供决策依据；<br />
-                2、对产品销售过程的管理；<br />
-                3、草拟年季月度销售和预算计划；<br />
-                4、负责账务的核对；</dd>
-            </dl>
-          </li>
-        </ol>
     </div>
     <div class="zxnslx">
         <dl>

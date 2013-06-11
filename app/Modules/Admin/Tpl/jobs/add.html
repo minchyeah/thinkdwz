@@ -1,0 +1,34 @@
+<div class="pageContent">
+<form method="post" action="{:U('Jobs/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+	<div class="pageFormContent" layoutH="55">
+		<div class="unit">
+			<label>岗位名称：</label>
+			<input type="text" class="required" name="title" value="{$vo.title}" size="50">
+		</div>
+		<div class="unit">
+			<label>招聘人数：</label>
+			<input type="text" class="required" name="number" value="{$vo.number}" size="10">
+			<label style="text-align:right;">状态：</label>
+			<select name="status">
+				<option value="1<if condition="$vo['status']">" selected="selected</if>">启用</option>
+				<option value="0<if condition="!$vo['status']">" selected="selected</if>">禁用</option>
+			</select>
+		</div>
+		<div class="unit">
+			<label>基本要求：</label>
+			<textarea name="requirement" style="height:100px;width:500px;">{$vo.requirement}</textarea>
+		</div>
+		<div class="unit">
+			<label>工作简介及<br />其它要求：</label>
+			<textarea name="description" style="height:120px;width:500px;">{$vo.description}</textarea>
+		</div>
+	</div>
+	<div class="formBar">
+		<ul>
+			<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+			<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+		</ul>
+	</div>
+	<input name="id" value="{$vo.id}" type="hidden"/>
+</form>
+</div>
