@@ -6,6 +6,10 @@
 	  <input name="title" value="{$vo.title}" class="required" size="50" />
 	</div>
 	<div class="unit">
+	  <label>文章描述：</label>
+	  <textarea name="description" style="height:60px;width:600px;">{$vo.description}</textarea>
+	</div>
+	<div class="unit">
 	  <label>文章内容：</label>
 	  <textarea class="editor" name="content" style="height:400px;width:800px;" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.content}</textarea>
 	</div>

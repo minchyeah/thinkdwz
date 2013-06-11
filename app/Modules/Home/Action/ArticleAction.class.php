@@ -62,6 +62,8 @@ class ArticleAction extends HomeAction
     	$code = trim(strval($_REQUEST['code']));
     	$model = D('ArticlePage');
     	$page = $model->where(array('page_code'=>$code))->find();
+    	$model->where(array('id'=>$page['id']))->setInc('visit_count');
+    	$this->assign('page', $page);
     	$this->display();
     }
 }
