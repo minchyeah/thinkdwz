@@ -123,7 +123,7 @@ class PublicAction extends AdminAction
     	$data['file'] = $_FILES;
     	if ($rs){
     		$data['error'] = 0;
-    		$data['thumb'] = __ROOT__.'/data/'.imgsrc($rs, 100, 100);
+    		$data['thumb'] = __ROOT__.'/data/'.imgsrc($rs, 160, 120);
     		$data['src'] = $rs;
     	}else{
     		$data['error'] = 1;

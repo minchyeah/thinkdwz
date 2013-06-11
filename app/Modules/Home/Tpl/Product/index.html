@@ -17,72 +17,44 @@
 <body>
 <include file="Public:header" />
 <div class="jz">
-  <div class="cbl">
-    <dl>
-      <dt>分类</dt>
-      <dd class="cbbt">铁路专用</dd>
-      <dd class="xz"><a href="cplb.html" title="当前标题">»&nbsp;机器</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;工装机具</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;二手设备</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;发动机</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;电力系统</a></dd>
-      <dd class="cbbt">天空专用</dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;采矿设备</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;摊铺设备</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;小型基础建设工程</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;采石及碎石</a></dd>
-      <dd class="cbbt">日本战场专用</dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;道路施工</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;OEM 解决方案</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;工业/OEM 动力系统</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;重型建筑工程</a></dd>
-    </dl>
-  </div>
+  <include file="sidebar_category" />
   <div class="nry">
     <div class="dqwz">
       <div class="dqwzs">
-        <h1>产品与应用</h1>
-        <h2>当前位置：<a href="index.html">首页</a>><a href="cplb.html">产品与应用</a>><a href="cplb.html">全部</a></h2>
+        <h1>产品与技术</h1>
+        <h2>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/products/">产品与技术</a>><a href="">{$product.product_name}</a></h2>
       </div>
       <div class="dqwzx">在新兴经济体，卡特彼勒机械正被用来建设道路，机场，医院和排污系统，创造经济机会和提高生活水平。在发达经济体，卡特彼勒网络的经销商与顾客一起共同创新解决方案。</div>
     </div>
     <div class="cpnr">
       <div id="cpnrd">
+        <volist name="product.images" id="vo">
         <ol>
-          <li><img src="images/cp1.png" /></li>
+          <li><img src="{$vo}" /></li>
         </ol>
-        <ol>
-          <li><img src="images/cp2.png" /></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp3.png" /></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp4.png" /></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp5.jpg" /></li>
-        </ol>
+        </volist>
       </div>
       <div id="cpnrx">
         <ul>
-          <li><img src="images/cp1.png" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp2.png" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp3.png" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp4.png" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp5.jpg" /><b></b></li>
+          <volist name="product.images" id="vo">
+          <if condition="$key">
+          <li class="ztwdj"><img src="{$vo|imgsrc=75,75}" /><b></b></li>
+          <else />
+          <li><img src="{$vo|imgsrc=75,75}" /><b></b></li>
+          </if>
+          </volist>
         </ul>
       </div>
       <div class="clr"></div>
       <div class="cpnrn">
-        <h1>511 履带式伐木归堆机</h1>
+        <h1>{$product.product_name}</h1>
         <ul>
-          <li><b>总功率:</b><span>247 hp</span></li>
-          <li><b>发动机型号:</b><span>Cat® C9 ACERT™</span></li>
-          <li><b>额定功率:</b><span>228 hp</span></li>
+          <volist name="product.attrs" id="vo">
+          <li><b>{$key}:</b><span>{$vo}</span></li>
+          </volist>
         </ul>
         <h5>详情</h5>
-        <div class="spxqx">底盘系统采用久经考验的部件制造，强大稳固，专为条件恶劣的林区作业而量身定制。 设计独特的动臂在整个伸出范围内均能提供业界领先的提升能力，在采伐大型木材时尤其有用。 四种型号都配备了合适的马力、履带尺寸和液压配置，完全能满足您的应用需求。 </div>
+        <div class="spxqx">{$product.detail}</div>
       </div>
       <div class="wntj">
         <h3>为您推荐：</h3>

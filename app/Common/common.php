@@ -51,3 +51,14 @@ function ids2str($ids, $data, $map = array(), $delimiter = ',')
 	}
 	return trim($str, ',');
 }
+function attrs_filter($str)
+{
+	$str = trim($str);
+	$return = array();
+	$tmp = explode("\n", $str);
+	foreach ($tmp as $t){
+		list($k,$v) = explode("：", trim($t));
+		$return[trim($k)] = trim($v);
+	}
+	return $return;
+}

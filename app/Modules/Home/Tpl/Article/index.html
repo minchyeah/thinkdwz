@@ -2,14 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <include file="Public:header_meta" />
+<link href="css/colorbox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/colorbox.js"></script>
-<script>
+<script type="text/javascript">
 	$(document).ready(function(){
-     	$(".group1").colorbox({rel:'group1'});			
-		$("#click").click(function(){ 
-		$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-			return false;
-		});
+     	$(".wznr .wznrzw img").each(function(i, o){
+     		$(o).attr('rel', $(o).attr('src').replace('_600x480.','.'));
+     	}).colorbox({rel:'group1'});
 	});
 </script>
 </head>
@@ -33,7 +32,7 @@
       </div>
       <div class="wznrzw">{$article.content}</div>
     </div>
-    <div class="sxp"> <span>上一篇：<a href="#">没有了...</a></span><b>下一篇：<a href="#">且把山水唱大歌 侗族女歌师吴探花的大歌情缘</a></b> </div>
+    <div class="sxp"></div>
   </div>
   <div class="clr"></div>
 </div>

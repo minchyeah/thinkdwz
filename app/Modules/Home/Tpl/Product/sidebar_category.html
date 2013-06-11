@@ -1,0 +1,11 @@
+  <div class="cbl">
+    <dl>
+      <dt>分类</dt>
+      <volist name="sidebar_category" id="vo">
+      <dd class="cbbt">{$vo.cate_name}</dd>
+      <volist name="vo.subcates" id="svo">
+      <dd><a href="__APP__/products/cate-{$vo.id}-{$svo.id}-0.html" title="{$svo.cate_name}">»&nbsp;{$svo.cate_name}</a></dd>
+      </volist>
+      </volist>
+    </dl>
+  </div>

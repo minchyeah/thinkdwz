@@ -23,14 +23,16 @@ $config = array(
     'URL_404_REDIRECT'      =>  '', // 404 跳转页面 部署模式有效
 	'URL_ROUTER_ON'			=> true, // 开启路由
 	'URL_ROUTE_RULES' 		=> array( //定义路由规则
-			'products'               		=> 'Product/category',
-			'/^about$/'          				=> 'Article/category?pid=0&cate_id=2&page=0',
-			'/^news$/'          				=> 'Article/category?pid=0&cate_id=1&page=0',
-			'/^about\/cate-(\d+)-(\d+)-(\d+)/'          		=> 'Article/category?pid=:1&cate_id=:2&page=:3',
-			'/^news\/cate-(\d+)-(\d+)-(\d+)/'          			=> 'Article/category?pid=:1&cate_id=:2&page=:3',
-			'/^about\/(\d+)-(\d+)-(\d+)/'          				=> 'Article/index?pid=:1&cate_id=:2&id=:3',
-			'/^news\/(\d+)-(\d+)-(\d+)/'          				=> 'Article/index?pid=:1&cate_id=:2&id=:3',
-			'contact'          				=> array('Article/page','code=contact'),
+			'/^products$/'               			=> 'Product/category',
+			'/^products\/cate-(\d+)-(\d+)-(\d+)/'   => 'Product/category?pid=:1&cate_id=:2&page=:3',
+			'/^product\/(\d+)-(\d+)-(\d+)/'         => 'Product/index?cate_id=:1&id=:2',
+			'/^about$/'          					=> 'Article/category?pid=0&cate_id=2&page=0',
+			'/^news$/'          					=> 'Article/category?pid=0&cate_id=1&page=0',
+			'/^about\/cate-(\d+)-(\d+)-(\d+)/'      => 'Article/category?pid=:1&cate_id=:2&page=:3',
+			'/^news\/cate-(\d+)-(\d+)-(\d+)/'       => 'Article/category?pid=:1&cate_id=:2&page=:3',
+			'/^about\/(\d+)-(\d+)-(\d+)/'           => 'Article/index?pid=:1&cate_id=:2&id=:3',
+			'/^news\/(\d+)-(\d+)-(\d+)/'          	=> 'Article/index?pid=:1&cate_id=:2&id=:3',
+			'contact'          						=> array('Article/page','code=contact'),
 		),
 );
 
