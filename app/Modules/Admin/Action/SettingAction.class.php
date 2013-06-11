@@ -46,18 +46,10 @@ class SettingAction extends AdminAction
 	 * 更新配置项
 	 */
     public function save(){
-		$config['sitename'] = trim($_POST['sitename']);
-		$config['admin_email'] = trim($_POST['admin_email']);
-		$config['admin_qq'] = trim($_POST['admin_qq']);
-		$config['icp_info'] = trim($_POST['icp_info']);
-		$config['hot_keywords'] = trim($_POST['hot_keywords']);
-		$config['seo_keywords'] = trim($_POST['seo_keywords']);
-		$config['seo_description'] = trim($_POST['seo_description']);
-		$config['copyright'] = trim($_POST['copyright']);
-		$config['stat_code'] = trim($_POST['stat_code']);
-		$config['contact_phone'] = strval($_POST['contact_phone']);
-		$config['kefu_phone'] = strval($_POST['kefu_phone']);
-		$config['address'] = strval($_POST['address']);
+    	$config = array();
+    	foreach ($_POST as $k=>$v){
+    		$config[$k] = trim($v);
+    	}
 		$this->updateconfig($config);
 	}
 	/**

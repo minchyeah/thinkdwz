@@ -34,7 +34,7 @@
         <h1>招贤纳士</h1>
         <h2>当前位置：<a href="__APP__/">首页</a>><a href="rczp.html">招贤纳士</a></h2>
       </div>
-      <div class="dqwzx">在新兴经济体，卡特彼勒机械正被用来建设道路，机场，医院和排污系统，创造经济机会和提高生活水平。在发达经济体，卡特彼勒网络的经销商与顾客一起共同创新解决方案。</div>
+      <div class="dqwzx">{$jobs_description}</div>
     </div>
     <div id="rczpr">
       <ol id="jobsList">
@@ -58,10 +58,9 @@
     <div class="zxnslx">
         <dl>
           <dt>联系方式：</dt>
-          <dd><b>联系人：</b>陈小姐</dd>
-          <dd><b>联系电话：</b>0771-3219952</dd>
-          <dd><b>详细地址：</b>民族共和路口民族大道41号国贸中心A座28楼2812</dd>
-          <dd><b>投递邮箱：</b>rzp@163.com</dd>
+          <volist name="jobs_contact" id="vo">
+          <dd><b>{$key}：</b>{$vo}</dd>
+          </volist>
         </dl>
         <div class="clr"></div>
       </div>

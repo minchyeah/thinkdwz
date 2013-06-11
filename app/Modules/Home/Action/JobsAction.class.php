@@ -15,6 +15,8 @@ class JobsAction extends HomeAction
     		}
     	}
     	$this->assign('jobs', $jobs);
+    	$this->assign('jobs_description', $this->sysSetting['jobs_description']);
+    	$this->assign('jobs_contact', $this->_job_filter($this->sysSetting['jobs_contact']));
         $this->display();
     }
     

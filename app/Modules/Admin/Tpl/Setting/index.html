@@ -41,8 +41,16 @@
 			</form>
 		  </div>
 		  <div>
-		  	<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxMenu)">
+		  	<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxMenu)">
 			<div class="pageFormContent">
+				<div class="unit">
+					<label class="tar">招贤纳士栏目说明：</label>
+					<textarea name="jobs_description" style="height:50px;width:500px;">{$jobs_description}</textarea>
+				</div>
+				<div class="unit">
+					<label class="tar">招贤纳士联系方式：</label>
+					<textarea name="jobs_contact" style="height:100px;width:500px;">{$jobs_contact}</textarea>
+				</div>
 			</div>
 			<div class="formBar">
 				<ul>
