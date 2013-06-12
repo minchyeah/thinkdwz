@@ -26,54 +26,14 @@
     <div id="ISL_Cont">
       <div  class="ScrCont">
         <div id="List1" class="djsb">
+          <volist name="product" id="vo">
           <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp1.png" /><b></b></dt>
-            <dd>产品1</dd>
+            <a href="__APP__/{$vo.cate_id}-{$vo.id}-0{$vo.id}{$vo.cate_id}.html" target="_blank" title="{$vo.name}">
+            <dt><img src="{$vo.thumb|imgsrc=160,120}" /><b></b></dt>
+            <dd>{$vo.name}</dd>
             </a>
           </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp2.png" /><b></b></dt>
-            <dd>产品2</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp3.png" /><b></b></dt>
-            <dd>产品3</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp4.png" /><b></b></dt>
-            <dd>产品4</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp1.png" /><b></b></dt>
-            <dd>产品1</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp2.png" /><b></b></dt>
-            <dd>产品2</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp3.png" /><b></b></dt>
-            <dd>产品3</dd>
-            </a>
-          </dl>
-          <dl>
-            <a href="cpnr.html" target="_blank" title="当前标题">
-            <dt><img src="images/cp4.png" /><b></b></dt>
-            <dd>产品4</dd>
-            </a>
-          </dl>
+          </volist>
         </div>
         <div id="List2"></div>
       </div>
@@ -121,54 +81,20 @@ AutoPlay();
       <div class="sylb">
         <div class="sysgt hs">
           <h1>最新资讯</h1>
-          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+          <a href="__APP__/news/" target="_blank">了解详情 ▼</a> </div>
         <div class="sysgx">
+          <volist name="news" id="vo">
           <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
+            <dt>»<a href="__APP__/news/{$news_cate[$vo['cate_id']]}-{$vo.cate_id}-{$vo.id}.html" target="_blank">{$vo.title}</a></dt>
+            <dd>{$vo.create_time|date="Y/m/d",###}</dd>
           </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
-          <dl>
-            <dt>»<a href="wznr.html" target="_blank">JCB挖掘机荣获"中国工程机械年度产品50强"</a></dt>
-            <dd>2013/05/07</dd>
-          </dl>
+          </volist>
         </div>
       </div>
       <div class="lxwm">
         <div class="sysgt hs">
           <h1>联系我们</h1>
-          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+          <a href="__APP__/contact.html" target="_blank">了解详情 ▼</a> </div>
         <div class="sysgx">
           <dl>
             <dt><img src="images/dt.jpg" /></dt>
