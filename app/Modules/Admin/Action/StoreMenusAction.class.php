@@ -28,6 +28,7 @@ class StoreMenusAction extends AdminAction
     	$store = D('stores')->find($store_id);
     	$vo['store_id'] = $store['id'];
     	$vo['store_name'] = $store['name'];
+    	$vo['cates'] = explode(",", $store['menu_category']);
     	$this->assign('vo', $vo);
     	$this->display();
     }
@@ -37,8 +38,9 @@ class StoreMenusAction extends AdminAction
     	$id =  intval($_GET['id']);
     	$model = D('StoreMenus');
     	$vo = $model->find($id);
-    	$rs = D('Stores')->where(array('id'=>$vo['store_id']))->getField('name');
-    	$vo['store_name'] = $rs;
+    	$rs = D('Stores')->where(array('id'=>$vo['store_id']))->field('name,menu_category')->find();
+    	$vo['store_name'] = $rs['name'];
+    	$vo['cates'] = explode(",", $rs['menu_category']);
     	$this->assign('vo', $vo);
     	$this->display('add');
     }

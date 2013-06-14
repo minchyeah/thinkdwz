@@ -13,7 +13,18 @@
 			</dl>
 			<dl class="nowrap">
 				<dt>价格：</dt>
-				<dd><input class="required" type="text" size="30" name="price" value="{$vo.price}"/></dd>
+				<dd><input class="required" type="text" size="10" name="price" value="{$vo.price}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>菜单分类：</dt>
+				<dd>
+					<select name="category" style="width:100px;">
+						<option value="">请选择</option>
+						<volist name="vo.cates" id="svo">
+						<option value="{$svo}<eq name="vo.category" value="$svo">" selected="selected</eq>">{$svo}</option>
+						</volist>
+					</select>
+				</dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>菜谱照片：</dt>
