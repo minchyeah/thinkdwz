@@ -49,10 +49,13 @@ class ArticleAction extends HomeAction
     	$where['status'] = 1;
     	$where['cate_id'] = array('in', $cate_ids);
     	$article = D('Articles');
-    	$articles = $article->where($where)->getField('id,title,cate_id,create_time');
+    	$count = $article->where($where)->count();
+    	$page = $this->getPage($count, 10, __APP__.'/news/cate-'.$pid.'-'.$cate_id.'-__PAGE__.html');
+    	$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,create_time');
     	$this->assign('articles', $articles);
     	$this->assign('current_category', $current_category);
     	$this->assign('parent_category', $parent_category);
+    	$this->assign('page', $page->show());
     	$this->_sidebar_category($pid);
     	$this->display();
     }
