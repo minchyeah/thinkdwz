@@ -40,10 +40,13 @@ class ProductAction extends HomeAction
     		$where['cate_id'] = $cate_id;
     	}
     	$product = D('Products');
-    	$list = $product->where($where)->getField('id,product_name,thumb,cate_id,product_attrs,create_time');
+    	$count = $product->where($where)->count();
+    	$page = $this->getPage($count, 15, __APP__.'/products/cate-'.$pid.'-'.$cate_id.'-__PAGE__.html');
+    	$list = $product->where($where)->limit($page->firstRow,$page->listRows)->getField('id,product_name,thumb,cate_id,product_attrs,create_time');
     	$this->assign('list', $list);
     	$this->assign('cate_id', $cate_id);
     	$this->_sidebar_category();
+    	$this->assign('page', $page->show());
     	$this->display();
     }
 
