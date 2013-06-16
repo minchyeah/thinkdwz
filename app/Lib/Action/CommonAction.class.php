@@ -100,4 +100,12 @@ class CommonAction extends Action
 		}
 		return implode($delimiter, $arrs);
 	}
+	
+	protected function getPage($count, $perPage = 10, $url = '')
+	{
+    	import('Util.Page', LIB_PATH);
+		$page = new Page($count, $perPage, '', $url);
+		$page->setConfig('theme', '%first% %prePage% %linkPage% %nextPage% %end%');
+		return $page;
+	}
 }

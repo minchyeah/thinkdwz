@@ -34,6 +34,7 @@ $config = array(
 			'/^news\/(\d+)-(\d+)-(\d+)/'          	=> 'Article/index?pid=:1&cate_id=:2&id=:3',
 			'contact'          						=> array('Article/page','code=contact'),
 		),
+	'VAR_PAGE'				=> 'page', // 分页变量
 );
 
 $dbconfig = require ROOT_PATH.'/config.php';
