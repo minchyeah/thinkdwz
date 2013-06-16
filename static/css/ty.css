@@ -126,9 +126,9 @@
 .ScrCont dl dt img{
 	vertical-align:middle;
 	max-width:100px;
-	max-height:100px;
- _width:expression(this.width > 100 && this.width > this.height ?100: true);
- _height:expression(this.height > 100 ? 100 : true);
+	max-height:75px;
+	_width:expression(this.width > 100 && this.width > this.height ?100: true);
+	_height:expression(this.height > 75 ? 75 : true);
 }
 .ScrCont dl dd{
 	height:18px;
