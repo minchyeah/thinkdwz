@@ -2,11 +2,13 @@
 	<input type="hidden" name="pageNum" value="1" />
 </form>
 <div class="pageContent">
+  <if condition="$location_id">
   <div class="panelBar">
     <ul class="toolBar">
       <li><a class="add" href="__URL__/add/location_id/{$location_id}/tid/{$Think.request.tid}" target="navTab" rel="storeform"><span>新增</span></a></li>
     </ul>
   </div>
+  </if>
   <table class="list" width="100%" layoutH="53">
     <thead>
 	  <tr>
