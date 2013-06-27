@@ -44,7 +44,7 @@ class HomeAction extends CommonAction
 	{
 		$model = D('ProductCategory');
 		$where = array();
-		$where['pid'] = array('neq', 0);
+		$where['pid'] = array('eq', 0);
 		$cates = $model->where($where)->order('pid ASC,sort_order ASC')->getField('id,cate_name,pid');
 		$this->assign('header_products', $cates);
 	}

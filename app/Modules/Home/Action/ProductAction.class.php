@@ -15,6 +15,10 @@ class ProductAction extends HomeAction
     	$product['attrs'] = attrs_filter($product['product_attrs']);
     	$product['images'] = explode(',', $product['images']);
     	$this->assign('product', $product);
+    	$category = D('ProductCategory')->find($product['cate_id']);
+    	$this->assign('category', $category);
+    	$this->assign('current_category', $category);
+    	$this->assign('parent_category', D('ProductCategory')->find($category['pid']));
     	$this->_sidebar_category();
         $this->display();
     }
@@ -37,8 +41,15 @@ class ProductAction extends HomeAction
     	$where = array();
     	$where['status'] = 1;
     	if ($cate_id) {
-    		$where['cate_id'] = $cate_id;
+    		if(!$pid){
+    			$pids = $model->where(array('pid'=>$cate_id))->getField('cate_name,id');
+    			$where['cate_id'] = array('in', $pids);
+    		}else{
+    			$where['cate_id'] = $cate_id;
+    			$this->assign('parent_category', $model->find($pid));
+    		}
     	}
+    	$this->assign('current_category', $model->find($cate_id));
     	$product = D('Products');
     	$count = $product->where($where)->count();
     	$page = $this->getPage($count, 15, __APP__.'/products/cate-'.$pid.'-'.$cate_id.'-__PAGE__.html');

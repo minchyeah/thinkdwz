@@ -11,10 +11,10 @@
   <div class="nry">
     <div class="dqwz">
       <div class="dqwzs">
-        <h1>产品与技术</h1>
-        <h2>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/products/">产品与技术</a></h2>
+        <h1>{$current_category.cate_name|default="产品与技术"}</h1>
+        <h2>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/products/">产品与技术</a><if condition="$parent_category">><a href="__APP__/products/cate-{$parent_category.pid}-{$parent_category.id}-0.html">{$parent_category.cate_name}</a></if><if condition="$current_category">><a href="__APP__/products/cate-{$current_category.pid}-{$current_category.id}-0.html">{$current_category.cate_name}</a></if></h2>
       </div>
-      <div class="dqwzx">在新兴经济体，卡特彼勒机械正被用来建设道路，机场，医院和排污系统，创造经济机会和提高生活水平。在发达经济体，卡特彼勒网络的经销商与顾客一起共同创新解决方案。</div>
+      <div class="dqwzx">{$current_category.description|default="在新兴经济体，卡特彼勒机械正被用来建设道路，机场，医院和排污系统，创造经济机会和提高生活水平。在发达经济体，卡特彼勒网络的经销商与顾客一起共同创新解决方案。"}</div>
     </div>
     <div class="cplb">
       <volist name="list" id="vo">
