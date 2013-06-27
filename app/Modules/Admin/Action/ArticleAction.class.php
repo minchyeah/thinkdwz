@@ -75,6 +75,13 @@ class ArticleAction extends AdminAction
     {
     	$model = D('Articles');
     	$data = $model->create();
+    	preg_match("/<embed\s+[^>]+\/>/", $data['content'], $video);
+    	if ($video[0]) {
+    		preg_match("/src=\"([^\"]+)\"/", $video[0], $videourl);
+    		if($videourl[1]){
+    			$data['video'] = $videourl[1];
+    		}
+    	}
     	if(!$data){
     		$this->error($model->getError());
     	}
@@ -83,7 +90,7 @@ class ArticleAction extends AdminAction
     		$data['user_id'] = intval(session('admin_id'));
     		$rs = $model->add($data);
     	}else{
-    		$rs = $model->save();
+    		$rs = $model->save($data);
     	}
     	if(false !== $rs){
     		$this->success('保存成功！');
