@@ -779,3 +779,21 @@
 	overflow:hidden;
 	text-align: center;
 }
+/*视频专用*/
+.nysp{
+	text-align:center;
+	margin-bottom:10px;
+}
+.nyspk{
+	background:url(../image/syspx.jpg) center bottom no-repeat;
+	padding-bottom:12px;
+	display:inline-block;
+	*display:inline;
+}
+.nyspem{
+	background:#d3cde4;
+	padding:4px;
+	display:inline-block;
+	*display:inline;
+	border:1px solid #c4bab1;
+}
