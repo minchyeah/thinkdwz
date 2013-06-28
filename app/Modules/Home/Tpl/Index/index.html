@@ -10,14 +10,14 @@
   <div id="slider">
     <div id="slider_name">
       <ul class="silder_con">
-        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-        <li class="silder_panel"> <a href="#" class="f_l" target="_blank"><img src="images/hdp1.jpg" alt="天涯海角，伴您同行！" /></a> </li>
+      	<volist name="sliders" id="vo">
+        <li class="silder_panel"> <a href="{$vo.target}" class="f_l" target="_blank"><img src="{$vo.image|imgsrc}" alt="{$vo.title}" /></a> </li>
+        </volist>
       </ul>
       <ul class="silder_nav">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        <volist name="sliders" id="vo">
+        <li>{$i}</li>
+        </volist>
       </ul>
     </div>
   </div>
@@ -60,7 +60,7 @@ AutoPlay();
       <div class="spjs">
         <div class="sysgt hs">
           <h1>视频介绍</h1>
-          <a href="wzlb.html" target="_blank">了解详情 ▼</a> </div>
+          <a href="__APP__/video/" target="_blank">了解详情 ▼</a> </div>
         <div class="sysgx">
           <dl>
             <dt>
