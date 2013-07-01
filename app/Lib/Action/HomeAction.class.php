@@ -36,6 +36,8 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->_detect_city();
 		$this->cityBoxTree();
+		$this->links();
+		$this->latest_store();
 	}
 	
 	/**
@@ -45,7 +47,7 @@ class HomeAction extends CommonAction
 	{
 		$this->cities = F('cities');
 		$model = D('District');
-		if($this->cities){
+		if(!$this->cities){
 			$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
 			F('cities', $this->cities);
 		}
@@ -103,8 +105,27 @@ class HomeAction extends CommonAction
 		$this->assign('cityboxTree', $tree->leaf());
 	}
 	
-	protected function friendlink()
+	/**
+	 * 友情链接和商务合作链接
+	 */
+	protected function links()
 	{
-		
+		$model = D('Links');
+		$friendlinks = $model->where(array('category'=>'friendlink'))->select();
+		$this->assign('friendlinks', $friendlinks);
+		$businesslinks = $model->where(array('category'=>'business'))->select();
+		$this->assign('businesslinks', $businesslinks);
+	}
+	
+	/**
+	 * 最新外卖店
+	 */
+	protected function latest_store()
+	{
+		$model = D('Stores');
+		$where = array();
+		$where['city_id'] = $this->city_id;
+		$latest_stores = $model->where($where)->order('id DESC')->select();
+		$this->assign('latest_stores', $latest_stores);
 	}
 }
