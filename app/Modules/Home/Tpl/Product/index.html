@@ -52,8 +52,12 @@
           <volist name="product.attrs" id="vo">
           <li><b>{$key}:</b><span>{$vo}</span></li>
           </volist>
-          <li><b>产品说明:</b><span>{$product.description}</span></li>
         </ul>
+        <dl>
+          <dt>产品说明:</dt>
+          <dd>{$product.description}</dd>
+        </dl>
+        <div class="clr"></div>
         <h5>详情</h5>
         <div class="spxqx">{$product.detail}</div>
       </div>

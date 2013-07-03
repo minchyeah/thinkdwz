@@ -715,6 +715,9 @@
 	padding-left:50px;
 	display:block;
 	overflow:hidden;
+	float:left;
+	width:42%;
+	margin-right:3%;
 }
 .cpnrn ul li {
 	display:block;
@@ -724,6 +727,24 @@
 }
 .cpnrn ul li b {
 	padding-right:8px;
+}
+.cpnrn dl{
+	float:left;
+	width:40%;
+	background:#e7e7e7;
+	padding:8px 12px;
+	margin-top:-22px;
+}
+.cpnrn dl dt{
+	font-weight: bolder;
+	padding-bottom:3px;
+	border-bottom:1px solid #ccc;
+}
+.cpnrn dl dd{
+	border-top:1px solid #f7f7f7;
+	line-height:16px;
+	color:#7E7E7E;
+	padding:3px;
 }
 .cpnrn h5 {
 	height:24px;
