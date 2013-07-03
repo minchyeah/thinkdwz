@@ -103,7 +103,7 @@ class ArticleAction extends HomeAction
     	}else{
     		$where = array();
     		$where['statue'] = 1;
-    		$where['cate_id'] = 2;
+    		$where['cate_id'] = 5;
     		$count = $model->where($where)->count();
     		$page = $this->getPage($count, 10, __APP__.'/video/page,__PAGE__.html');
     		$articles = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,create_time');
@@ -112,7 +112,7 @@ class ArticleAction extends HomeAction
     	}
     	$where = array();
     	$where['statue'] = 1;
-    	$where['cate_id'] = 2;
+    	$where['cate_id'] = 5;
     	$sidebar_list = $model->where($where)->order('id DESC')->limit(5)->getField('id,title,cate_id,create_time');
     	$this->assign('sidebar_list', $sidebar_list);
     	$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
