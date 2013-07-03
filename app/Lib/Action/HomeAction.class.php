@@ -9,11 +9,30 @@ class HomeAction extends CommonAction
 	{
 		parent::_initialize();
 		$this->assign('sys_setting', $this->sysSetting);
-		$this->initHeader();
+		$this->initHeaderAbout();
+		$this->initHeaderNews();
 		$this->initHeaderProduct();
 	}
 	
-	protected function initHeader()
+	protected function initHeaderAbout()
+	{
+		$aModel = D('Articles');
+		$where = array();
+		$where['statue'] = 1;
+		$where['cate_id'] = 2;
+		$rs = $aModel->where($where)->getField('id,title,cate_id,create_time');
+		$about = array();
+		if (is_array($rs)) {
+			foreach ($rs as $v){
+				$v['catalog'] = 'about';
+				$about[] = $v;
+			}
+		}
+		//dump($about);
+		$this->assign('header_about', $about);
+	}
+	
+	protected function initHeaderNews()
 	{
 		$aModel = D('ArticleCategory');
 		$cates = $aModel->order('pid ASC,sort_order ASC')->getField('id,cate_name,catalog,pid,sort_order');
@@ -36,7 +55,6 @@ class HomeAction extends CommonAction
 				}
 			}
 		}
-		$this->assign('header_about', $about['subs']);
 		$this->assign('header_news', $news['subs']);
 	}
 	

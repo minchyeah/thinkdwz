@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="jz">
+  <div class="cbl">
+    <dl>
+      <dt>最新视频</dt>
+      <volist name="sidebar_list" id="vo">
+      <dd><a href="__APP__/video/play,{$vo.id}.html" title="{$vo.title}">»&nbsp;{$vo.title}</a></dd>
+      </volist>
+    </dl>
+  </div>
+  <if condition="$id && $article">
+  <div class="nry">
+    <div class="dqwz">
+      <div class="dqwzs">
+        <h1>{$article.title}</h1>
+        <h2>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/video/">视频介绍</a>><a href="">{$article.title}</a></h2>
+      </div>
+      <div class="dqwzx">{$current_category.description}</div>
+    </div>
+    <div class="wznr">
+      <div class="wznrt">
+        <h1>{$article.title}</h1>
+      </div>
+      <div class="wznrzw">{$article.content}</div>
+    </div>
+    <div class="sxp"></div>
+  </div>
+  <else />
+  <div class="nry">
+    <div class="dqwz">
+      <div class="dqwzs">
+        <h1>视频介绍</h1>
+        <h2>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/video/">视频介绍</a></h2>
+      </div>
+      <div class="dqwzx">{$current_category.description}</div>
+    </div>
+    <div class="wzlb">
+      <volist name="articles" id="vo">
+      <dl>
+        <dt>»<a href="__APP__/video/play,{$vo.id}.html" title="{$vo.title}">{$vo.title}</a></dt>
+        <dd>{$vo.create_time|date="Y/m/d",###}</dd>
+      </dl>
+      </volist>
+      <div class="clr"></div>
+      <div class="sxy bs">{$page}</div>
+    </div>
+  </div>
+  </if>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:service" />
+</body>
+</html>

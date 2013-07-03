@@ -69,5 +69,54 @@ class ArticleAction extends HomeAction
     	$this->assign('page', $page);
     	$this->display();
     }
+    
+    public function about()
+    {
+    	$model = D('Articles');
+    	$id = intval($_REQUEST['id']);
+    	$where = array();
+    	$where['statue'] = 1;
+    	$where['cate_id'] = 2;
+    	$sidebar_list = $model->where($where)->getField('id,title,cate_id,create_time');
+    	if(!$id && is_array($sidebar_list)){
+    		$tmp = array_shift($sidebar_list);
+    		$id = $tmp['id'];
+    		array_unshift($sidebar_list, $tmp);
+    	}
+    	if(!$id){
+    		$this->error('请先发布关于我们的文章');
+    	}
+    	$article = $model->find($id);
+    	$this->assign('article', $article);
+    	$this->assign('sidebar_list', $sidebar_list);
+    	$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
+    	$this->display();
+    }
+    
+    public function video()
+    {
+    	$model = D('Articles');
+    	$id = intval($_REQUEST['id']);
+    	if($id){
+    		$article = $model->find($id);
+    		$this->assign('article', $article);
+    	}else{
+    		$where = array();
+    		$where['statue'] = 1;
+    		$where['cate_id'] = 2;
+    		$count = $model->where($where)->count();
+    		$page = $this->getPage($count, 10, __APP__.'/video/page,__PAGE__.html');
+    		$articles = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,create_time');
+    		$this->assign('articles', $articles);
+    		$this->assign('page', $page->show());
+    	}
+    	$where = array();
+    	$where['statue'] = 1;
+    	$where['cate_id'] = 2;
+    	$sidebar_list = $model->where($where)->order('id DESC')->limit(5)->getField('id,title,cate_id,create_time');
+    	$this->assign('sidebar_list', $sidebar_list);
+    	$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
+    	$this->display();
+    }
 }
 ?>

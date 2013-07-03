@@ -115,8 +115,9 @@ class ArticleAction extends AdminAction
     	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a href="javascript:;" onclick="return false" data-id="0" data-pic="0"><span class="cate_title">栏目管理</span><span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a></li>' : '<ul>';
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
-    		$delable = $havesub ? 'disable' : 'delete_cate';
+    		$delable = 'disable';
     		$addable = $v['pid']||$v['final'] ? 'disable' : 'add_cate';
+    		empty($v['subcates']) && $v['deletable'] && $delable = 'delete_cate';
     		$html .= '<li><a href="javascript:;" onclick="return false;" data-id="'.$v['id'].'" data-pid="'.$v['pid'].'"><span class="cate_title">'.$v['cate_name'].'</span>';
     		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act '.$addable.'">添加子栏目</span></a>';
     		if($havesub){

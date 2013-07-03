@@ -63,18 +63,20 @@ AutoPlay();
           <a href="__APP__/video/" target="_blank">了解详情 ▼</a> </div>
         <div class="sysgx">
           <dl>
+          	<php>
+          	$first_video = array_unshift($videolist);
+          	</php>
+          	<if condition="$first['video']">
             <dt>
-              <embed src="http://player.youku.com/player.php/sid/XNTUzOTQ2OTMy/v.swf" allowFullScreen="true" quality="high" width="230" height="175" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+              <embed src="{$first.video}" allowFullScreen="true" quality="high" width="230" height="175" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
             </dt>
+            </if>
+            <volist name="videolist" id="vo">
             <dd>
-              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
-              <span>23'25'</span></dd>
-            <dd>
-              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
-              <span>23'25'</span></dd>
-            <dd>
-              <h2><a href="wznr.html" target="_blank">JCB 65周年宣传片</a></h2>
-              <span>23'25'</span></dd>
+              <h2><a href="__APP__/video/{$vo.id}.html" target="_blank">{$vo.title}</a></h2>
+              <span>{$vo.time_length}</span>
+            </dd>
+            </volist>
           </dl>
         </div>
       </div>
