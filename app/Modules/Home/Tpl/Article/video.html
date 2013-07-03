@@ -2,6 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <include file="Public:header_meta" />
+<link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/colorbox.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+     	$(".wznr .wznrzw img").each(function(i, o){
+     		$(o).attr('rel', $(o).attr('src').replace('_600x480.','.'));
+     	}).colorbox({rel:'group1'});
+     	$("embed").wrap('<div class="nysp">').wrap('<div class="nyspk">').wrap('<div class="nyspem">');
+	});
+</script>
 </head>
 
 <body>
@@ -15,7 +25,7 @@
       </volist>
     </dl>
   </div>
-  <if condition="$id && $article">
+  <if condition="$article">
   <div class="nry">
     <div class="dqwz">
       <div class="dqwzs">

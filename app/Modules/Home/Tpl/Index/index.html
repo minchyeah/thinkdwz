@@ -64,16 +64,16 @@ AutoPlay();
         <div class="sysgx">
           <dl>
           	<php>
-          	$first_video = array_unshift($videolist);
+          	$first_video = array_shift($videolist);
           	</php>
-          	<if condition="$first['video']">
+          	<if condition="$first_video['video']">
             <dt>
-              <embed src="{$first.video}" allowFullScreen="true" quality="high" width="230" height="175" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+              <embed src="{$first_video.video}" allowFullScreen="true" quality="high" width="230" height="175" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
             </dt>
             </if>
             <volist name="videolist" id="vo">
             <dd>
-              <h2><a href="__APP__/video/{$vo.id}.html" target="_blank">{$vo.title}</a></h2>
+              <h2><a href="__APP__/video/play,{$vo.id}.html" target="_blank">{$vo.title}</a></h2>
               <span>{$vo.time_length}</span>
             </dd>
             </volist>

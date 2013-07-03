@@ -7,6 +7,7 @@ class IndexAction extends HomeAction
     	$this->_index_slider();
     	$this->_index_product();
     	$this->_index_news();
+    	$this->_index_video();
         $this->display('Index:index');
     }
     
@@ -42,9 +43,9 @@ class IndexAction extends HomeAction
     	$model = D('Articles');
     	$where = array();
     	$where['status'] = 1;
-    	$where['isvideo'] = 1;
+    	$where['cate_id'] = 5;
     	$videos = $model->where($where)->order('id DESC')->limit(10)->getField('id,title,cate_id,video');
-    	$this->assign('videos', $videos);
+    	$this->assign('videolist', $videos);
     }
 }
 ?>
