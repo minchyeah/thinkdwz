@@ -115,7 +115,7 @@ class ArticleAction extends HomeAction
     	$where['cate_id'] = 5;
     	$sidebar_list = $model->where($where)->order('id DESC')->limit(5)->getField('id,title,cate_id,create_time');
     	$this->assign('sidebar_list', $sidebar_list);
-    	$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
+    	$this->assign('current_category', D('ArticleCategory')->find(5));
     	$this->display();
     }
 }
