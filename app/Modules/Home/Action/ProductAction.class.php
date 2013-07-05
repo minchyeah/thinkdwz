@@ -19,27 +19,38 @@ class ProductAction extends HomeAction
     	$this->assign('category', $category);
     	$this->assign('current_category', $category);
     	$this->assign('parent_category', D('ProductCategory')->find($category['pid']));
-    	$this->_related_products($product['related_products']);
+    	$this->_related_products($product);
     	$this->_sidebar_category();
         $this->display();
     }
     
-    private function _related_products($ids)
+    private function _related_products($product)
     {
-    	$idarr = explode(',', str_replace('，', ',', $ids));
+    	$ids = trim(str_replace('，', ',', $product['related_products']));
+    	$idarr = explode(',', $ids);
+    	dump($idarr);
     	$model = D('Products');
     	$where = array();
-    	$where['id'] = array('in', $idarr);
+    	if(is_numeric($idarr[0])){
+    		$where['id'] = array('in', $idarr);
+    		$where['id'] = array('neq', $product['id']);
+    	}else{
+    		$where['cate_id'] = $product['cate_id'];
+    		$where['id'] = array('neq', $product['id']);
+    		$model->limit(4);
+    	}
     	$where['status'] = 1;
-    	$rs = $model->where($where)->limit(4)->getField('id,product_name name,thumb,cate_id');
+    	$rs = $model->where($where)->getField('id,product_name name,thumb,cate_id');
     	$products = array();
     	$idarr = array_flip($idarr);
-    	if (is_array($rs)) {
+    	if (is_numeric($idarr[0]) && is_array($rs)) {
     		foreach ($rs as $k=>$v){
     			$products[$idarr[$k]] = $v;
     		}
+    		ksort($products);
+    	}else{
+    		$products = $rs;
     	}
-    	ksort($products);
     	$this->assign('related_products', $products);
     }
     
