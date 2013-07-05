@@ -34,6 +34,7 @@ class IndexAction extends HomeAction
     	$model = D('Articles');
     	$where = array();
     	$where['status'] = 1;
+    	$where['cate_id'] = array('not in', array(2,5));
     	$news = $model->where($where)->order('id DESC')->limit(10)->getField('id,title,cate_id,create_time');
     	$this->assign('news', $news);
     	$this->assign('news_cate', D('ArticleCategory')->getField('id,pid'));
