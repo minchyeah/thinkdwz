@@ -19,13 +19,10 @@
 <div class="jz">
   <div class="cbl">
     <dl>
-      <dt>分类</dt>
-      <dd class="xz"><a href="cplb.html" title="当前标题">»&nbsp;零件</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;保养和支持</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;设备管理解决方案</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;租赁</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;操作员培训</a></dd>
-      <dd><a href="cplb.html" title="当前标题">»&nbsp;融资</a></dd>
+      <dt>关于我们</dt>
+      <volist name="sidebar_list" id="vo">
+      <dd><a href="__APP__/about/{$vo.id}-{$vo.cate_id}-0.html" title="{$vo.cate_name}">»&nbsp;{$vo.title}</a></dd>
+      </volist>
     </dl>
   </div>
   <div class="nry">
