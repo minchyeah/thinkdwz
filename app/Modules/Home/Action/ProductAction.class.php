@@ -19,8 +19,28 @@ class ProductAction extends HomeAction
     	$this->assign('category', $category);
     	$this->assign('current_category', $category);
     	$this->assign('parent_category', D('ProductCategory')->find($category['pid']));
+    	$this->_related_products($product['related_products']);
     	$this->_sidebar_category();
         $this->display();
+    }
+    
+    private function _related_products($ids)
+    {
+    	$idarr = explode(',', str_replace('，', ',', $ids));
+    	$model = D('Products');
+    	$where = array();
+    	$where['id'] = array('in', $idarr);
+    	$where['status'] = 1;
+    	$rs = $model->where($where)->limit(4)->getField('id,product_name name,thumb,cate_id');
+    	$products = array();
+    	$idarr = array_flip($idarr);
+    	if (is_array($rs)) {
+    		foreach ($rs as $k=>$v){
+    			$products[$idarr[$k]] = $v;
+    		}
+    	}
+    	ksort($products);
+    	$this->assign('related_products', $products);
     }
     
     private function _sidebar_category()

@@ -38,6 +38,10 @@
 	  <textarea name="product_attrs" class="required" style="width:480px;">{$vo.product_attrs}</textarea>
 	</div>
 	<div class="unit">
+	  <label>相关产品推荐：</label>
+	  <input type="text" class="required" name="related_products" value="{$vo.related_products}" size="50"/>相关产品ID逗号分隔,只显示前4个,如： 23,12,36,50
+	</div>
+	<div class="unit">
 	  <label>产品详情：</label>
 	  <textarea class="editor" name="detail" style="height:200px;width:800px" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.detail}</textarea>
 	</div>

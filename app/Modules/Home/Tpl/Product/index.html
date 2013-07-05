@@ -61,27 +61,20 @@
         <h5>详情</h5>
         <div class="spxqx">{$product.detail}</div>
       </div>
+      <if condition="count($related_products)">
       <div class="wntj">
         <h3>为您推荐：</h3>
         <div class="wntjx">
+          <volist name="related_products" id="vo">
           <dl>
-            <dt><a href="#"><img src="images/cp2.png" alt="当前标题" /></a><b></b></dt>
-            <dd><a href="#">产品2</a></dd>
+            <dt><a href="__APP__/product/{$vo.cate_id}-{$vo.id}-0{$vo.id}{$vo.cate_id}.html"><img src="{$vo.thumb|imgsrc=160,120}" alt="{$vo.name}" /></a><b></b></dt>
+            <dd><a href="__APP__/product/{$vo.cate_id}-{$vo.id}-0{$vo.id}{$vo.cate_id}.html">{$vo.name}</a></dd>
           </dl>
-          <dl>
-            <dt><a href="#"><img src="images/cp1.png" alt="当前标题" /></a><b></b></dt>
-            <dd><a href="#">产品2</a></dd>
-          </dl>
-          <dl>
-            <dt><a href="#"><img src="images/cp5.jpg" alt="当前标题" /></a><b></b></dt>
-            <dd><a href="#">产品2</a></dd>
-          </dl>
-          <dl>
-            <dt><a href="#"><img src="images/cp3.png" alt="当前标题" /></a><b></b></dt>
-            <dd><a href="#">产品2</a></dd>
-          </dl>
+          <php>if($i==4){break;}</php>
+          </volist>
         </div>
       </div>
+      </if>
     </div>
   </div>
   <div class="clr"></div>
