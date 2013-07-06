@@ -46,7 +46,9 @@ class CommonAction extends Action
 		strval($_REQUEST['charset']) && $config->charset = strval($_REQUEST['charset']);
 		$captcha = new Captcha($config);
 		$code = $captcha->rand_string();
-		session('_captcha_', md5(strtoupper($code)));
+		$sid = trim(strval($_REQUEST['sid']));
+		$sid = $sid ? $sid : '_captcha_';
+		session($sid, md5(strtoupper($code)));
 		$captcha->show();
 	}
 	
@@ -55,10 +57,11 @@ class CommonAction extends Action
 	 * @param string $captcha 验证码
 	 * @return boolean
 	 */
-	protected function checkCaptcha($captcha = '')
+	protected function checkCaptcha($captcha = '', $sid = '')
 	{
 		$captcha = $captcha ? $captcha : strval($_REQUEST['captcha']);
-		return md5(strtoupper($captcha)) == session('_captcha_');
+		$sid = $sid ? $sid : '_captcha_';
+		return md5(strtoupper($captcha)) == session($sid);
 	}
 
 	/**
