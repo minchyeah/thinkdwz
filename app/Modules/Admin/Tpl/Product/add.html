@@ -13,6 +13,11 @@
 	  </select>
 	</div>
 	<div class="unit">
+	  <label>形象图片：</label>
+	  <if condition="$vo.thumb"><label style="width:180px;"><img src="{$vo.thumb|imgsrc=160,120}"/></label></if>
+	  <input type="file" name="thumbfile" />
+	</div>
+	<div class="unit">
 	  <label>产品图片：</label>
 	  <a class="unit btn" href="{:U('Public/uploadform')}" target="dialog" rel="uploadform" width="420" height="220" mask="true">上传图片</a>
 	</div>

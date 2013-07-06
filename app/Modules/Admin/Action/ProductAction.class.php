@@ -76,7 +76,10 @@ class ProductAction extends AdminAction
     public function save()
     {
     	$model = D('Products');
-    	$_POST['thumb'] = $_POST['images'][0];
+    	$thumb = $this->saveImage($_FILES['thumbfile']);
+    	if($thumb){
+    		$_POST['thumb'] = $thumb;
+    	}
     	$_POST['images'] = implode(',', $_POST['images']);
     	$data = $model->create();
     	if(!$data){
