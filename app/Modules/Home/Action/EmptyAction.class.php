@@ -20,9 +20,6 @@ class EmptyAction extends HomeAction
     			case 3:
     				$this->location($_REQUEST['_URL_'][1],$_REQUEST['_URL_'][2]);
     				break;
-    			case 4:
-    				$this->store($_REQUEST['_URL_'][3]);
-    				break;
     			default:
     		}
     	}elseif ('healthy' == strtolower(MODULE_NAME)){
@@ -35,8 +32,10 @@ class EmptyAction extends HomeAction
     			$_GET['id'] = intval($name);
     			A('Article')->index();
     		}
-    	}else{
-    		
+    	}elseif ('search' == strtolower(MODULE_NAME)){
+    		A('Index')->search();
+    	}else {
+    		$this->notfound();
     	}
     }
     
@@ -66,15 +65,6 @@ class EmptyAction extends HomeAction
     private function location($district, $location)
     {
     	A('Index')->location($district, $location);
-    }
-    
-    /**
-     * 店铺页面
-     * @param int $id
-     */
-    private function store($id)
-    {
-    	A('Index')->store($id);
     }
 
 }

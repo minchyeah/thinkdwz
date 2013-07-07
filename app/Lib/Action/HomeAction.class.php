@@ -40,6 +40,8 @@ class HomeAction extends CommonAction
 		$this->user_id = session('user_id');
 		$this->username = session('username');
 		$this->_detect_city();
+		$this->_detect_district();
+		$this->_detect_locations();
 		$this->cityBoxTree();
 	}
 	
@@ -84,6 +86,34 @@ class HomeAction extends CommonAction
 		cookie('city_alias', $this->city_alias);
 		$this->districts = $model->where("`pid`={$this->city_id} AND `type` IN ('region','custom') AND `status`=1")->order('sort_order ASC')->getField('alias,id,title,type');
 		$this->assign('city', $this->city);
+	}
+	
+	private function _detect_district()
+	{
+		if(!F('district')){
+			$model = D('District');
+			$rs = $model->where("`status`=1 AND `type` IN ('custom','region')")->getField('id,alias,title');
+			F('district', $rs);
+		}
+		if(!F('district_alias')){
+			$model = D('District');
+			$rs = $model->where("`status`=1 AND `type` IN ('custom','region')")->getField('alias,id,title');
+			F('district_alias', $rs);
+		}
+	}
+	
+	private function _detect_locations()
+	{
+		if(!F('locations')){
+			$model = D('Locations');
+			$rs = $model->getField('id,alias,title');
+			F('locations', $rs);
+		}
+		if(!F('location_alias')){
+			$model = D('Locations');
+			$rs = $model->getField('alias,id,title');
+			F('location_alias', $rs);
+		}
 	}
 
 	/**
