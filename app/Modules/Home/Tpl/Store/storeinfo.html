@@ -3,7 +3,7 @@
           <h1>{$store.name}</h1>
           <h3>★★★★★</h3>
           <h4>★★★</h4>
-          <h2>联系电话：<span>点击查看</span><img src="images/dh.gif" /></h2>
+          <h2>联系电话：<span onclick="$('img#telphone').attr('src', '__APP__/store/telphone/?id={$store.id}').show();$(this).remove();">点击查看</span><img id="telphone" style="display:none;" src="images/dh.gif" /></h2>
         </div>
         <div class="dmytt hs">
           <div class="dmytts"><b></b><span><img src="{$store.image|imgsrc=200,150}" /></span><b class="dmyttsr"></b></div>
@@ -15,7 +15,7 @@
           <dt>送餐区域：</dt>
           <dd>
           <volist name="locations"  id="vo">
-          <a href="__APP__//{$vo.alias}.html" target="_blank">{$vo.title}</a>
+          <a href="__APP__/{$store.city_alias}/{$vo['district']|getDistrict}/{$vo.alias}.html" target="_blank">{$vo.title}</a>
           </volist>
         </dl>
         <dl>
@@ -34,10 +34,12 @@
           <dt>起送价格：</dt>
           <dd>{$store.sendup_prices}</dd>
         </dl>
+        <if condition="$store['site_url'] && $store['site_name']">
         <dl>
           <dt>进入官网：</dt>
           <dd><a href="{$store.site_url}" target="_blank">{$store.site_name}</a></dd>
         </dl>
+        </if>
         <dl>
           <dt>备注信息：</dt>
           <dd>{$store.remark}</dd>

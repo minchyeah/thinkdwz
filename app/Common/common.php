@@ -36,6 +36,13 @@ function imgsrc($file, $width = '', $height = '')
 	return empty($imgfile) ? __ROOT__.'/static/images/noimg.jpg' : $imgfile;
 }
 
+function getDistrict($idstr)
+{
+	$ids = explode(',', $idstr);
+	$disarr = F('district');
+	return $disarr[$ids[0]]['alias'];
+}
+
 function ids2str($ids, $data, $map = array(), $delimiter = ',')
 {
 	if (is_string($ids)) {

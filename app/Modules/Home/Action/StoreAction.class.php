@@ -27,7 +27,9 @@ class StoreAction extends HomeAction
 			}
 		}
 		ksort($menus);
+		$store['city_alias'] = $this->city_alias;
 		$this->assign('store', $store);
+		$this->assign('district', F('district'));
 		$this->assign('menus', $menus);
 		$this->assign('locations', $locations);
 		$this->display('Store:index');
@@ -66,10 +68,19 @@ class StoreAction extends HomeAction
 		$comments = $cModel->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->select();
 		$this->assign('comments', $comments);
 		$this->assign('page', $page->show());
-		
+		$store['city_alias'] = $this->city_alias;
 		$this->assign('store', $store);
 		$this->assign('locations', $locations);
 		$this->display();
+	}
+	
+	public function telphone()
+	{
+		$id = intval($_GET['id']);
+		$model = D('Stores');
+		$store = $model->find($id);
+		import('ORG.Util.Image');
+		Image::buildString($store['telphone'], array(255,0,0), '', 'png', 0, false);
 	}
 }
 ?>
