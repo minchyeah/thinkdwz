@@ -23,9 +23,10 @@ class ArticleAction extends AdminAction
     
     private function buildCateTree($tree, $root = false)
     {
-    	$html = $root ? '<ul class="tree">' : '<ul>';
+    	$html = $root ? '<ul class="tree expand">' : '<ul>';
     	foreach ($tree as $k=>$v){
-    		$html .= '<li><a href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox">'.$v['cate_name'].'</a>';
+    		$aAttr = !$v['final'] ? '' : ' href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox"';
+    		$html .= '<li><a'.$aAttr.'>'.$v['cate_name'].'</a>';
     		if(!empty($v['subcates'])){
     			$html .= $this->buildCateTree($v['subcates']);
     		}
@@ -82,7 +83,7 @@ class ArticleAction extends AdminAction
     		$data['user_id'] = intval(session('admin_id'));
     		$rs = $model->add($data);
     	}else{
-    		$rs = $model->save();
+    		$rs = $model->save($data);
     	}
     	if(false !== $rs){
     		$this->success('保存成功！');
@@ -95,7 +96,7 @@ class ArticleAction extends AdminAction
     {
     	import('ORG.Util.Tree');
     	$model = D('ArticleCategory');
-    	$cates = $model->order('pid ASC')->select();
+    	$cates = $model->order('pid ASC,sort_order ASC')->select();
     	$tree = new Tree($cates, array('id','pid','subcates'));
     	$category = $tree->leaf();
     	$this->assign('category', $this->buildCategoryTree($category, true));
@@ -107,9 +108,11 @@ class ArticleAction extends AdminAction
     	$html = $root ? '<ul id="categoryTree" class="tree expand"><li><a href="javascript:;" onclick="return false" data-id="0" data-pic="0"><span class="cate_title">栏目管理</span><span class="cate_act disable">删除</span><span class="cate_act">|</span><span class="cate_act disable">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a></li>' : '<ul>';
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
-    		$delable = $havesub ? 'disable' : 'delete_cate';
+    		$delable = 'disable';
+    		$addable = $v['pid']||$v['final'] ? 'disable' : 'add_cate';
+    		empty($v['subcates']) && $v['deletable'] && $delable = 'delete_cate';
     		$html .= '<li><a href="javascript:;" onclick="return false;" data-id="'.$v['id'].'" data-pid="'.$v['pid'].'"><span class="cate_title">'.$v['cate_name'].'</span>';
-    		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act add_cate">添加子栏目</span></a>';
+    		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act '.$addable.'">添加子栏目</span></a>';
     		if($havesub){
     			$html .= $this->buildCategoryTree($v['subcates']);
     		}
@@ -166,10 +169,13 @@ class ArticleAction extends AdminAction
     	if(!$data){
     		$this->error($model->getError());
     	}
+    	if($data['pid']){
+    		$data['final'] = 1;
+    	}
     	if (!$data['id']) {
-    		$rs = $model->add();
+    		$rs = $model->add($data);
     	}else{
-    		$rs = $model->save();
+    		$rs = $model->save($data);
     	}
     	if(false !== $rs){
     		$this->success('保存成功！');
@@ -183,11 +189,11 @@ class ArticleAction extends AdminAction
     	$id = intval($_REQUEST['id']);
     	if($id){
     		$model = D('ArticleCategory');
-    		if(!$model->where(array('pid'=>$id))->count()){
+    		if(!$model->where(array('pid'=>$id))->count() || !D('Articles')->where(array('cate_id'=>$id))->count()){
     			$rs = $model->where(array('id'=>$id))->delete();
     			false !== $rs && $this->success('删除成功');
     		}else{
-    			$this->error('该栏目下还有子栏目不可删除！');
+    			$this->error('该栏目下还有子栏目或文章不可删除！');
     		}
     	}
     	$this->error('操作失败');

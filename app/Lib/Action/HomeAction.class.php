@@ -41,8 +41,6 @@ class HomeAction extends CommonAction
 		$this->username = session('username');
 		$this->_detect_city();
 		$this->cityBoxTree();
-		$this->links();
-		$this->latest_store();
 	}
 	
 	protected function notfound($msg = '', $url = '')
@@ -136,7 +134,30 @@ class HomeAction extends CommonAction
 		$model = D('Stores');
 		$where = array();
 		$where['city_id'] = $this->city_id;
-		$latest_stores = $model->where($where)->order('id DESC')->select();
-		$this->assign('latest_stores', $latest_stores);
+		$latest_store = $model->where($where)->order('id DESC')->select();
+		$this->assign('latest_store', $latest_store);
+	}
+	
+	protected function hot_foods()
+	{
+		$model = D('StoreMenuView');
+		$where = array();
+		$where['city_id'] = $this->city_id;
+		$hot_foods = $model->where($where)->order('rand()')->select();
+		$this->assign('hot_foods', $hot_foods);
+	}
+	
+	/**
+	 * 健康饮食
+	 */
+	protected function sidebar_healthy()
+	{
+		$model = D('Articles');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['statue'] = 1;
+		$where['cate_id'] = 3;
+		$sidebar_healthy = $model->where($where)->getField('id,title,cate_id,create_time');
+		$this->assign('sidebar_healthy', $sidebar_healthy);
 	}
 }
