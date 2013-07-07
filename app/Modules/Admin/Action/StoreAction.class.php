@@ -62,6 +62,7 @@ class StoreAction extends AdminAction
 		$lModel = D('Locations');
 		$model->startTrans();
 		if (!$data['id']) {
+			$data['dateline'] = time();
 			$rs = $model->add($data);
 			$dids = explode(',', $data['locations']);
 			foreach ($dids as $v){
