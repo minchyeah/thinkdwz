@@ -9,434 +9,74 @@
 <div class="zbk">
   <div class="dmy">
     <div class="dmyl">
-      <div class="dmyt">
-        <div class="dmytm">
-          <h1>瑞香咖啡食府</h1>
-          <h3>★★★★★</h3>
-          <h4>★★★</h4>
-          <h2>联系电话：<span>点击查看</span><!--<img src="images/dh.gif" />--></h2>
-        </div>
-        <div class="dmytt hs">
-          <div class="dmytts"><b></b><span><img src="images/cpt1.jpg" /></span><b class="dmyttsr"></b></div>
-          <a href="pl" class="but">评论</a>|<a href="bc" class="but">报错</a> </div>
-        <div class="clr"></div>
-      </div>
-      <div class="dmyc">
-        <dl>
-          <dt>送餐区域：</dt>
-          <dd><a href="lby.html" target="_blank">上下九</a><a href="lby.html" target="_blank">双井</a><a href="lby.html" target="_blank">望京</a><a href="lby.html" target="_blank">国贸</a></dd>
-        </dl>
-        <dl>
-          <dt>送餐范围：</dt>
-          <dd>1公里内</dd>
-        </dl>
-        <dl>
-          <dt>商家地址：</dt>
-          <dd>朝阳区东三环中路39号建外SOHO 11号楼1113室朝阳区东三环中路朝阳区东三环中路朝阳区东三环中路朝阳区东三环中路朝阳区东三环中路</dd>
-        </dl>
-        <dl>
-          <dt>营业时间：</dt>
-          <dd>11:00-21:00</dd>
-        </dl>
-        <dl>
-          <dt>起送价格：</dt>
-          <dd>30元</dd>
-        </dl>
-        <dl>
-          <dt>进入官网：</dt>
-          <dd><a href="http://liluokj.com" target="_blank">www.liluokj.com</a></dd>
-        </dl>
-        <dl>
-          <dt>备注信息：</dt>
-          <dd>价格如有变动，以店方通知为准</dd>
-        </dl>
-        <div class="clr"></div>
-      </div>
+      <include file="storeinfo" />
       <div class="dmyx">
         <div id="dmycdt">
           <ul>
             <li>全部</li>
-            <li class="ztwdj">主食</li>
-            <li class="ztwdj">糖水</li>
+            <volist name="menus" id="vo">
+            <li class="ztwdj">{$key}</li>
+            </volist>
           </ul>
         </div>
         <div id="dmycdn">
           <ol>
-            <li class="dmycdnfl">全部</li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
+          <volist name="menus" id="vo">
+            <li class="dmycdnfl">{$key}</li>
+            <volist name="vo" id="svo">
+            <li class="menulist"><a href="javascript:;">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+              <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+                <dt>{$svo.name}</dt>
+                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
+                  <h4>{$svo.remark}</h4>
                   <div class="clr"></div>
                 </dd>
                 <dd class="dmycdtc"></dd>
               </dl>
-              </a> </li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li class="dmycdnfl">全部</li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
-                  <div class="clr"></div>
-                </dd>
-                <dd class="dmycdtc"></dd>
-              </dl>
-              </a> </li>
-            <li class="dmycdnfl">全部</li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
-                  <div class="clr"></div>
-                </dd>
-                <dd class="dmycdtc"></dd>
-              </dl>
-              </a> </li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <div class="clr"></div>
+              </a>
+            </li>
+            </volist>
+          </volist>
           </ol>
+          <volist name="menus" id="vo">
           <ol>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
+            <li class="dmycdnfl">{$key}</li>
+            <volist name="vo" id="svo">
+            <li class="menulist"><a href="javascript:;">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+              <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+                <dt>{$svo.name}</dt>
+                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
+                  <h4>{$svo.remark}</h4>
                   <div class="clr"></div>
                 </dd>
                 <dd class="dmycdtc"></dd>
               </dl>
-              </a> </li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
-                  <div class="clr"></div>
-                </dd>
-                <dd class="dmycdtc"></dd>
-              </dl>
-              </a> </li>
+              </a>
+            </li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
-                  <div class="clr"></div>
-                </dd>
-                <dd class="dmycdtc"></dd>
-              </dl>
-              </a> </li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              </a></li>
-            <li><a href="###">
-              <h3><span>土豆沙拉+蔬菜蛋卷</span><b>￥36.00</b><i>选择</i></h3>
-              <dl>
-                <dt>土豆沙拉+蔬菜蛋卷</dt>
-                <dd> <span><img src="images/cpt2.jpg" class="group1" rel="images/cpt2.jpg" title="偶也" /><b></b></span>
-                  <h4>土豆沙拉+蔬菜蛋 卷+金枪鱼寿司+日 式小菜+五谷杂粮饭 +饮料（汤品）</h4>
-                  <div class="clr"></div>
-                </dd>
-                <dd class="dmycdtc"></dd>
-              </dl>
-              </a> </li>
-          </ol>
+          </volist>
         </div>
       </div>
     </div>
     <div class="dmyr">
       <div class="jsq">
         <h2>菜单</h2>
-        <div class="jsqn"> 
-          <!--<h6>请点击左侧菜品，我会帮你记下来 ：D</h6>-->
-          <dl>
-            <dt>极品卤肉饭</dt>
-            <dd><b></b>1份<b class="jsqj"></b></dd>
-            <dd class="jsqjg">￥30<b></b></dd>
-          </dl>
-          <dl>
-            <dt>虾仁黄金炒饭</dt>
-            <dd><b></b>10份<b class="jsqj"></b></dd>
-            <dd class="jsqjg">￥20<b></b></dd>
-          </dl>
-          <h4>合计：<b>￥180.00</b></h4>
+        <div class="jsqn" id="MyMenus" data-empty="<h6>请点击左侧菜品，我会帮你记下来 ：D</h6>"> 
+          <h6>请点击左侧菜品，我会帮你记下来 ：D</h6>
         </div>
-        <h3 class="hs">需订餐请拨打左侧外卖电话<a href="javascript:void(0)">清空菜单</a></h3>
+        <h3 class="hs">需订餐请拨打左侧外卖电话<a href="javascript:void(0);" id="ClearMyMenus">清空菜单</a></h3>
       </div>
       <div class="dmyrxts">小提示：<br />
         1. 订餐请拨打外卖电话<br />
         2. 不要饿到自己！订餐建议提早40分钟<br />
         3. 您可以使用小条，保存订餐记录至我的主页<br />
         4. 2013价格变动频繁，如信息不符请告诉我们<br />
-        5. 订餐时，不妨说是在外卖库上看到的 </div>
-      <div class="zxpj">
-        <h2>最新评价<a href="dmypj.html">更多>></a></h2>
-        <div class="dmycpk zxpjn">
-          <dl>
-            <dt><b>罗 生</b>2013-02-24<span>★★★★</span></dt>
-            <dd>还OK，我在双子座大厦点的， 送的还算快。</dd>
-          </dl>
-          <dl>
-            <dt><b>罗 生</b>2013-02-24<span>★★★★</span></dt>
-            <dd>还OK，我在双子座大厦点的， 送的还算快。</dd>
-          </dl>
-          <dl>
-            <dt><b>罗 生</b>2013-02-24<span>★★★★</span></dt>
-            <dd>还OK，我在双子座大厦点的， 送的还算快。</dd>
-          </dl>
-          <h3 class="bs"><a href="pl" class="but">我也评价</a></h3>
-        </div>
+        5. 订餐时，不妨说是在外卖网上看到的 
       </div>
+      <include file="sidebar_comment" />
       <div class="zxpj">
         <h2>猜你感兴趣的店面</h2>
         <div class="dmycpk cngxq"> <a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a><a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a><a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a> </div>
@@ -445,6 +85,68 @@
     <div class="clr"></div>
   </div>
 </div>
+<script type="text/javascript">
+$(function(){
+	$("li.menulist a").mouseover(function(){
+		$("dl", this).show();
+	}).mouseout(function(){
+		$("dl", this).hide();
+	});
+	$("li.menulist a h3").click(function(){
+		var data = $(this).next("dl").data();
+		var me = $("dl#menu_"+data.id, "#MyMenus");
+		if(me.length){
+			MenuInc(data.id, data.price)
+			return false;
+		}
+		var dl = '<dl id="menu_'+data.id+'">'
+			  +'<dt>'+data.name+'</dt>'
+			  +'<dd><b onclick="MenuDesc('+data.id+','+data.price+')"></b><span class="count">1</span>份<b class="jsqj" onclick="MenuInc('+data.id+','+data.price+')"></b></dd>'
+			  +'<dd class="jsqjg">￥<span class="price">'+data.price+'</span><b onclick="MenuDel('+data.id+','+data.price+')"></b></dd>'
+			  +'</dl>';
+		if($("span#total_price", "#MyMenus").length){
+			$("div#MyMenus").prepend(dl);
+			var $total = $("span#total_price", "#MyMenus");
+			$total.text(parseFloat($total.text()) + data.price);
+		}else{
+			var total = '<h4>合计：<b>￥<span id="total_price">'+data.price+'</span></b></h4>';
+			$("div#MyMenus").html(dl+total);
+		}
+		return false;
+	});
+	$("a#ClearMyMenus").click(function(){
+		$("div#MyMenus").html($("div#MyMenus").data().empty);
+		return false;
+	});
+});
+function MenuInc(id, price){
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	$count.text(parseInt($count.text()) + 1);
+	var $price = $("dl#menu_"+id+" span.price", "#MyMenus");
+	$price.text(parseFloat($price.text()) + price);
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) + price);
+}
+function MenuDesc(id, price){
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	var cnt = parseInt($count.text());
+	if(cnt == 1){
+		return;
+	}
+	$count.text(parseInt($count.text()) - 1);
+	var $price = $("dl#menu_"+id+" span.price", "#MyMenus");
+	$price.text(parseFloat($price.text()) - price);
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) - price);
+}
+function MenuDel(id, price){
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	var cnt = parseInt($count.text());
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) - cnt*price);
+	$("dl#menu_"+id, "#MyMenus").remove();
+}
+</script>
 <include file="rank" />
 <include file="error" />
 <include file="Public:footer" />

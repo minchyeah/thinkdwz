@@ -27,10 +27,16 @@ class EmptyAction extends HomeAction
     		}
     	}elseif ('healthy' == strtolower(MODULE_NAME)){
     		if('index' == $name OR strpos($name, '-')){
-    			A('Article')->category($name);
+    			$arr = explode('-', $name);
+    			$_GET['cate_id'] = intval($arr[0]);
+    			$_GET['page'] = intval($arr[1]);
+    			A('Article')->category();
     		}else{
-    			A('Article')->index($name);
+    			$_GET['id'] = intval($name);
+    			A('Article')->index();
     		}
+    	}else{
+    		
     	}
     }
     

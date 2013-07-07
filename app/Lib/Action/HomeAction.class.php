@@ -143,7 +143,7 @@ class HomeAction extends CommonAction
 		$model = D('StoreMenuView');
 		$where = array();
 		$where['city_id'] = $this->city_id;
-		$hot_foods = $model->where($where)->order('rand()')->select();
+		$hot_foods = $model->where($where)->order('rand()')->limit(3)->select();
 		$this->assign('hot_foods', $hot_foods);
 	}
 	
