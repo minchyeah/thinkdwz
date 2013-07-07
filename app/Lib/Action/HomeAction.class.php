@@ -28,12 +28,17 @@ class HomeAction extends CommonAction
 	 */
 	protected $districts;
 	
+	protected $user_id;
+	protected $username;
+	
 	/**
 	 * 初始化方法
 	 */
 	public function _initialize()
 	{
 		parent::_initialize();
+		$this->user_id = session('user_id');
+		$this->username = session('username');
 		$this->_detect_city();
 		$this->cityBoxTree();
 		$this->links();
