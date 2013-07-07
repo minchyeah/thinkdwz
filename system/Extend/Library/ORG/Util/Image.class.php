@@ -262,7 +262,7 @@ class Image {
             $color = imagecolorallocate($im, $rgb[0], $rgb[1], $rgb[2]);
         }
         $backColor = imagecolorallocate($im, 255, 255, 255);    //背景色（随机）
-        $borderColor = imagecolorallocate($im, 100, 100, 100);                    //边框色
+        $borderColor = imagecolorallocate($im, 255, 255, 255);                    //边框色
         $pointColor = imagecolorallocate($im, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));                 //点颜色
 
         @imagefilledrectangle($im, 0, 0, $width - 1, $height - 1, $backColor);
