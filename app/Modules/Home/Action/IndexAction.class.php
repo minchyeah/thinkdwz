@@ -25,7 +25,7 @@ class IndexAction extends HomeAction
     	$model = D('Products');
     	$where = array();
     	$where['status'] = 1;
-    	$product = $model->where($where)->limit(10)->getField('id,product_name name,cate_id,thumb');
+    	$product = $model->where($where)->limit(20)->getField('id,product_name name,cate_id,thumb');
     	$this->assign('product', $product);
     }
     
@@ -45,7 +45,7 @@ class IndexAction extends HomeAction
     	$where = array();
     	$where['status'] = 1;
     	$where['cate_id'] = 5;
-    	$videos = $model->where($where)->order('id DESC')->limit(10)->getField('id,title,cate_id,video');
+    	$videos = $model->where($where)->order('id DESC')->limit(5)->getField('id,title,cate_id,video');
     	$this->assign('videolist', $videos);
     }
 }

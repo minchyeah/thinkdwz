@@ -73,9 +73,8 @@ AutoPlay();
             </dt>
             </if>
             <volist name="videolist" id="vo">
-            <dd>
-              <h2><a href="__APP__/video/play,{$vo.id}.html" target="_blank">{$vo.title}</a></h2>
-              <span>{$vo.time_length}</span>
+            <dd style="height:20px;width:230px;overflow: hidden;">
+              <h2 style="width:auto;"><a href="__APP__/video/play,{$vo.id}.html" target="_blank">{$vo.title}</a></h2>
             </dd>
             </volist>
           </dl>
