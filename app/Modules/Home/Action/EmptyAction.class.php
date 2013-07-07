@@ -25,6 +25,12 @@ class EmptyAction extends HomeAction
     				break;
     			default:
     		}
+    	}elseif ('healthy' == strtolower(MODULE_NAME)){
+    		if('index' == $name OR strpos($name, '-')){
+    			A('Article')->category($name);
+    		}else{
+    			A('Article')->index($name);
+    		}
     	}
     }
     

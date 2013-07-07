@@ -23,6 +23,7 @@
     <div class="ggy"><b>想订餐？</b>外卖网收录南宁外卖10804家。简单3步，先选择或搜索你的位置：</div>
     <div class="fq">
       <volist name="districts.region" id="vo">
+      <if condition="count($vo['locations'])">
       <dl>
         <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
         <volist name="vo.locations" id="svo">
@@ -30,11 +31,12 @@
         </volist>
         <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
       </dl>
+      </if>
       </volist>
       <div class="clr"></div>
     </div>
     <volist name="districts.custom" id="vo">
-    <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
+    <if condition="count($vo['locations'])">
     <div class="fq mdf">
       <dl>
         <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
@@ -45,6 +47,8 @@
       </dl>
       <div class="clr"></div>
     </div>
+    <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
+    </if>
     </volist>
   </div>
   <div class="syr">
@@ -52,8 +56,9 @@
       <include file="Public:search_form" />
       <include file="Public:history" />
     </div>
-    <include file="Public:latest_stores" />
+    <include file="Public:latest_store" />
     <include file="Public:hot_foods" />
+    <include file="Public:health_eating" />
     <include file="Public:businesslink" />
     <include file="Public:friendlink" />
   </div>

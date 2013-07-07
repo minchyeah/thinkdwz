@@ -45,6 +45,12 @@ class HomeAction extends CommonAction
 		$this->latest_store();
 	}
 	
+	protected function notfound($msg = '', $url = '')
+	{
+		$this->display('Public:404');
+		exit;
+	}
+	
 	/**
 	 * 判断当前城市
 	 */
