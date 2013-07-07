@@ -15,30 +15,30 @@
   </div>
   <div class="nav">
     <ul>
-      <li class="xz"><a href="__APP__/">网站首页</a></li>
-      <li><a href="__APP__/about/">关于我们</a>
+      <li class="<eq name="current_nav" value="index">xz</eq>"><a href="__APP__/">网站首页</a></li>
+      <li class="<eq name="current_nav" value="about">xz</eq>"><a href="__APP__/about/">关于我们</a>
         <div class="drop_dwon">
           <volist name="header_about" id="vo">
           <div class="onemenulayout"><a href="__APP__/about/{$vo.id}-{$vo.cate_id}-0.html">{$vo.title}</a></div>
           </volist>
         </div>
       </li>
-      <li><a href="__APP__/products/">产品与技术</a>
+      <li class="<eq name="current_nav" value="product">xz</eq>"><a href="__APP__/products/">产品与技术</a>
         <div class="drop_dwon">
           <volist name="header_products" id="vo">
           <div class="onemenulayout"><a href="__APP__/products/cate-{$vo.pid}-{$vo.id}-0.html">{$vo.cate_name}</a></div>
           </volist>
         </div>
       </li>
-      <li><a href="__APP__/news/">新闻中心</a>
+      <li class="<eq name="current_nav" value="news">xz</eq>"><a href="__APP__/news/">新闻中心</a>
         <div class="drop_dwon">
           <volist name="header_news" id="vo">
           <div class="onemenulayout"><a href="__APP__/news/cate-{$vo.pid|0}-{$vo.id}-0.html">{$vo.cate_name}</a></div>
           </volist>
         </div>
       </li>
-      <li><a href="__APP__/jobs/">招贤纳士</a></li>
-      <li style="border:none;"><a href="__APP__/contact.html" style="padding-right:4px;">联络我们</a></li>
+      <li class="<eq name="current_nav" value="jobs">xz</eq>"><a href="__APP__/jobs/">招贤纳士</a></li>
+      <li class="<eq name="current_nav" value="contact">xz</eq>" style="border:none;"><a href="__APP__/contact.html" style="padding-right:4px;">联络我们</a></li>
     </ul>
   </div>
 </div>
