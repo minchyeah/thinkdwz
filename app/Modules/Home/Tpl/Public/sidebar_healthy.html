@@ -2,7 +2,7 @@
       <h2>健康饮食<b>Healthy Eating</b></h2>
       <ul>
       	<volist name="sidebar_healthy" id="vo">
-        <li><span><a href="wznr.html">{$vo.title}</a></span><i>{$vo.dateline|date="Y-m-d H:i:s",###}</i></li>
+        <li><span><a href="__APP__/healthy/{$vo.id}.html">{$vo.title}</a></span><i>{$vo.create_time|date="Y-m-d H:i:s",###}</i></li>
         </volist>
       </ul>
     </div>
