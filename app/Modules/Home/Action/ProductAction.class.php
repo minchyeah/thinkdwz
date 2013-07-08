@@ -14,7 +14,6 @@ class ProductAction extends HomeAction
     	$product = $model->where($where)->find();
     	$product['attrs'] = attrs_filter($product['product_attrs']);
     	$product['images'] = explode(',', $product['images']);
-    	array_unshift($product['images'], $product['thumb']);
     	$this->assign('product', $product);
     	$category = D('ProductCategory')->find($product['cate_id']);
     	$this->assign('category', $category);
