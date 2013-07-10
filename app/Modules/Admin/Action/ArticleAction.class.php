@@ -198,5 +198,23 @@ class ArticleAction extends AdminAction
     	}
     	$this->error('操作失败');
     }
+    
+    public function delete()
+    {
+    	$id = intval($_REQUEST['id']);
+		$model = D('Articles');
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+    
+		if($rs){
+			$data['message'] = '删除成功';
+			$this->ajaxReturn($data);
+		}else{
+			$data['message'] = '删除失败';
+			$data['statusCode'] = 0;
+			$this->ajaxReturn($data);
+		}
+    }
 }
 ?>

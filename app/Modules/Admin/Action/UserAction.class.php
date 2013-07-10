@@ -84,11 +84,29 @@ class UserAction extends AdminAction
 	public function delete_admin()
 	{
 		if(session('admin_id') != 1){
-			$this->error('只有超级管理员方可执行此删除操作');
+			$data['message'] = '只有超级管理员方可执行此删除操作';
+			$data['statusCode'] = 0;
+			$this->ajaxReturn($data);
+		}
+		$id = intval($_REQUEST['id']);
+		if(1==$id){
+			$data['message'] = '超级管理员账号不可删除';
+			$data['statusCode'] = 0;
+			$this->ajaxReturn($data);
 		}
 		$model = D('Admin');
-		$id = intval($_REQUEST['id']);
-		$this->success('ss');
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+
+		if($rs){
+			$data['message'] = '删除成功';
+			$this->ajaxReturn($data);
+		}else{
+			$data['message'] = '删除失败';
+			$data['statusCode'] = 0;
+			$this->ajaxReturn($data);
+		}
 	}
 	
     public function index()
