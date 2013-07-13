@@ -6,27 +6,15 @@ class IndexAction extends HomeAction
 	{
 		$city_id = $city ? $this->cities[$city]['id'] : $this->city_id;
 		$DistrictModel = D('District');
+		$LocationModel = D('Locations');
 		$districts = array();
 		$district_ids = array();
 		foreach ($this->districts as $k=>$v){
 			$district_ids[] = $v['id'];
 			$districts[$v['type']][$v['id']] = $v;
-		}
-		$LocationModel = D('Locations');
-		$where = '';
-		foreach ($district_ids as $v){
-			$v && $where .= ' FIND_IN_SET('.$v.',`district`) OR';
-		}
-		$where = trim($where, 'OR');
-		$locations = $LocationModel->where($where)->order('sort_order ASC')->getField('id,title,alias,store_count,district');
-		if(is_array($locations)){
-			foreach ($locations as $v){
-				$dis = explode(',', $v['district']);
-				foreach ($dis as $did){
-					$districts['region'][$did] && $districts['region'][$did]['locations'][] = $v;
-					$districts['custom'][$did] && $districts['custom'][$did]['locations'][] = $v;
-				}
-			}
+			$where = ' FIND_IN_SET('.$v['id'].',`district`)';
+			$locations = $LocationModel->where($where)->order('sort_order ASC')->limit(15)->getField('id,title,alias,store_count,district');
+			$districts[$v['type']][$v['id']]['locations'] = $locations;
 		}
 		$this->assign('districts', $districts);
 
