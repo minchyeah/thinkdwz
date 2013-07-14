@@ -15,7 +15,7 @@
           <dt>送餐区域：</dt>
           <dd>
           <volist name="locations"  id="vo">
-          <a href="__APP__/{$store.city_alias}/{$vo['district']|getDistrict}/{$vo.alias}.html" target="_blank">{$vo.title}</a>
+          <a style="white-space:nowrap;" href="__APP__/{$store.city_alias}/{$vo['district']|getDistrict}/{$vo.alias}.html" target="_blank">{$vo.title}</a>
           </volist>
         </dl>
         <dl>
