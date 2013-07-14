@@ -1,5 +1,7 @@
 {//选择栏目，可多选即一篇文章属于多个栏目没有主从之分，可以设置父级栏目是否能选择}
+<div style="height:380px;overflow:auto;">
 {$tree}
+</div>
 <if condition="$Think.request.link neq 'edit'">
 <script type="text/javascript" language="javascript">
 function selectClass(cid,cname){
