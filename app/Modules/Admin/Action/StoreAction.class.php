@@ -20,6 +20,7 @@ class StoreAction extends AdminAction
 		$this->assign('numPerPage', $numPerPage);
 		$this->assign('currentPage', $currentPage);
 		$this->assign('location_id', $location_id);
+		$this->assign('locations', F('locations'));
 		$this->display();
 	}
 	
