@@ -14,9 +14,9 @@
     <include file="Index:search_form" />
     <div class="lbyfl">
       <ul>
-        <li class="xz"><a href="__APP__/{$city.alias}/{$current_district.alias}/{$current_location.alias}.html">全部</a><!--<span>(147)</span>--></li>
+        <li class="<empty name="_GET['type']">xz</empty>"><a href="__APP__/{$city.alias}/{$current_district.alias}/{$current_location.alias}.html">全部</a><!--<span>(147)</span>--></li>
         <volist name="store_types" id="vo">
-        <li><a href="__APP__/{$city.alias}/{$current_district.alias}/{$current_location.alias}.html?type={$vo.id}">{$vo.type_name}</a><!--<span>({$vo.store_count})</span>--></li>
+        <li class="<eq name="_GET['type']" value="$vo.id">xz</eq>"><a href="__APP__/{$city.alias}/{$current_district.alias}/{$current_location.alias}.html?type={$vo.id}">{$vo.type_name}</a><!--<span>({$vo.store_count})</span>--></li>
         </volist>
       </ul>
     </div>
