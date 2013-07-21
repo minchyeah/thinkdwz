@@ -403,11 +403,15 @@
 	width:350px;
 }
 .dmyc dl dd a{
+	line-height:18px;
 	font-size:12px;
-	padding:2px 8px;
+	padding:0px 8px;
 	background:#e8f9fe;
 	border:1px solid #b2eafd;
 	margin-right:10px;
+	margin-bottom:3px;
+	display:inline-block;
+	*line-height:14px;
 	*padding-top:4px;
 	*position: relative;
 	*top: -1px;
@@ -416,6 +420,23 @@
 	background:#fff1dc;
 	border:1px solid #ffc879;
 	text-decoration: none;
+}
+.dmyc dl dd.shouqi{
+	overflow:hidden;
+	height:45px;
+	position:relative;
+	padding-top:3px;
+}
+.dmyc dl dd.shouqi span{
+	display:block;
+	position:absolute;
+	color:#A40201;
+	cursor:pointer;
+	right: 1px;
+	bottom: 1px;
+	background:#FFF;
+	padding-top:2px;
+	padding-left:15px;
 }
 /*店面页右边*/
 .jsq{
@@ -434,6 +455,7 @@
 }
 .jsqn{
 	margin:0 20px;
+	*padding-top:6px;
 	border-bottom:1px dashed #dadada;
 }
 .jsqn h6{
@@ -444,10 +466,11 @@
 	padding:30px 0;
 }
 .jsqn dl{
-	height:16px;
 	padding:12px 4px 0;
+	*padding-top:6px;
 	display:block;
 	color:#828282;
+	clear:left;
 }
 .jsqn dl dt{
 	float:left;

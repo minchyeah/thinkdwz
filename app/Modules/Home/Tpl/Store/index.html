@@ -26,16 +26,16 @@
             <volist name="vo" id="svo">
             <li class="menulist"><a href="javascript:;">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+              <if condition="$svo.image && $svo.remark">
               <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
                 <dt>{$svo.name}</dt>
-                <if condition="$svo.image && $svo.remark">
                 <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
                   <h4>{$svo.remark}</h4>
                   <div class="clr"></div>
                 </dd>
-                </if>
                 <dd class="dmycdtc"></dd>
               </dl>
+              </if>
               </a>
             </li>
             </volist>
@@ -47,6 +47,7 @@
             <volist name="vo" id="svo">
             <li class="menulist"><a href="javascript:;">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+              <if condition="$svo.image && $svo.remark">
               <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
                 <dt>{$svo.name}</dt>
                 <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
@@ -55,6 +56,7 @@
                 </dd>
                 <dd class="dmycdtc"></dd>
               </dl>
+              </if>
               </a>
             </li>
             </volist>
