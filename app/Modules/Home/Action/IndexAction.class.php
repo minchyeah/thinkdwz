@@ -13,7 +13,8 @@ class IndexAction extends HomeAction
 			$district_ids[] = $v['id'];
 			$districts[$v['type']][$v['id']] = $v;
 			$where = ' FIND_IN_SET('.$v['id'].',`district`)';
-			$locations = $LocationModel->where($where)->order('sort_order ASC')->limit(15)->getField('id,title,alias,store_count,district');
+			$limit = 'custom'==$v['type']? 9 : 11;
+			$locations = $LocationModel->where($where)->order('sort_order ASC')->limit($limit)->getField('id,title,alias,store_count,district');
 			$districts[$v['type']][$v['id']]['locations'] = $locations;
 		}
 		$this->assign('districts', $districts);

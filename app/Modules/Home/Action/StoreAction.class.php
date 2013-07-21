@@ -17,13 +17,15 @@ class StoreAction extends HomeAction
 		}
 		$lids = explode(',', $store['locations']);
 		$locations = D('Locations')->where(array('id'=>array('in', $lids)))->select();
+		$cates = explode(',', $store['menu_category']);
+		$cates_rev = array_flip($cates);
 		$where = array();
 		$where['store_id'] = $id;
 		$rs = D('StoreMenus')->where($where)->getField('id,name,price,image,remark,category,store_id');
 		$menus = array();
 		if (is_array($rs)){
 			foreach ($rs as $k=>$v){
-				$menus[$v['category']][] = $v;
+				$menus[$cates_rev[$v['category']]][] = $v;
 			}
 		}
 		ksort($menus);
@@ -32,6 +34,7 @@ class StoreAction extends HomeAction
 		$this->assign('district', F('district'));
 		$this->assign('menus', $menus);
 		$this->assign('locations', $locations);
+		$this->assign('cates', $cates);
 		$this->display('Store:index');
 	}
 	

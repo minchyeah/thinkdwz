@@ -150,9 +150,9 @@ class HomeAction extends CommonAction
 	protected function links()
 	{
 		$model = D('Links');
-		$friendlinks = $model->where(array('category'=>'friendlink'))->select();
+		$friendlinks = $model->where(array('category'=>'friendlink'))->order('sort_order ASC')->select();
 		$this->assign('friendlinks', $friendlinks);
-		$businesslinks = $model->where(array('category'=>'business'))->select();
+		$businesslinks = $model->where(array('category'=>'business'))->order('sort_order ASC')->select();
 		$this->assign('businesslinks', $businesslinks);
 	}
 	
@@ -165,6 +165,11 @@ class HomeAction extends CommonAction
 		$where = array();
 		$where['city_id'] = $this->city_id;
 		$latest_store = $model->where($where)->order('id DESC')->select();
+		$locations = F('locations');
+		foreach ($latest_store as &$v){
+			$locids = explode(',', $v['locations']);
+			$v['location_name'] = $locations[array_shift($locids)]['title'];
+		}
 		$this->assign('latest_store', $latest_store);
 	}
 	

@@ -15,23 +15,25 @@
           <ul>
             <li>全部</li>
             <volist name="menus" id="vo">
-            <li class="ztwdj">{$key}</li>
+            <li class="ztwdj">{$cates[$key]}</li>
             </volist>
           </ul>
         </div>
         <div id="dmycdn">
           <ol>
           <volist name="menus" id="vo">
-            <li class="dmycdnfl">{$key}</li>
+            <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
             <li class="menulist"><a href="javascript:;">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
               <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
                 <dt>{$svo.name}</dt>
+                <if condition="$svo.image && $svo.remark">
                 <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
                   <h4>{$svo.remark}</h4>
                   <div class="clr"></div>
                 </dd>
+                </if>
                 <dd class="dmycdtc"></dd>
               </dl>
               </a>
@@ -41,7 +43,7 @@
           </ol>
           <volist name="menus" id="vo">
           <ol>
-            <li class="dmycdnfl">{$key}</li>
+            <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
             <li class="menulist"><a href="javascript:;">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
