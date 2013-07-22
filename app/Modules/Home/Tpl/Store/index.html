@@ -24,10 +24,10 @@
           <volist name="menus" id="vo">
             <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
-            <li class="menulist"><a href="javascript:;">
+            <li class="menulist"><a href="javascript:;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
               <if condition="$svo.image && $svo.remark">
-              <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <dl style="display:none;">
                 <dt>{$svo.name}</dt>
                 <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
                   <h4>{$svo.remark}</h4>
@@ -45,10 +45,10 @@
           <ol>
             <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
-            <li class="menulist"><a href="javascript:;">
+            <li class="menulist"><a href="javascript:;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
               <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
               <if condition="$svo.image && $svo.remark">
-              <dl style="display:none;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <dl style="display:none;">
                 <dt>{$svo.name}</dt>
                 <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
                   <h4>{$svo.remark}</h4>
@@ -96,8 +96,8 @@ $(function(){
 	}).mouseout(function(){
 		$("dl", this).hide();
 	});
-	$("li.menulist a h3").click(function(){
-		var data = $(this).next("dl").data();
+	$("li.menulist a").click(function(){
+		var data = $(this).data();
 		var me = $("dl#menu_"+data.id, "#MyMenus");
 		if(me.length){
 			MenuInc(data.id, data.price)
