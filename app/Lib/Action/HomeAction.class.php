@@ -164,7 +164,7 @@ class HomeAction extends CommonAction
 		$model = D('Stores');
 		$where = array();
 		$where['city_id'] = $this->city_id;
-		$latest_store = $model->where($where)->order('id DESC')->select();
+		$latest_store = $model->where($where)->limit(8)->order('id DESC')->select();
 		$locations = F('locations');
 		foreach ($latest_store as &$v){
 			$locids = explode(',', $v['locations']);
@@ -178,6 +178,7 @@ class HomeAction extends CommonAction
 		$model = D('StoreMenuView');
 		$where = array();
 		$where['city_id'] = $this->city_id;
+		$where['image'] = array('neq', '');
 		$hot_foods = $model->where($where)->order('rand()')->limit(3)->select();
 		$this->assign('hot_foods', $hot_foods);
 	}
@@ -192,7 +193,7 @@ class HomeAction extends CommonAction
 		$where = array();
 		$where['statue'] = 1;
 		$where['cate_id'] = 3;
-		$sidebar_healthy = $model->where($where)->getField('id,title,cate_id,create_time');
+		$sidebar_healthy = $model->where($where)->limit(8)->getField('id,title,cate_id,create_time');
 		$this->assign('sidebar_healthy', $sidebar_healthy);
 	}
 }
