@@ -176,13 +176,12 @@ $(function(){
 $(function (){
 	$(".shouqi span").click(function(){
 		var $obj = $(this);
-		var height = parseInt($(".shouqi").css("height"));
-		if(!isNaN(height)){
+		if($obj.hasClass('showmore')){
 			$(".shouqi").css("height","auto");
-			$obj.html("<<收起");
+			$obj.addClass('showless').removeClass('showmore').html("<<收起");
 		}else{
 			$(".shouqi").removeAttr("style");
-			$obj.html("更多>>");
+			$obj.addClass('showmore').removeClass('showless').html("更多>>");
 		}
 	});
 });
