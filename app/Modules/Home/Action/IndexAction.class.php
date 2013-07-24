@@ -74,7 +74,7 @@ class IndexAction extends HomeAction
 		unset($req['_URL_']);
 		$http_query = http_build_query($req);
 		$http_query = $http_query ? '?'.$http_query : '';
-		$page = $this->getPage($count, 1, __APP__.'/'.$this->city_alias.'/'.$district['alias'].'/'.$loc_alias[$location]['alias'].'-__PAGE__.html'.$http_query);
+		$page = $this->getPage($count, 10, __APP__.'/'.$this->city_alias.'/'.$district['alias'].'/'.$loc_alias[$location]['alias'].'-__PAGE__.html'.$http_query);
 		$stores = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,name,image,rating,sendup_prices');
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
