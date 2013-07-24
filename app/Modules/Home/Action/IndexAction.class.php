@@ -106,7 +106,7 @@ class IndexAction extends HomeAction
 		$req = $_GET;
 		unset($req['page']);
 		unset($req['_URL_']);
-		$page = $this->getPage($count, 1, __APP__.'/search/?page=__PAGE__&'.http_build_query($req));
+		$page = $this->getPage($count, 10, __APP__.'/search/?page=__PAGE__&'.http_build_query($req));
 		$stores = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,name,image,rating,sendup_prices');
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
