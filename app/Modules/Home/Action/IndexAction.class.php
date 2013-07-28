@@ -72,6 +72,7 @@ class IndexAction extends HomeAction
 		
 		$where = '`city_id`='.$this->city_id;
 		$where .= ' AND FIND_IN_SET('.$location_id.',`locations`)';
+		$all_store_count = $model->where($where)->count();
 		if($type_id){
 			$where .= ' AND FIND_IN_SET('.$type_id.',`types`)';
 		}
@@ -88,6 +89,7 @@ class IndexAction extends HomeAction
 		$this->assign('page', $page->show());
 		$this->assign('stores', $stores);
 		$this->assign('store_types', $store_types);
+		$this->assign('all_store_count', $all_store_count);
 		$this->assign('current_district', $district);
 		$this->assign('current_location', $location);
 		$this->display('Index:location');
@@ -115,11 +117,12 @@ class IndexAction extends HomeAction
 		}
 		
 		$where = '`city_id`='.$this->city_id;
-		if($type_id){
-			$where .= ' AND FIND_IN_SET('.$type_id.',`types`)';
-		}
 		if($key){
 			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		}
+		$all_store_count = $model->where($where)->count();
+		if($type_id){
+			$where .= ' AND FIND_IN_SET('.$type_id.',`types`)';
 		}
 		$count = $model->where($where)->count();
 		$req = $_GET;
@@ -132,6 +135,7 @@ class IndexAction extends HomeAction
 		$this->assign('stores', $stores);
 		$this->assign('search_key', $key);
 		$this->assign('store_types', $store_types);
+		$this->assign('all_store_count', $all_store_count);
 		$this->display('Index:search');
 	}
 }
