@@ -50,25 +50,33 @@ class IndexAction extends HomeAction
 	
 	public function location($district = '', $in_loc = '')
 	{
+		$model = D('Stores');
 		$StoreTypeModel = D('StoreType');
 		$store_types = $StoreTypeModel->order('sort_order ASC,id DESC')->select();
-		$this->assign('store_types', $store_types);
 		$tmparr = explode('-', $in_loc);
-		$location_id = $tmparr[0];
 		$_GET['page'] = intval($tmparr[1]);
+		$location_id = $tmparr[0];
+		if (is_array($store_types)) {
+			foreach ($store_types as $k=>$v){
+				$where = '`city_id`='.$this->city_id;
+				$where .= ' AND FIND_IN_SET('.$location_id.',`locations`)';
+				$where .= ' AND FIND_IN_SET('.$v['id'].',`types`)';
+				$store_types[$k]['store_count'] =  $model->where($where)->count();
+			}
+		}
 		$type_id = intval($_GET['type']);
 		$district = $this->districts[$district];
 		$district_id = $district['id'];
 		$locations = F('locations');
 		$location = $locations[$location_id];
 		
-		$model = D('Stores');
 		$where = '`city_id`='.$this->city_id;
 		$where .= ' AND FIND_IN_SET('.$location_id.',`locations`)';
 		if($type_id){
 			$where .= ' AND FIND_IN_SET('.$type_id.',`types`)';
 		}
 		$count = $model->where($where)->count();
+
 		$req = $_GET;
 		unset($req['page']);
 		unset($req['_URL_']);
@@ -79,6 +87,7 @@ class IndexAction extends HomeAction
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
 		$this->assign('stores', $stores);
+		$this->assign('store_types', $store_types);
 		$this->assign('current_district', $district);
 		$this->assign('current_location', $location);
 		$this->display('Index:location');
@@ -86,15 +95,25 @@ class IndexAction extends HomeAction
 	
 	public function search()
 	{
+		$model = D('Stores');
 		$StoreTypeModel = D('StoreType');
 		$store_types = $StoreTypeModel->order('sort_order ASC,id DESC')->select();
-		$this->assign('store_types', $store_types);
 		
 		$type_id = intval($_GET['type']);
 		$key = trim(strval($_GET['key']));
 		$key = in_array($key, array('关键词...', '请输入餐馆名或地址...')) ? '' : $key;
+
+		if (is_array($store_types)) {
+			foreach ($store_types as $k=>$v){
+				$where = '`city_id`='.$this->city_id;
+				$where .= ' AND FIND_IN_SET('.$v['id'].',`types`)';
+				if($key){
+					$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+				}
+				$store_types[$k]['store_count'] =  $model->where($where)->count();
+			}
+		}
 		
-		$model = D('Stores');
 		$where = '`city_id`='.$this->city_id;
 		if($type_id){
 			$where .= ' AND FIND_IN_SET('.$type_id.',`types`)';
@@ -111,6 +130,8 @@ class IndexAction extends HomeAction
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
 		$this->assign('stores', $stores);
+		$this->assign('search_key', $key);
+		$this->assign('store_types', $store_types);
 		$this->display('Index:search');
 	}
 }
