@@ -77,6 +77,48 @@ class StoreAction extends HomeAction
 		$this->display();
 	}
 	
+	public function saveComment()
+	{
+		$model = D('StoreComment');
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
+		}
+		if (!$data['id']) {
+			$data['dateline'] = time();
+			$data['user_id'] = intval(session('user_id'));
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$this->success('保存成功！');
+		}else{
+			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+		}
+	}
+	
+	public function saveError()
+	{
+		$model = D('StoreErrors');
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
+		}
+		if (!$data['id']) {
+			$data['dateline'] = time();
+			$data['user_id'] = intval(session('user_id'));
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$this->success('保存成功！');
+		}else{
+			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+		}
+	}
+	
 	public function telphone()
 	{
 		$id = intval($_GET['id']);

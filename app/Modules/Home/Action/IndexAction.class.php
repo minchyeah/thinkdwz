@@ -29,6 +29,9 @@ class IndexAction extends HomeAction
 	public function district($district = '')
 	{
 		$district_id = $this->districts[$district]['id'];
+		if(!$district_id){
+			$this->notfound();
+		}
 		$LocationModel = D('Locations');
 		$where = ' FIND_IN_SET('.$district_id.',`district`)';
 		$rs = $LocationModel->where($where)->order('letter ASC')->getField('id,title,alias,store_count,letter');
@@ -56,6 +59,11 @@ class IndexAction extends HomeAction
 		$tmparr = explode('-', $in_loc);
 		$_GET['page'] = intval($tmparr[1]);
 		$location_id = $tmparr[0];
+		$locations = F('locations');
+		$location = $locations[$location_id];
+		if(!$location){
+			$this->notfound();
+		}
 		if (is_array($store_types)) {
 			foreach ($store_types as $k=>$v){
 				$where = '`city_id`='.$this->city_id;
@@ -67,8 +75,6 @@ class IndexAction extends HomeAction
 		$type_id = intval($_GET['type']);
 		$district = $this->districts[$district];
 		$district_id = $district['id'];
-		$locations = F('locations');
-		$location = $locations[$location_id];
 		
 		$where = '`city_id`='.$this->city_id;
 		$where .= ' AND FIND_IN_SET('.$location_id.',`locations`)';
