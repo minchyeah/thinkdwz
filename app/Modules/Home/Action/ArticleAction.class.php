@@ -57,16 +57,13 @@ class ArticleAction extends HomeAction
 		$model = D('ArticlePage');
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');
-		$this->assign('page', $page);
+		$this->assign('article', $page);
 
-		$model = D('Articles');
-		$id = intval($_REQUEST['id']);
-		$where = array();
-		$where['statue'] = 1;
-		$where['cate_id'] = 2;
-		$sidebar_list = $model->where($where)->getField('id,title,cate_id,create_time');
-		$this->assign('sidebar_list', $sidebar_list);
-		$this->display();
+		$this->latest_store();
+		$this->hot_foods();
+		$this->sidebar_healthy();
+		$this->links();
+		$this->display('Article:page');
 	}
 }
 ?>

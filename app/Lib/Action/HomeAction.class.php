@@ -109,11 +109,6 @@ class HomeAction extends CommonAction
 			$rs = $model->getField('id,alias,title');
 			F('locations', $rs);
 		}
-		if(!F('location_alias')){
-			$model = D('Locations');
-			$rs = $model->getField('alias,id,title');
-			F('location_alias', $rs);
-		}
 	}
 
 	/**
