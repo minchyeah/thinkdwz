@@ -35,6 +35,7 @@ class StoreAction extends HomeAction
 		$this->assign('menus', $menus);
 		$this->assign('locations', $locations);
 		$this->assign('cates', $cates);
+		$this->enjoy_stores();
 		$this->display('Store:index');
 	}
 	
@@ -47,6 +48,15 @@ class StoreAction extends HomeAction
 	public function append()
 	{
 		$this->display();
+	}
+	
+	public function enjoy_stores()
+	{
+		$model = D('Stores');
+		$where = array();
+		$where['city_id'] = $this->city_id;
+		$enjoy_stores = $model->where($where)->order('rand()')->limit(12)->select();
+		$this->assign('enjoy_stores', $enjoy_stores);
 	}
 	
 	public function comment()

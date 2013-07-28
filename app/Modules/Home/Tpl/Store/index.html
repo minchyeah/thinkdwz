@@ -83,7 +83,11 @@
       <include file="sidebar_comment" />
       <div class="zxpj">
         <h2>猜你感兴趣的店面</h2>
-        <div class="dmycpk cngxq"> <a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a><a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a><a href="dmy.html" target="_blank">康康美食</a><a href="dmy.html" target="_blank">百美春</a> </div>
+        <div class="dmycpk cngxq">
+        <volist name="enjoy_stores" id="vo">
+          <a href="__APP__/store/{$vo.id}.html" target="_blank">{$vo.name}</a>
+        </volist>
+        </div>
       </div>
     </div>
     <div class="clr"></div>
