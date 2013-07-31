@@ -7,7 +7,11 @@ class ArticlePageAction extends AdminAction
     	$model = D('ArticlePage');
     	$where = array();
     	$where['page_code'] = $alias;
-    	$this->assign('vo', $model->where($where)->find());
+    	$vo = $model->where($where)->find();
+    	if(!$vo){
+    		$vo['page_code'] = $alias;
+    	}
+    	$this->assign('vo', $vo);
     	$this->display('Article:page');
     }
     
@@ -44,6 +48,11 @@ class ArticlePageAction extends AdminAction
     public function terms()
     {
     	$this->page('terms');
+    }
+    
+    public function fmeeting()
+    {
+    	$this->page('fmeeting');
     }
 }
 ?>
