@@ -159,7 +159,7 @@ class HomeAction extends CommonAction
 		$model = D('Stores');
 		$where = array();
 		$where['city_id'] = $this->city_id;
-		$latest_store = $model->where($where)->limit(8)->order('id DESC')->select();
+		$latest_store = $model->where($where)->limit(20)->order('id DESC')->select();
 		$locations = F('locations');
 		foreach ($latest_store as &$v){
 			$locids = explode(',', $v['locations']);

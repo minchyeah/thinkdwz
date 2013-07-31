@@ -1,8 +1,10 @@
 	<div class="sycbl heis">
       <h2>最新外卖店<b>Latest takeaway</b></h2>
+      <div class="sygd">
       <ul>
         <volist name="latest_store" id="vo">
-        <li><span>{$vo.location_name}<b>+</b><a href="__APP__/store/{$vo.id}.html">{$vo.name}</a></span><i>{$vo.dateline|date="Y-m-d H:i:s",###}</i></li>
+        <li><span>{$vo.location_name}<b>+</b><a href="__APP__/store/{$vo.id}.html">{$vo.name}</a></span></li>
         </volist>
       </ul>
+      </div>
     </div>

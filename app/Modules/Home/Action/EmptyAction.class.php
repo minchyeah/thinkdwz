@@ -34,7 +34,7 @@ class EmptyAction extends HomeAction
     		}
     	}elseif ('search' == strtolower(MODULE_NAME)){
     		A('Index')->search();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','terms'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','terms','fmeeting'))){
     		$_REQUEST['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
     	}else {
