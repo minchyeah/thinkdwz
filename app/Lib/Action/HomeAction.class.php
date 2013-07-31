@@ -187,7 +187,7 @@ class HomeAction extends CommonAction
 		$id = intval($_REQUEST['id']);
 		$where = array();
 		$where['statue'] = 1;
-		$where['cate_id'] = 3;
+		$where['cate_id'] = 1;
 		$sidebar_healthy = $model->where($where)->limit(8)->getField('id,title,cate_id,create_time');
 		$this->assign('sidebar_healthy', $sidebar_healthy);
 	}
