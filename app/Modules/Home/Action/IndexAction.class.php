@@ -17,6 +17,8 @@ class IndexAction extends HomeAction
 			$locations = $LocationModel->where($where)->order('sort_order ASC')->limit($limit)->getField('id,title,alias,store_count,district');
 			$districts[$v['type']][$v['id']]['locations'] = $locations;
 		}
+		$total_store_count = D('Stores')->where(array('city_id'=>$this->city_id))->count();
+		$this->assign('total_store_count', $total_store_count);
 		$this->assign('districts', $districts);
 
 		$this->latest_store();
