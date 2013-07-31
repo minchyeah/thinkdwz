@@ -658,10 +658,12 @@
 #dmycdn ol li.dmycdnfl{
 	font-size:14px;
 	height:20px;
+	color:#a40201;
 	background:#FFF;
 	padding:10px 6px 0;
 	font-weight: bolder;
-	width:530px;
+	width:606px;
+	letter-spacing: 2px;
 }
 #dmycdn ol li {
 	float:left;
