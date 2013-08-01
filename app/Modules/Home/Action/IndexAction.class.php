@@ -45,6 +45,9 @@ class IndexAction extends HomeAction
 		}
 		$this->assign('locations', $locations);
 		$this->assign('district', $this->districts[$district]);
+		
+		$total_store_count = D('Stores')->where(array('city_id'=>$this->city_id))->count();
+		$this->assign('total_store_count', $total_store_count);
 
 		$this->latest_store();
 		$this->hot_foods();

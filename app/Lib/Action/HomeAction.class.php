@@ -43,6 +43,7 @@ class HomeAction extends CommonAction
 		$this->_detect_district();
 		$this->_detect_locations();
 		$this->cityBoxTree();
+		$this->assign('settings', D('Settings')->getField('skey,svalue'));
 	}
 	
 	protected function notfound($msg = '', $url = '')
