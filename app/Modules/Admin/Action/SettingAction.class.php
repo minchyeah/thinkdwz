@@ -7,9 +7,7 @@ class SettingAction extends AdminAction
 	// 基本信息设置
     public function index(){
 		$model = D('Settings');
-		$where = array();
-		$where['category'] = 'sys';
-		$oldSettings = $model->field('id,skey,svalue')->where($where)->select();
+		$oldSettings = $model->field('skey,svalue')->select();
 		if (is_array($oldSettings)){
 			foreach ($oldSettings as $k=>$v){
 				$this->assign($v['skey'], $v['svalue']);
@@ -21,19 +19,9 @@ class SettingAction extends AdminAction
 	// 配置信息保存
     public function updateconfig($config){
 		$model = D('Settings');
-		$where = array();
-		$where['category'] = 'sys';
-		$oldSettings = $model->field('id,skey')->where($where)->select();
-		$fieldIndex = array();
-		if (is_array($oldSettings)){
-			foreach ($oldSettings as $k=>$v){
-				$fieldIndex[$v['skey']] = $v['id'];
-			}
-		}
 		$data = array();
 		$i = 0;
 		foreach ($config as $k=>$v){
-			$data[$i]['id'] = $fieldIndex[$k];
 			$data[$i]['skey'] = $k;
 			$data[$i]['svalue'] = $v;
 			$i += 1;
@@ -45,20 +33,10 @@ class SettingAction extends AdminAction
 	/**
 	 * 更新配置项
 	 */
-    public function update(){
-		$config['sitename'] = trim($_POST['sitename']);
-		$config['admin_email'] = trim($_POST['admin_email']);
-		$config['admin_qq'] = trim($_POST['admin_qq']);
-		$config['icp_info'] = trim($_POST['icp_info']);
-		$config['hot_keywords'] = trim($_POST['hot_keywords']);
+    public function save(){
+		$config['site_name'] = trim($_POST['site_name']);
 		$config['seo_keywords'] = trim($_POST['seo_keywords']);
 		$config['seo_description'] = trim($_POST['seo_description']);
-		$config['copyright'] = trim($_POST['copyright']);
-		$config['stat_code'] = trim($_POST['stat_code']);
-		$config['min_withdraw'] = intval($_POST['min_withdraw']);
-		$config['web_admin_pagenum'] = intval($_POST['web_admin_pagenum']);
-		$config['client_version'] = strval($_POST['client_version']);
-		$config['client_update_url'] = strval($_POST['client_update_url']);
 		$this->updateconfig($config);
 	}
 	/**
