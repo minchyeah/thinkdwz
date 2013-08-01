@@ -1,0 +1,14 @@
+    <div id="slider">
+      <div id="slider_name">
+        <ul class="silder_con bs">
+          <volist name="sliders" id="vo">
+          <li class="silder_panel"> <a href="{$vo.target}" class="f_l"><img src="{$vo.image}" alt="{$vo.title}" /></a> </li>
+          </volist>
+        </ul>
+        <ul class="silder_nav">
+          <volist name="sliders" id="vo">
+          <li>{$key+1}</li>
+          </volist>
+        </ul>
+      </div>
+    </div>

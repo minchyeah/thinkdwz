@@ -8,10 +8,10 @@ class SliderWidget extends Widget
 	public function render($data)
 	{
 		$tpl = $data['type'];
-		$model = D('Sliders');
+		$model = D('Slider');
 		$where = array();
 		$where['position'] = $data['position'];
-		$ad = $model->where($where)->order('`sort` ASC')->select();
+		$ad = $model->where($where)->order('`sort_order` ASC')->select();
 		$result = '';
 		if($ad){
 			$data['sliders'] = $ad;

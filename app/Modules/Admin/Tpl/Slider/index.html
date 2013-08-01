@@ -1,0 +1,38 @@
+<form id="pagerForm" method="post" action="{:U('Users/index')}">
+	<input type="hidden" name="pageNum" value="1" />
+</form>
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+      <li><a class="add" href="__URL__/add/" target="dialog" width="520" height="300" mask="true" maxable="false"><span>新增</span></a></li>
+    </ul>
+  </div>
+  <table class="list" width="100%" layoutH="53">
+    <thead>
+	  <tr>
+		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="40">编号</th>
+		<th>位置</th>
+		<th>图片预览</th>
+		<th>文字说明</th>
+		<th width="100">操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <php>$params = json_decode($vo['params'], true)</php>
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo['id']}</td>
+		<td>{$positions[$vo['position']]}</td>
+		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=100,100}" /></if></td>
+		<td>{$vo.title}</td>
+		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="520" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
+</div>

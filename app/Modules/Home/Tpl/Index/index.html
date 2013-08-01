@@ -8,18 +8,7 @@
 <include file="Public:header" />
 <div class="jz sy">
   <div class="syl">
-    <div id="slider">
-      <div id="slider_name">
-        <ul class="silder_con bs">
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-        </ul>
-        <ul class="silder_nav">
-          <li>1</li>
-          <li>2</li>
-        </ul>
-      </div>
-    </div>
+    {:W('Slider', array('type'=>'tmpl', 'position'=>'city_'.$city['id']))}
     <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$total_store_count}家。简单3步，先选择或搜索你的位置：</div>
     <div class="fq">
       <volist name="districts.region" id="vo">
