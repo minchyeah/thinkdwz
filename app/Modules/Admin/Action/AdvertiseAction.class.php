@@ -5,19 +5,21 @@
  */
 class AdvertiseAction extends AdminAction
 {
-	/**
-	 * 广告位置
-	 * @var array
-	 */
-	private $position = array(
-			'index'=>'首页中间广告',
-			'district_list'=>'城区商圈页面广告',
-		);
-	
 	public function _initialize()
 	{
 		parent::_initialize();
-		$this->assign('positions', $this->position);
+		$model = D('District');
+		$where = array();
+		$where['type'] = array('in', array('custom','region'));
+		$positions = array();
+		$rs = $model->where($where)->field('id,title,pid')->order('pid ASC')->select();
+		$cities = F('cities_id');
+		if($rs){
+			foreach ($rs as $k=>$v){
+				$positions['district_'.$v['id']] = '('.$cities[$v['pid']]['title'].')'.$v['title'].'广告';
+			}
+		}
+		$this->assign('positions', $positions);
 	}
 	
     public function index()

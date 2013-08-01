@@ -63,6 +63,9 @@ class HomeAction extends CommonAction
 			$this->cities = $model->where("`status`=1 AND `type`='city'")->getField('alias,id,title');
 			F('cities', $this->cities);
 		}
+		if(!F('cities_id')){
+			F('cities_id', $model->where("`status`=1 AND `type`='city'")->getField('id,alias,title'));
+		}
 		if(!count($_REQUEST['_URL_'])){
 			$city_alias = cookie('city_alias');
 			if(in_array($city_alias, array_keys($this->cities))){
