@@ -37,6 +37,8 @@ class SettingAction extends AdminAction
 		$config['site_name'] = trim($_POST['site_name']);
 		$config['seo_keywords'] = trim($_POST['seo_keywords']);
 		$config['seo_description'] = trim($_POST['seo_description']);
+		$config['share_code'] = trim($_POST['share_code']);
+		$config['stat_code'] = trim($_POST['stat_code']);
 		$this->updateconfig($config);
 	}
 	/**
