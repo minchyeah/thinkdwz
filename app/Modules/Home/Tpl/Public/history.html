@@ -1,12 +1,24 @@
       <dl>
         <dt>常选地点</dt>
+        <php>$location_history = unserialize(cookie('location_history'));</php>
+        <if condition="$location_history && count($location_history)">
+        <volist name="location_history" id="vo">
+          <dd><a href="__APP__/{$vo.city}/{$vo.alias}/{$vo.id}.html">{$vo.title}</a></dd>
+        </volist>
+        <else />
         <dd>还没有查看过任何地点:(</dd>
-        <!--<dd><a href="lby.html">上下九</a></dd>-->
+        </if>
         <div class="clr"></div>
       </dl>
       <dl>
         <dt>常选店铺</dt>
+        <php>$store_history = unserialize(cookie('store_history'));</php>
+        <if condition="$store_history && count($store_history)">
+        <volist name="store_history" id="vo">
+          <dd><a href="__APP__/store/{$vo.id}.html">{$vo.name}</a></dd>
+        </volist>
+        <else />
         <dd>还没有查看过任何店铺:(</dd>
-        <!--<dd><a href="dmy.html">西区比萨（民大店）</a></dd>-->
+        </if>
         <div class="clr"></div>
       </dl>

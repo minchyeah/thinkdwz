@@ -36,6 +36,22 @@ class StoreAction extends HomeAction
 		$this->assign('locations', $locations);
 		$this->assign('cates', $cates);
 		$this->enjoy_stores();
+		
+		$store_history = unserialize(cookie('store_history'));
+		if(!$store_history){
+			$store_history = array();
+		}
+		foreach ($store_history as $k=>$v){
+			if($v['id'] == $store['id']){
+				unset($store_history[$k]);
+			}
+		}
+		if (count($store_history) >= 6){
+			array_pop($store_history);
+		}
+		array_unshift($store_history, array('id'=>$store['id'],'name'=>$store['name']));
+		cookie('store_history', serialize($store_history));
+		
 		$this->display('Store:index');
 	}
 	

@@ -103,6 +103,23 @@ class IndexAction extends HomeAction
 		$this->assign('all_store_count', $all_store_count);
 		$this->assign('current_district', $district);
 		$this->assign('current_location', $location);
+
+		$location_history = unserialize(cookie('location_history'));
+		if(!$location_history){
+			$location_history = array();
+		}
+		foreach ($location_history as $k=>$v){
+			if($v['id'] == $location['id']){
+				unset($location_history[$k]);
+			}
+		}
+		if (count($location_history) >= 3){
+			array_pop($location_history);
+		}
+		array_unshift($location_history, array('city'=>$this->city_alias,'alias'=>$district['alias'],'id'=>$location['id'],'title'=>$location['title']));
+		array_unique($location_history);
+		cookie('location_history', serialize($location_history));
+		
 		$this->display('Index:location');
 	}
 	
