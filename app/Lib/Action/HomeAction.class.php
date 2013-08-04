@@ -43,7 +43,11 @@ class HomeAction extends CommonAction
 		$this->_detect_district();
 		$this->_detect_locations();
 		$this->cityBoxTree();
-		$this->assign('settings', D('Settings')->getField('skey,svalue'));
+		$settings = D('Settings')->getField('skey,svalue');
+		$settings['site_name'] = str_replace('{city}', $this->city['title'], $settings['site_name']);
+		$settings['seo_keywords'] = str_replace('{city}', $this->city['title'], $settings['seo_keywords']);
+		$settings['seo_description'] = str_replace('{city}', $this->city['title'], $settings['seo_description']);
+		$this->assign('settings', $settings);
 	}
 	
 	protected function notfound($msg = '', $url = '')
