@@ -10,7 +10,7 @@ class SliderAction extends AdminAction
 		parent::_initialize();
 		$model = D('District');
 		$where = array();
-		$where['type'] = array('in', array('city','custom','region'));
+		$where['type'] = array('in', array('city'));
 		$positions = array();
 		$rs = $model->where($where)->field('id,title,pid,type')->order('pid ASC')->select();
 		$cities = F('cities_id');

@@ -8,18 +8,7 @@
 <include file="Public:header" />
 <div class="jz sy">
   <div class="syl">
-    <div id="slider">
-      <div id="slider_name">
-        <ul class="silder_con bs">
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-          <li class="silder_panel"> <a href="#" class="f_l"><img src="images/hdp.jpg" alt="天涯海角，伴您同行！" /></a> </li>
-        </ul>
-        <ul class="silder_nav">
-          <li>1</li>
-          <li>2</li>
-        </ul>
-      </div>
-    </div>
+    {:W('Slider', array('type'=>'tmpl', 'position'=>'city_'.$city['id']))}
     <div class="ggy"><b>健康饮食</b>喂民服务...</div>
     <div class="wzlb">
       <volist name="articles" id="vo">
@@ -31,7 +20,6 @@
       <div class="clr"></div>
       <div class="fy bs">{$page}</div>
     </div>
-    <div class="syggw"><a href="#" target="_blank"><img src="images/ggw.jpg" /></a></div>
   </div>
   <div class="syr">
     <div class="sysos heis">
