@@ -118,7 +118,7 @@ class IndexAction extends HomeAction
 		}
 		array_unshift($location_history, array('city'=>$this->city_alias,'alias'=>$district['alias'],'id'=>$location['id'],'title'=>$location['title']));
 		array_unique($location_history);
-		cookie('location_history', serialize($location_history));
+		cookie('location_history', serialize($location_history), 30*24*3600);
 		
 		$this->display('Index:location');
 	}

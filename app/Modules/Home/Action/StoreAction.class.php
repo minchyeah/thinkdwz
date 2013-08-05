@@ -50,7 +50,7 @@ class StoreAction extends HomeAction
 			array_pop($store_history);
 		}
 		array_unshift($store_history, array('id'=>$store['id'],'name'=>$store['name']));
-		cookie('store_history', serialize($store_history));
+		cookie('store_history', serialize($store_history), 30*24*3600);
 		
 		$this->display('Store:index');
 	}
