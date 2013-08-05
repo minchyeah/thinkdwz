@@ -6,6 +6,13 @@ $site_name=$article['title'].'_'.$city['title'].$settings['site_name'];
 $seo_keywords=$article['title'].','.$settings['seo_keywords'];
 </php>
 <include file="Public:header_meta" />
+<script type="text/javascript">
+$(function(){
+	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
+		$(this).attr('rel', $(this).attr('src').replace('_600x480', ''));
+	});
+});
+</script>
 </head>
 
 <body>

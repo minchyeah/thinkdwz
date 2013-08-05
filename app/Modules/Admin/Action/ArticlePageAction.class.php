@@ -40,9 +40,9 @@ class ArticlePageAction extends AdminAction
     	$this->page('contact');
     }
     
-    public function aboutus()
+    public function about()
     {
-    	$this->page('aboutus');
+    	$this->page('about');
     }
     
     public function terms()
