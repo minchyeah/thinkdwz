@@ -163,7 +163,7 @@ class AdvertiseAction extends AdminAction
 		if ('image'==$params['type']) {
 			$params['width'] && $width = ' width="'.$params['width'].'"';
 			$params['height'] && $height = ' height="'.$params['height'].'"';
-			$code = '<a href="'.$params['link'].'"><img src="'.$params['file'].'"'.$width.$height.' /></a>';
+			$code = '<a href="'.$params['link'].'" target="_blank"><img src="'.$params['file'].'"'.$width.$height.' /></a>';
 		}elseif('flash'==$params['type']){
 			$width = $params['width'] ? $params['width'] : '100%';
 			$height = $params['height'] ? $params['height'] : '100%';
