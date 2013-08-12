@@ -13,7 +13,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
 <div class="jz sy">
   <div class="syl">
     {:W('Slider', array('type'=>'tmpl', 'position'=>'city_'.$city['id']))}
-    <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$total_store_count}家。简单3步，先选择或搜索你的位置：</div>
+    <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$settings.store_count}家。简单3步，先选择或搜索你的位置：</div>
     <div class="fq">
       <volist name="districts.region" id="vo">
       <if condition="count($vo['locations'])">

@@ -1,16 +1,22 @@
 <div class="pageContent">
 	<div class="tabs" currentIndex="0" eventType="click">
+		<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxMenu)">
 		<div class="tabsHeader">
 			<div class="tabsHeaderContent">
 				<ul>
 					<li><a href="javascript:;"><span>基本设置</span></a></li>
+					<li><a href="javascript:;"><span>其它设置</span></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="tabsContent layoutBox" layoutH="38" style="position: relative;">
 		  <div>
-			<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxMenu)">
 			<div class="pageFormContent">
+				<div class="unit">
+					<label class="tar">网站根域名：</label>
+					<input name="site_domain" size="50" class="required" value="{$site_domain}"/>
+					不带http://,不带www,如：abcde.com
+				</div>
 				<div class="unit">
 					<label class="tar">网站名称：</label>
 					<textarea name="site_name" class="required" style="width:500px;height:60px;">{$site_name}</textarea>
@@ -38,12 +44,25 @@
 					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保 存</button></div></div></li>
 				</ul>
 			</div>
-			</form>
+		  </div>
+		  <div>
+			<div class="pageFormContent">
+				<div class="unit">
+					<label class="tar">店铺数量：</label>
+					<input name="store_count" size="30" class="required" value="{$store_count}"/>
+				</div>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保 存</button></div></div></li>
+				</ul>
+			</div>
 		  </div>
 		</div>
 		<div class="tabsFooter">
 			<div class="tabsFooterContent"></div>
 		</div>
+		</form>
 	</div>
 </div>
 <script type="text/javascript">
