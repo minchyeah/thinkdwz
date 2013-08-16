@@ -29,8 +29,12 @@
 			<dl class="nowrap">
 				<dt>菜谱照片：</dt>
 				<dd>
-				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile" type="file" size="30" /></dd>
+				  <if condition="$vo['image']">
+				    <img src="{$vo.image|imgsrc=###,100,100}" />
+					<a title="确定要删除吗?" target="ajaxTodo" href="{:U('StoreMenus/deleteMenuimg', 'id='.$vo['id'])}" class="delete"><span>删除</span></a><br />
+				  </if>
+				  <input name="imgfile" type="file" size="30" />
+				</dd>
 			</dl>
 			<div class="divider"></div>
 			<dl class="nowrap">

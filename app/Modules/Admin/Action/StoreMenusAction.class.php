@@ -82,5 +82,18 @@ class StoreMenusAction extends AdminAction
     		$this->error('保存失败！'.$model->getDbError());
     	}
     }
+    
+    public function deleteMenuimg()
+    {
+    	$id = intval($_GET['id']);
+    	$model = D('StoreMenus');
+    	$rs = $model->where(array('id'=>$id))->data(array('image'=>''))->save();
+
+    	if(false !== $rs){
+    		$this->success('操作成功！');
+    	}else{
+    		$this->error('操作失败！'.$model->getDbError());
+    	}
+    }
 }
 ?>
