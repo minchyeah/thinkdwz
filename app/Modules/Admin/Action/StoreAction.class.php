@@ -4,10 +4,15 @@ class StoreAction extends AdminAction
 {
 	public function index()
 	{
+		$model = D('Stores');
 		$location_id = intval($_REQUEST['location_id']);
 		$where = '';
 		$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
-		$model = D('Stores');
+		$key = trim(strval($_REQUEST['search_key']));
+		if($key){
+			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		}
+		$where = trim($where, ' AND');
 		$totalCount = $model->where($where)->count();
 		$currentPage = intval($_REQUEST['pageNum']);
 		$currentPage = $currentPage ? $currentPage : 1;
