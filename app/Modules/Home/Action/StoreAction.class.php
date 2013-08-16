@@ -71,7 +71,7 @@ class StoreAction extends HomeAction
 		$model = D('Stores');
 		$where = array();
 		$where['city_id'] = $this->city_id;
-		$enjoy_stores = $model->where($where)->order('rand()')->limit(12)->select();
+		$enjoy_stores = $model->where($where)->order('rand()')->limit(8)->select();
 		$this->assign('enjoy_stores', $enjoy_stores);
 	}
 	
