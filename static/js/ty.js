@@ -123,15 +123,7 @@ $(function() {
 			$("html,body").animate({scrollTop: 0}, options.speed);	
 		});
 	}
-});
-/*小图看大图*/
-$(document).ready(function(){
-			$(".group1").colorbox({rel:'group1'});			
-			$("#click").click(function(){ 
-				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
-				return false;
-			});
-		});		
+});		
 /*回到顶部*/	
 $(function (){
 	$(window).manhuatoTop({
