@@ -54,7 +54,7 @@ $seo_keywords=$store['name'].','.$settings['seo_keywords'];
               <if condition="$svo.image && $svo.remark">
               <dl style="display:none;">
                 <dt>{$svo.name}</dt>
-                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
+                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1 cboxElement" rel="{$svo.image|imgsrc}" title="{$svo.name}" alt="{$svo.name}" /><b></b></span>
                   <h4>{$svo.remark}</h4>
                   <div class="clr"></div>
                 </dd>
@@ -89,7 +89,7 @@ $seo_keywords=$store['name'].','.$settings['seo_keywords'];
         <h2>猜你感兴趣的店面</h2>
         <div class="dmycpk cngxq">
         <volist name="enjoy_stores" id="vo">
-          <a href="__APP__/store/{$vo.id}.html" target="_blank">{$vo.name}</a>
+          <a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank">{$vo.name}</a>
         </volist>
         </div>
       </div>
@@ -99,6 +99,7 @@ $seo_keywords=$store['name'].','.$settings['seo_keywords'];
 </div>
 <script type="text/javascript">
 $(function(){
+	$(".group1").colorbox({rel:'group1'});
 	$("li.menulist a").mouseover(function(){
 		$("dl", this).show();
 	}).mouseout(function(){

@@ -16,11 +16,11 @@ $seo_keywords=$district['title'].','.$settings['seo_keywords'];
     <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$settings.store_count}家。简单3步，先选择或搜索你的位置：</div>
     <div class="fq mdf">
       <dl>
-        <dt><a href="__APP__/{$city.alias}/{$district.alias}/">{$district.title}</a></dt>
+        <dt><a href="{$city.alias|city_domain}/{$district.alias}/">{$district.title}</a></dt>
         <volist name="locations" id="vo">
         <dd class="dfyfl">{$key}</dd>
         <volist name="vo" id="svo">
-        <dd><a href="__APP__/{$city.alias}/{$district.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
+        <dd><a href="{$city.alias|city_domain}/{$district.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
         </volist>
         </volist>
       </dl>

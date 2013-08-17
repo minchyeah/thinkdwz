@@ -19,7 +19,7 @@
       <volist name="cityboxTree" id="vo">
       <ol>
         <volist name="vo.child" id="svo">
-        <li><a href="javascript:;" onclick="location.href='__APP__/{$svo.alias}/';return false;">{$svo.title}</a></li>
+        <li><a href="{$svo.alias|city_domain}">{$svo.title}</a></li>
         </volist>
       </ol>
       </volist>

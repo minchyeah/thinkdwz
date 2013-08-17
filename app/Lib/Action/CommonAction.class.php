@@ -19,7 +19,7 @@ class CommonAction extends Action
 	{
 		$this->assign('static_url', __ROOT__.'/static');
 	    $settings=M('Settings');
-	    $sys=$settings->where(array('category'=>'sys'))->select();
+	    $sys=$settings->select();
 	    if(is_array($sys)){
 	    	foreach ($sys as $k => $v){
 	    		$this->sysSetting[$v['skey']] = $v['svalue'];

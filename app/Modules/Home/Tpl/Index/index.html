@@ -18,11 +18,11 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
       <volist name="districts.region" id="vo">
       <if condition="count($vo['locations'])">
       <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
+        <dt><a href="{$city.alias|city_domain}/{$vo.alias}/">{$vo.title}</a></dt>
         <volist name="vo.locations" id="svo">
-        <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
+        <dd><a href="{$city.alias|city_domain}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
         </volist>
-        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
+        <dd class="hs">......<a href="{$city.alias|city_domain}/{$vo.alias}/">更多>></a></dd>
       </dl>
       </if>
       </volist>
@@ -32,11 +32,11 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
     <if condition="count($vo['locations'])">
     <div class="fq mdf">
       <dl>
-        <dt><a href="__APP__/{$city.alias}/{$vo.alias}/">{$vo.title}</a></dt>
+        <dt><a href="{$city.alias|city_domain}/{$vo.alias}/">{$vo.title}</a></dt>
         <volist name="vo.locations" id="svo">
-        <dd><a href="__APP__/{$city.alias}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
+        <dd><a href="{$city.alias|city_domain}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
         </volist>
-        <dd class="hs">......<a href="__APP__/{$city.alias}/{$vo.alias}/">更多>></a></dd>
+        <dd class="hs">......<a href="{$city.alias|city_domain}/{$vo.alias}/">更多>></a></dd>
       </dl>
       <div class="clr"></div>
     </div>

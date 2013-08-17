@@ -39,11 +39,19 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->user_id = session('user_id');
 		$this->username = session('username');
+		C('TMPL_PARSE_STRING', array_merge(C('TMPL_PARSE_STRING'), array(
+			'__APP__' 	=> 'http://www.'.C('SITE_DOMAIN')
+		)));
+		
 		$this->_detect_city();
 		$this->_detect_district();
 		$this->_detect_locations();
 		$this->cityBoxTree();
-		$settings = D('Settings')->getField('skey,svalue');
+		$settings = F('settings');
+		if(!$settings){
+			$settings = D('Settings')->getField('skey,svalue');
+			F('settings', $settings);
+		}
 		$settings['site_name'] = str_replace('{city}', $this->city['title'], $settings['site_name']);
 		$settings['seo_keywords'] = str_replace('{city}', $this->city['title'], $settings['seo_keywords']);
 		$settings['seo_description'] = str_replace('{city}', $this->city['title'], $settings['seo_description']);
@@ -70,25 +78,24 @@ class HomeAction extends CommonAction
 		if(!F('cities_id')){
 			F('cities_id', $model->where("`status`=1 AND `type`='city'")->getField('id,alias,title'));
 		}
-		if(!count($_REQUEST['_URL_'])){
-			$city_alias = cookie('city_alias');
-			if(in_array($city_alias, array_keys($this->cities))){
-				redirect(__APP__.'/'.$city_alias.'/');
+		$host_city = str_replace('.'.C('site_domain'), '', $_SERVER['SERVER_NAME']);
+		if(in_array($host_city, array_keys($this->cities))){
+			$city_alias = $host_city;
+		}else{
+			$cookie_city = cookie('city_alias');
+			if($cookie_city && in_array($cookie_city, array_keys($this->cities))){
+				$city_alias = $cookie_city;
+				if(!count($_REQUEST['_URL_'])){
+					header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
+				}
 			}else{
-				redirect(__APP__.'/'.C('DEFAULT_CITY').'/');
+				$city_alias = C('DEFAULT_CITY');
+				header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
 			}
 		}
-		$city_alias = strtolower($_REQUEST['_URL_'][0]);
-		if (in_array($city_alias, array_keys($this->cities))) {
-			$this->city_alias = $city_alias;
-			$this->city = $this->cities[$city_alias];
-			$this->city_id = $this->cities[$city_alias]['id'];
-		}else{
-			$city_alias = C('DEFAULT_CITY');
-			$this->city_alias = $city_alias;
-			$this->city = $this->cities[$city_alias];
-			$this->city_id = $this->cities[$city_alias]['id'];
-		}
+		$this->city_alias = $city_alias;
+		$this->city = $this->cities[$city_alias];
+		$this->city_id = $this->cities[$city_alias]['id'];
 		cookie('city', $this->city);
 		cookie('city_id', $this->city_id);
 		cookie('city_alias', $this->city_alias);

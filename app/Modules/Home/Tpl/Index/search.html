@@ -14,15 +14,15 @@
     <include file="Index:search_form" />
     <div class="lbyfl">
       <ul>
-        <li class="<empty name="_GET['type']">xz</empty>"><a href="__APP__/search/">全部</a><span>({$all_store_count})</span></li>
+        <li class="<empty name="_GET['type']">xz</empty>"><a href="{$city.alias|city_domain}/search/">全部</a><span>({$all_store_count})</span></li>
         <volist name="store_types" id="vo">
-        <li class="<eq name="_GET['type']" value="$vo.id">xz</eq>"><a href="__APP__/search/?type={$vo.id}&key={$search_key}">{$vo.type_name}</a><span>({$vo.store_count})</span></li>
+        <li class="<eq name="_GET['type']" value="$vo.id">xz</eq>"><a href="{$city.alias|city_domain}/search/?type={$vo.id}&key={$search_key}">{$vo.type_name}</a><span>({$vo.store_count})</span></li>
         </volist>
       </ul>
     </div>
   </div>
   <div class="lbyr">
-    <div class="dqwz heis">当前位置：<a href="__APP__/{$city.alias}/">首页</a>><a>搜索结果</a></div>
+    <div class="dqwz heis">当前位置：<a href="{$city.alias|city_alias}/">首页</a>><a>搜索结果</a></div>
     <div class="lbypl heis">
       <dl>
         <dt>周边网为您找到了<b>{$count}</b>家外卖店</dt>
@@ -32,11 +32,11 @@
     <div class="lbynr bs">
       <volist name="stores" id="vo">
       <dl>
-        <dt><a href="__APP__/store/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=200,150}" alt="{$vo.name}" /><b></b></a>
+        <dt><a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=200,150}" alt="{$vo.name}" /><b></b></a>
           <h2>推荐</h2>
         </dt>
         <dd><span>★★★★</span>
-          <h1>{$vo.name}</h1>{$vo.sendup_prices}<a href="__APP__/store/{$vo.id}.html" target="_blank">查看详细</a></dd>
+          <h1>{$vo.name}</h1>{$vo.sendup_prices}<a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank">查看详细</a></dd>
       </dl>
       </volist>
     </div>

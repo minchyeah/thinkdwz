@@ -3,7 +3,7 @@
       <div class="sygd">
       <ul>
         <volist name="latest_store" id="vo">
-        <li><span>{$vo.location_name}<b>+</b><a href="__APP__/store/{$vo.id}.html">{$vo.name}</a></span></li>
+        <li><span>{$vo.location_name}<b>+</b><a href="{$city.alias|city_domain}/store/{$vo.id}.html">{$vo.name}</a></span></li>
         </volist>
       </ul>
       </div>
