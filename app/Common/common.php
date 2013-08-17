@@ -35,7 +35,10 @@ function imgsrc($file, $width = '', $height = '')
 	}
 	return empty($imgfile) ? __ROOT__.'/static/images/noimg.jpg' : $imgfile;
 }
-
+function city_domain($city)
+{
+	return 'http://'.$city.'.'.C('site_domain');
+}
 function getDistrict($idstr)
 {
 	$ids = explode(',', $idstr);
