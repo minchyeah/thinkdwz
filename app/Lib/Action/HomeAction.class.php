@@ -78,7 +78,7 @@ class HomeAction extends CommonAction
 		if(!F('cities_id')){
 			F('cities_id', $model->where("`status`=1 AND `type`='city'")->getField('id,alias,title'));
 		}
-		$host_city = str_replace('.'.C('site_domain'), '', $_SERVER['SERVER_NAME']);
+		$host_city = str_replace('.'.C('site_domain'), '', $_SERVER['HTTP_HOST']);
 		if(in_array($host_city, array_keys($this->cities))){
 			$city_alias = $host_city;
 		}else{
