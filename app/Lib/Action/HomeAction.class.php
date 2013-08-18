@@ -89,7 +89,7 @@ class HomeAction extends CommonAction
 					header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
 				}
 			}else{
-				$city_alias = C('DEFAULT_CITY');
+				$city_alias = C('DEFAULT_CITY_ALIAS');
 				header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
 			}
 		}

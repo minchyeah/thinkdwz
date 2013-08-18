@@ -77,9 +77,11 @@ class DistrictAction extends AdminAction
     public function save()
     {
     	if(in_array(trim($_REQUEST['type']), array('city','province'))){
-    		import('@.Util.Pinyin');
-	    	$pinyin = new Pinyin();
-	    	$_POST['alias'] = str_replace(' ', '', $pinyin->output($_REQUEST['title']));
+    		if(!$_POST['alias']){
+	    		import('@.Util.Pinyin');
+		    	$pinyin = new Pinyin();
+		    	$_POST['alias'] = str_replace(' ', '', $pinyin->output($_REQUEST['title']));
+    		}
     	}else{
     		$_POST['pid'] = intval($_REQUEST['city']);
     	}

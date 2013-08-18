@@ -40,6 +40,7 @@ class SettingAction extends AdminAction
 		$config['seo_description'] = trim($_POST['seo_description']);
 		$config['share_code'] = trim($_POST['share_code']);
 		$config['stat_code'] = trim($_POST['stat_code']);
+		$config['default_city_alias'] = trim($_POST['default_city_alias']);
 		$config['store_count'] = trim($_POST['store_count']);
 		$this->updateconfig($config);
 	}
