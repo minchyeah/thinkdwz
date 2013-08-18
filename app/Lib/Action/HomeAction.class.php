@@ -39,6 +39,7 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->user_id = session('user_id');
 		$this->username = session('username');
+		C('COOKIE_DOMAIN','.'.C('SITE_DOMAIN'));
 		C('TMPL_PARSE_STRING', array_merge(C('TMPL_PARSE_STRING'), array(
 			'__APP__' 	=> 'http://www.'.C('SITE_DOMAIN')
 		)));
