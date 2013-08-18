@@ -86,11 +86,12 @@ class HomeAction extends CommonAction
 			if($cookie_city && in_array($cookie_city, array_keys($this->cities))){
 				$city_alias = $cookie_city;
 				if(!count($_REQUEST['_URL_'])){
-					header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
+					redirect('http://'.$city_alias.'.'.C('site_domain'));
 				}
 			}else{
 				$city_alias = C('DEFAULT_CITY_ALIAS');
-				header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
+				redirect('http://'.$city_alias.'.'.C('site_domain'));
+				//header('Location:'.'http://'.$city_alias.'.'.C('site_domain'), 302);
 			}
 		}
 		$this->city_alias = $city_alias;
