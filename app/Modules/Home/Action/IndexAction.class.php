@@ -94,7 +94,7 @@ class IndexAction extends HomeAction
 		unset($req['_URL_']);
 		$http_query = http_build_query($req);
 		$http_query = $http_query ? '?'.$http_query : '';
-		$page = $this->getPage($count, 20, __APP__.'/'.$this->city_alias.'/'.$district['alias'].'/'.$location_id.'-__PAGE__.html'.$http_query);
+		$page = $this->getPage($count, 20, city_domain($this->city_alias).'/'.$district['alias'].'/'.$location_id.'-__PAGE__.html'.$http_query);
 		$stores = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,name,image,rating,sendup_prices');
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
@@ -156,7 +156,7 @@ class IndexAction extends HomeAction
 		$req = $_GET;
 		unset($req['page']);
 		unset($req['_URL_']);
-		$page = $this->getPage($count, 20, __APP__.'/search/?page=__PAGE__&'.http_build_query($req));
+		$page = $this->getPage($count, 20, city_domain($this->city_alias).'/search/?page=__PAGE__&'.http_build_query($req));
 		$stores = $model->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,name,image,rating,sendup_prices');
 		$this->assign('count', $count);
 		$this->assign('page', $page->show());
