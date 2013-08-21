@@ -117,11 +117,12 @@ class PublicAction extends AdminAction
     
     public function clear_cache()
     {
+    	F('settings', null);
     	F('cities', null);
+    	F('cities_id', null);
     	F('district', null);
     	F('district_alias', null);
     	F('locations', null);
-    	F('location_alias', null);
     	echo <<<JS
     	<script type="text/javascript">
     	$.pdialog.closeCurrent();
