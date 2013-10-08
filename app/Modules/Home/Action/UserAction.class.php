@@ -17,7 +17,12 @@ class UserAction extends HomeAction
 	
 	public function dologin()
 	{
-		
+		$model = D('Users');
+		$captcha = trim(strval($_POST['captcha']));
+		if(!$this->checkCaptcha($captcha, 'login_captcha')){
+			$this->error('验证码错误');
+		}
+		$this->success('登录成功');
 	}
 	
 	public function signup()
@@ -27,7 +32,12 @@ class UserAction extends HomeAction
 	
 	public function dosignup()
 	{
-		
+		$model = D('Users');
+		$captcha = trim(strval($_POST['captcha']));
+		if(!$this->checkCaptcha($captcha, 'signup_captcha')){
+			$this->error('验证码错误');
+		}
+		$this->success('登录成功');
 	}
 	
 	public function getpwd()
@@ -37,7 +47,7 @@ class UserAction extends HomeAction
 	
 	public function dogetpwd()
 	{
-		
+		$model = D('Users');
 	}
 }
 ?>
