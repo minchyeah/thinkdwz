@@ -27,6 +27,12 @@ class CommonAction extends Action
 	    	}
 	    }
 	    load('extend');
+	    
+		C('COOKIE_DOMAIN','.'.C('SITE_DOMAIN'));
+		ini_set('session.cookie_path', '/');
+		ini_set('session.cookie_domain', '.'.C('SITE_DOMAIN'));
+		ini_set('session.cookie_lifetime', '1800');
+		session_start();
 	}
 	
 	/**

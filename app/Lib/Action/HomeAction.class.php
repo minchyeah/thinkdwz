@@ -39,7 +39,6 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->user_id = session('user_id');
 		$this->username = session('username');
-		C('COOKIE_DOMAIN','.'.C('SITE_DOMAIN'));
 		C('TMPL_PARSE_STRING', array_merge(C('TMPL_PARSE_STRING'), array(
 			'__APP__' 	=> 'http://www.'.C('SITE_DOMAIN')
 		)));
@@ -57,6 +56,8 @@ class HomeAction extends CommonAction
 		$settings['seo_keywords'] = str_replace('{city}', $this->city['title'], $settings['seo_keywords']);
 		$settings['seo_description'] = str_replace('{city}', $this->city['title'], $settings['seo_description']);
 		$this->assign('settings', $settings);
+		$this->assign('user_id', session('user_id'));
+		$this->assign('username', session('username'));
 	}
 	
 	protected function notfound($msg = '', $url = '')
