@@ -51,6 +51,7 @@ class StoreAction extends HomeAction
 		}
 		array_unshift($store_history, array('id'=>$store['id'],'name'=>$store['name']));
 		cookie('store_history', serialize($store_history), 30*24*3600);
+		$this->_sidebar_comment($store['id']);
 		
 		$this->display('Store:index');
 	}
@@ -100,11 +101,33 @@ class StoreAction extends HomeAction
 		$store['city_alias'] = $this->city_alias;
 		$this->assign('store', $store);
 		$this->assign('locations', $locations);
+		
+		$store_history = unserialize(cookie('store_history'));
+		if(!$store_history){
+			$store_history = array();
+		}
+		foreach ($store_history as $k=>$v){
+			if($v['id'] == $store['id']){
+				unset($store_history[$k]);
+			}
+		}
+		if (count($store_history) >= 6){
+			array_pop($store_history);
+		}
+		array_unshift($store_history, array('id'=>$store['id'],'name'=>$store['name']));
+		cookie('store_history', serialize($store_history), 30*24*3600);
+		$this->_sidebar_comment($store['id']);
+		$this->enjoy_stores();
+		
 		$this->display();
 	}
 	
 	public function saveComment()
 	{
+		$captcha = trim(strval($_POST['captcha']));
+		if(!$this->checkCaptcha($captcha, 'comment_captcha')){
+			$this->error('验证码错误');
+		}
 		$model = D('StoreComment');
 		$data = $model->create();
 		if(!$data){
@@ -112,7 +135,7 @@ class StoreAction extends HomeAction
 		}
 		if (!$data['id']) {
 			$data['dateline'] = time();
-			$data['user_id'] = intval(session('user_id'));
+			$data['user_id'] = intval(cookie('user_id'));
 			$rs = $model->add($data);
 		}else{
 			$rs = $model->save($data);
@@ -122,6 +145,14 @@ class StoreAction extends HomeAction
 		}else{
 			$this->error('保存失败！'.dump($data, false).$model->getDbError());
 		}
+	}
+	
+	private function _sidebar_comment($id)
+	{
+		$model = D('StoreComment');
+		$where['store_id'] = $id;
+		$comments = $model->where($where)->order('id DESC')->limit(3)->select();
+		$this->assign('sidebar_comment', $comments);
 	}
 	
 	public function saveError()

@@ -28,6 +28,8 @@ class UserAction extends HomeAction
 		if($user['password'] == md5(md5($_POST['password']).$user['passwdkey'])){
 			session('user_id', $user['id']);
 			session('username', $user['username']);
+			cookie('user_id', $user['id']);
+			cookie('username', $user['username']);
 			$this->success('登录成功');
 		}else{
 			$this->error('登录失败，用户名或密码错误');
