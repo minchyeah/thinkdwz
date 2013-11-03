@@ -25,7 +25,7 @@
 		<td>{$vo.username}</td>
 		<td>{$vo.nickname}</td>
 		<td>{$vo.email}</td>
-		<td>{$vo.gender}</td>
+		<td>{$vo.gender|default='未知'}</td>
 		<td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
 		<td>{$vo.login_count}</td>
 		<td>{$vo.login_time|date="Y-m-d H:i:s",###}</td>

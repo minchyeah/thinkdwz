@@ -30,6 +30,10 @@ class UserAction extends HomeAction
 			session('username', $user['username']);
 			cookie('user_id', $user['id']);
 			cookie('username', $user['username']);
+			$user['login_time'] = time();
+			$user['login_ip'] = get_client_ip();
+			$user['login_count'] = $user['login_count']+1;
+			$model->save($user);
 			$this->success('登录成功');
 		}else{
 			$this->error('登录失败，用户名或密码错误');
