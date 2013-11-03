@@ -165,6 +165,7 @@ class StoreAction extends HomeAction
 		if (!$data['id']) {
 			$data['dateline'] = time();
 			$data['user_id'] = intval(session('user_id'));
+			$data['ip'] = get_client_ip();
 			$rs = $model->add($data);
 		}else{
 			$rs = $model->save($data);
