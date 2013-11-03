@@ -24,7 +24,13 @@ $config = array(
 	'VAR_PAGE'				=> 'page', // 分页变量
 );
 
+if (file_exists(DATA_PATH.'/settings.php')) {
+	$settings = require DATA_PATH.'/settings.php';
+}else{
+	$settings = array();
+}
+
 $dbconfig = require ROOT_PATH.'/config.php';
 
-return array_merge($config,$dbconfig);
+return array_merge($config,$settings,$dbconfig);
 ?>
