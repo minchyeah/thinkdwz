@@ -1,0 +1,48 @@
+<form id="pagerForm" method="post" action="{:U('Store/index')}">
+	<input type="hidden" name="pageNum" value="1" />
+	<input type="hidden" name="search_key" value="{$_REQUEST['search_key']}">
+	<input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
+</form>
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+      <li style="padding:0 20px;">
+      <form method="get" action="{:U('Store/index')}" onsubmit="return navTabSearch(this);">
+        <input type="hidden" name="pageNum" value="1" />
+        <input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
+      </form>
+      </li>
+    </ul>
+  </div>
+  <table class="list" width="100%" layoutH="53">
+    <thead>
+	  <tr>
+		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th>编号</th>
+		<th>店面名称</th>
+		<th>错误内容</th>
+		<th>联系邮箱</th>
+		<th>提交时间</th>
+		<th width="60">操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo['id']}</td>
+		<td>{$vo.store_name}</td>
+		<td>{$vo.content}</td>
+		<td>{$vo.email}</td>
+		<td>{$vo.dateline|date="Y-m-d H:i:s",###}</td>
+		<td>
+		  <a href="__URL__/delete_error/id/{$vo['id']}/navTabId/__MODULE__" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
+		</td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
+</div>

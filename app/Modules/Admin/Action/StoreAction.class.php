@@ -184,5 +184,139 @@ class StoreAction extends AdminAction
 		$this->assign('tree',$tree);
 		$this->display('Public:multiselect');
 	}
+	
+	/**
+	 * 用户添加
+	 */
+	public function useradd()
+	{
+		$model = D('StoreAppend');
+		$location_id = intval($_REQUEST['location_id']);
+		$where = '';
+		$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
+		$key = trim(strval($_REQUEST['search_key']));
+		if($key){
+			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		}
+		$where = trim($where, ' AND');
+		$totalCount = $model->where($where)->count();
+		$currentPage = intval($_REQUEST['pageNum']);
+		$currentPage = $currentPage ? $currentPage : 1;
+		$numPerPage = 20;
+		$rowOffset = ($currentPage-1) * $numPerPage;
+		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		
+		$this->assign('list', $list);
+		$this->assign('totalCount', $totalCount);
+		$this->assign('numPerPage', $numPerPage);
+		$this->assign('currentPage', $currentPage);
+		$this->assign('location_id', $location_id);
+		$this->assign('locations', F('locations'));
+		$this->display();
+	}
+	
+	public function delete_useradd()
+	{
+		$model = D('StoreAppend');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$useradd = $model->where($where)->find();
+		$rs = $model->where($where)->delete();
+		if($rs){
+			@unlink(DATA_PATH.$useradd['attachment']);
+			$this->success('删除成功');
+		}else{
+			$this->error('删除失败');
+		}
+	}
+	
+	/**
+	 * 用户报错
+	 */
+	public function errors()
+	{
+		$model = D('StoreErrorView');
+		$location_id = intval($_REQUEST['location_id']);
+		$where = '';
+		$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
+		$key = trim(strval($_REQUEST['search_key']));
+		if($key){
+			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		}
+		$where = trim($where, ' AND');
+		$totalCount = $model->where($where)->count();
+		$currentPage = intval($_REQUEST['pageNum']);
+		$currentPage = $currentPage ? $currentPage : 1;
+		$numPerPage = 20;
+		$rowOffset = ($currentPage-1) * $numPerPage;
+		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		
+		$this->assign('list', $list);
+		$this->assign('totalCount', $totalCount);
+		$this->assign('numPerPage', $numPerPage);
+		$this->assign('currentPage', $currentPage);
+		$this->assign('location_id', $location_id);
+		$this->assign('locations', F('locations'));
+		$this->display();
+	}
+	
+	public function delete_error()
+	{
+		$model = D('StoreErrors');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->success('删除成功');
+		}else{
+			$this->error('删除失败');
+		}
+	}
+	
+	/**
+	 * 评论
+	 */
+	public function comments()
+	{
+		$model = D('StoreCommentView');
+		$location_id = intval($_REQUEST['location_id']);
+		$where = '';
+		$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
+		$key = trim(strval($_REQUEST['search_key']));
+		if($key){
+			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		}
+		$where = trim($where, ' AND');
+		$totalCount = $model->where($where)->count();
+		$currentPage = intval($_REQUEST['pageNum']);
+		$currentPage = $currentPage ? $currentPage : 1;
+		$numPerPage = 20;
+		$rowOffset = ($currentPage-1) * $numPerPage;
+		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		
+		$this->assign('list', $list);
+		$this->assign('totalCount', $totalCount);
+		$this->assign('numPerPage', $numPerPage);
+		$this->assign('currentPage', $currentPage);
+		$this->assign('location_id', $location_id);
+		$this->assign('locations', F('locations'));
+		$this->display();
+	}
+	
+	public function delete_comment()
+	{
+		$model = D('StoreComment');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->success('删除成功');
+		}else{
+			$this->error('删除失败');
+		}
+	}
 }
 ?>
