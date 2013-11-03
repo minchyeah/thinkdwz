@@ -67,6 +67,61 @@ class StoreAction extends HomeAction
 		$this->display();
 	}
 	
+	public function saveAppend()
+	{
+		if(empty($_FILES['attachment']['tmp_name'])){
+			$this->error('请选择上传菜单！');
+		}
+		import("ORG.Net.UploadFile");
+		$upload = new UploadFile();
+		$upload->maxSize  = 1048576 * 4;
+		$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg','doc','docx');
+		$letter = range('a', 'z');
+		shuffle($letter);
+		$upload->savePath =  DATA_PATH.'upload/'.rand(0, 9).$letter[rand(0, 25)].'/'.rand(0, 9).$letter[rand(0, 25)].'/';
+		if(!is_dir($upload->savePath)) {
+			mkdir($upload->savePath,0777,true);
+		}
+		$upload->saveRule = 'uniqid';
+		$upload->uploadReplace = false;
+		if($upload->upload()) {
+			$imgs = $upload->getUploadFileInfo();
+			$_POST['attachment'] = str_replace(DATA_PATH, '', $imgs[0]['savepath'].$imgs[0]['savename']);
+		}else{
+			$this->error('上传菜单失败！');
+		}
+		
+		$model = D('StoreAppend');
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
+		}
+		if(!$data['store_owner']){
+			$this->error('请输入店主信息');
+		}
+		if(!$data['store_phone']){
+			$this->error('请输入外卖电话');
+		}
+		if(!$data['username']){
+			$this->error('请输入您的姓名');
+		}
+		if(!$data['email']){
+			$this->error('请输入您的邮箱');
+		}
+		if (!$data['id']) {
+			$data['dateline'] = time();
+			$data['ip'] = get_client_ip();
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$this->success('保存成功,感谢您分享的外卖信息！');
+		}else{
+			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+		}
+	}
+	
 	public function enjoy_stores()
 	{
 		$model = D('Stores');
