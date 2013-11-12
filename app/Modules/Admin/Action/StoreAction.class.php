@@ -40,6 +40,20 @@ class StoreAction extends AdminAction
 		$this->assign('location_id', $location_id);
 		$this->display();
 	}
+
+	public function delete()
+	{
+		$model = D('Stores');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
 	
 	public function edit()
 	{
