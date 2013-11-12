@@ -101,9 +101,9 @@ class SliderAction extends AdminAction
 		$id = $_REQUEST['id'];
 		$rs = $model->where(array('id'=>$id))->delete();
 		if ($rs !== false) {
-			$this->success('保存成功');
+			$this->dwzSuccess('保存成功');
 		} else {
-			$this->error ('保存失败!'.$model->getDbError());
+			$this->dwzError('保存失败!'.$model->getDbError());
 		}
 	}
 }
