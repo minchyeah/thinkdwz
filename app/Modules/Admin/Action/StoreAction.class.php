@@ -269,9 +269,9 @@ class StoreAction extends AdminAction
 		$where['id'] = $id;
 		$rs = $model->where($where)->delete();
 		if($rs){
-			$this->success('删除成功');
+			$this->dwzSuccess('删除成功');
 		}else{
-			$this->error('删除失败');
+			$this->dwzError('删除失败');
 		}
 	}
 	
@@ -313,9 +313,9 @@ class StoreAction extends AdminAction
 		$where['id'] = $id;
 		$rs = $model->where($where)->delete();
 		if($rs){
-			$this->success('删除成功');
+			$this->dwzSuccess('删除成功');
 		}else{
-			$this->error('删除失败');
+			$this->dwzError('删除失败');
 		}
 	}
 }
