@@ -189,6 +189,20 @@ class StoreAction extends AdminAction
 			$this->error('保存失败！'.dump($data, false).$model->getDbError());
 		}
 	}
+
+	public function deletetype()
+	{
+		$model = D('StoreType');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
 	
 	public function seltype()
 	{
@@ -239,9 +253,9 @@ class StoreAction extends AdminAction
 		$rs = $model->where($where)->delete();
 		if($rs){
 			@unlink(DATA_PATH.$useradd['attachment']);
-			$this->success('删除成功');
+			$this->dwzSuccess('删除成功');
 		}else{
-			$this->error('删除失败');
+			$this->dwzError('删除失败');
 		}
 	}
 	
