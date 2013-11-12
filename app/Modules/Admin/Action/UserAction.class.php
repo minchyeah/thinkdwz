@@ -98,14 +98,10 @@ class UserAction extends AdminAction
 		$where = array();
 		$where['id'] = $id;
 		$rs = $model->where($where)->delete();
-
 		if($rs){
-			$data['message'] = '删除成功';
-			$this->ajaxReturn($data);
+			$this->dwzSuccess('删除成功');
 		}else{
-			$data['message'] = '删除失败';
-			$data['statusCode'] = 0;
-			$this->ajaxReturn($data);
+			$this->dwzError('删除失败');
 		}
 	}
 	
@@ -164,5 +160,19 @@ class UserAction extends AdminAction
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
     }
+	
+	public function delete()
+	{
+		$model = D('Users');
+		$id = intval($_REQUEST['id']);
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
 }
 ?>
