@@ -18,7 +18,7 @@
           <div class="zxpjn">
           <volist name="comments" id="vo">
           <dl>
-            <dt><b>{$vo.username}</b>{$vo.dateline|date="Y-m-d",###}<span>★★★★</span></dt>
+            <dt><b>{$vo.username}</b>{$vo.dateline|date="Y-m-d",###}<span>{$vo.rate|showStar}</span></dt>
             <dd>{$vo.content}</dd>
           </dl>
           </volist>

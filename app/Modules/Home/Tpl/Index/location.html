@@ -39,7 +39,7 @@ $seo_keywords=$current_location['title'].','.$settings['seo_keywords'];
         <dt><a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=200,150}" alt="{$vo.name}" /><b></b></a>
           <h2>推荐</h2>
         </dt>
-        <dd><span>★★★★</span>
+        <dd><span>{$vo.rating|showStar}</span>
           <h1>{$vo.name}</h1>{$vo.sendup_prices}<a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank">查看详细</a></dd>
       </dl>
       </volist>

@@ -61,3 +61,15 @@ function ids2str($ids, $data, $map = array(), $delimiter = ',')
 	}
 	return trim($str, ',');
 }
+/**
+ * 显示星级
+ */
+function showStar($rate = 0)
+{
+	$rate = $rate ? $rate : 3;
+	$str = '';
+	for ($i=1; $i<=$rate; $i++){
+		$str .= '★';
+	}
+	return $str;
+}

@@ -2,7 +2,7 @@
         <div class="dmytm">
           <h1>{$store.name}</h1>
           <h3>★★★★★</h3>
-          <h4>★★★</h4>
+          <h4>{$store.rating|showStar}</h4>
           <h2>联系电话：<span onclick="$('img#telphone').attr('src', '{$city.alias|city_domain}/store/telphone/?id={$store.id}').show();$(this).remove();">点击查看</span><img id="telphone" style="display:none;" src="images/dh.gif" /></h2>
         </div>
         <div class="dmytt hs">
