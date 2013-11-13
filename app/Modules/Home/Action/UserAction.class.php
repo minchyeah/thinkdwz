@@ -83,13 +83,21 @@ class UserAction extends HomeAction
 		$data = $model->create($data);
 		if(!$data){
 			$this->error($model->getError());
+		}
+		$rs = $model->add();
+		if(!$rs){
+			$this->error('注册失败');
 		}else{
-			$rs = $model->add();
-			if(!$rs){
-				$this->error('注册失败');
-			}else{
-				$this->success('注册成功');
-			}
+			$user = $model->find($rs);
+			session('user_id', $user['id']);
+			session('username', $user['username']);
+			cookie('user_id', $user['id']);
+			cookie('username', $user['username']);
+			$user['login_time'] = time();
+			$user['login_ip'] = get_client_ip();
+			$user['login_count'] = $user['login_count']+1;
+			$model->save($user);
+			$this->success('注册成功');
 		}
 	}
 	
