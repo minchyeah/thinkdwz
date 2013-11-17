@@ -18,11 +18,11 @@
           <div class="zxpjn">
           <volist name="comments" id="vo">
           <dl>
-            <dt><b>{$vo.username}</b>{$vo.dateline|date="Y-m-d",###}<span>{$vo.rate|showStar}</span></dt>
+            <dt><b>{$vo.username}</b>{$vo.dateline|date="Y-m-d",###}<span><php>for( $ri=0;$ri<$vo['rate'];$ri++){echo '★';}</php></span></dt>
             <dd>{$vo.content}</dd>
           </dl>
           </volist>
-          <h3 class="bs"><a href="pl" class="but">我也评价</a></h3>
+          <h3 class="bs"><a href="pl" class="but">我也评价</a><a href="/store/{$store.id}.html">返回菜单</a></h3>
           </div>
           <div class="fy bs">{$page}</div>
         </div>
