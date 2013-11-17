@@ -197,10 +197,11 @@ class StoreAction extends HomeAction
 		}
 		if(false !== $rs){
 			$store = D('Stores');
-			$rs = $store->updateStar($data['store_id']);
+			$rs = $store->where(array('id'=>$data['store_id']))->setInc('rating', $store->stars[$data['rate']]);
+			//$rs = $store->updateStar($data['store_id']);
 			$this->success('保存成功！');
 		}else{
-			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+			$this->error('保存失败！');
 		}
 	}
 	

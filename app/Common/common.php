@@ -64,9 +64,32 @@ function ids2str($ids, $data, $map = array(), $delimiter = ',')
 /**
  * 显示星级
  */
-function showStar($rate = 0)
+function showStar($score = 0)
 {
-	$rate = $rate ? $rate : 3;
+	$rate = 0;
+	switch (true){
+		case $score >= 2000:
+			$rate = 6;
+			break;
+		case $score >= 500:
+			$rate = 5;
+			break;
+		case $score >= 200:
+			$rate = 4;
+			break;
+		case $score >= 100:
+			$rate = 3;
+			break;
+		case $score >= 10:
+			$rate = 2;
+			break;
+		case $score >= 1:
+			$rate = 1;
+			break;
+		default:
+			$rate = 0;
+			break;
+	}
 	$str = '';
 	for ($i=1; $i<=$rate; $i++){
 		$str .= '★';

@@ -339,8 +339,11 @@ class StoreAction extends AdminAction
 		$id = intval($_REQUEST['id']);
 		$where = array();
 		$where['id'] = $id;
+		$data = $model->where($where)->find();
 		$rs = $model->where($where)->delete();
 		if($rs){
+			$store = D('Stores');
+			$rs = $store->where(array('id'=>$data['store_id']))->setDec('rating', $store->stars[$data['rate']]);
 			$this->dwzSuccess('删除成功');
 		}else{
 			$this->dwzError('删除失败');
