@@ -135,7 +135,6 @@ class UserAction extends AdminAction
     {
     	$id =  intval($_GET['id']);
     	$model = D('Users');
-    	$this->assign('topmenus', $model->topMenus());
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
@@ -143,21 +142,27 @@ class UserAction extends AdminAction
     public function save()
     {
     	$model = D('Users');
-    	$data = $model->create();
-    	$data['params'] = '';
-    	$data['group_name'] = '';
+    	$post = array();
+    	$post['id'] = $_POST['id'];
+    	$post['nickname'] = $_POST['nickname'];
+    	$post['email'] = $_POST['email'];
+    	$data = $model->create($post);
     	if(!$data){
     		$this->error($model->getError());
     	}
+    	if(strlen(strval($_POST['password'])) > 1){
+    		$data['passwdkey'] = rand_string(8, 5);
+    		$data['password'] = md5(md5($_POST['password']).$data['passwdkey']);
+    	}
     	if (!$data['id']) {
-    		$rs = $model->add();
+    		$rs = $model->add($data);
     	}else{
-    		$rs = $model->save();
+    		$rs = $model->save($data);
     	}
     	if(false !== $rs){
     		$this->success('保存成功！');
     	}else{
-    		$this->error('保存失败！'.dump($data, false).$model->getDbError());
+    		$this->error('保存失败！');
     	}
     }
 	
