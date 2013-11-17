@@ -155,5 +155,37 @@ class DistrictAction extends AdminAction
     	}
     	echo json_encode($res);
     }
+    
+    public function delete()
+    {
+    	$model = D('District');
+    	$type = $_REQUEST['type'];
+    	$id = intval($_REQUEST['id']);
+    	if($type=='province'){
+    		$cnt = $model->where(array('pid'=>$id,'type'=>'city'))->count();
+    		if($cnt>0){
+    			$this->dwzError('该省下还有城市不能删除'.$cnt);
+    		}
+    	}else if($type=='city'){
+    		$cnt = $model->where(array('pid'=>$id,'type'=>array('in',array('custom','region'))))->count();
+    		if($cnt>0){
+    			$this->dwzError('该城市下还有分区不能删除'.$cnt);
+    		}
+    	}else if($type=='region'){
+    		$locModel = D('Locations');
+    		$cnt = $locModel->where('FIND_IN_SET('.$id.',`district`)')->count();
+    		if($cnt>0){
+    			$this->dwzError('该城区下还有商圈不能删除'.$cnt);
+    		}
+    	}
+    	$where = array();
+    	$where['id'] = $id;
+    	$rs = $model->where($where)->delete();
+    	if(false !== $rs){
+    		$this->dwzSuccess('保存成功！', 'tab_8');
+    	}else{
+    		$this->dwzError('保存失败！');
+    	}
+    }
 }
 ?>

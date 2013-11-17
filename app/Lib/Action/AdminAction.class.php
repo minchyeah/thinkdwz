@@ -101,23 +101,23 @@ class AdminAction extends CommonAction
 		parent::redirect($url, $params=array(), $delay=0, $msg='');
 	}
 	
-	public function dwzSuccess($msg = '')
+	public function dwzSuccess($msg = '', $tabid = '')
 	{
 		$data['message'] = $msg;
 		$data['statusCode'] = 1;
 		$data['info'] = $msg;
 		$data['status'] = 1;
-		$data['navTabId'] = $_GET['dwzid'];
+		$data['navTabId'] = $tabid ? $tabid : $_REQUEST['dwzid'];
 		$this->ajaxReturn($data);
 	}
 	
-	public function dwzError($msg = '')
+	public function dwzError($msg = '', $tabid = '')
 	{
 		$data['message'] = $msg;
 		$data['statusCode'] = 0;
 		$data['info'] = $msg;
 		$data['status'] = 0;
-		$data['navTabId'] = $_GET['dwzid'];
+		$data['navTabId'] = $tabid ? $tabid : $_REQUEST['dwzid'];
 		$this->ajaxReturn($data);
 	}
 	
