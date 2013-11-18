@@ -107,9 +107,9 @@ class LocationAction extends AdminAction
     	$model = D('Locations');
     	$rs = $model->where(array('id'=>$id))->delete();
     	if($rs){
-    		$this->success('删除成功');
+    		$this->dwzSuccess('删除成功');
     	} else {
-    		$this->success('删除失败');
+    		$this->dwzError('删除失败');
     	}
     }
 }

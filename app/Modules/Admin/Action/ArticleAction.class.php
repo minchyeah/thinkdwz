@@ -38,7 +38,7 @@ class ArticleAction extends AdminAction
     
     public function alist()
     {
-    	$cate_id = intval($_GET['cate_id']);
+    	$cate_id = intval($_REQUEST['cate_id']);
     	$model = D('Articles');
     	$where = array();
     	$where['cate_id'] = $cate_id;
@@ -58,14 +58,14 @@ class ArticleAction extends AdminAction
     
     public function add()
     {
-    	$vo['cate_id'] = intval($_GET['cate_id']);
+    	$vo['cate_id'] = intval($_REQUEST['cate_id']);
     	$this->assign('vo', $vo);
     	$this->display();
     }
     
     public function edit()
     {
-    	$id =  intval($_GET['id']);
+    	$id =  intval($_REQUEST['id']);
     	$model = D('Articles');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
@@ -206,14 +206,10 @@ class ArticleAction extends AdminAction
 		$where = array();
 		$where['id'] = $id;
 		$rs = $model->where($where)->delete();
-    
 		if($rs){
-			$data['message'] = '删除成功';
-			$this->ajaxReturn($data);
+			$this->dwzSuccess('删除成功','tab_9');
 		}else{
-			$data['message'] = '删除失败';
-			$data['statusCode'] = 0;
-			$this->ajaxReturn($data);
+			$this->dwzError('删除失败');
 		}
     }
 }
