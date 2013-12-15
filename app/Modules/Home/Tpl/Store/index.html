@@ -28,8 +28,8 @@ $seo_keywords=$store['name'].','.$settings['seo_keywords'];
           <volist name="menus" id="vo">
             <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
-            <li class="menulist"><a href="javascript:;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
-              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+            <li class="menulist"><a href="javascript:;" id="li_menu_{$svo.id}" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i class="seltxt">选择</i></h3>
               <if condition="$svo.image && $svo.remark">
               <dl style="display:none;">
                 <dt>{$svo.name}</dt>
@@ -49,8 +49,8 @@ $seo_keywords=$store['name'].','.$settings['seo_keywords'];
           <ol>
             <li class="dmycdnfl">{$cates[$key]}</li>
             <volist name="vo" id="svo">
-            <li class="menulist"><a href="javascript:;" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
-              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i>选择</i></h3>
+            <li class="menulist"><a href="javascript:;" id="li_menu_{$svo.id}" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i class="seltxt">选择</i></h3>
               <if condition="$svo.image && $svo.remark">
               <dl style="display:none;">
                 <dt>{$svo.name}</dt>
@@ -112,6 +112,7 @@ $(function(){
 			MenuInc(data.id, data.price)
 			return false;
 		}
+		$("#li_menu_"+data.id+" .seltxt").text("已选");
 		var dl = '<dl id="menu_'+data.id+'">'
 			  +'<dt>'+data.name+'</dt>'
 			  +'<dd><b onclick="MenuDesc('+data.id+','+data.price+')"></b><span class="count">1</span>份<b class="jsqj" onclick="MenuInc('+data.id+','+data.price+')"></b></dd>'
@@ -129,6 +130,7 @@ $(function(){
 	});
 	$("a#ClearMyMenus").click(function(){
 		$("div#MyMenus").html($("div#MyMenus").data().empty);
+		$(".seltxt").text("选择");
 		return false;
 	});
 });
@@ -153,6 +155,7 @@ function MenuDesc(id, price){
 	$total.text(parseFloat($total.text()) - price);
 }
 function MenuDel(id, price){
+	$("#li_menu_"+id+" .seltxt").text("选择");
 	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
 	var cnt = parseInt($count.text());
 	var $total = $("span#total_price", "#MyMenus");
