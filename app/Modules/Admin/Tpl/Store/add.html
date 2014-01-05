@@ -26,6 +26,10 @@
 				<dd><input class="" type="text" size="50" name="site_url" value="{$vo.site_url}"/></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>推荐排序：</dt>
+				<dd><input class="" type="text" size="8" name="recommend" value="{$vo.recommend}"/>&nbsp;&nbsp; 推荐排序,大的排前面,默认为0表示不推荐</dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>主营菜式：</dt>
 				<dd>
 				  <a class="unit btn" height="420" width="300" title="选择菜式" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Store/seltype', 'selparent=0&selmore=1&cid=type_id&cname=type_name')}">选择菜式</a>&nbsp;

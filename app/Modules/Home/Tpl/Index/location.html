@@ -35,7 +35,7 @@ $seo_keywords=$current_location['title'].','.$settings['seo_keywords'];
     </div>
     <div class="lbynr bs">
       <volist name="stores" id="vo">
-      <dl>
+      <dl class="<if condition="$vo['recommend'] gt 0">tj</if>">
         <dt><a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=200,150}" alt="{$vo.name}" /><b></b></a>
           <h2>推荐</h2>
         </dt>
