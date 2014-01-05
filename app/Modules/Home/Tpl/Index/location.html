@@ -30,7 +30,7 @@ $seo_keywords=$current_location['title'].','.$settings['seo_keywords'];
     <div class="lbypl heis">
       <dl>
         <dt>周边网为您找到{$current_location.title}<b>{$count}</b>家外卖店</dt>
-        <dd><span class="xz"><a href="javascript:;">默认排列</a></span>|<span><a href="javascript:;" title="大家都说好！">评分最高</a></span>|<span><a href="javascript:;" title="我们品尝过！">我们推荐</a></span></dd>
+        <dd><span class="xz"><a href="{$city.alias|city_domain}/{$current_district.alias}/{$current_location.id}.html">默认排列</a></span>|<span><a href="{$city.alias|city_domain}/{$current_district.alias}/{$current_location.id}.html?sort=score" title="大家都说好！">评分最高</a></span>|<span><a href="{$city.alias|city_domain}/{$current_district.alias}/{$current_location.id}.html?sort=recommend" title="我们品尝过！">我们推荐</a></span></dd>
       </dl>
     </div>
     <div class="lbynr bs">
