@@ -75,6 +75,8 @@ class StoreAction extends AdminAction
 				$_POST['image'] = $image;
 			}
 		}
+		$_POST['recommend'] = intval($_POST['recommend']);
+		$_POST['sort_order'] = intval($_POST['sort_order']);
 		$data = $model->create();
 		if(!$data){
 			$this->error($model->getError());

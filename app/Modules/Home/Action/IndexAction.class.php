@@ -92,13 +92,13 @@ class IndexAction extends HomeAction
 		$sort = trim(strval($_REQUEST['sort']));
 		switch ($sort){
 			case 'score':
-				$sort_order = 'rating DESC,id DESC';
+				$sort_order = 'rating DESC,sort_order DESC';
 				break;
 			case 'recommend':
-				$sort_order = 'recommend DESC,id DESC';
+				$sort_order = 'recommend DESC,sort_order DESC';
 				break;
 			default:
-				$sort_order = 'id DESC';
+				$sort_order = 'sort_order DESC';
 				break;
 		}
 
@@ -170,13 +170,13 @@ class IndexAction extends HomeAction
 		$sort = trim(strval($_REQUEST['sort']));
 		switch ($sort){
 			case 'score':
-				$sort_order = 'rating DESC,id DESC';
+				$sort_order = 'rating DESC,sort_order DESC';
 				break;
 			case 'recommend':
-				$sort_order = 'recommend DESC,id DESC';
+				$sort_order = 'recommend DESC,sort_order DESC';
 				break;
 			default:
-				$sort_order = 'id DESC';
+				$sort_order = 'sort_order DESC';
 				break;
 		}
 

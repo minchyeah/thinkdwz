@@ -26,8 +26,12 @@
 				<dd><input class="" type="text" size="50" name="site_url" value="{$vo.site_url}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>推荐排序：</dt>
-				<dd><input class="" type="text" size="8" name="recommend" value="{$vo.recommend}"/>&nbsp;&nbsp; 推荐排序,大的排前面,默认为0表示不推荐</dd>
+				<dt>推荐：</dt>
+				<dd><input type="checkbox" name="recommend" value="1<if condition="$vo['recommend']==1">" checked="checked</if>"/>&nbsp;&nbsp; 打勾为推荐</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>排序：</dt>
+				<dd><input class="" type="text" size="8" name="sort_order" value="{$vo.sort_order}"/>&nbsp;&nbsp; 大的排前面,默认为0</dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>主营菜式：</dt>
