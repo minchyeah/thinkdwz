@@ -44,13 +44,22 @@ class StoreAction extends AdminAction
 	public function delete()
 	{
 		$model = D('Stores');
+		$model->startTrans();
 		$id = intval($_REQUEST['id']);
 		$where = array();
 		$where['id'] = $id;
+		$orgStore = $model->find($id);
+		$dids = explode(',', $orgStore['locations']);
+		foreach ($dids as $v){
+			$lid = intval($v);
+			$lid && $model->where(array('id'=>$lid))->setDec('store_count');
+		}
 		$rs = $model->where($where)->delete();
 		if($rs){
+			$model->commit();
 			$this->dwzSuccess('删除成功');
 		}else{
+			$model->rollback();
 			$this->dwzError('删除失败');
 		}
 	}
