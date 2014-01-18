@@ -200,13 +200,14 @@ class IndexAction extends HomeAction
 		$model = D('Locations');
 		$model->startTrans();
 		$flag = true;
-		$locations = $model->select('id,store_count');
+		$locations = $model->field('id,title,store_count')->select();
 		foreach ($locations as $k=>$v){
 			$where = ' FIND_IN_SET('.$v['id'].',`locations`)';
 			$store_count= $SModel->where($where)->count();
 			if($store_count == $v['store_count']){
 				continue;
 			}
+			echo ('修正'.$v['title'].PHP_EOL);
 			$rs = $model->where(array('id'=>$v['id']))->setField('store_count', $store_count);
 			if(!$rs){
 				$flag = false;
@@ -214,10 +215,10 @@ class IndexAction extends HomeAction
 		}
 		if(false !== $flag){
 			$model->commit();
-			$this->success('修正路名商店数成功！');
+			echo ('修正路名商店数成功！'.PHP_EOL);
 		}else{
 			$model->rollback();
-			$this->error('修正路名商店数失败！'.$model->getDbError());
+			echo ('修正路名商店数失败！'.$model->getDbError());
 		}
 	}
 }
