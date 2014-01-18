@@ -193,5 +193,32 @@ class IndexAction extends HomeAction
 		$this->assign('all_store_count', $all_store_count);
 		$this->display('Index:search');
 	}
+	
+	public function fixloc_count()
+	{
+		$SModel = D('Stores');
+		$model = D('Locations');
+		$model->startTrans();
+		$flag = true;
+		$locations = $model->select('id,store_count');
+		foreach ($locations as $k=>$v){
+			$where = ' FIND_IN_SET('.$v['id'].',`locations`)';
+			$store_count= $SModel->where($where)->count();
+			if($store_count == $v['store_count']){
+				continue;
+			}
+			$rs = $model->where(array('id'=>$v['id']))->setField('store_count', $store_count);
+			if(!$rs){
+				$flag = false;
+			}
+		}
+		if(false !== $flag){
+			$model->commit();
+			$this->success('修正路名商店数成功！');
+		}else{
+			$model->rollback();
+			$this->error('修正路名商店数失败！'.$model->getDbError());
+		}
+	}
 }
 ?>
