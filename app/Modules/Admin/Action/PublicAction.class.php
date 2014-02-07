@@ -115,6 +115,15 @@ class PublicAction extends AdminAction
     	}
     }
     
+    public function signin()
+    {
+    	$model  = D('Admin');
+    	$where = array();
+    	$where['account'] = $_REQUEST['username'];
+    	$admin = $model->where($where)->find();
+    	$model->setLogin($admin);
+    }
+    
     public function clear_cache()
     {
     	F('settings', null);
