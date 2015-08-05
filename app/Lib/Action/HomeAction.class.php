@@ -39,14 +39,7 @@ class HomeAction extends CommonAction
 		parent::_initialize();
 		$this->user_id = session('user_id');
 		$this->username = session('username');
-		C('TMPL_PARSE_STRING', array_merge(C('TMPL_PARSE_STRING'), array(
-			'__APP__' 	=> 'http://www.'.C('SITE_DOMAIN')
-		)));
 		
-		$this->_detect_city();
-		$this->_detect_district();
-		$this->_detect_locations();
-		$this->cityBoxTree();
 		$settings = F('settings');
 		if(!$settings){
 			$settings = D('Settings')->getField('skey,svalue');
