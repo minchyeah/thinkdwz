@@ -189,7 +189,7 @@
 		start,
 		stop,
 		clear;
-		
+		$("body").prepend("<style type=\"text/css\" title=\"box\">html, body {overflow-x:inherit;}</style>");
 		if (settings.slideshow && $related[1]) {
 			start = function () {
 				$slideshow
@@ -406,6 +406,7 @@
 				publicMethod.prev();
 			});
 			$close.click(function () {
+				$("style[title='box']").remove();
 				publicMethod.close();
 			});
 			
@@ -413,6 +414,7 @@
 			
 			$overlay.click(function () {
 				if (settings.overlayClose) {
+					$("style[title='box']").remove();
 					publicMethod.close();
 				}
 			});
@@ -422,6 +424,7 @@
 				var key = e.keyCode;
 				if (open && settings.escKey && key === 27) {
 					e.preventDefault();
+					$("style[title='box']").remove();
 					publicMethod.close();
 				}
 				if (open && settings.arrowKey && $related[1]) {
@@ -763,7 +766,7 @@
 			.addClass(prefix + 'Photo')
 			.error(function () {
 				settings.title = false;
-				prep($tag(div, 'Error').text('This image could not be loaded'));
+				prep($tag(div, 'Error').text('此图片无法加载...'));
 			})
 			.load(function () {
 				var percent;
