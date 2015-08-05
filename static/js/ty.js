@@ -1,22 +1,28 @@
 // JavaScript Document
-/*!
- * http://www.liluokj.com
- * 立络科技 - 联系电话0771-3839314
- */
-jQuery(document).ready(function(){
-	jQuery(".nav ul li").hover(
-		function(){
-			jQuery(this).children(".drop_dwon").slideDown(200);
-			jQuery(this).children(".nav ul li a").attr("id","currlayout")
-		},
-		function(){
-			jQuery(this).children(".drop_dwon").slideUp(100);
-			jQuery(this).children(".nav ul li a").attr("id","")
-		}
-	);
+/*2级导航*/
+$(function(){
+	$(".nav ul li").hover(function(){
+		$(this).children('.drop_dwon').stop(true, true).slideDown(200);
+        $(this).children('.nav ul li a').addClass("currlayout");
+    }, function () {
+        $(this).children('.drop_dwon').stop(true, true).slideUp(200);
+        $(this).children('.nav ul li a').removeClass(); 
+	})
+	//首页内容判断高度
+	$(".synr").css("height", $(window).height() + "px");
+})
+ jQuery(function(){
+	$(".CategoryTree > ul > li").hover(function(){
+		$(this).addClass("selected");
+		$(this).children("a:eq(0)").addClass("h2-tit");
+		$(this).children("ul").show();
+	},function(){
+		$(this).removeClass("selected");
+		$(this).children(".tit").removeClass("h2-tit");
+		$(this).children("ul").hide();
+	})
 	showTab();
-	showInTop();//向上滚动
-	 //点击弹出
+	//点击弹出
 	$(".but").click(function(){
 		var name = $(this).attr("href");
     	$("#faqbg").css({display:"block",height:$(document).height()});
@@ -31,7 +37,7 @@ jQuery(document).ready(function(){
 		}
    		$("div[name='"+name+"']").css("display","block");
    		document.documentElement.scrollTop=0;
-		
+		document.body.scrollTop=0;
 		return false;
    });
    
@@ -44,9 +50,8 @@ jQuery(document).ready(function(){
  });
  
 //弹出结束
-});
-
- //区块切换
+})
+//区块切换
 function showTab(){
 	jQuery.jqtab = function(tabtit,tab_conbox,shijian,index) {
 		$(tab_conbox).find("ol").hide();
@@ -64,136 +69,65 @@ function showTab(){
 		}
 	};
 	/*调用方法如下：*/
-	$.jqtab("#hydlt","#hydlx","click");
-	$.jqtab("#pxdj","#pxxz","click");
-	$.jqtab("#dmycdt","#dmycdn","click");
-	$.jqtab("#qhcst","#qhcsb","click");
+	$.jqtab("#cpnrx","#cpnrd","click");
 }
-/*设为首页*/
-function SetHome(obj){
-    try{
-        obj.style.behavior='url(#default#homepage)';
-        obj.setHomePage("http://" + window.location.host);
-    }
-    catch(e){
-        alert("抱歉!您的浏览器不支持直接设为首页。您可通过浏览器 工具->选项->使用当前页->确定，完成设为首页。");
-    }
-}
-/*添加收藏夹*/
-function AddUrl(){
-    try{
-        window.external.addFavorite(document.location.href,document.title);
-    }
-    catch(e){
-        try{
-            window.sidebar.addPanel(document.title,document.location.href,"");
-        }
-        catch(e){
-            alert("抱歉!您的浏览器不支持直接添加收藏。您可使用 Ctrl+D 进行添加收藏");
-        }
-    }
-}
-/*回到顶部*/
-$(function() {
-	$.fn.manhuatoTop = function(options) {
-		var defaults = {			
-			showHeight : 150,
-			speed : 1000
-		};
-		var options = $.extend(defaults,options);
-		$("body").prepend("<div id='totop'><a>返回</a></div>");
-		var $toTop = $(this);
-		var $top = $("#totop");
-		var $ta = $("#totop a");
-		$toTop.scroll(function(){
-			var scrolltop=$(this).scrollTop();		
-			if(scrolltop>=options.showHeight){				
-				$top.show();
-			}
-			else{
-				$top.hide();
-			}
-		});	
-		$ta.hover(function(){ 		
-			$(this).addClass("cur");	
-		},function(){			
-			$(this).removeClass("cur");		
-		});	
-		$top.click(function(){
-			$("html,body").animate({scrollTop: 0}, options.speed);	
-		});
-	}
-});		
-/*回到顶部*/	
-$(function (){
-	$(window).manhuatoTop({
-		showHeight : 100,//设置滚动高度时显示
-		speed : 500 //返回顶部的速度以毫秒为单位
-	});
-	//alert($("#hxtdk").width());
-});
-/*移入弹出*/
+/*幻灯片*/
 $(function(){
-    $(".fytjsp li:odd").addClass("even");
-    $(".fytjsp li").each(function(){
-        $this = $(this);
-        $this.mouseover(function(){
-          if($(this).hasClass("cur")){return true;}
-         $(this).siblings("li").removeClass("cur");
-         $(this).siblings("li").find("h4").css("display", "none");
-		 $(this).siblings("li").find("h1").css("display", "none");
-		 $(this).siblings("li").find("dl").css("display", "none");
-         $(this).siblings("li").find("span").css("display", "none");
-         $(this).addClass("cur");
-         $(this).find("h4").css("display", "block");
-		 $(this).find("h1").css("display", "block");
-         $(this).find("span").css("display", "block");
-          return false;
-        });
-    });
-    $(".fytjsp li h4,.fytjsp li h4 h1,.fytjsp li h4 dl,.fytjsp li span").css("display", "none");
-    $(".fytjsp li.cur h4,.fytjsp li.cur h4 h1,.fytjsp li.cur h4 dl,.fytjsp li.cur span").css("display", "block");
-    
-    $(".tabtitle li").each(function(){
-        $this = $(this);
-        $this.mouseover(function(){
-            $(this).siblings("li").removeClass("cur");
-            $(this).addClass("cur");
-            var $cur_id_num = $(this).attr("id").slice(-1);
-            $(".fytjsp").removeClass("cur_fytjsp");
-            $(".fytjsp" + $cur_id_num).addClass("cur_fytjsp");
-        });
-    });
+		var curr = 0;
+		var len = $(".box01 span").length; //获取焦点图个数
+		$(".jsNav .trigger").each(function(i){
+			$(this).click(function(){
+				curr = i;
+				$(".box01 span").eq(i).fadeIn("slow").siblings("span").css("display","none");
+				$(this).siblings(".trigger").removeClass("imgSelected").end().addClass("imgSelected");
+				return false;
+			});
+		});
+		
+		var pg = function(flag){
+			if (flag) {
+				if (curr == 0) {
+					todo = len-1;
+				} else {
+
+					todo = (curr - 1) % len;
+				}
+			} else {
+				todo = (curr + 1) % len;
+
+			}
+			$(".jsNav .trigger").eq(todo).click();
+		};
+		$("#prev").click(function(){
+			pg(true);
+			return false;
+		});
+		$("#next").click(function(){
+			pg(false);
+			return false;
+		});
+		var timer = setInterval(function(){
+			todo = (curr + 1) % len;
+			$(".jsNav .trigger").eq(todo).click();
+		},8000);
+		$(".box01,.jsNav span,#prev,#next").hover(function(){
+				clearInterval(timer);
+			},
+			function(){
+				timer = setInterval(function(){
+					todo = (curr + 1) % len;
+					$(".jsNav .trigger").eq(todo).click();
+				},8000);
+			}
+		);
 });
-/*收起*/	
-$(function (){
-	$(".shouqi span").click(function(){
-		var $obj = $(this);
-		if($obj.hasClass('showmore')){
-			$(".shouqi").css("height","auto");
-			$obj.addClass('showless').removeClass('showmore').html("<<收起");
-		}else{
-			$(".shouqi").removeAttr("style");
-			$obj.addClass('showmore').removeClass('showless').html("更多>>");
-		}
+/*小图看大图*/
+$(document).ready(function(){
+	$(".group1").colorbox({rel:'group1'});
+	$(".group2").colorbox({rel:'group2'});
+	$(".group3").colorbox({rel:'group3'});
+	$("#click").click(function(){ 
+		$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+		return false;
 	});
 });
-/*向上滚动*/
-function showInTop(){
-	var $obj = $(".sygd"); 
-	var scrollTimer; 
-	$obj.hover(function(){ 
-		clearInterval(scrollTimer); 
-	},function(){ 
-		scrollTimer = setInterval(function(){ 
-		scrollNews($obj); 
-		}, 2000 ); 
-	}).trigger("mouseout"); 
-}
-function scrollNews(obj){ 
-	var $self = obj.find("ul:first"); 
-	var lineHeight = $self.find("li:first").height(); 
-	$self.animate({ "margin-top" : -lineHeight +"px" },600 , function(){ 
-	$self.css({"margin-top":"0px"}).find("li:first").appendTo($self); 
-	}) 
-} 

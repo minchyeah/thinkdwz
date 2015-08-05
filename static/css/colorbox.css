@@ -60,38 +60,38 @@
 #cboxTopLeft {
 	width:14px;
 	height:14px;
-	background:url(../images/controls.png) no-repeat 0 0;
+	background:url(../image/controls.png) no-repeat 0 0;
 }
 #cboxTopCenter {
 	height:14px;
-	background:url(../images/border.png) repeat-x top left;
+	background:url(../image/border.png) repeat-x top left;
 }
 #cboxTopRight {
 	width:14px;
 	height:14px;
-	background:url(../images/controls.png) no-repeat -36px 0;
+	background:url(../image/controls.png) no-repeat -36px 0;
 }
 #cboxBottomLeft {
 	width:14px;
 	height:43px;
-	background:url(../images/controls.png) no-repeat 0 -32px;
+	background:url(../image/controls.png) no-repeat 0 -32px;
 }
 #cboxBottomCenter {
 	height:43px;
-	background:url(../images/border.png) repeat-x bottom left;
+	background:url(../image/border.png) repeat-x bottom left;
 }
 #cboxBottomRight {
 	width:14px;
 	height:43px;
-	background:url(../images/controls.png) no-repeat -36px -32px;
+	background:url(../image/controls.png) no-repeat -36px -32px;
 }
 #cboxMiddleLeft {
 	width:14px;
-	background:url(../images/controls.png) repeat-y -175px 0;
+	background:url(../image/controls.png) repeat-y -175px 0;
 }
 #cboxMiddleRight {
 	width:14px;
-	background:url(../images/controls.png) repeat-y -211px 0;
+	background:url(../image/controls.png) repeat-y -211px 0;
 }
 #cboxContent {
 	background:#fff;
@@ -108,10 +108,10 @@
 	margin-bottom:5px;
 }
 #cboxLoadingOverlay {
-	background:url(../images/loading_background.png) no-repeat center center;
+	background:url(../image/loading_background.png) no-repeat center center;
 }
 #cboxLoadingGraphic {
-	background:url(../images/loading.gif) no-repeat center center;
+	background:url(../image/loading.gif) no-repeat center center;
 }
 #cboxTitle {
 	position:absolute;
@@ -132,7 +132,7 @@
 #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
 	position:absolute;
 	bottom:-29px;
-	background:url(../images/controls.png) no-repeat 0px 0px;
+	background:url(../image/controls.png) no-repeat 0px 0px;
 	width:23px;
 	height:23px;
 	text-indent:-9999px;

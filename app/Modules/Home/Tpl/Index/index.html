@@ -9,57 +9,99 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
 </head>
 
 <body>
-<include file="Public:header" />
-<div class="jz sy">
-  <div class="syl">
-    {:W('Slider', array('type'=>'tmpl', 'position'=>'city_'.$city['id']))}
-    <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$settings.store_count}家。简单3步，先选择或搜索你的位置：</div>
-    <div class="fq">
-      <volist name="districts.region" id="vo">
-      <if condition="count($vo['locations'])">
-      <dl>
-        <dt><a href="{$city.alias|city_domain}/{$vo.alias}/">{$vo.title}</a></dt>
-        <volist name="vo.locations" id="svo">
-        <dd><a href="{$city.alias|city_domain}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
-        </volist>
-        <dd class="hs">......<a href="{$city.alias|city_domain}/{$vo.alias}/">更多>></a></dd>
-      </dl>
-      </if>
-      </volist>
-      <div class="clr"></div>
+<div class="hdp">
+  <div class="hdpk">
+    <div class="jshdp">
+      <div class="box01"> <span style="background-image:url(images/hdp1.jpg);"></span><span style="background-image:url(images/hdp2.jpg); display:none;"></span> <span style="background-image:url(images/hdp3.jpg); display:none;"></span> </div>
+      <div class="jsNav"><span class="trigger imgSelected"></span><span class="trigger"></span><span class="trigger"></span></div>
     </div>
-    <volist name="districts.custom" id="vo">
-    <if condition="count($vo['locations'])">
-    <div class="fq mdf">
-      <dl>
-        <dt><a href="{$city.alias|city_domain}/{$vo.alias}/">{$vo.title}</a></dt>
-        <volist name="vo.locations" id="svo">
-        <dd><a href="{$city.alias|city_domain}/{$vo.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
-        </volist>
-        <dd class="hs">......<a href="{$city.alias|city_domain}/{$vo.alias}/">更多>></a></dd>
-      </dl>
-      <div class="clr"></div>
-    </div>
-    {:W('Advertise', array('type'=>'district', 'position'=>'district_'.$vo['id']))}
-    </if>
-    </volist>
+    <div class="hdpr"><a id="next" href="###">&nbsp;</a><a id="prev" href="###">&nbsp;</a></div>
   </div>
-  <div class="syr">
-    <div class="sysos heis">
-      <include file="Public:search_form" />
-      <include file="Public:history" />
-    </div>
-    <include file="Public:latest_store" />
-    <include file="Public:hot_foods" />
-    <include file="Public:sidebar_healthy" />
-    <include file="Public:businesslink" />
-    <include file="Public:friendlink" />
-  </div>
-  <div class="clr"></div>
 </div>
-<include file="Public:footer" />
-<include file="Public:loginform" />
-<include file="Public:city_selbox" />
-<include file="Public:bshare" />
+<div class="bj synr">
+  <div class="jz">
+    <div class="cbl">
+      <div class="logo"><a href="index.html"></a></div>
+      <div class="dh">
+        <div class="nav">
+          <ul>
+            <li><a href="index.html">首页<span>\Home</span></a></li>
+            <li><a href="wznr.html">企业简介<span>\COMPANY</span></a>
+              <div class="drop_dwon">
+                <div class="onemenulayout"><a href="wznr.html" target="_blank">关于我们</a></div>
+                <div class="onemenulayout"><a href="wznr.html" target="_blank">团队力量</a></div>
+                <div class="onemenulayout"><a href="wzlb.html" target="_blank">行业资讯</a></div>
+              </div>
+            </li>
+            <li><a href="cplb.html">产品中心<span>\PRODUCTS</span></a>
+              <div class="drop_dwon">
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">钢带增强聚乙烯(PE)旋转波纹管</a></div>
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">钢丝网骨架塑料(聚乙烯)复合管</a></div>
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">益华管道</a></div>
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE给水管(含复合管)</a></div>
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE双壁波纹管</a></div>
+                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE埋地用聚乙烯中空臂缠绕管</a></div>
+              </div>
+            </li>
+            <li><a href="alzs.html">案例展示<span>\ENGINEERING</span></a></li>
+            <li><a href="wznr.html">招商加盟<span>\Affiliates</span></a></li>
+            <li><a href="lxwm.html">服务中心<span>\CONTACT</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+    <div class="sy">
+      <div class="sys">
+        <div class="xdh hs"><a href="###" onclick="SetHome(this);">设为首页</a>|<a href="###" onclick="AddUrl(this);">添加收藏夹</a>|<a href="http://dm.gxqldkj.com" target="_blank" title="网络宣传册">宣传册</a></div>
+        <div class="syzw">
+          <h1>好管道&nbsp;&nbsp;&nbsp;&nbsp;齐利达</h1>
+          <h2>品牌 凝炼企业之魂</h2>
+          <h3>企业思想：齐心协力、利于社会、通达五洲；做一家受尊敬的企业，做一位受尊敬的人，快乐工作、幸福生活</h3>
+          <h3>企业使命：为塑料管道工业的发展创新而默默拼搏</h3>
+          <h3>经营理念：以科技为先导、视质量为生命</h3>
+          <h3>发展理念：以人为本、品质为根、诚信为基、共赢致远</h3>
+          <h3>服务理念：客户的满意是我们永远的追求</h3>
+          <h4><a href="wznr.html" title="查看更多">>>></a></h4>
+        </div>
+      </div>
+      <div class="syx"></div>
+    </div>
+  </div>
+  <div class="bq">
+    <div class="htlj"><a href="/syscp/" target="_blank">后台链接</a></div>
+    <div class="jz">
+      <div class="bqgs">版权归属：广西齐利达新材料环保科技有限公司</div>
+      <div class="bqgsyw hs">Copyright ©2015 GXQLDKJ.com All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.liluokj.com/" target="_blank">立络科技</a></div>
+    </div>
+  </div>
+</div>
+
+<!--QQ客服-->
+<div class='SonlineBox' id='SonlineBox' style='top:-600px;'>
+  <div class='openTrigger' style='display:none' title='展开'></div>
+  <div class='contentBox'>
+    <div class='closeTrigger'><img src='image/closeBtnImg.gif' title='关闭' /></div>
+    <div class='titleBox'><span>客服中心</span></div>
+    <div class='listBox'></div>
+    <div class='gglxfs'>
+      <dl>
+        <dd><img src="images/xhnwx.jpg" class="group2" rel="images/xhnwx.jpg" /></dd>
+      </dl>
+    </div>
+    <div class="kfdd"></div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("body").Sonline({
+		Position:"right",//left或right
+		Top:200,//顶部距离，默认200px
+		Effect:true, //滚动或者固定两种方式，布尔值：true或false
+		DefaultsOpen:true, //默认展开：true,默认收缩：false
+		Qqlist:"1564154666|售前客服,81635191|售前客服,715085658|售后客服" //多个QQ用','隔开，QQ和客服名用'|'隔开
+	});
+})
+</script>
 </body>
 </html>
