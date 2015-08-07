@@ -34,14 +34,11 @@ class SettingAction extends AdminAction
 	 * 更新配置项
 	 */
     public function save(){
-		$config['site_domain'] = trim($_POST['site_domain']);
 		$config['site_name'] = trim($_POST['site_name']);
 		$config['seo_keywords'] = trim($_POST['seo_keywords']);
 		$config['seo_description'] = trim($_POST['seo_description']);
-		$config['share_code'] = trim($_POST['share_code']);
+		$config['kefuqq'] = trim($_POST['kefuqq']);
 		$config['stat_code'] = trim($_POST['stat_code']);
-		$config['default_city_alias'] = trim($_POST['default_city_alias']);
-		$config['store_count'] = trim($_POST['store_count']);
 		$this->updateconfig($config);
 	}
 	/**

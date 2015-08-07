@@ -23,31 +23,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
     <div class="cbl">
       <div class="logo"><a href="index.html"></a></div>
       <div class="dh">
-        <div class="nav">
-          <ul>
-            <li><a href="index.html">首页<span>\Home</span></a></li>
-            <li><a href="wznr.html">企业简介<span>\COMPANY</span></a>
-              <div class="drop_dwon">
-                <div class="onemenulayout"><a href="wznr.html" target="_blank">关于我们</a></div>
-                <div class="onemenulayout"><a href="wznr.html" target="_blank">团队力量</a></div>
-                <div class="onemenulayout"><a href="wzlb.html" target="_blank">行业资讯</a></div>
-              </div>
-            </li>
-            <li><a href="cplb.html">产品中心<span>\PRODUCTS</span></a>
-              <div class="drop_dwon">
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">钢带增强聚乙烯(PE)旋转波纹管</a></div>
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">钢丝网骨架塑料(聚乙烯)复合管</a></div>
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">益华管道</a></div>
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE给水管(含复合管)</a></div>
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE双壁波纹管</a></div>
-                <div class="onemenulayout"><a href="cpnr.html" target="_blank">HDPE埋地用聚乙烯中空臂缠绕管</a></div>
-              </div>
-            </li>
-            <li><a href="alzs.html">案例展示<span>\ENGINEERING</span></a></li>
-            <li><a href="wznr.html">招商加盟<span>\Affiliates</span></a></li>
-            <li><a href="lxwm.html">服务中心<span>\CONTACT</span></a></li>
-          </ul>
-        </div>
+        <include file="Public:sidebar_nav"/>
       </div>
       <div class="clr"></div>
     </div>
@@ -68,40 +44,8 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
       <div class="syx"></div>
     </div>
   </div>
-  <div class="bq">
-    <div class="htlj"><a href="/syscp/" target="_blank">后台链接</a></div>
-    <div class="jz">
-      <div class="bqgs">版权归属：广西齐利达新材料环保科技有限公司</div>
-      <div class="bqgsyw hs">Copyright ©2015 GXQLDKJ.com All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a href="http://www.liluokj.com/" target="_blank">立络科技</a></div>
-    </div>
-  </div>
+  <include file="Public:footer"/>
 </div>
-
-<!--QQ客服-->
-<div class='SonlineBox' id='SonlineBox' style='top:-600px;'>
-  <div class='openTrigger' style='display:none' title='展开'></div>
-  <div class='contentBox'>
-    <div class='closeTrigger'><img src='image/closeBtnImg.gif' title='关闭' /></div>
-    <div class='titleBox'><span>客服中心</span></div>
-    <div class='listBox'></div>
-    <div class='gglxfs'>
-      <dl>
-        <dd><img src="images/xhnwx.jpg" class="group2" rel="images/xhnwx.jpg" /></dd>
-      </dl>
-    </div>
-    <div class="kfdd"></div>
-  </div>
-</div>
-<script type="text/javascript">
-$(function(){
-	$("body").Sonline({
-		Position:"right",//left或right
-		Top:200,//顶部距离，默认200px
-		Effect:true, //滚动或者固定两种方式，布尔值：true或false
-		DefaultsOpen:true, //默认展开：true,默认收缩：false
-		Qqlist:"1564154666|售前客服,81635191|售前客服,715085658|售后客服" //多个QQ用','隔开，QQ和客服名用'|'隔开
-	});
-})
-</script>
+<include file="Public:qqkefu"/>
 </body>
 </html>

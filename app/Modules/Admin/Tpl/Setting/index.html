@@ -13,30 +13,16 @@
 		  <div>
 			<div class="pageFormContent">
 				<div class="unit">
-					<label class="tar">网站根域名：</label>
-					<input name="site_domain" size="50" class="required" value="{$site_domain}"/>
-					不带http://,不带www,如：abcde.com
-				</div>
-				<div class="unit">
 					<label class="tar">网站名称：</label>
-					<textarea name="site_name" class="required" style="width:500px;height:60px;">{$site_name}</textarea>
-					城市：{city}
+					<textarea name="site_name" class="required" style="width:500px;height:32px;">{$site_name}</textarea>
 				</div>
 				<div class="unit">
 					<label class="tar">SEO关键字：</label>
-					<textarea name="seo_keywords" style="width:500px;height:60px;">{$seo_keywords}</textarea>
+					<textarea name="seo_keywords" style="width:500px;height:32px;">{$seo_keywords}</textarea>
 				</div>
 				<div class="unit">
 					<label class="tar">SEO描述：</label>
-					<textarea name="seo_description" style="width:500px;height:100px;">{$seo_description}</textarea>
-				</div>
-				<div class="unit">
-					<label class="tar">分享代码：</label>
-					<textarea name="share_code" style="width:500px;height:80px;">{$share_code}</textarea>
-				</div>
-				<div class="unit">
-					<label class="tar">统计代码 ：</label>
-					<textarea name="stat_code" style="width:500px;height:80px;">{$stat_code}</textarea>
+					<textarea name="seo_description" style="width:500px;height:80px;">{$seo_description}</textarea>
 				</div>
 			</div>
 			<div class="formBar">
@@ -48,12 +34,16 @@
 		  <div>
 			<div class="pageFormContent">
 				<div class="unit">
-					<label class="tar">默认城市缩写：</label>
-					<input name="default_city_alias" size="30" class="required" value="{$default_city_alias}"/>
+					<label class="tar">客服ＱＱ：</label>
+					<textarea name="kefuqq" style="width:600px;height:32px;">{$kefuqq}</textarea>
 				</div>
 				<div class="unit">
-					<label class="tar">店铺数量：</label>
-					<input name="store_count" size="30" class="required" value="{$store_count}"/>
+					<label class="tar">&nbsp;</label>
+					多个QQ用','隔开，QQ和客服名用'|'隔开
+				</div>
+				<div class="unit">
+					<label class="tar">统计代码 ：</label>
+					<textarea name="stat_code" style="width:600px;height:100px;">{$stat_code}</textarea>
 				</div>
 			</div>
 			<div class="formBar">

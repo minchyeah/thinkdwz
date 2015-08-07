@@ -1,0 +1,27 @@
+
+<!--QQ客服-->
+<div class='SonlineBox' id='SonlineBox' style='top:-600px;'>
+  <div class='openTrigger' style='display:none' title='展开'></div>
+  <div class='contentBox'>
+    <div class='closeTrigger'><img src='{$static_url}/image/closeBtnImg.gif' title='关闭' /></div>
+    <div class='titleBox'><span>客服中心</span></div>
+    <div class='listBox'></div>
+    <div class='gglxfs'>
+      <dl>
+        <dd><img src="{$static_url}/images/xhnwx.jpg" class="group2" rel="{$static_url}/images/xhnwx.jpg" /></dd>
+      </dl>
+    </div>
+    <div class="kfdd"></div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("body").Sonline({
+		Position:"right",//left或right
+		Top:200,//顶部距离，默认200px
+		Effect:true, //滚动或者固定两种方式，布尔值：true或false
+		DefaultsOpen:true, //默认展开：true,默认收缩：false
+		Qqlist:"1564154666|售前客服,81635191|售前客服,715085658|售后客服" //多个QQ用','隔开，QQ和客服名用'|'隔开
+	});
+})
+</script>
