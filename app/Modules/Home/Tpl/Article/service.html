@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name = $city['title'].$settings['site_name'];
+$seo_keywords=$city['title'].','.$settings['seo_keywords'];
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="bj">
+  <div class="jz">
+    <div class="cbl">
+      <include file="Public:sidebar_nav"/>
+    </div>
+    <div class="nry">
+      <include file="Public:header_nav" />
+      <div class="dqbt">企业简介<span>\COMPANY</span></div>
+      <div class="nyzw">
+        <div class="lxwm">
+          <div class="lxwml">
+            <dl>
+              <dt>公司名称：</dt>
+              <dd>广州市城铁机械有限公司</dd>
+            </dl>
+            <dl>
+              <dt>联系地址：</dt>
+              <dd>广州市海珠区南洲路36号</dd>
+            </dl>
+            <dl>
+              <dt>详细联系：</dt>
+              <dd>
+                <div class="wznrzw"> <img src="images/lxwm.jpg" class="group1" rel="images/lxwm.jpg" title="联系我们" /> 电话：020-34713625<br />
+                  传真：020-34713625-1<br />
+                  手机：13710662454<br />
+                  邮编：530000<br />
+                  邮箱：123456@qq.com<br />
+                  网址：www.gzchengtie.com</div>
+              </dd>
+            </dl>
+          </div>
+          <div class="lxwmr">
+            <ol>
+              <li>
+                <h4>您的姓名：</h4>
+                <h5>
+                  <input type="text" value="请输入您的姓名..." onfocus="if(this.value=='请输入您的姓名...')this.value='';" onblur="if(this.value=='')this.value='请输入您的姓名...';" >
+                </h5>
+                <h6>*</h6>
+              </li>
+              <li>
+                <h4>您的电话：</h4>
+                <h5>
+                  <input type="text" value="请输入您的电话..." onfocus="if(this.value=='请输入您的电话...')this.value='';" onblur="if(this.value=='')this.value='请输入您的电话...';" >
+                </h5>
+                <h6>√</h6>
+              </li>
+              <li>
+                <h4>您的Email：</h4>
+                <h5>
+                  <input type="text" value="请输入您的Email..." onfocus="if(this.value=='请输入您的Email...')this.value='';" onblur="if(this.value=='')this.value='请输入您的Email...';" >
+                </h5>
+                <h6>x</h6>
+              </li>
+              <li>
+                <h4>您的地址：</h4>
+                <h5>
+                  <input type="text" value="请输入您的地址..." onfocus="if(this.value=='请输入您的地址...')this.value='';" onblur="if(this.value=='')this.value='请输入您的地址...';" >
+                </h5>
+                <h6>x</h6>
+              </li>
+              <li class="wzy">
+                <h4>内容：</h4>
+                <h5>
+                  <textarea name="ly" cols="" rows="" ></textarea>
+                </h5>
+                <h6>*</h6>
+              </li>
+              <li class="yzm">
+                <h4>验证码：</h4>
+                <h5><span>
+                  <input name="textfield" type="text" id="textfield" size="50" value=""/>
+                  <a href="###">看不清 换一张</a></span> <img src="images/yzm.jpg" /></h5>
+                <h6>*</h6>
+              </li>
+              <li class="dltj bs">
+                <h3> <a href="###">提&nbsp;&nbsp;&nbsp;交</a> </h3>
+              </li>
+            </ol>
+          </div>
+        <div class="ditu">
+          <div style="width:625px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
+          <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> 
+          <script type="text/javascript">
+    function initMap(){
+        createMap();
+        setMapEvent();
+        addMapControl();
+        addMarker();
+    }
+    function createMap(){
+        var map = new BMap.Map("dituContent");
+        var point = new BMap.Point(113.307774,23.071173);
+        map.centerAndZoom(point,17);
+        window.map = map;
+    }
+    function setMapEvent(){
+        map.enableDragging();
+        map.disableScrollWheelZoom();
+        map.enableDoubleClickZoom();
+        map.enableKeyboard();
+    }
+    function addMapControl(){
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+                }
+    var markerArr = [{title:"&nbsp;&nbsp;广州市城铁机械有限公司&nbsp;&nbsp;",content:"广州市海珠区南洲路36号",point:"113.307307|23.070408",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+		 ];
+
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    initMap();
+</script> 
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<include file="Public:footer"/>
+</div>
+<include file="Public:qqkefu"/>
+</body>
+</html>

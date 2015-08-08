@@ -1,6 +1,6 @@
 <?php
 
-class ArticleAction extends HomeAction
+class ProductsAction extends HomeAction
 {
 	public function index()
 	{
@@ -63,11 +63,7 @@ class ArticleAction extends HomeAction
 		$this->hot_foods();
 		$this->sidebar_healthy();
 		$this->links();
-		if($code=='service'){
-		    $this->display('Article:service');
-		}else{
-		  $this->display('Article:page');
-		}
+		$this->display('Article:page');
 	}
 }
 ?>

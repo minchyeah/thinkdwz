@@ -9,17 +9,7 @@ class EmptyAction extends HomeAction
 	
     public function _empty($name)
     {
-    	if (in_array(strtolower(MODULE_NAME), array_keys($this->districts))) {
-    		switch (count($_REQUEST['_URL_'])){
-    			case 1:
-    				A('Index')->district($_REQUEST['_URL_'][0]);
-    				break;
-    			case 2:
-    				A('Index')->location($_REQUEST['_URL_'][0],$_REQUEST['_URL_'][1]);
-    				break;
-    			default:
-    		}
-    	}elseif ('healthy' == strtolower(MODULE_NAME)){
+    	if ('healthy' == strtolower(MODULE_NAME)){
     		if('index' == $name OR strpos($name, '-')){
     			$arr = explode('-', $name);
     			$_GET['cate_id'] = intval($arr[0]);
@@ -29,9 +19,7 @@ class EmptyAction extends HomeAction
     			$_GET['id'] = intval($name);
     			A('Article')->index();
     		}
-    	}elseif ('search' == strtolower(MODULE_NAME)){
-    		A('Index')->search();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','terms','fmeeting'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','business','service'))){
     		$_REQUEST['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
     	}else {
