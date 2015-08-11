@@ -17,28 +17,18 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
     </div>
     <div class="nry">
       <include file="Public:header_nav" />
-      <div class="dqbt">产品中心<span>\PRODUCTS</span></div>
+      <div class="dqbt">案例展示<span>\ENGINEERING</span></div>
       <div class="nyzw">
         <div class="cplb">
+          <volist name="volist" id="vo">
           <dl>
-            <dt><img src="images/cp2.jpg" class="group1" rel="images/cp2.jpg" title="涂料原料：'涨'声之后 让价格飞" /><b></b></dt>
-            <dd>钢带增强聚乙烯(PE)旋转波纹管</dd>
+            <dt><img src="{$vo.image|imgsrc=###,200,200}" class="group1" rel="{$vo.image}" title="{$vo.name}" /><b></b></dt>
+            <dd>{$vo.name}</dd>
           </dl>
-          <dl>
-            <dt><img src="images/cp1.jpg" class="group1" rel="images/cp1.jpg" title="涂料原料：'涨'声之后 让价格飞" /><b></b></dt>
-            <dd>钢带增强聚乙烯(PE)旋转波纹管</dd>
-          </dl>
-          <dl>
-            <dt><img src="images/cp2.jpg" class="group1" rel="images/cp2.jpg" title="涂料原料：'涨'声之后 让价格飞" /><b></b></dt>
-            <dd>钢带增强聚乙烯(PE)旋转波纹管</dd>
-          </dl>
-          <dl>
-            <dt><img src="images/cp2.jpg" class="group1" rel="images/cp2.jpg" title="涂料原料：'涨'声之后 让价格飞" /><b></b></dt>
-            <dd>钢带增强聚乙烯(PE)旋转波纹管</dd>
-          </dl>
+          </volist>
           <div class="clr"></div>
         </div>
-        <div class="fy bs"><a href="#" class="fys">上一页</a><span><b>1</b>/3页&nbsp;&nbsp;共60条记录</span><a href="#" class="fyx">下一页</a></div>
+        <div class="fy bs"><a href="{$pre_page}" class="fys">上一页</a><span><b>{$current_page}</b>/{$total_page}页&nbsp;&nbsp;共{$total_count}条记录</span><a href="{$next_page}" class="fyx">下一页</a></div>
       </div>
     </div>
   </div>

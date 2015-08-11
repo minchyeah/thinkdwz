@@ -21,17 +21,11 @@
   <table class="list" width="100%" layoutH="53">
     <thead>
 	  <tr>
-		<th><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="30">编号</th>
-		<th width="100">形象图片</th>
-		<th width="60">名称</th>
-		<th width="120">地址</th>
-		<th width="60">电话</th>
-		<th width="60">营业时间</th>
-		<th width="80">起送条件</th>
-		<th width="80">送餐区域</th>
-		<th width="80">送餐范围</th>
-		<th>备注</th>
+		<th width="300">案例图片</th>
+		<th width="200">案例名称</th>
+		<th width="60">排序</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
@@ -40,17 +34,10 @@
 	  <tr target="sid_article" rel="{$vo['id']}">
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
-		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if></td>
+		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,200,200}" /></if></td>
 		<td>{$vo.name}</td>
-		<td>{$vo.address}</td>
-		<td>{$vo.telphone}</td>
-		<td>{$vo.shop_hours}</td>
-		<td>{$vo.sendup_prices}</td>
-		<td>{$vo.locations|ids2str=$locations,array('id','title')}</td>
-		<td>{$vo.scope}</td>
-		<td>{$vo.remark}</td>
+		<td>{$vo.sort_order}</td>
 		<td>
-		  <a href="{:U('StoreMenus/index','store_id='.$vo['id'])}" target="navTab" rel="storemenu_{$vo.id}" class="btnInfo" title="({$vo.name})菜谱列表">菜谱列表</a>
 		  <a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>
 		  <a href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
 		</td>
