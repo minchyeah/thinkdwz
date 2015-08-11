@@ -8,7 +8,7 @@ class CaseAction extends AdminAction
 		$where = '';
 		$key = trim(strval($_REQUEST['search_key']));
 		if($key){
-			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+			$where .= ' AND `name` LIKE "%'.$key.'%"';
 		}
 		$where = trim($where, ' AND');
 		$totalCount = $model->where($where)->count();

@@ -1,19 +1,14 @@
-<form id="pagerForm" method="post" action="{:U('Store/index')}">
+<form id="pagerForm" method="post" action="{:U('Case/index')}">
 	<input type="hidden" name="pageNum" value="1" />
 	<input type="hidden" name="search_key" value="{$_REQUEST['search_key']}">
-	<input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
 </form>
 <div class="pageContent">
   <div class="panelBar">
     <ul class="toolBar">
-      <if condition="$location_id">
-      <li><a class="add" href="__URL__/add/location_id/{$location_id}/tid/{$Think.request.tid}" target="navTab" rel="storeform"><span>新增</span></a></li>
-      </if>
       <li style="padding:0 20px;">
-      <form method="get" action="{:U('Store/index')}" onsubmit="return navTabSearch(this);">
-        <span>店名或地址：</span><input name="search_key" value="{$_REQUEST['search_key']}"><input type="submit" value="查 找"/>
+      <form method="get" action="{:U('Case/index')}" onsubmit="return navTabSearch(this);">
+        <span>案例名称：</span><input name="search_key" value="{$_REQUEST['search_key']}"><input type="submit" value="查 找"/>
         <input type="hidden" name="pageNum" value="1" />
-        <input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
       </form>
       </li>
     </ul>
