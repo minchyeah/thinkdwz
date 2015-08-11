@@ -1,86 +1,79 @@
 <div class="pageContent">
-	<form method="post" action="{:U('Store/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+	<form method="post" action="{:U('Product/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
-				<dt>店面名称：</dt>
+				<dt>产品名称：</dt>
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>所在地址：</dt>
-				<dd><textarea class="required" cols="50" rows="1" name="address">{$vo.address}</textarea></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>联系电话：</dt>
-				<dd><input class="required" type="text" size="30" name="telphone" value="{$vo.telphone}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>营业时间：</dt>
-				<dd><input class="required" type="text" size="30" name="shop_hours" value="{$vo.shop_hours}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>官网名称：</dt>
-				<dd><input class="" type="text" size="30" name="site_name" value="{$vo.site_name}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>官网地址：</dt>
-				<dd><input class="" type="text" size="50" name="site_url" value="{$vo.site_url}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>推荐：</dt>
-				<dd><input type="checkbox" name="recommend" value="1<if condition="$vo['recommend']==1">" checked="checked</if>"/>&nbsp;&nbsp; 打勾为推荐</dd>
 			</dl>
 			<dl class="nowrap">
 				<dt>排序：</dt>
 				<dd><input class="" type="text" size="8" name="sort_order" value="{$vo.sort_order}"/>&nbsp;&nbsp; 大的排前面,默认为0</dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>主营菜式：</dt>
+				<dt>产品图片：</dt>
 				<dd>
-				  <a class="unit btn" height="420" width="300" title="选择菜式" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Store/seltype', 'selparent=0&selmore=1&cid=type_id&cname=type_name')}">选择菜式</a>&nbsp;
-				  <input id="type_name" class="required textInput readonly" type="text" value="{$vo.type_name}" readonly="readonly" size="40">
-				  <input id="type_id" class="required" type="hidden" value="{$vo.types}" name="types">
-				</dd>
+				  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" /></if>
+				  <input class="<if condition="!$images[0]">required</if>" name="imgfile" type="file" size="30" /></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>起送条件：</dt>
-				<dd><input class="required" type="text" size="30" name="sendup_prices" value="{$vo.sendup_prices}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>送餐区域：</dt>
+				<dt>&nbsp;</dt>
 				<dd>
-				  <a class="unit btn" height="420" width="300" title="选择区域" mask="true" rel="tree" maxable="false" target="dialog" href="{:U('Location/multiselect', 'city_id='.$vo['city_id'].'&selparent=0&selmore=1&cid=location_id&cname=location_name')}">选择区域</a>&nbsp;
-				  <input id="location_name000" type="hidden" class="required textInput readonly" type="text" value="{$vo.locationsName}" readonly="readonly" size="40">
-				  <input id="location_id" class="required" type="hidden" value="{$vo.locations}" name="locations">
-				  <textarea id="location_name" style="width:600px;line-height:18px;height:200px;" class="required textInput readonly">{$vo.locationsName}</textarea>
-				</dd>
+				  <if condition="$images[1]"><img src="{$images[1]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile1" type="file" size="30" /></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>送餐范围：</dt>
-				<dd><textarea class="required" cols="50" rows="1" name="scope">{$vo.scope}</textarea></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>菜单分类：</dt>
-				<dd><textarea class="required" style="width:300px;line-height:18px;height:auto;" name="menu_category">{$vo.menu_category}</textarea>分类之间请用英文逗号分隔</dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>形象图片：</dt>
+				<dt>&nbsp;</dt>
 				<dd>
-				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
-				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
+				  <if condition="$images[2]"><img src="{$images[2]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile2" type="file" size="30" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>&nbsp;</dt>
+				<dd>
+				  <if condition="$images[3]"><img src="{$images[3]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile3" type="file" size="30" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>&nbsp;</dt>
+				<dd>
+				  <if condition="$images[4]"><img src="{$images[4]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile4" type="file" size="30" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>&nbsp;</dt>
+				<dd>
+				  <if condition="$images[5]"><img src="{$images[5]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile5" type="file" size="30" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>&nbsp;</dt>
+				<dd>
+				  <if condition="$images[6]"><img src="{$images[6]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile6" type="file" size="30" /></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>&nbsp;</dt>
+				<dd>
+				  <if condition="$images[7]"><img src="{$images[7]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile7" type="file" size="30" /></dd>
 			</dl>
 			<div class="divider"></div>
 			<dl class="nowrap">
-				<dt>备注：</dt>
-				<dd><textarea cols="80" rows="5" name="remark">{$vo.remark}</textarea></dd>
+				<dt>产品详情：</dt>
+				<dd><textarea class="editor" name="detail" style="height:400px;width:800px;" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.detail}</textarea></dd>
 			</dl>
 		</div>
 		<div class="formBar">
 			<ul>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
-				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>
 		</div>
-		<input name="city_id" type="hidden" value="{$vo.city_id}" />
 		<input name="id" type="hidden" value="{$vo.id}" />
+		<input name="img0" type="hidden" value="{$images[0]}" />
+		<volist name="images" id="ivo">
+		<if condition="$i gt 1">
+		<input name="img{$i-1}" type="hidden" value="{$ivo}" />
+		</if>
+		</volist>
 	</form>
 </div>

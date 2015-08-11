@@ -90,9 +90,9 @@ class CommonAction extends Action
 			}
 			$upload->saveRule = 'uniqid';
 			$upload->uploadReplace = false;
-			if($upload->upload()) {
-				$imgs = $upload->getUploadFileInfo();
-				return str_replace(DATA_PATH, '', $imgs[0]['savepath'].$imgs[0]['savename']);
+			$img = $upload->uploadOne($file);
+			if($img) {
+				return str_replace(DATA_PATH, '', $img[0]['savepath'].$img[0]['savename']);
 			}
 		}
 		return false;

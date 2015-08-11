@@ -21,40 +21,32 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
       <div class="nyzw">
         <div class="cpnr">
       <div id="cpnrd">
+        <volist name="images" id="vo">
+        <if condition="$vo!=''">
         <ol>
-          <li><img src="images/cp1.jpg" class="group3" rel="images/cp1.jpg" title="点击看大图" /><b></b></li>
+          <li><img src="{$vo|imgsrc=###,410,410}" class="group3" rel="{$vo}" title="点击看大图" /><b></b></li>
         </ol>
-        <ol>
-          <li><img src="images/cp2.jpg" class="group3" rel="images/cp2.jpg" title="点击看大图" /><b></b></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp2.jpg" class="group3" rel="images/cp2.jpg" title="点击看大图" /><b></b></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp2.jpg" class="group3" rel="images/cp2.jpg" title="点击看大图" /><b></b></li>
-        </ol>
-        <ol>
-          <li><img src="images/cp1.jpg" class="group3" rel="images/cp1.jpg" title="点击看大图" /><b></b></li>
-        </ol>
+        </if>
+        </volist>
       </div>
       <div id="cpnrx">
         <ul>
-          <li><img src="images/cp1.jpg" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp2.jpg" alt="饭厅" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp2.jpg" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp2.jpg" /><b></b></li>
-          <li class="ztwdj"><img src="images/cp1.jpg" /><b></b></li>
+          <volist name="images" id="vo">
+          <if condition="$vo!=''">
+          <li><img src="{$vo|imgsrc=###,200,200}" /><b></b></li>
+          </if>
+          </volist>
         </ul>
       </div>
       <div class="clr"></div>
       <div class="cpnrn">
-        <h1>钢带增强聚乙烯(PE)旋转波纹管</h1>
+        <h1>{$product.name}</h1>
         <h2 class="bs"><a href="zxyd" class="but" rel="1">在线预定</a></h2>
         <div class="clr"></div>
         <h5>详情<span><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div></span></h5>
-        <div class="wznrzw">底盘系统采用久经考验的部件制造，<br />
-          <img src="images/cp1.jpg" class="group1" rel="images/cp1.jpg" title="广东湛江调丰糖厂" /><br />
-          强大稳固，专为条件恶劣的林区作业而量身定制。 设计独特的动臂在整个伸出范围内均能提供业界领先的提升能力，在采伐大型木材时尤其有用。 四种型号都配备了合适的马力、履带尺寸和液压配置，完全能满足您的应用需求。 </div>
+        <div class="wznrzw">
+          {$product.detail}
+        </div>
       </div>
       <div class="clr"></div>
     </div>
@@ -64,55 +56,8 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
   <include file="Public:footer"/>
 </div>
 <include file="Public:qqkefu"/>
+<include file="orderform"/>
 
-<include file="Public:qqkefu"/>
-<div id="faqbg"></div>
-<div class="faqdiv" name="zxyd" style="display:none;">
-  <div id="hydlt">
-    <ul>
-      <li rel="yd">钢带增强聚乙烯(PE)旋转波纹管</li>
-    </ul>
-    <h5 class="close" rel="zxyd"></h5>
-  </div>
-  <div id="hydlx">
-    <h3>您好，请详细填写以下信息，我们会尽快与您联系！</h3>
-    <ol>
-      <li>
-        <h4>姓名：</h4>
-        <h5>
-          <input type="text" value="请输入您的姓名..." onfocus="if(this.value=='请输入您的姓名...')this.value='';" onblur="if(this.value=='')this.value='请输入您的姓名...';">
-        </h5>
-        <h6>输入有错误!</h6>
-      </li>
-      <li>
-        <h4>联系电话：</h4>
-        <h5>
-          <input type="text" value="请输入您的联系电话..." onfocus="if(this.value=='请输入您的联系电话...')this.value='';" onblur="if(this.value=='')this.value='请输入您的联系电话...';">
-        </h5>
-        <h6>输入有错误!</h6>
-      </li>
-      <li>
-        <h4>联系地址：</h4>
-        <h5>
-          <input type="text" value="请输入您的联系地址..." onfocus="if(this.value=='请输入您的联系地址...')this.value='';" onblur="if(this.value=='')this.value='请输入您的联系地址...';">
-        </h5>
-        <h6>输入有错误!</h6>
-      </li>
-      <li class="yzm">
-        <h4>验证码：</h4>
-        <h5><span>
-          <input name="textfield" type="text" id="textfield" size="50" value=""/>
-          <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
-        <h6>输入有错误!</h6>
-      </li>
-      <li class="dltj huangs">
-        <h3>
-          <input class="pjtj" type="submit" value="&nbsp;"/>
-        </h3>
-      </li>
-    </ol>
-  </div>
-</div>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)]; </script>
 </body>
 </html>
