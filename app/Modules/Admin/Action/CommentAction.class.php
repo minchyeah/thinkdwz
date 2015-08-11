@@ -1,10 +1,11 @@
 <?php
 
-class CasesAction extends HomeAction
+class CommentAction extends AdminAction
 {
 	public function index()
 	{
 		$this->display();
 	}
+	
 }
 ?>

@@ -26,6 +26,16 @@ class EmptyAction extends HomeAction
     		$this->notfound();
     	}
     }
+    
+    private function saveComment() {
+        $name = trim(strip_tags($_POST['name']));
+        $name = trim(strip_tags($_POST['phone']));
+        $name = trim(strip_tags($_POST['email']));
+        $name = trim(strip_tags($_POST['address']));
+        $name = trim(strip_tags($_POST['content']));
+        $name = trim(strip_tags($_POST['name']));
+        $name = trim(strip_tags($_POST['name']));
+    }
 
 }
 ?>

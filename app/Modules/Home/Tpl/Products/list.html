@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name = $city['title'].$settings['site_name'];
+$seo_keywords=$city['title'].','.$settings['seo_keywords'];
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="bj">
+  <div class="jz">
+    <div class="cbl">
+      <include file="Public:sidebar_nav"/>
+    </div>
+    <div class="nry">
+      <include file="Public:header_nav" />
+      <div class="dqbt">产品中心<span>\PRODUCTS</span></div>
+      <div class="nyzw">
+        <div class="cplb">
+          <volist name="products" id="vo">
+          <dl>
+            <dt><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}" target="_blank"><img src="{$vo.product_image}" alt="{$vo.name}" /><b></b></a></dt>
+            <dd><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}" target="_blank">{$vo.name}</a></dd>
+          </dl>
+          </volist>
+          <div class="clr"></div>
+        </div>
+        <div class="fy bs"><a href="#" class="fys">上一页</a><span><b>1</b>/3页&nbsp;&nbsp;共60条记录</span><a href="#" class="fyx">下一页</a></div>
+      </div>
+    </div>
+  </div>
+  <include file="Public:footer"/>
+</div>
+<include file="Public:qqkefu"/>
+</body>
+</html>

@@ -23,11 +23,11 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
           <div class="lxwml">
             <dl>
               <dt>公司名称：</dt>
-              <dd>广州市城铁机械有限公司</dd>
+              <dd>{$settings.company_name}</dd>
             </dl>
             <dl>
               <dt>联系地址：</dt>
-              <dd>广州市海珠区南洲路36号</dd>
+              <dd>{$settings.company_address}</dd>
             </dl>
             <dl>
               <dt>详细联系：</dt>
@@ -42,6 +42,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
             </dl>
           </div>
           <div class="lxwmr">
+          <form action="__APP__/saveComment" method="post">
             <ol>
               <li>
                 <h4>您的姓名：</h4>
@@ -82,13 +83,14 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
                 <h4>验证码：</h4>
                 <h5><span>
                   <input name="textfield" type="text" id="textfield" size="50" value=""/>
-                  <a href="###">看不清 换一张</a></span> <img src="images/yzm.jpg" /></h5>
+                  <a href="###">看不清 换一张</a></span> <img src="{$static_url}/images/yzm.jpg" /></h5>
                 <h6>*</h6>
               </li>
               <li class="dltj bs">
-                <h3> <a href="###">提&nbsp;&nbsp;&nbsp;交</a> </h3>
+                <h3> <a href="javascript:;" onclick="">提&nbsp;&nbsp;&nbsp;交</a> </h3>
               </li>
             </ol>
+          </form>
           </div>
         <div class="ditu">
           <div style="width:625px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
@@ -176,7 +178,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
       </div>
     </div>
   </div>
-<include file="Public:footer"/>
+  <include file="Public:footer"/>
 </div>
 <include file="Public:qqkefu"/>
 </body>

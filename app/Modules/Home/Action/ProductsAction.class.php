@@ -5,65 +5,23 @@ class ProductsAction extends HomeAction
 	public function index()
 	{
 		$id = intval($_GET['id']);
-		$model = D('Articles');
-		$where = array();
-		$where['id'] = $id;
-		$where['status'] = 1;
-		$article = $model->where($where)->find();
-		if(!$article){
-			$this->notfound();
+		if($id){
+			$this->detail();
 		}
-		$model->where($where)->setInc('visit_count');
-		$this->assign('article', $article);
-		$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
-		$this->display('Article:index');
+		$products = M('Products');
+		$total_count = $products->where(array('state'=>1))->select();
+		$this->display('list');
 	}
 	
-	public function category()
+	public function detail()
 	{
-		$model = D('ArticleCategory');
-		$cate_id = intval($_GET['cate_id']);
-		$current_category = $model->find($cate_id);
-		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
-		$cate_ids = array();
-		if ($sub_cates) {
-			$cate_ids = array_keys($sub_cates);
-		}
-		$cate_ids[] = $cate_id;
-		$where = array();
-		$where['status'] = 1;
-		$where['cate_id'] = array('in', $cate_ids);
-		$article = D('Articles');
-		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 10, __APP__.'/healthy/'.$cate_id.'-__PAGE__.html');
-		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,create_time');
-		$this->assign('articles', $articles);
-		$this->assign('current_category', $current_category);
-		$this->assign('page', $page->show());
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
-		$this->display('Article:category');
-	}
-
-	public function page()
-	{
-		$code = trim(strval($_REQUEST['code']));
-		$model = D('ArticlePage');
-		$page = $model->where(array('page_code'=>$code))->find();
-		$model->where(array('id'=>$page['id']))->setInc('visit_count');
-		$this->assign('article', $page);
-
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
-		$this->display('Article:page');
+	    $id = intval($_GET['id']);
+	    $products = M('Products');
+	    $product = $products->where(array('state'=>1))
+	                       ->where(array('id'=>$id))
+	                       ->select();
+	    $this->assign('product', $product);
+		$this->display('detail');
 	}
 }
 ?>
