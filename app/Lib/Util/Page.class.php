@@ -23,15 +23,19 @@ class Page {
 	// 起始行数
 	public $firstRow	;
 	// 分页总页面数
-	protected $totalPages  ;
+	public $totalPages  ;
 	// 总行数
-	protected $totalRows  ;
+	public $totalRows  ;
 	// 当前页数
-	protected $nowPage	;
+	public $nowPage	;
 	// 分页显示定制
 	protected $config  =	array('header'=>'条记录','prev'=>'上一页','next'=>'下一页','first'=>'第一页','last'=>'最后一页','theme'=>' %totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first%  %prePage%  %linkPage%  %nextPage% %end%');
 	// 默认分页变量名
-	protected $varPage;
+	public $varPage;
+	//上一页地址
+	public $prePage = '';
+	//下一页地址
+	public $nextPage = '';
 
 	/**
 	 * 架构函数
@@ -101,12 +105,14 @@ class Page {
 		$upRow		  =   $this->nowPage-1;
 		$downRow		=   $this->nowPage+1;
 		if ($upRow>0){
+		    $this->prePage = str_replace('__PAGE__',$upRow,$url);
 			$upPage	 =   "<a href='".str_replace('__PAGE__',$upRow,$url)."'>".$this->config['prev']."</a>";
 		}else{
 			$upPage	 =   '';
 		}
 
 		if ($downRow <= $this->totalPages){
+		    $this->nextPage = str_replace('__PAGE__',$downRow,$url);
 			$downPage   =   "<a href='".str_replace('__PAGE__',$downRow,$url)."'>".$this->config['next']."</a>";
 		}else{
 			$downPage   =   '';
