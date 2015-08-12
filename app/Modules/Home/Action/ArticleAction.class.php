@@ -4,7 +4,7 @@ class ArticleAction extends HomeAction
 {
 	public function index()
 	{
-		$id = intval($_REQUEST['id']);
+		$id = intval($_GET['id']);
 		$model = D('Articles');
 		$where = array();
 		$where['id'] = $id;
@@ -22,13 +22,13 @@ class ArticleAction extends HomeAction
 	public function category()
 	{
 		$model = D('ArticleCategory');
-		$catalog = trim(strval($_REQUEST['catalog']));
+		$catalog = trim(strval($_GET['catalog']));
 		$current_category = $model->where(array('catalog'=>$catalog))->find();
 		$cate_id = $current_category['id'];
 
 		if('about' == $catalog){
 		    $article = M('Articles')->where(array('cate_id'=>$cate_id,'state'=>1))->find();
-		    $_REQUEST['id'] = $article['id'];
+		    $_GET['id'] = $article['id'];
 		    return $this->index();
 		}
 		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
@@ -42,17 +42,18 @@ class ArticleAction extends HomeAction
 		$where['cate_id'] = array('in', $cate_ids);
 		$article = D('Articles');
 		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/page-__PAGE__.html');
+		$page = $this->getPage($count, 8, __APP__.'/'.$catalog.'/page-__PAGE__.html');
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
-		$this->assign('page', $page->show());
+		$page->show();
+		$this->assign('pager', $page);
 		$this->display('Article:category');
 	}
 
 	public function page()
 	{
-		$code = trim(strval($_REQUEST['code']));
+		$code = trim(strval($_GET['code']));
 		$model = D('ArticlePage');
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');

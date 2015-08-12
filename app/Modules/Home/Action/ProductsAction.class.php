@@ -12,19 +12,13 @@ class ProductsAction extends HomeAction
 		$where = array('state'=>1);
 	    $total = $products->field('COUNT(1) count')->where($where)->find();
 	    $total_count = intval($total['count']);
-		$current_page = intval($_GET['page']);
-    	$current_page = $current_page ? $current_page : 1;
-		$total_page = ceil($total_count/6);
-		$pre_page = '';
-		$next_page = '';
+
+	    $pager = $this->getPage($total_count, 1, __APP__.'/products/page-__PAGE__.html');
+	    $pager->show();
 		
-		$volist = $products->where($where)->limit(($current_page-1)*6, 6)->select();
+		$volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->select();
 		
-		$this->assign('current_page', $current_page);
-		$this->assign('total_page', $total_page);
-		$this->assign('total_count', $total_count);
-		$this->assign('pre_page', $pre_page);
-		$this->assign('next_page', $next_page);
+		$this->assign('pager', $pager);
 		$this->assign('volist', $volist);
 		$this->display('list');
 	}
@@ -45,6 +39,14 @@ class ProductsAction extends HomeAction
 	public function order()
 	{
 	    
+	}
+	
+	public function _empty($name)
+	{
+	    if('page-' == substr($name, 0, 5)){
+	        $_GET['page'] = substr($name, 5);
+	        return $this->index();
+	    }
 	}
 }
 ?>

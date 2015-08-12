@@ -29,7 +29,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
           </volist>
           <div class="clr"></div>
         </div>
-        <div class="fy bs"><a href="{$pre_page}" class="fys">上一页</a><span><b>{$current_page}</b>/{$total_page}页&nbsp;&nbsp;共{$total_count}条记录</span><a href="{$next_page}" class="fyx">下一页</a></div>
+        <div class="fy bs"><a href="{$pager->prePage}" class="fys">上一页</a><span><b>{$pager->nowPage}</b>/{$pager->totalPages}页&nbsp;&nbsp;共{$pager->totalRows}条记录</span><a href="{$pager->nextPage}" class="fyx">下一页</a></div>
       </div>
     </div>
   </div>

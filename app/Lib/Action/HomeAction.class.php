@@ -51,6 +51,7 @@ class HomeAction extends CommonAction
 		$this->assign('settings', $settings);
 		$this->assign('user_id', session('user_id'));
 		$this->assign('username', session('username'));
+		$this->sidebar_nav();
 	}
 	
 	protected function notfound($msg = '', $url = '')
@@ -188,18 +189,30 @@ class HomeAction extends CommonAction
 		$hot_foods = $model->where($where)->order('rand()')->limit(3)->select();
 		$this->assign('hot_foods', $hot_foods);
 	}
+	protected function sidebar_healthy(){}
 	
 	/**
-	 * 健康饮食
+	 * 侧边栏导航
 	 */
-	protected function sidebar_healthy()
+	protected function sidebar_nav()
 	{
-		$model = D('Articles');
-		$id = intval($_REQUEST['id']);
+		$model = D('Products');
 		$where = array();
 		$where['statue'] = 1;
-		$where['cate_id'] = 1;
-		$sidebar_healthy = $model->where($where)->order('id DESC')->limit(8)->getField('id,title,cate_id,create_time');
-		$this->assign('sidebar_healthy', $sidebar_healthy);
+		$sidebar_products = $model->field('id,name')->where($where)->order('id DESC')->limit(6)->select();
+		$this->assign('sidebar_products', $sidebar_products);
+		unset($model,$sidebar_products);
+		
+		$model = D('ArticleCategory');
+		$current_category = $model->where(array('catalog'=>'about'))->find();
+		$cate_id = $current_category['id'];
+		unset($model);
+		$model = D('Articles');
+		$where = array();
+		$where['cate_id'] = $cate_id;
+		$where['statue'] = 1;
+		$sidebar_abouts = $model->field('id,title')->where($where)->order('id ASC')->limit(6)->select();
+		$this->assign('sidebar_abouts', $sidebar_abouts);
+		
 	}
 }
