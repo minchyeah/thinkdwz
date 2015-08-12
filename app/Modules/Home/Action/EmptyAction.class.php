@@ -12,6 +12,14 @@ class EmptyAction extends HomeAction
     	if ('product' == strtolower(MODULE_NAME)){
     		$_GET['id'] = intval($name);
     		A('Products')->detail();
+    	}elseif (in_array(strtolower(MODULE_NAME), array('about','news'))){
+    		$_REQUEST['catalog'] = strtolower(MODULE_NAME);
+    		$id = intval($name);
+    		if($id){
+    		    $_REQUEST['id'] = intval($name);
+    		    return A('Article')->index();
+    		}
+    		A('Article')->category();
     	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','business','service'))){
     		$_REQUEST['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();

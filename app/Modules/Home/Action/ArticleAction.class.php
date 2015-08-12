@@ -4,7 +4,7 @@ class ArticleAction extends HomeAction
 {
 	public function index()
 	{
-		$id = intval($_GET['id']);
+		$id = intval($_REQUEST['id']);
 		$model = D('Articles');
 		$where = array();
 		$where['id'] = $id;
@@ -16,18 +16,21 @@ class ArticleAction extends HomeAction
 		$model->where($where)->setInc('visit_count');
 		$this->assign('article', $article);
 		$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
 		$this->display('Article:index');
 	}
 	
 	public function category()
 	{
 		$model = D('ArticleCategory');
-		$cate_id = intval($_GET['cate_id']);
-		$current_category = $model->find($cate_id);
+		$catalog = trim(strval($_REQUEST['catalog']));
+		$current_category = $model->where(array('catalog'=>$catalog))->find();
+		$cate_id = $current_category['id'];
+
+		if('about' == $catalog){
+		    $article = M('Articles')->where(array('cate_id'=>$cate_id,'state'=>1))->find();
+		    $_REQUEST['id'] = $article['id'];
+		    return $this->index();
+		}
 		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
 		$cate_ids = array();
 		if ($sub_cates) {
@@ -39,15 +42,11 @@ class ArticleAction extends HomeAction
 		$where['cate_id'] = array('in', $cate_ids);
 		$article = D('Articles');
 		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 10, __APP__.'/healthy/'.$cate_id.'-__PAGE__.html');
-		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,create_time');
+		$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/page-__PAGE__.html');
+		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
 		$this->assign('page', $page->show());
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
 		$this->display('Article:category');
 	}
 

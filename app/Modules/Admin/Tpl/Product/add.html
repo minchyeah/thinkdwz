@@ -15,48 +15,18 @@
 				  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" /></if>
 				  <input class="<if condition="!$images[0]">required</if>" name="imgfile" type="file" size="30" /></dd>
 			</dl>
+			
+			<volist name="images" id="ivo">
+			<if condition="$i gt 1">
+			<php>$ij = $i-1;</php>
 			<dl class="nowrap">
 				<dt>&nbsp;</dt>
 				<dd>
-				  <if condition="$images[1]"><img src="{$images[1]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile1" type="file" size="30" /></dd>
+				  <if condition="$images[$ij]"><img src="{$images[$ij]|imgsrc=###,100,100}" /></if>
+				  <input name="imgfile{$ij}" type="file" size="30" /></dd>
 			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[2]"><img src="{$images[2]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile2" type="file" size="30" /></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[3]"><img src="{$images[3]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile3" type="file" size="30" /></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[4]"><img src="{$images[4]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile4" type="file" size="30" /></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[5]"><img src="{$images[5]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile5" type="file" size="30" /></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[6]"><img src="{$images[6]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile6" type="file" size="30" /></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>&nbsp;</dt>
-				<dd>
-				  <if condition="$images[7]"><img src="{$images[7]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile7" type="file" size="30" /></dd>
-			</dl>
+			</if>
+			</volist>
 			<div class="divider"></div>
 			<dl class="nowrap">
 				<dt>产品详情：</dt>
