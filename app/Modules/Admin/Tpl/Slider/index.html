@@ -12,9 +12,7 @@
 	  <tr>
 		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="40">编号</th>
-		<th>位置</th>
 		<th>图片预览</th>
-		<th>文字说明</th>
 		<th width="100">操作</th>
 	  </tr>
     </thead>
@@ -24,9 +22,7 @@
 	  <tr target="sid_article" rel="{$vo['id']}">
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
-		<td>{$positions[$vo['position']]}</td>
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=100,100}" /></if></td>
-		<td>{$vo.title}</td>
 		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="520" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>

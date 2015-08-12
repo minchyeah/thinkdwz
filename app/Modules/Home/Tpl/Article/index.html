@@ -24,7 +24,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
             <h1>{$article.title}</h1>
             <span>文章来源：{$article.source}</span><span>发布时间：{$article.create_time|date="Y-m-d",###}</span><span>点击量：{$article.visit_count}</span> 
           </div>
-          <if>
+          <if condition="$article['video']">
           <div class="nysp">
             <div class="nyspk">
               <div class="nyspem">

@@ -1,7 +1,11 @@
 <div class="hdp">
   <div class="hdpk">
     <div class="jshdp">
-      <div class="box01"> <span style="background-image:url({$static_url}/images/hdp1.jpg);"></span><span style="background-image:url({$static_url}/images/hdp2.jpg); display:none;"></span> <span style="background-image:url({$static_url}/images/hdp3.jpg); display:none;"></span> </div>
+      <div class="box01">
+       <volist name="index_slider" id="vo">
+       <span style="background-image:url({$vo.image});<if condition="$i gt 1"> display:none;</if>"></span>
+       </volist>
+      </div>
       <div class="jsNav"><span class="trigger imgSelected"></span><span class="trigger"></span><span class="trigger"></span></div>
     </div>
     <div class="hdpr"><a id="next" href="###">&nbsp;</a><a id="prev" href="###">&nbsp;</a></div>

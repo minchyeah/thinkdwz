@@ -51,6 +51,7 @@ class HomeAction extends CommonAction
 		$this->assign('settings', $settings);
 		$this->assign('user_id', session('user_id'));
 		$this->assign('username', session('username'));
+		$this->slider();
 		$this->sidebar_nav();
 	}
 	
@@ -213,6 +214,15 @@ class HomeAction extends CommonAction
 		$where['statue'] = 1;
 		$sidebar_abouts = $model->field('id,title')->where($where)->order('id ASC')->limit(6)->select();
 		$this->assign('sidebar_abouts', $sidebar_abouts);
-		
+	}
+	
+	protected function slider()
+	{
+	    $model = D('Slider');
+		$where = array();
+		$where['position'] = 'index';
+		$index_slider = $model->field('id,image')->where($where)->order('sort_order DESC')->select();
+		$this->assign('index_slider', $index_slider);
+		unset($model,$index_slider);;
 	}
 }
