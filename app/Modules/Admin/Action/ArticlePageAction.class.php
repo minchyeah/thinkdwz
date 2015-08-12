@@ -34,25 +34,11 @@ class ArticlePageAction extends AdminAction
     		$this->error('保存失败！'.dump($data, false).$model->getDbError());
     	}
     }
-    
-    public function contact()
+
+    public function _empty($name)
     {
-    	$this->page('contact');
+        $this->page($name);
     }
-    
-    public function about()
-    {
-    	$this->page('about');
-    }
-    
-    public function terms()
-    {
-    	$this->page('terms');
-    }
-    
-    public function fmeeting()
-    {
-    	$this->page('fmeeting');
-    }
+   
 }
 ?>

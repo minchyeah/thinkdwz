@@ -57,7 +57,7 @@ class ArticleAction extends HomeAction
 		$model = D('ArticlePage');
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');
-		$this->assign('article', $page);
+		$this->assign('page', $page);
 
 		$this->latest_store();
 		$this->hot_foods();
