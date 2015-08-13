@@ -33,7 +33,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
         <ul>
           <volist name="images" id="vo">
           <if condition="$vo!=''">
-          <li><img src="{$vo|imgsrc=###,200,200}" /><b></b></li>
+          <li class="<if condition="$i gt 1">ztwdj</if>"><img src="{$vo|imgsrc=###,200,200}" /><b></b></li>
           </if>
           </volist>
         </ul>

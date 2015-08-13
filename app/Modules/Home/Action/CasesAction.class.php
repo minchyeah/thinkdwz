@@ -14,7 +14,15 @@ class CasesAction extends HomeAction
 	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->select();
 	    $this->assign('pager', $pager);
 	    $this->assign('volist', $volist);
-		$this->display();
+		$this->display('index');
+	}
+	
+	public function _empty($name)
+	{
+	    if('page-' == substr($name, 0, 5)){
+	        $_GET['page'] = substr($name, 5);
+	        return $this->index();
+	    }
 	}
 }
 ?>
