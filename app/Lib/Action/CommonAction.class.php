@@ -118,6 +118,12 @@ class CommonAction extends Action
 		return implode($delimiter, $arrs);
 	}
 	
+	/**
+	 * 通用分页方法
+	 * @param unknown $count
+	 * @param number $perPage
+	 * @param string $url
+	 */
 	protected function getPage($count, $perPage = 10, $url = '')
 	{
     	import('Util.Page', LIB_PATH);
