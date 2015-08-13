@@ -125,5 +125,19 @@ class ProductAction extends AdminAction
 		$this->assign('currentPage', $currentPage);
 		$this->display();
 	}
+	
+	public function deleteorder()
+	{
+		$id = intval($_REQUEST['id']);
+		$model = D('ProductOrders');
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
 }
 ?>
