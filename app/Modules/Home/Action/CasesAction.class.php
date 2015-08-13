@@ -11,7 +11,7 @@ class CasesAction extends HomeAction
 	    $pager = $this->getPage($total_count, 6, __APP__.'/cases/page-__PAGE__.html');
 	    $pager->show();
 	    
-	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->select();
+	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('id DESC')->select();
 	    $this->assign('pager', $pager);
 	    $this->assign('volist', $volist);
 		$this->display('index');
