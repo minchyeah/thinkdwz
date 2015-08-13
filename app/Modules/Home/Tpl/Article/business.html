@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name = $city['title'].$settings['site_name'];
+$seo_keywords=$city['title'].','.$settings['seo_keywords'];
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="bj">
+  <div class="jz">
+    <div class="cbl">
+        <include file="Public:sidebar_nav"/>
+    </div>
+    <div class="nry">
+      <include file="Public:header_nav"/>
+      <div class="dqbt">{$page.title}<span>\AFFILIATES</span></div>
+      <div class="nyzw">
+        <div class="wznr">
+          <div class="wznrt">
+            <h1>{$page.title}</h1>
+            <span>发布时间：{$page.create_time|date="Y-m-d",###}</span><span>点击量：{$page.visit_count}</span> 
+          </div>
+          <notempty name="page.video">
+          <div class="nysp">
+            <div class="nyspk">
+              <div class="nyspem">
+                {$page.video}
+              </div>
+            </div>
+          </div>
+          </notempty>
+          <div class="wznrzw">
+          {$page.content}
+          </div>
+          <div class="clr"></div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <include file="Public:footer"/>
+</div>
+<include file="Public:qqkefu" />
+</body>
+</html>

@@ -58,13 +58,8 @@ class ArticleAction extends HomeAction
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');
 		$this->assign('page', $page);
-
-		$this->latest_store();
-		$this->hot_foods();
-		$this->sidebar_healthy();
-		$this->links();
-		if($code=='service'){
-		    $this->display('Article:service');
+		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
+		    $this->display('Article:'.$code);
 		}else{
 		  $this->display('Article:page');
 		}
