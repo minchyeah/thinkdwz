@@ -51,21 +51,21 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
                 <h5>
                   <input name="mobile" type="text" value="请输入您的电话..." onfocus="if(this.value=='请输入您的电话...')this.value='';" onblur="if(this.value=='')this.value='请输入您的电话...';" >
                 </h5>
-                <h6>√</h6>
+                <h6>*</h6>
               </li>
               <li>
                 <h4>您的Email：</h4>
                 <h5>
                   <input name="email" type="text" value="请输入您的Email..." onfocus="if(this.value=='请输入您的Email...')this.value='';" onblur="if(this.value=='')this.value='请输入您的Email...';" >
                 </h5>
-                <h6>x</h6>
+                <h6></h6>
               </li>
               <li>
                 <h4>您的地址：</h4>
                 <h5>
                   <input name="address" type="text" value="请输入您的地址..." onfocus="if(this.value=='请输入您的地址...')this.value='';" onblur="if(this.value=='')this.value='请输入您的地址...';" >
                 </h5>
-                <h6>*</h6>
+                <h6></h6>
               </li>
               <li class="wzy">
                 <h4>内容：</h4>
@@ -78,7 +78,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
                 <h4>验证码：</h4>
                 <h5><span>
                   <input name="captcha" type="text" id="textfield" size="50" value=""/>
-                  <a href="javascript:;" onclick="$('img#service_captcha').attr('src','{:U('Public/captcha','background=F6F6F6')}?'+Math.random())">看不清 换一张</a></span> <img id="service_captcha" src="{:U('Index/captcha','background=F6F6F6')}" /></h5>
+                  <a href="javascript:;" onclick="$('img#service_captcha').attr('src','{:U('Public/captcha','background=F6F6F6')}?'+Math.random())">看不清 换一张</a></span> <img id="service_captcha" src="{:U('Index/captcha','background=F6F6F6')}" onclick="$('img#service_captcha').attr('src','{:U('Public/captcha','background=F6F6F6')}?'+Math.random())"/></h5>
                 <h6>*</h6>
               </li>
               <li class="dltj bs">
