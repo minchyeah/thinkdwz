@@ -13,7 +13,7 @@ class ProductsAction extends HomeAction
 	    $total = $products->field('COUNT(1) count')->where($where)->find();
 	    $total_count = intval($total['count']);
 
-	    $pager = $this->getPage($total_count, 1, __APP__.'/products/page-__PAGE__.html');
+	    $pager = $this->getPage($total_count, 6, __APP__.'/products/page-__PAGE__.html');
 	    $pager->show();
 		
 		$volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->select();

@@ -80,7 +80,7 @@ class CommonAction extends Action
 		if(!empty($file['name'])){
 			import("ORG.Net.UploadFile");
 			$upload = new UploadFile();
-			$upload->maxSize  = 1048576 * 0.5;
+			$upload->maxSize  = 1048576 * 5;
 			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');
 			$letter = range('a', 'z');
 			shuffle($letter);
