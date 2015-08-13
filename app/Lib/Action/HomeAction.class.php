@@ -200,7 +200,7 @@ class HomeAction extends CommonAction
 		$model = D('Products');
 		$where = array();
 		$where['statue'] = 1;
-		$sidebar_products = $model->field('id,name')->where($where)->order('id DESC')->limit(6)->select();
+		$sidebar_products = $model->field('id,name')->where($where)->order('sort_order DESC, dateline DESC')->limit(6)->select();
 		$this->assign('sidebar_products', $sidebar_products);
 		unset($model,$sidebar_products);
 		

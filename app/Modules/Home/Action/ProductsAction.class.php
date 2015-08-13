@@ -16,7 +16,7 @@ class ProductsAction extends HomeAction
 	    $pager = $this->getPage($total_count, 6, __APP__.'/products/page-__PAGE__.html');
 	    $pager->show();
 		
-		$volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->order('id DESC')->select();
+		$volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
 		
 		$this->assign('pager', $pager);
 		$this->assign('volist', $volist);
