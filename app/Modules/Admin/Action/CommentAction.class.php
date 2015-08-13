@@ -25,5 +25,19 @@ class CommentAction extends AdminAction
 		$this->display();
 	}
 	
+	public function delete()
+	{
+		$id = intval($_REQUEST['id']);
+		$model = D('Msgboard');
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
+	
 }
 ?>

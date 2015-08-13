@@ -37,7 +37,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
             </dl>
           </div>
           <div class="lxwmr">
-          <form action="__APP__/saveComment" method="post">
+          <form id="commentform" action="__APP__/msgboard/save/" method="post">
             <ol>
               <li>
                 <h4>您的姓名：</h4>
@@ -65,7 +65,7 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
                 <h5>
                   <input name="address" type="text" value="请输入您的地址..." onfocus="if(this.value=='请输入您的地址...')this.value='';" onblur="if(this.value=='')this.value='请输入您的地址...';" >
                 </h5>
-                <h6>x</h6>
+                <h6>*</h6>
               </li>
               <li class="wzy">
                 <h4>内容：</h4>
@@ -77,12 +77,12 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
               <li class="yzm">
                 <h4>验证码：</h4>
                 <h5><span>
-                  <input name="textfield" type="text" id="textfield" size="50" value=""/>
+                  <input name="captcha" type="text" id="textfield" size="50" value=""/>
                   <a href="javascript:;" onclick="$('img#service_captcha').attr('src','{:U('Public/captcha','background=F6F6F6')}?'+Math.random())">看不清 换一张</a></span> <img id="service_captcha" src="{:U('Index/captcha','background=F6F6F6')}" /></h5>
                 <h6>*</h6>
               </li>
               <li class="dltj bs">
-                <h3> <a href="javascript:;" onclick="">提&nbsp;&nbsp;&nbsp;交</a> </h3>
+                <h3> <a href="javascript:;" onclick="submitForm();">提&nbsp;&nbsp;&nbsp;交</a> </h3>
               </li>
             </ol>
           </form>
@@ -91,6 +91,16 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
           <div style="width:625px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
           <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> 
           <script type="text/javascript">
+          function submitForm()
+          {
+        	  $form = $("#commentform");
+        	  $.post($form.attr('action'),$form.serialize(),function(rs){
+        		  alert(rs.info);
+        		  if(rs.status){
+        			  window.location.href=window.location.href;
+        		  }
+        	  });
+          }
     function initMap(){
         createMap();
         setMapEvent();
