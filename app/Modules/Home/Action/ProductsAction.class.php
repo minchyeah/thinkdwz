@@ -68,6 +68,8 @@ class ProductsAction extends HomeAction
 	    }
 	    if(false !== $rs){
 	        $model->commit();
+	        $data['dateline'] = date('Y-m-d H:i', $data['dateline']);
+	        $this->mailorder($data);
 	        $this->success('预订成功！');
 	    }else{
 	        $model->rollback();
@@ -81,6 +83,38 @@ class ProductsAction extends HomeAction
 	        $_GET['page'] = substr($name, 5);
 	        return $this->index();
 	    }
+	}
+	
+	private function mailorder($data)
+	{
+	    $tomail = C('notify_email');
+	    $subject = '您有新的产品预订!';
+	    $body = <<<BODY
+	    <body>
+	        <h2>您有新的产品预订</h2>
+	        <table class="table" width="100%">
+                <thead>
+            	  <tr style="text-align:left;">
+            		<th>预订产品</th>
+            		<th>联系人</th>
+            		<th>联系电话</th>
+            		<th>联系地址</th>
+            		<th>预订时间</th>
+            	  </tr>
+                </thead>
+                <tbody>
+            	  <tr style="text-align:left;">
+            		<td>{$data['product_name']}</td>
+            		<td>{$data['contact']}</td>
+            		<td>{$data['phone']}</td>
+            		<td>{$data['address']}</td>
+            		<td>{$data['dateline']}</td>
+            	  </volist>
+                </tbody>
+              </table>
+	    </body>
+BODY;
+	    $this->sendmail($tomail, $subject, $body);
 	}
 }
 ?>
