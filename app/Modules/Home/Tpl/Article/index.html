@@ -45,6 +45,14 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
   </div>
   <include file="Public:footer"/>
 </div>
+<script type="text/javascript">
+$(function(){
+	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
+		$(this).attr('rel', $(this).attr('src').replace('_380x380', ''));
+	});
+	$(".group1").colorbox({rel:'group1'});
+});
+</script>
 <include file="Public:qqkefu"/>
 </body>
 </html>

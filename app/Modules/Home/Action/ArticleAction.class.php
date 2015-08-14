@@ -43,7 +43,7 @@ class ArticleAction extends HomeAction
 		$article = D('Articles');
 		$count = $article->where($where)->count();
 		$page = $this->getPage($count, 8, __APP__.'/'.$catalog.'/page-__PAGE__.html');
-		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,create_time');
+		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
 		$page->show();

@@ -74,7 +74,7 @@ class ArticleAction extends AdminAction
     public function save()
     {
     	$model = D('Articles');
-    	$_POST['thumb'] = $this->getFirstImage($_POST['content']);
+    	$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());
@@ -212,11 +212,6 @@ class ArticleAction extends AdminAction
 		}else{
 			$this->dwzError('删除失败');
 		}
-    }
-    
-    private function getFirstImage($content) 
-    {
-        return '';
     }
 }
 ?>
