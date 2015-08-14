@@ -35,6 +35,19 @@ function imgsrc($file, $width = '', $height = '')
 	}
 	return empty($imgfile) ? __ROOT__.'/static/images/noimg.jpg' : $imgfile;
 }
+function getFirstImg($content)
+{
+    $part = '/<[img|IMG].*?src=[\'|\"](.*?(?:[^\'|\"]))[\'|\"].*?[\/]?>/';
+    preg_match($part, $content,$img);
+    return array_pop($img);
+}
+function stripContent($content)
+{
+    $content = strip_tags($content);
+    $content = preg_replace("/\s/", '', $content);
+    $content = preg_replace("/&nbsp;/i", '', $content);
+    return trim($content);
+}
 function city_domain($city)
 {
 	return 'http://'.$city.'.'.C('site_domain');
