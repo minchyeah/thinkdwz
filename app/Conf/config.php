@@ -8,6 +8,11 @@ $config = array(
 			'friendlink' 	=> '友情链接',
 			'business' 		=> '商务合作',
 		),
+	'SMTP_HOST'             => 'smtp.126.com', //邮件服务器地址
+	'SMTP_PORT'             => '25', // 邮件服务器端口
+	'SMTP_USER'             => 'liluokj@126.com', // 发邮件用户名
+	'SMTP_PASSWORD'         => 'liluo18260806066', // 发邮件密码
+	'SMTP_FROMNAME'         => '齐利达科技', // 发邮件名
 	'TMPL_ACTION_ERROR'     => 'Public:error', // 默认错误跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS'   => 'Public:success', // 默认成功跳转对应的模板文件
 	'TMPL_PARSE_STRING' 	=> array( // 模板内容替换

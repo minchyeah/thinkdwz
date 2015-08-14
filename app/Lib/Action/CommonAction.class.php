@@ -118,6 +118,36 @@ class CommonAction extends Action
 		return implode($delimiter, $arrs);
 	}
 	
+	protected function sendmail($tomail, $subject='', $body='')
+	{
+	    import('Util.PHPMailer', LIB_PATH);
+	    import('Util.SMTP', LIB_PATH);
+	    
+	    $mail = new PHPMailer;
+	    
+	    $mail->isSMTP();
+	    $mail->Host = C('SMTP_HOST');
+	    $mail->SMTPAuth = true;
+	    $mail->Username = C('SMTP_USER');
+	    $mail->Password = C('SMTP_PASSWORD');
+	    $mail->SMTPSecure = '';
+	    $mail->Port = C('SMTP_PORT');
+	    
+	    $mail->From = C('SMTP_USER');
+	    $mail->FromName = C('SMTP_FROMNAME');
+	    $mail->addAddress($tomail);
+	    $mail->isHTML();
+	    $mail->Timeout = 10;
+	    $mail->Subject = $subject;
+	    $mail->Body    = $body;
+	    if(!$mail->send()) {
+	        Log::record('Mailer Error: ' . $mail->ErrorInfo);
+	        return false;
+	    } else {
+	        return true;
+	    }
+	}
+	
 	/**
 	 * 通用分页方法
 	 * @param unknown $count
