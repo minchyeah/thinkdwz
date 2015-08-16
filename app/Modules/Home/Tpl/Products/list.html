@@ -23,8 +23,8 @@ $seo_keywords=$city['title'].','.$settings['seo_keywords'];
           <volist name="volist" id="vo">
           <php>$images = json_decode($vo['images'], true);</php>
           <dl>
-            <dt><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}" target="_blank"><img src="{$images.0|imgsrc=###,200,200}" alt="{$vo.name}" /><b></b></a></dt>
-            <dd><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}" target="_blank">{$vo.name}</a></dd>
+            <dt><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}"><img src="{$images.0|imgsrc=###,200,200}" alt="{$vo.name}" /><b></b></a></dt>
+            <dd><a href="__APP__/product/{$vo.id}.html" title="{$vo.name}">{$vo.name}</a></dd>
           </dl>
           </volist>
           <div class="clr"></div>
