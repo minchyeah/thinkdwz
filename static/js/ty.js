@@ -9,7 +9,11 @@ $(function(){
         $(this).children('.nav ul li a').removeClass(); 
 	})
 	//首页内容判断高度
-	$(".synr").css("height", $(window).height() + "px");
+	if($(window).height()<850){
+		$(".synr").css("height", "850px");
+	}else{
+		$(".synr").css("height", $(window).height() + "px");
+	}
 })
  jQuery(function(){
 	$(".CategoryTree > ul > li").hover(function(){
