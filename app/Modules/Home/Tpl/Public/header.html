@@ -6,7 +6,7 @@
        <span style="background-image:url({$vo.image});<if condition="$i gt 1"> display:none;</if>"></span>
        </volist>
       </div>
-      <div class="jsNav"><span class="trigger imgSelected"></span><span class="trigger"></span><span class="trigger"></span></div>
+      <div class="jsNav"><volist name="index_slider" id="vo"><span class="trigger <if condition="$i gt 1">imgSelected</if>"></span></volist></div>
     </div>
     <div class="hdpr"><a id="next" href="###">&nbsp;</a><a id="prev" href="###">&nbsp;</a></div>
   </div>
