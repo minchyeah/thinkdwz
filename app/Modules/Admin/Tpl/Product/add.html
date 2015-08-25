@@ -1,5 +1,5 @@
 <div class="pageContent">
-	<form method="post" action="{:U('Product/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+	<form method="post" id="ProductForm" action="{:U('Product/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
 				<dt>产品名称：</dt>
@@ -12,8 +12,12 @@
 			<dl class="nowrap">
 				<dt>产品图片：</dt>
 				<dd>
-				  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" /></if>
-				  <input class="<if condition="!$images[0]">required</if>" name="imgfile" type="file" size="30" /></dd>
+				<div class="divider"></div>
+				  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" />
+				  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
+				  </if>
+				  <input class="<if condition="!$images[0]"></if>" name="imgfile" type="file" size="30" />
+				</dd>
 			</dl>
 			
 			<volist name="images" id="ivo">
@@ -22,8 +26,12 @@
 			<dl class="nowrap">
 				<dt>&nbsp;</dt>
 				<dd>
-				  <if condition="$images[$ij]"><img src="{$images[$ij]|imgsrc=###,100,100}" /></if>
-				  <input name="imgfile{$ij}" type="file" size="30" /></dd>
+				<div class="divider"></div>
+				  <if condition="$images[$ij]"><img src="{$images[$ij]|imgsrc=###,100,100}" />
+				  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片"  href="javascript:;" class="delimg" data-imgidx="{$ij}">X</a></div>
+				  </if>
+				  <input name="imgfile{$ij}" type="file" size="30" />
+				</dd>
 			</dl>
 			</if>
 			</volist>
@@ -47,3 +55,20 @@
 		</volist>
 	</form>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$("form#ProductForm .nowrap a.delimg").click(function(event){
+		if(!confirm("确定要删除该图片吗")){
+			return false;
+		}
+		var $this = $(this);
+		$form = $this.parents("form");
+		$form.find("input[name='img"+$this.data('imgidx')+"']").remove();
+		$parent = $this.parent();
+		$parent.siblings("img").remove();
+		$parent.remove();
+		return false;
+	});
+});
+</script>

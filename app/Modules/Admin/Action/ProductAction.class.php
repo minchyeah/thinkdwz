@@ -27,6 +27,8 @@ class ProductAction extends AdminAction
 	
 	public function add()
 	{
+	    $images = array_pad(array(), 8, '');
+	    $this->assign('images', $images);
 		$this->display();
 	}
 
@@ -54,7 +56,9 @@ class ProductAction extends AdminAction
 		$model = D('Products');
 		$vo = $model->find($id);
 		$this->assign('vo', $vo);
-		$this->assign('images', json_decode($vo['images'], true));
+		$images = json_decode($vo['images'], true);
+		$images = array_pad($images, 8, '');
+		$this->assign('images', $images);
 		$this->display('add');
 	}
 	
@@ -81,7 +85,13 @@ class ProductAction extends AdminAction
 		    }
 		    $images[$i] = $images[$i] ? $images[$i] : $_POST['img'.$i];
 		}
-		$_POST['images'] = json_encode($images);
+		$saveimgs = array();
+		foreach ($images as $img){
+		    if($img){
+		        $saveimgs[]  = $img;
+		    }
+		}
+		$_POST['images'] = json_encode($saveimgs);
 		$_POST['sort_order'] = intval($_POST['sort_order']);
 		$data = $model->create();
 		if(!$data){
