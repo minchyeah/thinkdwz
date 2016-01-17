@@ -1,39 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<php>
-$site_name = $city['title'].$settings['site_name'];
-$seo_keywords=$city['title'].','.$settings['seo_keywords'];
-</php>
 <include file="Public:header_meta" />
 </head>
 
 <body>
 <include file="Public:header" />
-<div class="bj">
-  <div class="jz">
-    <div class="cbl">
-      <include file="Public:sidebar_nav"/>
-    </div>
-    <div class="nry">
-      <include file="Public:header_nav" />
-      <div class="dqbt">案例展示<span>\ENGINEERING</span></div>
-      <div class="nyzw">
-        <div class="cplb">
-          <volist name="volist" id="vo">
-          <dl>
-            <dt><img src="{$vo.image|imgsrc=###,200,200}" class="group1" rel="{$vo.image}" title="{$vo.name}" /><b></b></dt>
-            <dd>{$vo.name}</dd>
-          </dl>
-          </volist>
-          <div class="clr"></div>
-        </div>
-        <div class="fy bs"><a href="{$pager->prePage}" class="fys">上一页</a><span><b>{$pager->nowPage}</b>/{$pager->totalPages}页&nbsp;&nbsp;共{$pager->totalRows}条记录</span><a href="{$pager->nextPage}" class="fyx">下一页</a></div>
-      </div>
-    </div>
+<include file="Public:slider" />
+<div class="jz ny">
+  <div class="cbl">
+    <include file="Public:sidebar_course" />
+    <include file="Public:sidebar_letter" />
+    <include file="Public:sidebar_jinbang" />
   </div>
-  <include file="Public:footer"/>
+  <div class="nyn">
+    <div class="dqwz">
+      <h1>作品欣赏</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/cases/">作品欣赏</a></span>
+    </div>
+    <div class="zpxs">
+      <volist name="volist" id="vo">
+      <dl>
+        <dt><img src="{$vo.image|imgsrc=220,220}" class="group1" rel="{$vo.image|imgsrc}" title="{$vo.name}" /><b></b></dt>
+        <dd>{$vo.name}</dd>
+      </dl>
+      </volist>
+      <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+    <div class="sxy bs">{$pager}</div>
+  </div>
+  <div class="clr"></div>
 </div>
-<include file="Public:qqkefu"/>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
 </body>
 </html>

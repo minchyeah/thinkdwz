@@ -8,11 +8,10 @@ class CasesAction extends HomeAction
 	    $where = array('state'=>1);
 	    $total = $model->field('COUNT(1) count')->where($where)->find();
 	    $total_count = intval($total['count']);
-	    $pager = $this->getPage($total_count, 6, __APP__.'/cases/page-__PAGE__.html');
-	    $pager->show();
+	    $pager = $this->getPage($total_count, 12, __APP__.'/cases/page-__PAGE__.html');
 	    
 	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
-	    $this->assign('pager', $pager);
+	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
 		$this->display('index');
 	}

@@ -7,7 +7,7 @@
     <ul class="toolBar">
       <li style="padding:0 20px;">
       <form method="get" action="{:U('Case/index')}" onsubmit="return navTabSearch(this);">
-        <span>案例名称：</span><input name="search_key" value="{$_REQUEST['search_key']}"><input type="submit" value="查 找"/>
+        <span>作品名称：</span><input name="search_key" value="{$_REQUEST['search_key']}"><input type="submit" value="查 找"/>
         <input type="hidden" name="pageNum" value="1" />
       </form>
       </li>
@@ -18,8 +18,8 @@
 	  <tr>
 		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="30">编号</th>
-		<th width="300">案例图片</th>
-		<th width="200">案例名称</th>
+		<th width="300">作品图片</th>
+		<th width="200">作品名称</th>
 		<th width="60">排序</th>
 		<th width="80">操作</th>
 	  </tr>
