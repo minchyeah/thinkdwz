@@ -12,7 +12,7 @@ class EmptyAction extends HomeAction
     	if ('product' == strtolower(MODULE_NAME)){
     		$_GET['id'] = intval($name);
     		A('Products')->detail();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('about','news'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('vteach','news','jinbang'))){
     		$_GET['catalog'] = strtolower(MODULE_NAME);
     		if(is_numeric($name)){
     		    $_GET['id'] = intval($name);
@@ -22,7 +22,7 @@ class EmptyAction extends HomeAction
     		    $_GET['page'] = substr($name, 5);
     		}
     		return A('Article')->category();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('business','service'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('topar','tostu','contact','feature'))){
     		$_GET['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
     	}else {

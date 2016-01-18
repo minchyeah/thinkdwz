@@ -1,22 +1,10 @@
 <?php
 
-class ArticleAction extends HomeAction
+class FacultyAction extends HomeAction
 {
 	public function index()
 	{
-		$id = intval($_GET['id']);
-		$model = D('Articles');
-		$where = array();
-		$where['id'] = $id;
-		$where['status'] = 1;
-		$article = $model->where($where)->find();
-		if(!$article){
-			$this->notfound();
-		}
-		$model->where($where)->setInc('visit_count');
-		$this->assign('article', $article);
-		$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
-		$this->display('Article:index');
+		$this->display('Faculty:index');
 	}
 	
 	public function category()
@@ -26,6 +14,11 @@ class ArticleAction extends HomeAction
 		$current_category = $model->where(array('catalog'=>$catalog))->find();
 		$cate_id = $current_category['id'];
 
+		if('about' == $catalog){
+		    $article = M('Articles')->where(array('cate_id'=>$cate_id,'state'=>1))->find();
+		    $_GET['id'] = $article['id'];
+		    return $this->index();
+		}
 		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
 		$cate_ids = array();
 		if ($sub_cates) {
@@ -41,22 +34,9 @@ class ArticleAction extends HomeAction
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
-		$this->assign('pager', $page->show());
-		$this->display('Article:category');
-	}
-
-	public function page()
-	{
-		$code = trim(strval($_GET['code']));
-		$model = D('ArticlePage');
-		$page = $model->where(array('page_code'=>$code))->find();
-		$model->where(array('id'=>$page['id']))->setInc('visit_count');
-		$this->assign('page', $page);
-		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
-		    $this->display('Article:'.$code);
-		}else{
-		  $this->display('Article:page');
-		}
+		$page->show();
+		$this->assign('pager', $page);
+		$this->display('Faculty:list');
 	}
 }
 ?>

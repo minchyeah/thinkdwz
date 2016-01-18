@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<include file="Public:slider" />
+<div class="jz ny">
+  <div class="cbl">
+    <include file="Public:sidebar_course" />
+    <include file="Public:sidebar_letter" />
+    <include file="Public:sidebar_jinbang" />
+  </div>
+  <div class="nyn">
+    <div class="dqwz">
+      <h1>联系我们</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/contact.html">联系我们</a></span> </div>
+    <div class="lxwm">
+      <div class="ditu">
+        <div style="width:580px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
+      </div>
+      <div class="wznr">
+      <notempty name="page.video">
+      <div class="nysp">
+        <div class="nyspk">
+          <div class="nyspem">{$page.video}</div>
+        </div>
+      </div>
+      </notempty>
+      <div class="wznrzw">{$page.content}</div>
+      <div class="clr"></div>
+    </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> 
+        <script type="text/javascript">
+    function initMap(){
+        createMap();
+        setMapEvent();
+        addMapControl();
+        addMarker();
+    }
+    function createMap(){
+        var map = new BMap.Map("dituContent");
+        var point = new BMap.Point(108.270634,22.782318);
+        map.centerAndZoom(point,16);
+        window.map = map;
+    }
+    function setMapEvent(){
+        map.enableDragging();
+        map.disableScrollWheelZoom();
+        map.enableDoubleClickZoom();
+        map.enableKeyboard();
+    }
+    function addMapControl(){
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+                }
+    var markerArr = [{title:"&nbsp;&nbsp;裕鼎一汽车有限公司&nbsp;&nbsp;",content:"南宁市江南区南站大道3-1号东盟国际汽配城C2栋219-227",point:"108.270351|22.780222",isOpen:1,icon:{w:23,h:25,l:69,t:21,x:9,lb:12}}
+		 ];
+
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    initMap();
+</script> 
+</body>
+</html>

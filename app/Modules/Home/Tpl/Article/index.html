@@ -1,58 +1,42 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<php>
-$site_name = $city['title'].$settings['site_name'];
-$seo_keywords=$city['title'].','.$settings['seo_keywords'];
-</php>
 <include file="Public:header_meta" />
 </head>
 
 <body>
 <include file="Public:header" />
-<div class="bj">
-  <div class="jz">
-    <div class="cbl">
-      <include file="Public:sidebar_nav"/>
-    </div>
-    <div class="nry">
-      <include file="Public:header_nav" />
-      <div class="dqbt">{$current_category.cate_name}<span>\{$current_category.catalog|strtoupper}</span></div>
-      <div class="nyzw">
-        <div class="wznr">
-          <div class="wznrt">
-            <h1>{$article.title}</h1>
-            <span>文章来源：{$article.source}</span><span>发布时间：{$article.create_time|date="Y-m-d",###}</span><span>点击量：{$article.visit_count}</span> 
-          </div>
-          <if condition="$article['video']">
-          <div class="nysp">
-            <div class="nyspk">
-              <div class="nyspem">
-                {$article.video}
-              </div>
-            </div>
-          </div>
-          </if>
-          <div class="wznrzw">
-          	{$article.content}
-          </div>
-          <div class="clr"></div>
-          <!--div class="sxp"> <span>上一篇：<a href="#">没有了...</a></span><b>下一篇：<a href="#">且把山水唱大歌 侗族女歌师吴探花的大歌情缘</a></b> </div-->
-        </div>
-        
-      </div>
-    </div>
+<include file="Public:slider" />
+<div class="jz ny">
+  <div class="cbl">
+    <include file="Public:sidebar_course" />
+    <include file="Public:sidebar_letter" />
+    <include file="Public:sidebar_jinbang" />
   </div>
-  <include file="Public:footer"/>
+  <div class="nyn">
+    <div class="dqwz">
+      <h1>{$current_category.cate_name}</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$current_category.catalog}/">{$current_category.cate_name}</a></span>
+    </div>
+    <div class="wznr">
+      <div class="wznrt">
+        <h1>{$article.title}</h1>
+        <span>作者：{$article.source|default="网络"}</span><span>点击量：{$article.visit_count}</span> </div>
+      <notempty name="article.video">
+      <div class="nysp">
+        <div class="nyspk">
+          <div class="nyspem">{$article.video}</div>
+        </div>
+      </div>
+      </notempty>
+      <div class="wznrzw">{$article.content}</div>
+      <div class="clr"></div>
+    </div>
+    <!-- <div class="sxp"> <span>上一篇：<a href="#">没有了...</a></span><b>下一篇：<a href="#">且把山水唱大歌 侗族女歌师吴探花的大歌情缘</a></b> </div> -->
+  </div>
+  <div class="clr"></div>
 </div>
-<script type="text/javascript">
-$(function(){
-	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
-		$(this).attr('rel', $(this).attr('src').replace('_380x380', ''));
-	});
-	$(".group1").colorbox({rel:'group1'});
-});
-</script>
-<include file="Public:qqkefu"/>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
 </body>
 </html>

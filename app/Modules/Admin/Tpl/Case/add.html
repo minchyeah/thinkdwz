@@ -2,11 +2,11 @@
 	<form method="post" action="{:U('Case/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
-				<dt>案例名称：</dt>
+				<dt>作品名称：</dt>
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>案例图片：</dt>
+				<dt>作品图片：</dt>
 				<dd>
 				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
 				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
