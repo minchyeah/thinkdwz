@@ -114,11 +114,20 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_jinbang()
 	{
+		$this->assign('sidebar_jinbang', $this->getArticleList('jinbang', 20));
+	}
+	
+	/**
+	 * 查询分类文章
+	 * @param string $catalog 分类目录
+	 * @param number $limit
+	 */
+	protected function getArticleList($catalog, $limit = 10)
+	{
 	    $model = D('ArticleCategory');
-	    $catalog = 'jinbang';
 	    $current_category = $model->where(array('catalog'=>$catalog))->find();
 	    $cate_id = $current_category['id'];
-	    
+	     
 	    $sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
 	    $cate_ids = array();
 	    if ($sub_cates) {
@@ -128,9 +137,7 @@ class HomeAction extends CommonAction
 	    $where = array();
 	    $where['status'] = 1;
 	    $where['cate_id'] = array('in', $cate_ids);
-	    $article = D('Articles');
-	    $articles = $article->where($where)->limit(20)->order('id DESC')->getField('id,title,cate_id');
-		$this->assign('sidebar_jinbang', $articles);
+	    return D('Articles')->where($where)->limit($limit)->order('id DESC')->getField('id,title,cate_id');
 	}
 	
 	/**
