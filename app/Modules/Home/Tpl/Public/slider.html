@@ -1,8 +1,18 @@
-
 <div class="hdp">
-  <div class="hdpk"> <a id="prev" class="hdpkl" href="###"></a> <a id="next" class="hdpkr" href="###"></a></div>
+  <div class="hdpk">
+  <a id="prev" class="hdpkl" href="###"></a> <a id="next" class="hdpkr" href="###"></a>
+  </div>
   <div class="jshdp">
-    <div class="box01"><span style="background-image:url({$static_url}/images/hdp1.jpg);"><a href="index.html" target="_blank"></a></span><span style="background-image:url({$static_url}/images/hdp2.jpg);"><a href="index.html" target="_blank"></a></span><span style="background-image:url({$static_url}/images/hdp3.jpg); display:none;"><a href="index.html" target="_blank"></a></span></div>
-    <div class="jsNav"><span class="trigger imgSelected">1</span><span class="trigger">2</span><span class="trigger">3</span></div>
+    <div class="box01">
+    <volist name="index_slider" id="vo">
+    <span style="background-image:url({$vo.image|imgsrc}); <if condition="$i neq 1"> display:none;</if>"><a href="{$vo.target}" target="_blank"></a></span>
+    </span>
+    </volist>
+    </div>
+    <div class="jsNav">
+    <volist name="index_slider" id="vo">
+    <span class="trigger <if condition="$i eq 1"> imgSelected</if>">{$i}</span>
+    </volist>
+    </div>
   </div>
 </div>

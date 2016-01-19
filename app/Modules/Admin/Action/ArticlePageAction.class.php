@@ -19,6 +19,7 @@ class ArticlePageAction extends AdminAction
     {
     	$model = D('ArticlePage');
     	$_POST['create_time'] = time();
+    	$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());
