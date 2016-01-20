@@ -1,0 +1,74 @@
+<div class="pageContent">
+	<form method="post" id="ProductForm" action="{:U('Faculty/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+		<div class="pageFormContent" layoutH="57">
+			<dl class="nowrap">
+				<dt>姓名：</dt>
+				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>性别：</dt>
+				<dd>
+					<label><input class="required<if condition="$vo['gender']=='男'">" checked="checked</if>" name="gender" type="radio" value="男"/>&nbsp;&nbsp;男</label>
+					<label><input class="required<if condition="$vo['gender']=='女'">" checked="checked</if>" name="gender" type="radio" value="女"/>&nbsp;&nbsp;女</label>
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>毕业院校：</dt>
+				<dd><input class="required" name="school" type="text" size="60" value="{$vo.school}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>所教科目：</dt>
+				<dd><input class="required" name="subject" type="text" size="30" value="{$vo.subject}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>教龄：</dt>
+				<dd><input class="required" name="teach_age" type="text" size="20" value="{$vo.teach_age}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>排序：</dt>
+				<dd><input class="" type="text" size="8" name="sort_order" value="{$vo.sort_order}"/>&nbsp;&nbsp; 大的排前面,默认为0</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>形象照片：</dt>
+				<dd>
+				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" />
+				  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
+				  </if>
+				  <input name="imgfile" type="file" size="30" />
+				</dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>视频简介：</dt>
+				<dd><textarea name="video" style="height:40px;width:600px;">{$vo.video}</textarea></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>详细介绍：</dt>
+				<dd><textarea class="editor" name="detail" style="height:400px;width:800px" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.detail}</textarea></dd>
+			</dl>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div></li>
+			</ul>
+		</div>
+		<input name="id" type="hidden" value="{$vo.id}" />
+		<input name="image" type="hidden" value="{$vo.image}" />
+	</form>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	$("form#ProductForm .nowrap a.delimg").click(function(event){
+		if(!confirm("确定要删除该图片吗")){
+			return false;
+		}
+		var $this = $(this);
+		$form = $this.parents("form");
+		$form.find("input[name='img"+$this.data('imgidx')+"']").remove();
+		$parent = $this.parent();
+		$parent.siblings("img").remove();
+		$parent.remove();
+		return false;
+	});
+});
+</script>

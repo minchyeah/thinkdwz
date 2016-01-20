@@ -12,7 +12,10 @@
   <div class="sykc">
     <div class="sykck">
       <h2>课程</h2>
-      <a href="kcnr.html" target="_blank"><b>美院班</b>美院名师授课</a> <a href="kcnr.html" target="_blank"><b>中清班</b>王牌班型美院名师授课 定制课程，十人小班</a> <a href="kcnr.html" target="_blank"><b>一对一班</b>零基础，也能上重本</a> <a href="kcnr.html" target="_blank"><b>寒暑假班</b>提前做准备 打一场漂亮的胜仗</a> <a href="kcnr.html" target="_blank"><b>周末班</b>务实基础，随到随学</a> <a href="kcnr.html" target="_blank"><b>协议班</b>超级名师，超强训练 必过重本</a> </div>
+      <volist name="courses" id="vo">
+      <a href="__APP__/course/{$vo.id}.html" target="_blank"><b>{$vo.name}</b>{$vo.desc}</a>
+      </volist>
+    </div>
     <div class="sykcg"></div>
   </div>
   <div class="syzp">
@@ -56,11 +59,9 @@
       <div  class="ScrCont">
         <div id="alzx1List1" class="List1">
           <ul>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls1.jpg" alt="当前标题"/><b></b></a><h2>著名画家：陈开宁</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls2.jpg" alt="当前标题"/><b></b></a><h2>油画导师：张晓晓</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls3.jpg" alt="当前标题"/><b></b></a><h2>自由画家：刘星</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls4.jpg" alt="当前标题"/><b></b></a><h2>素描导师：梁丽</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls5.jpg" alt="当前标题"/><b></b></a><h2>素描导师：陈红</h2></li>
+          <volist name="teachers" id="vo">
+            <li><a href="__APP__/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=270,270}" alt="{$vo.name}"/><b></b></a><h2>{$vo.name}</h2></li>
+          </volist>
           </ul>
         </div>
         <div id="alzx1List2" class="List2"></div>
@@ -102,11 +103,9 @@
       <div  class="ScrCont">
         <div id="alzx2List1" class="List1">
           <ul>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls1.jpg" alt="当前标题"/><b></b></a><h2>著名画家：陈开宁</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls2.jpg" alt="当前标题"/><b></b></a><h2>油画导师：张晓晓</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls3.jpg" alt="当前标题"/><b></b></a><h2>自由画家：刘星</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls4.jpg" alt="当前标题"/><b></b></a><h2>素描导师：梁丽</h2></li>
-            <li><a href="szllnr.html" target="_blank" title="当前标题"><img src="images/ls5.jpg" alt="当前标题"/><b></b></a><h2>素描导师：陈红</h2></li>
+          <volist name="envs" id="vo">
+            <li><a href="__APP__/env/" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=270,270}" alt="{$vo.name}"/><b></b></a><h2>{$vo.name}</h2></li>
+          </volist>
           </ul>
         </div>
         <div id="alzx2List2" class="List2"></div>
