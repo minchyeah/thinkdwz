@@ -15,18 +15,20 @@
   </div>
   <div class="nyn">
     <div class="dqwz">
-      <h1>作品欣赏</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/cases/">作品欣赏</a></span>
-    </div>
-    <div class="zpxs">
-      <volist name="volist" id="vo">
+      <h1>课程</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a></span> </div>
+    <div class="kc">
+    <volist name="volist" id="vo">
       <dl>
-        <dt><img src="{$vo.image|imgsrc=270,270}" class="group1" rel="{$vo.image|imgsrc}" title="{$vo.name}" /><b></b></dt>
-        <dd>{$vo.name}</dd>
+        <dt><a href="__APP__/course/{$vo.id}.html"><img src="{$vo.image|imgsrc}" /></a><b></b></dt>
+        <dd>
+          <h1><a href="__APP__/course/{$vo.id}.html">{$vo.name}</a></h1>
+          <span>{$vo.desc}</span>
+        </dd>
+        <div class="clr"></div>
       </dl>
-      </volist>
-      <div class="clr"></div>
-    </div>
+    </volist>
+    </div>    
     <div class="clr"></div>
     <div class="sxy bs">{$pager}</div>
   </div>

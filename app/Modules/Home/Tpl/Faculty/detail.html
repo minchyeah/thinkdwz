@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<include file="Public:slider" />
+<div class="jz ny">
+  <div class="cbl">
+    <include file="Public:sidebar_course" />
+    <include file="Public:sidebar_letter" />
+    <include file="Public:sidebar_jinbang" />
+  </div>
+  <div class="nyn">
+    <div class="dqwz">
+      <h1>师资力量</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a>><a href="__APP__/faculty/{$teacher.id}.html">内容</a></span> </div>
+    <div class="szllnr">
+      <div class="szllnrt"><img src="{$teacher.image|imgsrc=270,270}" class="group3" rel="{$teacher.image|imgsrc}" title="{$teacher.name}" /><b></b></div>
+      <dl>
+        <dt><h1>{$teacher.name}</h1>老师</dt>
+        <dd><b>科目：</b>{$teacher.subject}老师</dd>
+        <dd><b>毕业：</b>{$teacher.school}</dd>
+        <dd><b>教龄：</b>{$teacher.teach_age}年</dd>
+        <dd><b>性别：</b>{$teacher.gender}</dd>
+      </dl>
+    </div>
+    <div class="clr"></div>
+    <div class="wznr">
+    <notempty name="teacher.video">
+      <div class="nysp">
+        <div class="nyspk">
+          <div class="nyspem">{$teacher.video}</div>
+        </div>
+      </div>
+    </notempty>
+      <div class="wznrzw">{$teacher.detail}</div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+</body>
+</html>

@@ -4,39 +4,41 @@ class FacultyAction extends HomeAction
 {
 	public function index()
 	{
-		$this->display('Faculty:index');
+	    $id = intval($_GET['id']);
+	    if($id){
+	        return $this->detail();
+	    }
+	    $where = array('state'=>1);
+	    $total =  M('Teacher')->field('COUNT(1) count')->where($where)->find();
+	    $total_count = intval($total['count']);
+	    
+	    $pager = $this->getPage($total_count, 10, __APP__.'/course/page-__PAGE__.html');
+	    $volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
+
+	    $this->assign('pager', $pager->show());
+	    $this->assign('volist', $volist);
+		$this->display('Faculty:list');
 	}
 	
-	public function category()
+	public function detail($id=0)
 	{
-		$model = D('ArticleCategory');
-		$catalog = trim(strval($_GET['catalog']));
-		$current_category = $model->where(array('catalog'=>$catalog))->find();
-		$cate_id = $current_category['id'];
+	    $id = $id ? $id : intval($_GET['id']);
+	    $teacher = M('Teacher')->where(array('state'=>1))
+	                       ->where(array('id'=>$id))
+	                       ->find();
+	    $this->assign('teacher', $teacher);
+		$this->display('Faculty:detail');
+	}
 
-		if('about' == $catalog){
-		    $article = M('Articles')->where(array('cate_id'=>$cate_id,'state'=>1))->find();
-		    $_GET['id'] = $article['id'];
-		    return $this->index();
-		}
-		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
-		$cate_ids = array();
-		if ($sub_cates) {
-			$cate_ids = array_keys($sub_cates);
-		}
-		$cate_ids[] = $cate_id;
-		$where = array();
-		$where['status'] = 1;
-		$where['cate_id'] = array('in', $cate_ids);
-		$article = D('Articles');
-		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 8, __APP__.'/'.$catalog.'/page-__PAGE__.html');
-		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
-		$this->assign('articles', $articles);
-		$this->assign('current_category', $current_category);
-		$page->show();
-		$this->assign('pager', $page);
-		$this->display('Faculty:list');
+	public function _empty($name)
+	{
+	    if('page-' == substr($name, 0, 5)){
+	        $_GET['page'] = substr($name, 5);
+	        return $this->index();
+	    }
+	    if (is_numeric($name)) {
+	        return $this->detail($name);
+	    }
 	}
 }
 ?>

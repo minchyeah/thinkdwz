@@ -16,51 +16,21 @@
   <div class="nyn">
     <div class="dqwz">
       <h1>师资力量</h1>
-      <span>当前位置：<a href="index.html">首页</a>><a href="szll.html">师资力量</a></span> </div>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a></span> </div>
     <div class="szll">
+    <volist name="volist" id="vo">
       <dl>
-        <dt><a href="szllnr.html"><img src="images/ls1.jpg" /></a><b></b></dt>
+        <dt><a href="__APP__/faculty/{$vo.id}.html"><img src="{$vo.image|imgsrc=270,270}" /></a><b></b></dt>
         <dd>
-          <h1><a href="szllnr.html">素描老师:梁丽</a></h1>
-          <span>广西艺术学院教授。广西美术家协会会员、漓江画派理事。作品多次参加全国性美术展览、广西省级美术展览并多次获奖。出版个人作品专著《杨卫平油画棒写生集》作品在美国及东南亚国家巡回...</span>
+          <h1><a href="__APP__/faculty/{$vo.id}.html">{$vo.subject}老师:{$vo.name}</a></h1>
+          <span>{$vo.detail|stripContent}</span>
         </dd>
         <div class="clr"></div>
       </dl>
-      <dl>
-        <dt><a href="szllnr.html"><img src="images/ls2.jpg" /></a><b></b></dt>
-        <dd>
-          <h1><a href="szllnr.html">素描老师:梁丽</a></h1>
-          <span>广西艺术学院教授。广西美术家协会会员、漓江画派理事。作品多次参加全国性美术展览、广西省级美术展览并多次获奖。出版个人作品专著《杨卫平油画棒写生集》作品在美国及东南亚国家巡回...</span>
-        </dd>
-        <div class="clr"></div>
-      </dl>
-      <dl>
-        <dt><a href="szllnr.html"><img src="images/ls3.jpg" /></a><b></b></dt>
-        <dd>
-          <h1><a href="szllnr.html">素描老师:梁丽</a></h1>
-          <span>广西艺术学院教授。广西美术家协会会员、漓江画派理事。作品多次参加全国性美术展览、广西省级美术展览并多次获奖。出版个人作品专著《杨卫平油画棒写生集》作品在美国及东南亚国家巡回...</span>
-        </dd>
-        <div class="clr"></div>
-      </dl>
-      <dl>
-        <dt><a href="szllnr.html"><img src="images/ls4.jpg" /></a><b></b></dt>
-        <dd>
-          <h1><a href="szllnr.html">素描老师:梁丽</a></h1>
-          <span>广西艺术学院教授。广西美术家协会会员、漓江画派理事。作品多次参加全国性美术展览、广西省级美术展览并多次获奖。出版个人作品专著《杨卫平油画棒写生集》作品在美国及东南亚国家巡回...</span>
-        </dd>
-        <div class="clr"></div>
-      </dl>
-      <dl>
-        <dt><a href="szllnr.html"><img src="images/ls5.jpg" /></a><b></b></dt>
-        <dd>
-          <h1><a href="szllnr.html">素描老师:梁丽</a></h1>
-          <span>广西艺术学院教授。广西美术家协会会员、漓江画派理事。作品多次参加全国性美术展览、广西省级美术展览并多次获奖。出版个人作品专著《杨卫平油画棒写生集》作品在美国及东南亚国家巡回...</span>
-        </dd>
-        <div class="clr"></div>
-      </dl>
+    </volist>
     </div>    
     <div class="clr"></div>
-    <div class="sxy bs"><span><a href="#">上一页</a></span><a href="#" class="xz">1</a><a href="#">2</a><a href="#">3</a>......<a href="#">8</a><span><a href="#">下一页</a></span></div>
+    <div class="sxy bs">{$pager}</div>
   </div>
   <div class="clr"></div>
 </div>
