@@ -50,50 +50,68 @@
     </ul>
     <h5 class="close" rel="zxyd"></h5>
   </div>
+  <form id="orderform" action="__APP__/course/order" method="post">
   <div id="hydlx">
     <h3>您好，请详细填写以下报名信息！</h3>
     <ol>
       <li>
         <h4>姓名：</h4>
         <h5>
-          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'阿德':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="阿德"/>
+          <input name="contact" type="text" size="50" value=""/>
         </h5>
-        <h6>输入有错误!</h6>
+        <h6></h6>
       </li>
       <li>
         <h4>电话：</h4>
         <h5>
-          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'18260806066':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="18260806066"/>
+          <input name="phone" type="text" size="50" value=""/>
         </h5>
-        <h6>输入有错误!</h6>
+        <h6></h6>
       </li>
       <li>
         <h4>年龄：</h4>
         <h5>
-          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'18':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="18"/>
+          <input name="age" type="text" size="50" value=""/>
         </h5>
-        <h6>输入有错误!</h6>
+        <h6></h6>
       </li>
       <li>
         <h4>地址：</h4>
         <h5>
-          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'广西南宁科苑大道52号':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="广西南宁科苑大道52号"/>
+          <input name="address" type="text" size="50" value=""/>
         </h5>
-        <h6>输入有错误!</h6>
+        <h6></h6>
       </li>
       <li class="yzm">
         <h4>验证码：</h4>
         <h5><span>
-          <input name="textfield" type="text" id="textfield" size="50" value=""/>
-          <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
-        <h6>输入有错误!</h6>
+          <input name="captcha" type="text" id="textfield" size="50" value=""/>
+          <a href="javascript:;" onclick="$('img#captcha').attr('src', '{:U('Index/captcha','background=F6F6F6')}?'+Math.random())">看不清，换一张</a></span> <img id="captcha" src="{:U('Index/captcha','background=F6F6F6')}"  onclick="this.src='{:U('Index/captcha','background=F6F6F6')}?'+Math.random()"  /></h5>
+        <h6></h6>
       </li>
       <li class="dltj huangs">
         <h3>
-          <input class="pjtj" type="submit" value="&nbsp;"></h3>
+          <input class="pjtj" type="submit" value="&nbsp;" onclick="return submitOrder()"></h3>
       </li>
     </ol>
   </div>
+  <input type="hidden" name="course_id" value="{$course.id}"/>
+  <input type="hidden" name="course_name" value="{$course.name}"/>
+  </form>
 </div>
+
+<script type="text/javascript">
+function submitOrder()
+{
+	  $form = $("#orderform");
+	  $.post($form.attr('action'),$form.serialize(),function(rs){
+		  alert(rs.info);
+		  if(rs.status){
+			  window.location.href=window.location.href;
+		  }
+	  });
+	  return false;
+}
+</script>
 </body>
 </html>
