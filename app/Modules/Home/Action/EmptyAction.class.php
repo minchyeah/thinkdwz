@@ -22,7 +22,7 @@ class EmptyAction extends HomeAction
     		    $_GET['page'] = substr($name, 5);
     		}
     		return A('Article')->category();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('topar','tostu','contact','feature'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('about','topar','tostu','contact','feature'))){
     		$_GET['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
     	}else {

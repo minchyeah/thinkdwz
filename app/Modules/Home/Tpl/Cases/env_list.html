@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<include file="Public:slider" />
+<div class="jz ny">
+  <div class="cbl">
+    <include file="Public:sidebar_course" />
+    <include file="Public:sidebar_letter" />
+    <include file="Public:sidebar_jinbang" />
+  </div>
+  <div class="nyn">
+    <div class="dqwz">
+      <h1>教学环境</h1>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/env/">教学环境</a></span>
+    </div>
+    <div class="szll">
+    <volist name="volist" id="vo">
+      <dl>
+        <dt><a href="__APP__/env/{$vo.id}.html"><img src="images/zp1.jpg" /></a><b></b></dt>
+        <dd>
+          <h1><a href="__APP__/env/{$vo.id}.html">素描</a></h1>
+          <span><img src="images/zp2.jpg" /><img src="images/zp3.jpg" /><img src="images/zp4.jpg" /><img src="images/zp1.jpg" /><img src="images/zp2.jpg" /></span>
+        </dd>
+        <div class="clr"></div>
+      </dl>
+    </volist>
+    </div>
+    <div class="clr"></div>
+    <div class="sxy bs">{$pager}</div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+</body>
+</html>
