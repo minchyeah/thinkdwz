@@ -21,10 +21,11 @@
     <div class="szll">
     <volist name="volist" id="vo">
       <dl>
-        <dt><a href="__APP__/env/{$vo.id}.html"><img src="images/zp1.jpg" /></a><b></b></dt>
+        <dt><a href="__APP__/env/tag-1-{$vo.catalog}.html"><img src="{$vo['items'][0]['image']|imgsrc=270,270}" /></a><b></b></dt>
+        <php>$tagimg = array_shift($vo['items']);</php>
         <dd>
-          <h1><a href="__APP__/env/{$vo.id}.html">素描</a></h1>
-          <span><img src="images/zp2.jpg" /><img src="images/zp3.jpg" /><img src="images/zp4.jpg" /><img src="images/zp1.jpg" /><img src="images/zp2.jpg" /></span>
+          <h1><a href="__APP__/env/tag-1-{$vo.catalog}.html">{$vo.catalog}</a></h1>
+          <span><volist name="vo.items" id="envo"><img src="{$envo.image|imgsrc=120,120}" /></volist></span>
         </dd>
         <div class="clr"></div>
       </dl>

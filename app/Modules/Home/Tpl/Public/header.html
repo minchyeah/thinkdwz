@@ -23,13 +23,13 @@
         </li>
         <li><a href="__APP__/jinbang/">金榜题名</a></li>
 		<li><a href="__APP__/env/">教学环境</a>
+			<if condition="is_array($topnav_env)">
             <div class="drop_dwon">
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">素描教室</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">油画教室</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">宿舍</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">食堂</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">2015画展现场</a></div>
+              <volist name="topnav_env" id="tenvo">
+              <div class="onemenulayout"><a href="__APP__/env/tag-1-{$tenvo.catalog}.html" target="_blank">{$tenvo.catalog}</a></div>
+              </volist>
             </div>
+            </if>
 		</li>
         <li><a href="__APP__/tostu.html">招生信息</a></li>
         <li><a href="__APP__/feature.html">教学特色</a></li>

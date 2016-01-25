@@ -2,6 +2,10 @@
 	<form method="post" action="{:U('Env/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
+				<dt>分类：</dt>
+				<dd><input class="required" name="catalog" type="text" size="50" value="{$vo.catalog}"/></dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>名称：</dt>
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
 			</dl>

@@ -10,6 +10,7 @@
 		<th width="30">编号</th>
 		<th width="300">图片</th>
 		<th width="200">名称</th>
+		<th width="100">分类</th>
 		<th width="60">排序</th>
 		<th width="80">操作</th>
 	  </tr>
@@ -21,6 +22,7 @@
 		<td>{$vo['id']}</td>
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,200,200}" /></if></td>
 		<td>{$vo.name}</td>
+		<td>{$vo.catalog}</td>
 		<td>{$vo.sort_order}</td>
 		<td>
 		  <a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>
