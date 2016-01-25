@@ -2,19 +2,50 @@
 	<form method="post" action="{:U('Case/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
-				<dt>作品名称：</dt>
+				<dt>分类名称：</dt>
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>作品图片：</dt>
+				<dt>分类图标：</dt>
 				<dd>
-				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
-				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
+				  <div style="width:96px;height:96px;display:block;border:1px solid #CCC;">
+				  <img id="icon" src="{$vo.icon|imgsrc=###,96,96}" />
+				  </div>
+				  <div  style="width:120px;display:block;float:left;margin-top:10px;">
+				  <div id="uploadIcon"></div>
+				  <input type="hidden" id="input_icon" name="icon" value="{$vo.icon}" />
+				  </div>
+				</dd>
 			</dl>
+			<dl class="nowrap">
+				<dt>作品图片：</dt>
+				<volist name="images" id="ivo">
+				<dd style="width:100px;display:block;float:left;margin-right:20px;">
+				  <div style="width:100px;height:100px;display:block;border:1px solid #CCC;">
+				  <img id="img{$i}" src="{$ivo|imgsrc=###,100,100}" />
+				  </div>
+				  <div  style="width:98px;display:block;float:left;margin-top:10px;">
+				  <div id="uploadImage{$i}"></div>
+				  <input type="hidden" id="image{$i}" name="image{$i}" value="{$ivo}" />
+				  </div>
+				</dd>
+				</volist>
+				<dd style="width:100px;display:block;float:left;margin-right:20px;">
+				  <div style="width:100px;height:100px;display:block;border:1px solid #CCC;">
+				  <img id="img" src="{$ivo|imgsrc=###,100,100}" />
+				  </div>
+				  <div  style="width:98px;display:block;float:left;margin-top:10px;">
+				  <div id="uploadImage"></div>
+				  <input type="hidden" id="image" name="image" />
+				  </div>
+				</dd>
+			</dl>
+			<!-- 
 			<dl class="nowrap">
 				<dt>排序：</dt>
 				<dd><input name="sort_order" type="text" size="10" value="{$vo.sort_order}"/></dd>
 			</dl>
+			 -->
 		</div>
 		<div class="formBar">
 			<ul>
@@ -24,3 +55,66 @@
 		<input type="hidden" name="id" value="{$vo.id}"/>
 	</form>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$("#uploadIcon", navTab.getCurrentPanel()).uploadFile({
+		url:"__URL__/uploadIcon",
+		multiple:false,
+	 	dragDrop:false,
+		maxFileCount:100,
+		uploadStr:"上传分类图",
+		allowedTypes:"png,jpg,jpeg",
+		fileName:"appIcon",
+		onSuccess:function(files,data,xhr,pd){
+			$(".ajax-file-upload-container", navTab.getCurrentPanel()).remove();
+			if(data.status=1){
+				$("img#icon", navTab.getCurrentPanel()).attr('src',data.icon_src);
+				$("input#input_icon", navTab.getCurrentPanel()).val(data.icon);
+			}else{
+				alert(data.info);
+			}
+		}
+	});
+
+	$("#uploadImage", navTab.getCurrentPanel()).uploadFile({
+		 url:"__URL__/uploadImage",
+		 multiple:false,
+		 dragDrop:false,
+		 maxFileCount:100,
+		 uploadStr:"上传作品",
+		 allowedTypes:"png,jpg,jpeg",
+		 fileName:"appImage",
+			onSuccess:function(files,data,xhr,pd){
+				$(".ajax-file-upload-container", navTab.getCurrentPanel()).remove();
+				if(data.status=1){
+					$("img#img", navTab.getCurrentPanel()).attr('src',data.image_src);
+					$("input#image", navTab.getCurrentPanel()).val(data.image);
+				}else{
+					alert(data.info);
+				}
+			}
+	});
+	for(var i=1; i<=5; i++){
+		$("#uploadImage"+i, navTab.getCurrentPanel()).uploadFile({
+			 url:"__URL__/uploadImage",
+			 multiple:false,
+			 dragDrop:false,
+			 maxFileCount:100,
+			 uploadStr:"更新作品",
+			 allowedTypes:"png,jpg,jpeg",
+			 formData: {index:i},
+			 fileName:"appImage",
+				onSuccess:function(files,data,xhr,pd){
+					$(".ajax-file-upload-container", navTab.getCurrentPanel()).remove();
+					if(data.status=1){
+						$("img#img"+data.index, navTab.getCurrentPanel()).attr('src',data.image_src);
+						$("input#image"+data.index, navTab.getCurrentPanel()).val(data.image);
+					}else{
+						alert(data.info);
+					}
+				}
+		});
+	}
+});
+</script>

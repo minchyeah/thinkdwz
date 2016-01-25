@@ -85,5 +85,38 @@ class EnvAction extends AdminAction
 			$this->error('保存失败！'.$model->getDbError());
 		}
 	}
+
+	public function uploadIcon()
+	{
+	    if($_FILES['appIcon']['name']){
+	        $icon = $this->saveImage($_FILES['appIcon']);
+	        if(!$icon){
+	            $this->error('图标上传失败');
+	        }
+	        $data = array();
+	        $data['status'] = 1;
+	        $data['icon'] = $icon;
+	        $data['icon_src'] = str_replace('upload', C('image_url'), imgsrc($icon, 100, 100));
+	        $this->ajaxReturn($data);
+	    }
+	    $this->error('请选择上传图标');
+	}
+	
+	public function uploadImage()
+	{
+	    if($_FILES['appImage']['name']){
+	        $img = $this->saveImage($_FILES['appImage']);
+	        if(!$img){
+	            $this->error('截图上传失败');
+	        }
+	        $data = array();
+	        $data['status'] = 1;
+	        $data['image'] = $img;
+	        $data['image_src'] = str_replace('upload', C('image_url'), imgsrc($img, 100, 100));
+	        $data['index'] = intval($_REQUEST['index']);
+	        $this->ajaxReturn($data);
+	    }
+	    $this->error('请选择上传截图');
+	}
 }
 ?>
