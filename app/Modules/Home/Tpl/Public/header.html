@@ -13,14 +13,13 @@
         <li><a href="__APP__/about.html">画室简介</a></li>
         <li><a href="__APP__/faculty/">师资力量</a></li>
         <li><a href="__APP__/cases/">作品欣赏</a>
+        	<if condition="is_array($topnav_case_catalog)">
             <div class="drop_dwon">
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">素描</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">油画</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">写生</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">素描</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">油画</a></div>
-              <div class="onemenulayout"><a href="zpxs.html" target="_blank">写生</a></div>
+        	  <volist name="topnav_case_catalog" id="tcvo">
+              <div class="onemenulayout"><a href="__APP__/cases/{$tcvo.id}.html" target="_blank">{$tcvo.name}</a></div>
+              </volist>
             </div>
+            </if>
         </li>
         <li><a href="__APP__/jinbang/">金榜题名</a></li>
 		<li><a href="__APP__/env/">教学环境</a>

@@ -51,6 +51,7 @@ class HomeAction extends CommonAction
 		$this->assign('settings', $settings);
 		$this->assign('user_id', session('user_id'));
 		$this->assign('username', session('username'));
+		$this->topnav();
 		$this->slider();
 		$this->sidebar_course();
 		$this->sidebar_jinbang();
@@ -77,6 +78,14 @@ class HomeAction extends CommonAction
 			$user['role_id']=$_SESSION['role_id'];
 			return $user;
 		}
+	}
+	
+	protected function topnav()
+	{
+	    $model = D('Cases');
+	    $where = "type='catalog'";
+	    $catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+	    $this->assign('topnav_case_catalog', $catalog);
 	}
 	
 	/**
@@ -152,5 +161,19 @@ class HomeAction extends CommonAction
 		$index_slider = $model->field('id,target,image')->where($where)->order('sort_order DESC')->select();
 		$this->assign('index_slider', $index_slider);
 		unset($model,$index_slider);;
+	}
+
+	/**
+	 * 通用分页方法
+	 * @param unknown $count
+	 * @param number $perPage
+	 * @param string $url
+	 */
+	protected function getPage($count, $perPage = 10, $url = '')
+	{
+	    import('Util.Page', LIB_PATH);
+	    $page = new Page($count, $perPage, '', $url);
+	    $page->setConfig('theme', '%upPage% %prePage% %linkPage% %nextPage% %downPage%');
+	    return $page;
 	}
 }
