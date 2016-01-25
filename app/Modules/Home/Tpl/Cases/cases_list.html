@@ -24,7 +24,7 @@
         <dt><a href="__APP__/cases/{$vo.id}.html"><img src="{$vo.image|imgsrc=270,270}" /></a><b></b></dt>
         <dd>
           <h1><a href="__APP__/cases/{$vo.id}.html">{$vo.name}</a></h1>
-          <span><img src="images/zp2.jpg" /><img src="images/zp3.jpg" /><img src="images/zp4.jpg" /><img src="images/zp1.jpg" /><img src="images/zp2.jpg" /></span>
+          <span><volist name="vo.cases" id="casevo"><img src="{$casevo.image|imgsrc=120,120}" /></volist></span>
         </dd>
         <div class="clr"></div>
       </dl>
