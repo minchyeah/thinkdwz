@@ -48,8 +48,8 @@
     }
     function createMap(){
         var map = new BMap.Map("dituContent");
-        var point = new BMap.Point(108.270634,22.782318);
-        map.centerAndZoom(point,16);
+        var point = new BMap.Point(108.343872,22.743236);
+        map.centerAndZoom(point,15);
         window.map = map;
     }
     function setMapEvent(){
@@ -62,7 +62,7 @@
 	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
 	map.addControl(ctrl_nav);
                 }
-    var markerArr = [{title:"&nbsp;&nbsp;裕鼎一汽车有限公司&nbsp;&nbsp;",content:"南宁市江南区南站大道3-1号东盟国际汽配城C2栋219-227",point:"108.270351|22.780222",isOpen:1,icon:{w:23,h:25,l:69,t:21,x:9,lb:12}}
+    var markerArr = [{title:"&nbsp;&nbsp;多乐彩画室&nbsp;&nbsp;",content:"南宁市良庆区银海大道金象四区春阳路109号",point:"108.343872|22.743236",isOpen:1,icon:{w:23,h:25,l:0,t:46,x:9,lb:12}}
 		 ];
 
     function addMarker(){
@@ -116,5 +116,13 @@
     }
     initMap();
 </script> 
+<script type="text/javascript">
+$(function(){
+	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
+		$(this).attr('rel', $(this).attr('src').replace('_380x380', ''));
+	});
+	$(".group1").colorbox({rel:'group1'});
+});
+</script>
 </body>
 </html>

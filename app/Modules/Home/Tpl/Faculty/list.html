@@ -23,7 +23,7 @@
         <dt><a href="__APP__/faculty/{$vo.id}.html"><img src="{$vo.image|imgsrc=270,270}" /></a><b></b></dt>
         <dd>
           <h1><a href="__APP__/faculty/{$vo.id}.html">{$vo.subject}老师:{$vo.name}</a></h1>
-          <span>{$vo.detail|stripContent}</span>
+          <span>{$vo.detail|stripContent|mb_substr=0,260}......</span>
         </dd>
         <div class="clr"></div>
       </dl>
