@@ -11,6 +11,8 @@ class ArticlePageAction extends AdminAction
     	if(!$vo){
     		$vo['page_code'] = $alias;
     	}
+    	$menu = D('AdminMenus')->where(array('action_name'=>$alias, 'module_name'=>'ArticlePage'))->find();
+    	$this->assign('page_title', $menu['title']);
     	$this->assign('vo', $vo);
     	$this->display('Article:page');
     }

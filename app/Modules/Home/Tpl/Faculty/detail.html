@@ -16,7 +16,7 @@
   <div class="nyn">
     <div class="dqwz">
       <h1>师资力量</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a>><a href="__APP__/faculty/{$teacher.id}.html">内容</a></span> </div>
+      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a>><a href="__APP__/faculty/{$teacher.id}.html">{$teacher.name}</a></span> </div>
     <div class="szllnr">
       <div class="szllnrt"><img src="{$teacher.image|imgsrc=270,270}" class="group3" rel="{$teacher.image|imgsrc}" title="{$teacher.name}" /><b></b></div>
       <dl>
@@ -38,6 +38,18 @@
     </notempty>
       <div class="wznrzw">{$teacher.detail}</div>
       <div class="clr"></div>
+    </div>
+    <div class="sxp">
+    	<if condition="is_array($prev_page)">
+    	<span>上一篇：<a href="__APP__/faculty/{$prev_page.id}.html">{$prev_page.name}</a></span>
+    	<else />
+    	<span>上一篇：<a href="javascript:;">没有了...</a></span>
+    	</if>
+    	<if condition="is_array($next_page)">
+    	<b>下一篇：<a href="__APP__/faculty/{$next_page.id}.html">{$next_page.name}</a></b>
+    	<else />
+    	<b>下一篇：<a href="javascript:;">没有了...</a></b>
+    	</if>
     </div>
   </div>
   <div class="clr"></div>

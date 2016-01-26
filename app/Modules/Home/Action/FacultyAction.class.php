@@ -19,7 +19,7 @@ class FacultyAction extends HomeAction
 	    $total_count = intval($total['count']);
 	    
 	    $pager = $this->getPage($total_count, 10, __APP__.'/course/page-__PAGE__.html');
-	    $volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
+	    $volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
 
 	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
@@ -32,7 +32,17 @@ class FacultyAction extends HomeAction
 	    $teacher = M('Teacher')->where(array('state'=>1))
 	                       ->where(array('id'=>$id))
 	                       ->find();
+	    $prev_page = M('Teacher')->field('id,name')->where(array('state'=>1))
+	                       ->where("id<{$id}")
+	                       ->order('id DESC')
+	                       ->find();
+	    $next_page = M('Teacher')->field('id,name')->where(array('state'=>1))
+	                       ->where("id>{$id}")
+	                       ->order('id ASC')
+	                       ->find();
 	    $this->assign('teacher', $teacher);
+	    $this->assign('prev_page', $prev_page);
+	    $this->assign('next_page', $next_page);
 		$this->display('Faculty:detail');
 	}
 

@@ -2,11 +2,6 @@
 	<div class="layoutBox">
 	  <form method="post" action="{:U('Slider/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="55">
-			<div class="unit">
-				<input type="hidden" name="position" value="index">
-				<label style="text-align:right;">排序：</label>
-				<input type="text" name="sort_order" size="5" value="{$vo.sort_order}">
-			</div>
 			<if condition="$vo['image']">
 			<div class="unit">
 				<label style="text-align:right;">当前图片：</label>
@@ -16,6 +11,15 @@
 			<div class="unit">
 				<label style="text-align:right;">上传图片：</label>
 				<input type="file" name="img">
+			</div>
+			<div class="unit">
+				<label style="text-align:right;">跳转地址：</label>
+				<input type="text" name="target" size="50" value="{$vo.target}">
+			</div>
+			<div class="unit">
+				<input type="hidden" name="position" value="index">
+				<label style="text-align:right;">排序：</label>
+				<input type="text" name="sort_order" size="5" value="{$vo.sort_order}">
 			</div>
 		</div>
 		<div class="formBar">

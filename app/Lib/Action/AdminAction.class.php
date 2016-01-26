@@ -77,7 +77,7 @@ class AdminAction extends CommonAction
 		{
 			$image = $this->saveImage($upfile);
 			if ($image){
-				$imgurl = __ROOT__.'/data/'.imgsrc($image, 380, 380);
+				$imgurl = __ROOT__.'/data/'.imgsrc($image, 600, 600);
 				$localName = $upfile['name'];
 			}else{
 				$err = '上传失败';

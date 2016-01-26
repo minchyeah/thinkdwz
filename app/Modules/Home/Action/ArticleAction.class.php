@@ -15,7 +15,19 @@ class ArticleAction extends HomeAction
 		}
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
+
+		$prev_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
+                		->where("id<{$article['id']}")
+                		->order('id DESC')
+                		->find();
+		$next_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
+                		->where("id>{$article['id']}")
+                		->order('id ASC')
+                		->find();
+		
 		$this->assign('article', $article);
+	    $this->assign('prev_page', $prev_page);
+	    $this->assign('next_page', $next_page);
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $current_category['catalog']);
 		$this->display('Article:index');

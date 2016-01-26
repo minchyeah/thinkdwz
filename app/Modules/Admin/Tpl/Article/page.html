@@ -2,10 +2,6 @@
 <form method="post" action="{:U('ArticlePage/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
   <div class="pageFormContent" layoutH="55">
 	<div class="unit">
-	  <label>文章标题：</label>
-	  <input name="title" value="{$vo.title}" class="required" size="50" />
-	</div>
-	<div class="unit">
 	  <label>视频代码：</label>
 	  <textarea name="video" style="height:40px;width:600px;">{$vo.video}</textarea>
 	</div>
@@ -22,5 +18,6 @@
   </div>
   <input type="hidden" name="page_code" value="{$vo.page_code}">
   <input type="hidden" name="id" value="{$vo.id}">
+  <input type="hidden" name="title" value="{$page_title}">
 </form>
 </div>
