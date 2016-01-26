@@ -20,6 +20,7 @@ class IndexAction extends HomeAction
 	    $page_feature = D('ArticlePage')->field('thumb,content')->where(array('page_code'=>'feature'))->find();
 	    $this->assign('page_feature', $page_feature);
 	    $this->assign('news_list', $this->getArticleList('news', 10));
+	    $this->assign('current_nav', 'index');
 		$this->display('Index:index');
 	}
 }

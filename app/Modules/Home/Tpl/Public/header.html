@@ -9,10 +9,10 @@
     </div>
     <div class="dh">
       <div class="nav"><ul>
-        <li><a href="__APP__/">首  页</a></li>
-        <li><a href="__APP__/about.html">画室简介</a></li>
-        <li><a href="__APP__/faculty/">师资力量</a></li>
-        <li><a href="__APP__/cases/">作品欣赏</a>
+        <li class="<if condition="$current_nav=='index'">xz</if>"><a href="__APP__/">首  页</a></li>
+        <li class="<if condition="$current_nav=='about'">xz</if>"><a href="__APP__/about.html">画室简介</a></li>
+        <li class="<if condition="$current_nav=='faculty'">xz</if>"><a href="__APP__/faculty/">师资力量</a></li>
+        <li class="<if condition="$current_nav=='cases'">xz</if>"><a href="__APP__/cases/">作品欣赏</a>
         	<if condition="is_array($topnav_case_catalog)">
             <div class="drop_dwon">
         	  <volist name="topnav_case_catalog" id="tcvo">
@@ -21,8 +21,8 @@
             </div>
             </if>
         </li>
-        <li><a href="__APP__/jinbang/">金榜题名</a></li>
-		<li><a href="__APP__/env/">教学环境</a>
+        <li class="<if condition="$current_nav=='jinbang'">xz</if>"><a href="__APP__/jinbang/">金榜题名</a></li>
+		<li class="<if condition="$current_nav=='env'">xz</if>"><a href="__APP__/env/">教学环境</a>
 			<if condition="is_array($topnav_env)">
             <div class="drop_dwon">
               <volist name="topnav_env" id="tenvo">
@@ -31,9 +31,9 @@
             </div>
             </if>
 		</li>
-        <li><a href="__APP__/tostu.html">招生信息</a></li>
-        <li><a href="__APP__/feature.html">教学特色</a></li>
-        <li style="background:none;"><a href="__APP__/contact.html">联系我们</a></li>
+        <li class="<if condition="$current_nav=='tostu'">xz</if>"><a href="__APP__/tostu.html">招生信息</a></li>
+        <li class="<if condition="$current_nav=='feature'">xz</if>"><a href="__APP__/feature.html">教学特色</a></li>
+        <li class="<if condition="$current_nav=='contact'">xz</if>" style="background:none;"><a href="__APP__/contact.html">联系我们</a></li>
       </ul></div>
     </div>
   </div>

@@ -2,6 +2,12 @@
 
 class FacultyAction extends HomeAction
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->assign('current_nav', 'faculty');
+    }
+    
 	public function index()
 	{
 	    $id = intval($_GET['id']);

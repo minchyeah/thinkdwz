@@ -14,8 +14,10 @@ class ArticleAction extends HomeAction
 			$this->notfound();
 		}
 		$model->where($where)->setInc('visit_count');
+		$current_category = D('ArticleCategory')->find($article['cate_id']);
 		$this->assign('article', $article);
-		$this->assign('current_category', D('ArticleCategory')->find($article['cate_id']));
+		$this->assign('current_category', $current_category);
+		$this->assign('current_nav', $current_category['catalog']);
 		$this->display('Article:index');
 	}
 	
@@ -41,6 +43,7 @@ class ArticleAction extends HomeAction
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
+		$this->assign('current_nav', $current_category['catalog']);
 		$this->assign('pager', $page->show());
 		$this->display('Article:category');
 	}
@@ -52,10 +55,11 @@ class ArticleAction extends HomeAction
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');
 		$this->assign('page', $page);
+		$this->assign('current_nav', $code);
 		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
 		    $this->display('Article:'.$code);
 		}else{
-		  $this->display('Article:page');
+            $this->display('Article:page');
 		}
 	}
 }

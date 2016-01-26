@@ -108,7 +108,7 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_course()
 	{
-	    $sidebar_course = M('Courses')->field('id,name,desc')->where(array('state'=>1))->order('dateline DESC')->select();
+	    $sidebar_course = M('Courses')->field('id,name,desc')->where(array('state'=>1))->order('sort_order DESC, dateline DESC')->select();
 		$this->assign('sidebar_course', $sidebar_course);
 	}
 	

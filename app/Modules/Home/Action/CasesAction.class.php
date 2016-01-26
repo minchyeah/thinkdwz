@@ -2,6 +2,12 @@
 
 class CasesAction extends HomeAction
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->assign('current_nav', 'cases');
+    }
+    
 	public function index()
 	{
 	    $model = M('Cases');

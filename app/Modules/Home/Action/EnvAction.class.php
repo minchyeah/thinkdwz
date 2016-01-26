@@ -2,6 +2,12 @@
 
 class EnvAction extends HomeAction
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->assign('current_nav', 'env');
+    }
+    
 	public function index()
 	{
 	    $model = M('Env');
