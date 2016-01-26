@@ -13,7 +13,7 @@ class IndexAction extends HomeAction
 	    $cases = M('Cases')->field('id,name,image')->where(array('state'=>1,'type'=>'case'))->limit(8)->order('sort_order DESC, dateline DESC')->select();
 	    $this->assign('cases', $cases);
 
-	    $envs = M('Env')->field('id,name,image')->where(array('state'=>1))->limit(6)->order('sort_order DESC, dateline DESC')->select();
+	    $envs = M('Env')->field('id,name,image')->where(array('state'=>1,'type'=>'env'))->limit(6)->order('sort_order DESC, dateline DESC')->select();
 	    $this->assign('envs', $envs);
 	    
 	    $this->links();

@@ -1,4 +1,4 @@
-<form id="pagerForm" method="post" action="{:U('Env/index')}">
+<form id="pagerForm" method="post" action="{:U('Env/catalog')}">
 	<input type="hidden" name="pageNum" value="1" />
 	<input type="hidden" name="search_key" value="{$_REQUEST['search_key']}">
 </form>
@@ -8,9 +8,9 @@
 	  <tr>
 		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="30">编号</th>
-		<th width="300">图片</th>
-		<th width="200">名称</th>
-		<th width="100">分类</th>
+		<th width="300">分类图片</th>
+		<th width="200">分类名称</th>
+		<th width="60">排序</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
@@ -21,9 +21,9 @@
 		<td>{$vo['id']}</td>
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,200,200}" /></if></td>
 		<td>{$vo.name}</td>
-		<td>{$catalog[$vo['cid']]}</td>
+		<td>{$vo.sort_order}</td>
 		<td>
-		  <a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>
+		  <a href="__URL__/editcatalog/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑作品分类">编辑</a>
 		  <a href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
 		</td>
 	  </tr>

@@ -5,7 +5,7 @@ class EnvAction extends AdminAction
 	public function index()
 	{
 		$model = D('Env');
-		$where = '';
+		$where = "type='env'";
 		$key = trim(strval($_REQUEST['search_key']));
 		if($key){
 			$where .= ' AND `name` LIKE "%'.$key.'%"';
@@ -16,17 +16,23 @@ class EnvAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('catalog ASC,sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
 		$this->assign('numPerPage', $numPerPage);
 		$this->assign('currentPage', $currentPage);
+		$this->assign('catalog', $model->where("type='catalog'")->order('sort_order DESC, dateline DESC')->getField('id,name'));
 		$this->display();
 	}
 	
 	public function add()
 	{
+	    $model = D('Env');
+	    $where = "type='catalog'";
+	    $catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+	    
+	    $this->assign('catalog', $catalog);
 		$this->display();
 	}
 
@@ -53,6 +59,11 @@ class EnvAction extends AdminAction
 		$model = D('Env');
 		$case = $model->find($id);
 		$this->assign('vo', $case);
+		
+		$where = "type='catalog'";
+		$catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+		$this->assign('catalog', $catalog);
+		
 		$this->display('add');
 	}
 	
@@ -117,6 +128,73 @@ class EnvAction extends AdminAction
 	        $this->ajaxReturn($data);
 	    }
 	    $this->error('请选择上传截图');
+	}
+
+	public function catalog()
+	{
+		$model = D('Env');
+		$where = "type='catalog'";
+		$key = trim(strval($_REQUEST['search_key']));
+		if($key){
+			$where .= ' AND `name` LIKE "%'.$key.'%"';
+		}
+		$where = trim($where, ' AND');
+		$totalCount = $model->where($where)->count();
+		$currentPage = intval($_REQUEST['pageNum']);
+		$currentPage = $currentPage ? $currentPage : 1;
+		$numPerPage = 20;
+		$rowOffset = ($currentPage-1) * $numPerPage;
+		$list = $model->where($where)->order('sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		
+		$this->assign('list', $list);
+		$this->assign('totalCount', $totalCount);
+		$this->assign('numPerPage', $numPerPage);
+		$this->assign('currentPage', $currentPage);
+		$this->display();
+	} 
+
+	public function addcatalog()
+	{
+	    $this->display();
+	}
+
+	public function editcatalog()
+	{
+	    $id =  intval($_GET['id']);
+	    $model = D('Env');
+	    $case = $model->find($id);
+	    $this->assign('vo', $case);
+	    $this->display('addcatalog');
+	}
+	
+	public function savecatalog()
+	{
+		$model = D('Env');
+		if ($_FILES['imgfile']['name']) {
+			$image = $this->saveImage($_FILES['imgfile']);
+			if ($image) {
+				$_POST['image'] = $image;
+			}
+		}
+		$_POST['sort_order'] = intval($_POST['sort_order']);
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
+		}
+		$model->startTrans();
+		if (!$data['id']) {
+			$data['dateline'] = time();
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$model->commit();
+			$this->success('保存成功！');
+		}else{
+			$model->rollback();
+			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+		}
 	}
 }
 ?>
