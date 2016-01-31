@@ -82,13 +82,11 @@ class HomeAction extends CommonAction
 	
 	protected function topnav()
 	{
-	    $model = D('Cases');
-	    $where = "type='catalog'";
-	    $catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+	    $catalog = D('Cases')->field('id,name,type')->where(array('state'=>1,'type'=>'catalog'))->order('sort_order DESC, dateline DESC')->select();
 	    $this->assign('topnav_case_catalog', $catalog);
 	    
-	    $env = D('Env')->field('catalog')->where(array('state'=>1))->group('catalog')->select();
-	    $this->assign('topnav_env', $env);
+	    $env = D('Env')->field('id,name,type')->where(array('state'=>1,'type'=>'catalog'))->order('sort_order DESC, dateline DESC')->select();
+	    $this->assign('topnav_env_catalog', $env);
 	}
 	
 	/**

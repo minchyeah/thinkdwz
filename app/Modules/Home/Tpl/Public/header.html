@@ -23,10 +23,10 @@
         </li>
         <li class="<if condition="$current_nav=='jinbang'">xz</if>"><a href="__APP__/jinbang/">金榜题名</a></li>
 		<li class="<if condition="$current_nav=='env'">xz</if>"><a href="__APP__/env/">教学环境</a>
-			<if condition="is_array($topnav_env)">
+			<if condition="is_array($topnav_env_catalog)">
             <div class="drop_dwon">
-              <volist name="topnav_env" id="tenvo">
-              <div class="onemenulayout"><a href="__APP__/env/tag-1-{$tenvo.catalog}.html" target="_blank">{$tenvo.catalog}</a></div>
+              <volist name="topnav_env_catalog" id="tenvo">
+              <div class="onemenulayout"><a href="__APP__/env/{$tenvo.id}.html" target="_blank">{$tenvo.name}</a></div>
               </volist>
             </div>
             </if>
