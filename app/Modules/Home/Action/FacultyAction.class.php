@@ -32,11 +32,11 @@ class FacultyAction extends HomeAction
 	    $teacher = M('Teacher')->where(array('state'=>1))
 	                       ->where(array('id'=>$id))
 	                       ->find();
-	    $prev_page = M('Teacher')->field('id,name')->where(array('state'=>1))
+	    $next_page = M('Teacher')->field('id,name')->where(array('state'=>1))
 	                       ->where("id<{$id}")
 	                       ->order('id DESC')
 	                       ->find();
-	    $next_page = M('Teacher')->field('id,name')->where(array('state'=>1))
+	    $prev_page = M('Teacher')->field('id,name')->where(array('state'=>1))
 	                       ->where("id>{$id}")
 	                       ->order('id ASC')
 	                       ->find();

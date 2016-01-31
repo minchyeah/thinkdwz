@@ -16,11 +16,11 @@ class ArticleAction extends HomeAction
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
 
-		$prev_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
+		$next_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
                 		->where("id<{$article['id']}")
                 		->order('id DESC')
                 		->find();
-		$next_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
+		$prev_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
                 		->where("id>{$article['id']}")
                 		->order('id ASC')
                 		->find();
