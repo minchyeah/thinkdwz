@@ -1,6 +1,6 @@
 <?php
-//error_reporting(0);
-@set_time_limit(240);
+error_reporting(0);
+// @set_time_limit(240);
 //开启调试模式
 define("APP_DEBUG", true);
 //根目录
@@ -13,6 +13,6 @@ define('APP_PATH', ROOT_PATH.'/app/');
 define('DATA_PATH', ROOT_PATH.'/data/');
 //缓存目录
 define('RUNTIME_PATH', ROOT_PATH.'/temp/');
-
+// echo 'aaaaaaaa';
 require('system/core.php');
 ?>
