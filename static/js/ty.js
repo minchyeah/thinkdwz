@@ -68,58 +68,16 @@ function showTab(){
 		}
 	};
 	/*调用方法如下：*/
-	$.jqtab("#cpnrx","#cpnrd","click");
+	$.jqtab("#wzdt1t","#wzdt1n","mouseover");
+	$.jqtab("#wzdt2t","#wzdt2n","mouseover");
+	$.jqtab("#wzdt3t","#wzdt3n","mouseover");
+	$.jqtab("#wzdt4t","#wzdt4n","mouseover");
+	$.jqtab("#wzdt5t","#wzdt5n","mouseover");
+	$.jqtab("#wzdt6t","#wzdt6n","mouseover");
+	$.jqtab("#wzdt7t","#wzdt7n","mouseover");
+	$.jqtab("#wzdt8t","#wzdt8n","mouseover");
+	$.jqtab("#kcnrnts","#kcnrntx","click");
 }
-/*幻灯片*/
-$(function(){
-		var curr = 0;
-		var len = $(".box01 span").length; //获取焦点图个数
-		$(".jsNav .trigger").each(function(i){
-			$(this).click(function(){
-				curr = i;
-				$(".box01 span").eq(i).fadeIn("slow").siblings("span").css("display","none");
-				$(this).siblings(".trigger").removeClass("imgSelected").end().addClass("imgSelected");
-				return false;
-			});
-		});
-		
-		var pg = function(flag){
-			if (flag) {
-				if (curr == 0) {
-					todo = len-1;
-				} else {
-
-					todo = (curr - 1) % len;
-				}
-			} else {
-				todo = (curr + 1) % len;
-
-			}
-			$(".jsNav .trigger").eq(todo).click();
-		};
-		$("#prev").click(function(){
-			pg(true);
-			return false;
-		});
-		$("#next").click(function(){
-			pg(false);
-			return false;
-		});
-		var timer = setInterval(function(){
-			todo = (curr + 1) % len;
-			$(".jsNav .trigger").eq(todo).click();
-		},8000);
-		$(".box01,.jsNav span,#prev,#next").hover(function(){
-				clearInterval(timer);
-			},
-			function(){
-				timer = setInterval(function(){
-					todo = (curr + 1) % len;
-					$(".jsNav .trigger").eq(todo).click();
-				},8000);
-			}
-		);
-});
 /*小图看大图*/
 $(document).ready(function(){
 	$(".group1").colorbox({rel:'group1'});
@@ -147,25 +105,6 @@ $(function(){
 }
 function showInTop(){
 }
-/*向上滚动*/
-function showInTop(){
-	var $obj = $(".hyzxdd"); 
-	var scrollTimer; 
-	$obj.hover(function(){ 
-		clearInterval(scrollTimer); 
-	},function(){ 
-		scrollTimer = setInterval(function(){ 
-		scrollNews($obj); 
-		}, 2000 ); 
-	}).trigger("mouseout"); 
-}
-function scrollNews(obj){ 
-	var $self = obj.find("ul:first"); 
-	var lineHeight = $self.find("li:first").height(); 
-	$self.animate({ "margin-top" : -lineHeight +"px" },600 , function(){ 
-	$self.css({"margin-top":"0px"}).find("li:first").appendTo($self); 
-	}) 
-} 
 /*点击切换*/
 function _gel(objName){
   if(document.getElementById){
