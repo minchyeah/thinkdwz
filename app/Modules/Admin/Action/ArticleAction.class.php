@@ -12,7 +12,7 @@ class ArticleAction extends AdminAction
     {
     	import('ORG.Util.Tree');
     	$model = D('ArticleCategory');
-    	$cates = $model->order('pid ASC')->select();
+    	$cates = $model->order('pid ASC,sort_order ASC')->select();
     	$tree = new Tree($cates, array('id','pid','subcates'));
     	if($echo){
     		echo $this->buildCateTree($tree->leaf(), true);
@@ -110,7 +110,7 @@ class ArticleAction extends AdminAction
     	foreach ($tree as $k=>$v){
     		$havesub = !empty($v['subcates']);
     		$delable = 'disable';
-    		$addable = $v['pid']||$v['final'] ? 'disable' : 'add_cate';
+    		$addable = $v['final'] ? 'disable' : 'add_cate';
     		empty($v['subcates']) && $v['deletable'] && $delable = 'delete_cate';
     		$html .= '<li><a href="javascript:;" onclick="return false;" data-id="'.$v['id'].'" data-pid="'.$v['pid'].'"><span class="cate_title">'.$v['cate_name'].'</span>';
     		$html .= '<span class="cate_act '.$delable.'">删除</span><span class="cate_act">|</span><span class="cate_act edit_cate">编辑</span><span class="cate_act">|</span><span class="cate_act '.$addable.'">添加子栏目</span></a>';
@@ -129,7 +129,8 @@ class ArticleAction extends AdminAction
     	$model = D('ArticleCategory');
     	$cates = $model->order('pid ASC')->select();
     	$tree = new Tree($cates, array('id','pid','subcates'));
-    	$this->assign('cateOptions', $this->buildCateOptions($tree->leaf(), 0, 0));
+    	$pid = intval($_GET['id']);
+    	$this->assign('cateOptions', $this->buildCateOptions($tree->leaf(), $pid, 0));
     	$this->display('category_add');
     }
     
@@ -171,6 +172,11 @@ class ArticleAction extends AdminAction
     		$this->error($model->getError());
     	}
     	if($data['pid']){
+    	    $ppids = $model->where(array('id'=>$data['pid']))->getField('pids');
+    		$data['pids'] = $data['pid'].','.$ppids;
+    	}
+    	$data['pids'] = trim($data['pids'], ',');
+    	if(strpos($data['pids'], ',')){
     		$data['final'] = 1;
     	}
     	if (!$data['id']) {
