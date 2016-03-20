@@ -11,7 +11,7 @@ class XuekuAction extends HomeAction
 		$where['status'] = 1;
 		$article = $model->where($where)->find();
 		if(!$article){
-			$this->category();
+			return $this->category();
 		}
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
