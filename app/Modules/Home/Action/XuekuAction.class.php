@@ -55,7 +55,7 @@ class XuekuAction extends HomeAction
 		$sid = intval(array_pop($_GET['cates']));
 		$ssid = intval(array_pop($_GET['cates']));
 		
-		$top_cates = $model->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC')->select();
+		$top_cates = $model->field('id,cate_name,catalog')->where(array('pid'=>0,'xueku'=>1))->order('sort_order ASC')->select();
 		if($topid){
 		    $sub_cates = $model->where(array('pid'=>$topid))->getField('id,cate_name,pid,pids');
             $this->assign('sub_cates', $sub_cates);

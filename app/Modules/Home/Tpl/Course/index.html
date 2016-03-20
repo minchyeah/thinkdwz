@@ -6,34 +6,33 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
-<div class="jz ny">
-  <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
-  </div>
-  <div class="nyn">
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
+  <div class="kclb">
     <div class="dqwz">
       <h1>课程</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a></span> </div>
-    <div class="kc">
-    <volist name="volist" id="vo">
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a></h3>
+    </div>
+    <div class="sykcdq kclbn">
+      <volist name="volist" id="vo">
       <dl>
-        <dt><a href="__APP__/course/{$vo.id}.html"><img src="{$vo.image|imgsrc}" /></a><b></b></dt>
+        <dt><img src="{$vo.image|imgsrc=200,134}" alt="{$vo.name}"/><b></b></dt>
         <dd>
-          <h1><a href="__APP__/course/{$vo.id}.html">{$vo.name}</a></h1>
-          <span>{$vo.desc}</span>
+          <h1>{$vo.name}</h1>
+          <h4 class="bsbj"><a href="__APP__/course/{$vo.id}.html" target="_blank" title="{$vo.name}">查看详情</a></h4>
         </dd>
-        <div class="clr"></div>
       </dl>
-    </volist>
-    </div>    
+      </volist>
+    </div>
     <div class="clr"></div>
     <div class="sxy bs">{$pager}</div>
   </div>
-  <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
 </body>

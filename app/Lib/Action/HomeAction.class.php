@@ -88,7 +88,7 @@ class HomeAction extends CommonAction
 	    $env = D('Env')->field('id,name,type')->where(array('state'=>1,'type'=>'catalog'))->order('sort_order DESC, dateline DESC')->select();
 	    $this->assign('topnav_env_catalog', $env);
 	    
-	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC')->select();
+	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>0,'xueku'=>1))->order('sort_order ASC')->select();
 	    $this->assign('topnav_xueku', $xueku);
 	}
 	

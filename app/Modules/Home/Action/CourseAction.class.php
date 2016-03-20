@@ -19,7 +19,7 @@ class CourseAction extends HomeAction
 	    $total = $products->field('COUNT(1) count')->where($where)->find();
 	    $total_count = intval($total['count']);
 	    
-	    $pager = $this->getPage($total_count, 10, __APP__.'/course/page-__PAGE__.html');
+	    $pager = $this->getPage($total_count, 6, __APP__.'/course/page-__PAGE__.html');
 	    $volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
 	    
 	    $this->assign('pager', $pager->show());

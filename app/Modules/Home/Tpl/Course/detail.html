@@ -6,112 +6,158 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
-<div class="jz ny">
-  <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
-  </div>
-  <div class="nyn">
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
+  <div class="kclb">
     <div class="dqwz">
       <h1>课程</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a>><a href="__APP__/course/{$course.id}.html">{$course.name}</a></span> </div>
-    <div class="kcnr">
-      <div class="szllnrt"><img src="{$course.image|imgsrc}"/><b></b></div>
-      <dl>
-        <dt>{$course.name}</dt>
-        <dd class="jianji">{$course.desc}</dd>
-        <dd class="zxbm bs"><a href="zxyd" class="but" rel="1">在线报名</a></dd>
-      </dl>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a>><a href="">{$course.name}</a></h3>
     </div>
-    <div class="clr"></div>
-    <div class="wznr">
-      <notempty name="course.video">
-      <div class="nysp">
-        <div class="nyspk">
-          <div class="nyspem">{$course.video}</div>
+    <div class="kcnr">
+      <div class="kcnrt">
+        <div class="kcnrtl"><img src="images/kbxx1.jpg" alt="当前标题" /><b></b></div>
+        <div class="kcnrtr">
+          <h1>一级建造师</h1>
+          <ul>
+            <li>价格<b>￥4888</b></li>
+            <li>课时<span>194</span></li>
+            <li>归属<span>一级建造师</span></li>
+          </ul>
+          <h4 class="bsbj"><a href="zxyd" class="but" rel="1">在线报名</a></h4>
         </div>
       </div>
-      </notempty>
-      <div class="wznrzw">{$course.detail}</div>
-      <div class="clr"></div>
+      <div class="kcnrn">
+        <div class="kcnrnt">
+          <ul id="kcnrnts">
+            <li>介绍</li>
+            <li class="ztwdj">开班信息</li>
+          </ul>
+          <div class="fxd">
+            <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+            <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+          </div>
+        </div>
+        <div class="clr"></div>
+        <div class="kcnrnx" id="kcnrntx">
+          <ol>
+            <li class="wznr">
+              <notempty name="course.video">
+              <div class="nysp">
+                <div class="nyspk">
+                  <div class="nyspem">{$course.video}</div>
+                </div>
+              </div>
+              </notempty>
+              <div class="wznrzw">{$course.detail}</div>
+              <div class="clr"></div>
+            </li>
+          </ol>
+          <ol>
+            <li>
+              <div class="wzlb">
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">长沙拍婚纱照时的背景选择知识</a></b><span>2013-6-3</span></dt>
+                  <dd><span><a href="zxkbnr.html"><img src="images/ls1.jpg" /></a></span>婚纱摄影中，背景是必不可少的。主要背景形式有单色背景、花色背景、主题背景和真实的现场外景等... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">长沙婚纱摄影后期制作知识</a></b><span>2013-6-3</span></dt>
+                  <dd><span><a href="zxkbnr.html"><img src="images/ls2.jpg" /></a></span>后期的设计和修片是婚纱摄影的重要组成部分，做出好的相册更是新郎新娘的渴望。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">浅谈婚纱摄影构图</a></b><span>2013-6-3</span></dt>
+                  <dd><span><a href="zxkbnr.html"><img src="images/ls3.jpg" /></a></span>婚纱摄影源于欧洲,在美国兴盛起来,并在港台形成规模,1992年进入中国内陆。经过多年的探索与实践,再融入中国传统特色,形成了具有中国特色的"婚纱文化"。本文主要探讨了婚纱摄影的三个方面的问题:婚纱摄影的现状,婚纱摄影构图之形线,婚纱摄影构图之光色... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">长沙婚纱摄影后期制作知识</a></b><span>2013-6-3</span></dt>
+                  <dd><span><a href="zxkbnr.html"><img src="images/ls4.jpg" /></a></span>后期的设计和修片是婚纱摄影的重要组成部分，做出好的相册更是新郎新娘的渴望。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+                <dl>
+                  <dt><b>»<a href="zxkbnr.html">拍婚纱照真实记录,给大家一点建议呢.</a></b><span>2013-6-3</span></dt>
+                  <dd>因为我们的婚期比较急，之前选了好多家，看的有点眼花缭乱了。准备就简单的亲友一起吃个饭，不搞那么复杂的，但是公公不同意，他人在长沙，非要我们拍婚纱照，说是为了纪念。... </dd>
+                </dl>
+              </div>
+              <div class="clr"></div>
+              <div class="sxy bs"><span><a href="#">上一页</a></span><a href="#" class="xz">1</a><a href="#">2</a><a href="#">3</a>......<a href="#">8</a><span><a href="#">下一页</a></span></div>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
 <div id="faqbg"></div>
 <div class="faqdiv" name="zxyd" style="display:none;">
   <div id="hydlt">
     <ul>
-      <li rel="yd">{$course.name}</li>
+      <li rel="yd">一级建造师</li>
     </ul>
     <h5 class="close" rel="zxyd"></h5>
   </div>
-  <form id="orderform" action="__APP__/course/order" method="post">
   <div id="hydlx">
     <h3>您好，请详细填写以下报名信息！</h3>
     <ol>
       <li>
         <h4>姓名：</h4>
         <h5>
-          <input name="contact" type="text" size="50" value=""/>
+          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'阿德':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="阿德"/>
         </h5>
-        <h6></h6>
+        <h6>输入有错误!</h6>
       </li>
       <li>
         <h4>电话：</h4>
         <h5>
-          <input name="phone" type="text" size="50" value=""/>
+          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'18260806066':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="18260806066"/>
         </h5>
-        <h6></h6>
+        <h6>输入有错误!</h6>
       </li>
       <li>
-        <h4>年龄：</h4>
+        <h4>QQ：</h4>
         <h5>
-          <input name="age" type="text" size="50" value=""/>
+          <input name="textfield" type="text" id="textfield" size="50" onblur="this.value=this.value==''?'QQ':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="QQ"/>
         </h5>
-        <h6></h6>
-      </li>
-      <li>
-        <h4>地址：</h4>
-        <h5>
-          <input name="address" type="text" size="50" value=""/>
-        </h5>
-        <h6></h6>
+        <h6>输入有错误!</h6>
       </li>
       <li class="yzm">
         <h4>验证码：</h4>
         <h5><span>
-          <input name="captcha" type="text" id="textfield" size="50" value=""/>
-          <a href="javascript:;" onclick="$('img#captcha').attr('src', '{:U('Index/captcha','background=F6F6F6')}?'+Math.random())">看不清，换一张</a></span> <img id="captcha" src="{:U('Index/captcha','background=F6F6F6')}"  onclick="this.src='{:U('Index/captcha','background=F6F6F6')}?'+Math.random()"  /></h5>
-        <h6></h6>
+          <input name="textfield" type="text" id="textfield" size="50" value=""/>
+          <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
+        <h6>输入有错误!</h6>
       </li>
       <li class="dltj huangs">
         <h3>
-          <input class="pjtj" type="submit" value="&nbsp;" onclick="return submitOrder()"></h3>
+          <input class="pjtj" type="submit" value="&nbsp;">
+        </h3>
       </li>
     </ol>
   </div>
-  <input type="hidden" name="course_id" value="{$course.id}"/>
-  <input type="hidden" name="course_name" value="{$course.name}"/>
-  </form>
 </div>
-
-<script type="text/javascript">
-function submitOrder()
-{
-	  $form = $("#orderform");
-	  $.post($form.attr('action'),$form.serialize(),function(rs){
-		  alert(rs.info);
-		  if(rs.status){
-			  window.location.href=window.location.href;
-		  }
-	  });
-	  return false;
-}
-</script>
 </body>
 </html>
