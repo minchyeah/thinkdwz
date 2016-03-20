@@ -6,54 +6,49 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
-<div class="jz ny">
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
   <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
+    <include file="Public:sidebar_newclass" />
+    <include file="Public:sidebar_static" />
   </div>
-  <div class="nyn">
+  <div class="xkn">
     <div class="dqwz">
-      <h1>师资力量</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a>><a href="__APP__/faculty/{$teacher.id}.html">{$teacher.name}</a></span> </div>
+      <h1>名师</h1>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">名师</a>><a href="">内容</a></h3>
+    </div>
     <div class="szllnr">
-      <div class="szllnrt"><img src="{$teacher.image|imgsrc=270,270}" class="group3" rel="{$teacher.image|imgsrc}" title="{$teacher.name}" /><b></b></div>
+      <div class="szllnrt"><img src="{$teacher.image|imgsrc=260,260}" class="group3" rel="{$teacher.image}" title="{$teacher.name}" /><b></b></div>
       <dl>
         <dt><h1>{$teacher.name}</h1>老师</dt>
-        <dd><b>科目：</b>{$teacher.subject}老师</dd>
-        <dd><b>毕业：</b>{$teacher.school}</dd>
+        <dd><b>科目：</b>{$teacher.subject}</dd>
+        <dd><b>头衔：</b>{$teacher.school}</dd>
         <dd><b>教龄：</b>{$teacher.teach_age}年</dd>
         <dd><b>性别：</b>{$teacher.gender}</dd>
       </dl>
     </div>
     <div class="clr"></div>
     <div class="wznr">
-    <notempty name="teacher.video">
+      <if condition="!empty($teacher['video'])" >
       <div class="nysp">
         <div class="nyspk">
-          <div class="nyspem">{$teacher.video}</div>
+          <div class="nyspem">
+            {$teacher.video}
+          </div>
         </div>
       </div>
-    </notempty>
+      </if>
       <div class="wznrzw">{$teacher.detail}</div>
       <div class="clr"></div>
     </div>
-    <div class="sxp">
-    	<if condition="is_array($prev_page)">
-    	<span>上一篇：<a href="__APP__/faculty/{$prev_page.id}.html">{$prev_page.name}</a></span>
-    	<else />
-    	<span>上一篇：<a href="javascript:;">没有了...</a></span>
-    	</if>
-    	<if condition="is_array($next_page)">
-    	<b>下一篇：<a href="__APP__/faculty/{$next_page.id}.html">{$next_page.name}</a></b>
-    	<else />
-    	<b>下一篇：<a href="javascript:;">没有了...</a></b>
-    	</if>
-    </div>
+    <div class="sxp"> <span>上一篇：<if condition="$prev_page"><a href="__APP__/faculty/{$prev_page.id}.html">{$prev_page.name}</a><else /><a href="#">没有了...</a></if></span><b>下一篇：<if condition="$next_page"><a href="__APP__/faculty/{$next_page.id}.html">{$next_page.name}</a><else /><a href="#">没有了...</a></if></b> </div>
   </div>
-  <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
 </body>

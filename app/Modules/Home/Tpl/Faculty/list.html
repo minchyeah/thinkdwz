@@ -6,34 +6,38 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
-<div class="jz ny">
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
   <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
+    <include file="Public:sidebar_newclass" />
+    <include file="Public:sidebar_static" />
   </div>
-  <div class="nyn">
+  <div class="xkn">
     <div class="dqwz">
-      <h1>师资力量</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">师资力量</a></span> </div>
+      <h1>名师</h1>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">名师</a></h3>
+    </div>
     <div class="szll">
-    <volist name="volist" id="vo">
+      <volist name="volist" id="vo">
       <dl>
-        <dt><a href="__APP__/faculty/{$vo.id}.html"><img src="{$vo.image|imgsrc=270,270}" /></a><b></b></dt>
+        <dt><a href="__APP__/faculty/{$vo.id}.html"><img src="{$vo.image|imgsrc=140,140}" /></a><b></b></dt>
         <dd>
           <h1><a href="__APP__/faculty/{$vo.id}.html">{$vo.subject}老师:{$vo.name}</a></h1>
-          <span>{$vo.detail|stripContent|mb_substr=0,260}......</span>
+          <span>{$vo.detail|stripContent}...</span>
         </dd>
         <div class="clr"></div>
       </dl>
-    </volist>
-    </div>    
+      </volist>
+    </div>
     <div class="clr"></div>
     <div class="sxy bs">{$pager}</div>
   </div>
-  <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
 </body>

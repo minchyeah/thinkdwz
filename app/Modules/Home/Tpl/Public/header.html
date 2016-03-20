@@ -1,40 +1,22 @@
-<div class="bt">
+
+<div class="xdh">
   <div class="jz">
-    <div class="bts">
-      <div class="logo"><a href="__APP__/" title="<if condition="$site_name">{$site_name}<else />{$settings.site_name}</if>"></a></div>
-      <div class="btsr">
-        <h3><a href="__APP__/course/">课程</a><a href="__APP__/news/">资讯</a><a href="__APP__/" target="_blank">宣传册</a></h3>
-        <h1>{$settings.company_phone}</h1>
-      </div>
-    </div>
-    <div class="dh">
-      <div class="nav"><ul>
-        <li class="<if condition="$current_nav=='index'">xz</if>"><a href="__APP__/">首  页</a></li>
-        <li class="<if condition="$current_nav=='about'">xz</if>"><a href="__APP__/about.html">画室简介</a></li>
-        <li class="<if condition="$current_nav=='faculty'">xz</if>"><a href="__APP__/faculty/">师资力量</a></li>
-        <li class="<if condition="$current_nav=='cases'">xz</if>"><a href="__APP__/cases/">作品欣赏</a>
-        	<if condition="is_array($topnav_case_catalog)">
-            <div class="drop_dwon">
-        	  <volist name="topnav_case_catalog" id="tcvo">
-              <div class="onemenulayout"><a href="__APP__/cases/{$tcvo.id}.html" target="_blank">{$tcvo.name}</a></div>
-              </volist>
-            </div>
-            </if>
-        </li>
-        <li class="<if condition="$current_nav=='jinbang'">xz</if>"><a href="__APP__/jinbang/">金榜题名</a></li>
-		<li class="<if condition="$current_nav=='env'">xz</if>"><a href="__APP__/env/">教学环境</a>
-			<if condition="is_array($topnav_env_catalog)">
-            <div class="drop_dwon">
-              <volist name="topnav_env_catalog" id="tenvo">
-              <div class="onemenulayout"><a href="__APP__/env/{$tenvo.id}.html" target="_blank">{$tenvo.name}</a></div>
-              </volist>
-            </div>
-            </if>
-		</li>
-        <li class="<if condition="$current_nav=='tostu'">xz</if>"><a href="__APP__/tostu.html">招生信息</a></li>
-        <li class="<if condition="$current_nav=='feature'">xz</if>"><a href="__APP__/feature.html">教学特色</a></li>
-        <li class="<if condition="$current_nav=='contact'">xz</if>" style="background:none;"><a href="__APP__/contact.html">联系我们</a></li>
-      </ul></div>
-    </div>
+    <h3>欢迎您来到巧学教育官方网站！</h3>
+    <h2><a href="###" onclick="AddUrl(this);">收藏本站</a><a href="http://dm.liluokj.com/" target="_blank" title="宣传册">宣传册</a><a href="__APP__/jobs/" target="_blank" title="名企招聘">名企招聘</a></h2>
+  </div>
+</div>
+<div class="btz jz">
+  <div class="logo"><a href="__APP__/" title="巧学教育"></a>
+    <h1>巧学教育</h1>
+    <h2>中国十大综合实力教育机构</h2>
+  </div>
+  <div class="btzr">
+    <div class="dianh">40012345678</div>
+    <div class="soso">
+      <form id="form1" name="form1" method="post" action="">
+        <input id="name_txt" name="name_txt" type="text" class="wzysr" value="请输入您要搜索的课程/老师/关键词" onfocus="if(this.value=='请输入您要搜索的课程/老师/关键词')this.value='';" onblur="if(this.value=='')this.value='请输入您要搜索的课程/老师/关键词';">
+        <input class="sousan" type="submit" value="">
+      </form>
+      热门搜索： 监理工程师培训&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全工程师培训 </div>
   </div>
 </div>

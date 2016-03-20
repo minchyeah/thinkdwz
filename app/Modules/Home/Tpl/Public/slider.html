@@ -1,18 +1,16 @@
-<div class="hdp">
-  <div class="hdpk">
-  <a id="prev" class="hdpkl" href="###"></a> <a id="next" class="hdpkr" href="###"></a>
-  </div>
-  <div class="jshdp">
-    <div class="box01">
-    <volist name="index_slider" id="vo">
-    <span style="background-image:url({$vo.image|imgsrc}); <if condition="$i neq 1"> display:none;</if>"><a href="{$vo.target}" target="_blank"></a></span>
-    </span>
-    </volist>
+  <div class="hdp">
+    <div class="slideBox" id="NavSlideBox">
+      <ul class="items">
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+      </ul>
     </div>
-    <div class="jsNav">
-    <volist name="index_slider" id="vo">
-    <span class="trigger <if condition="$i eq 1"> imgSelected</if>">{$i}</span>
-    </volist>
-    </div>
+    <script type="text/javascript">
+	  jQuery(function($){
+		$('#NavSlideBox').slideBox();
+	  });
+	</script>
+    <div class="clr"></div>
   </div>
-</div>

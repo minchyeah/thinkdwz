@@ -1,1 +1,32 @@
-<div class="xdh hs"><a href="javascript:;" onclick="SetHome(this);">设为首页</a>|<a href="javascript:;" onclick="AddUrl(this);">添加收藏夹</a>|<a href="http://dm.gxqldkj.com" target="_blank" title="网络宣传册">宣传册</a></div>
+<div class="dh">
+  <div class="jz">
+    <div class="nav">
+      <ul>
+        <li class="xz"><a href="__APP__/">首页</a></li>
+        <li><a href="__APP__/course/">课程</a>
+          <div class="drop_dwon">
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">一级建造师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">二级建造师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">监理工程师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">安全工程师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">一级消防工程师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">二级消防工程师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">注册造价工程师</a></div>
+            <div class="onemenulayout"><a href="kcnr.html" target="_blank">学历/职称</a></div>
+          </div>
+        </li>
+        <li><a href="__APP__/xueku/">学库&nbsp;v</a>
+          <if condition="!empty($topnav_xueku)">
+          <div class="drop_dwon">
+          	<volist name="topnav_xueku" id="txku">
+            <div class="onemenulayout"><a href="__APP__/xueku/{$txku.id}.html" target="_blank">{$txku.cate_name}</a></div>
+            </volist>
+          </div>
+          </if>
+        </li>
+        <li><a href="__APP__/faculty/">名师</a></li>
+        <li><a href="__APP__/service.html">服务</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

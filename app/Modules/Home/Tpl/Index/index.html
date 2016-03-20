@@ -3,55 +3,150 @@
 <head>
 <include file="Public:header_meta" />
 </head>
-
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
+<include file="Public:header_nav" />
 
 <div class="sy1 jz">
-  <div class="sykc">
-    <div class="sykck">
-      <h2>课程</h2>
-      <volist name="courses" id="vo">
-      <a href="__APP__/course/{$vo.id}.html" target="_blank"><b>{$vo.name}</b>{$vo.desc}</a>
-      </volist>
-    </div>
-    <div class="sykcg"></div>
+  <div class="wzgg bsbj"><a href="wznr.html" target="_blank" title="当前标题">一级建造师</a><a href="kcnr.html" target="_blank" class="wzggr">二级建造师</a><a href="wznr.html" target="_blank" title="当前标题">监理工程师</a><a href="kcnr.html" target="_blank" class="wzggr">安全工程师</a><a href="wznr.html" target="_blank" title="当前标题">一级消防工程师</a><a href="kcnr.html" target="_blank" class="wzggr">二级消防工程师</a><a href="wznr.html" target="_blank" title="当前标题">注册造价工程师</a><a href="kcnr.html" target="_blank" class="wzggr">学历/职称</a>
   </div>
-  <div class="syzp">
-    <h2><a href="__APP__/cases/" target="_blank"></a></h2>
-    <volist name="cases" id="cvo">
-    <dl class="pic">
-      <dt><a href="__APP__/cases/" target="_blank"><img src="{$cvo.image|imgsrc=220,220}" alt="{$cvo.name}" /><b></b></a></dt>
-      <dd name="title" class="title">{$cvo.name}</dd>
-    </dl>
-    </volist>
-  </div>
-  <div class="clr"></div>
-</div>
-<div class="syk2">
-  <div class="jz">
-    <div class="syk2nr">
-      <h2>特色<a href="__APP__/feature.html" target="_blank">More</a></h2>
-      <dl>
-        <dt><a href="__APP__/feature.html" target="_blank"><img src="images/tes.jpg" /></a></dt>
-        <dd>{$page_feature.content|stripContent|mb_substr=0,490}......</dd>
-      </dl>
-    </div>
-    <div class="syk2lb">
-      <h2>资讯<a href="__APP__/news/" target="_blank">More</a></h2>
-      <h3><a href="__APP__/news/" target="_blank"><img src="images/zhix.jpg" /></a></h3>
-      <ul>
-      <volist name="news_list" id="vo">
-        <li><b>></b><a href="__APP__/news/{$vo.id}.html" target="_blank">{$vo.title}</a></li>
-      </volist>
+  <div class="hdp">
+    <div class="slideBox" id="demo1">
+      <ul class="items">
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
       </ul>
+    </div>
+    <script type="text/javascript">
+	  jQuery(function($){
+		$('#demo1').slideBox();
+	  });
+	</script>
+    <div class="clr"></div>
+  </div>
+</div>
+<div class="youshi jz">
+  <ul>
+    <li style="background-image:url(images/kejian.jpg);"><b>课件</b>最优质的课件</li>
+    <li style="background-image:url(images/moshi.jpg);"><b>模式</b>最先进的模式</li>
+    <li style="background-image:url(images/mingshi.jpg);"><b>名师</b>最权威的名师</li>
+    <li style="background-image:url(images/fuwu.jpg);"><b>服务</b>最完善的服务</li>
+    <li style="background-image:url(images/jingzun.jpg);"><b>精准</b>最精准的答疑</li>
+    <li style="background-image:url(images/banci.jpg); border:none;"><b>班次</b>最科学的班次</li>
+  </ul>
+</div>
+<div class="sykbxx jz">
+  <dl>
+    <dt><a href="zxkbnr.html"><img src="images/kbxx1.jpg" /><b></b></a></dt>
+    <dd>
+      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
+      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
+      <h3>价格<b>￥:4800</b></h3>
+      <h3>课时<span>194</span></h3>
+      <h3>归属<span>一级建造师</span></h3>
+      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
+    </dd>
+  </dl>
+  <dl>
+    <dt><a href="zxkbnr.html"><img src="images/kbxx2.jpg" /><b></b></a></dt>
+    <dd>
+      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
+      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
+      <h3>价格<b>￥:4800</b></h3>
+      <h3>课时<span>194</span></h3>
+      <h3>归属<span>一级建造师</span></h3>
+      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
+    </dd>
+  </dl>
+  <dl>
+    <dt><a href="zxkbnr.html"><img src="images/kbxx3.jpg" /><b></b></a></dt>
+    <dd>
+      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
+      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
+      <h3>价格<b>￥:4800</b></h3>
+      <h3>课时<span>194</span></h3>
+      <h3>归属<span>一级建造师</span></h3>
+      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
+    </dd>
+  </dl>
+</div>
+<div class="sywz">
+  <div class="jz">
+    <div class="sywzd">
+      <div class="sywzdt">
+        <h1>一级建造师</h1>
+        <ul id="wzdt1t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt1n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="sywzd" style="margin-right:auto;">
+      <div class="sywzdt">
+        <h1>二级建造师</h1>
+        <ul id="wzdt2t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt2n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="sygd jz">
   <div class="sygdt"> <span></span>
-    <h2>师资力量</h2>
+    <h2>名师团队</h2>
     <span></span> </div>
   <div class="alzx">
     <div class="LeftBotton" onmousedown="r1.ISL_GoDown()" onmouseup="r1.ISL_StopDown()" onmouseout="r1.ISL_StopDown()"><</div>
@@ -59,9 +154,11 @@
       <div  class="ScrCont">
         <div id="alzx1List1" class="List1">
           <ul>
-          <volist name="teachers" id="vo">
-            <li><a href="__APP__/faculty/{$vo.id}.html" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=270,270}" alt="{$vo.name}"/><b></b></a><h2>{$vo.subject}导师: {$vo.name}</h2></li>
-          </volist>
+            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls1.jpg" alt="当前标题"/><b></b></a><h2>著名画家：陈开宁</h2></li>
+            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls2.jpg" alt="当前标题"/><b></b></a><h2>油画导师：张晓晓</h2></li>
+            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls3.jpg" alt="当前标题"/><b></b></a><h2>自由画家：刘星</h2></li>
+            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls4.jpg" alt="当前标题"/><b></b></a><h2>素描导师：梁丽</h2></li>
+            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls5.jpg" alt="当前标题"/><b></b></a><h2>素描导师：陈红</h2></li>
           </ul>
         </div>
         <div id="alzx1List2" class="List2"></div>
@@ -70,43 +167,99 @@
     <div class="RightBotton" onmousedown="r1.ISL_GoUp()" onmouseup="r1.ISL_StopUp()" onmouseout="r1.ISL_StopUp()">></div>
   </div>
 </div>
-
-<div class="syk2">
+<div class="sywz">
   <div class="jz">
-    <div class="syk2nr">
-      <h2>招生信息<a href="__APP__/tostu.html" target="_blank">More</a></h2>
-      <dl>
-        <dt><a href="__APP__/tostu.html" target="_blank"><img src="images/zsxin.jpg" /></a></dt>
-        <dd>{$sidebar_tostu.content|stripContent|mb_substr=0,490}......</dd>
-      </dl>
-    </div>
-    <div class="syk2lb">
-      <h2>金榜题名<a href="__APP__/jinbang/" target="_blank">More</a></h2>
-      <h3><a href="__APP__/jinbang/" target="_blank"><img src="images/jbtm.jpg" /></a></h3>
-      <div class="hyzxdd">
-        <ul>
-          <volist name="sidebar_jinbang" id="vo">
-          <li><b>></b><a href="__APP__/jinbang/{$vo.id}.html" target="_blank">{$vo.title}</a></li>
-          </volist>
+    <div class="sywzd">
+      <div class="sywzdt">
+        <h1>一级建造师</h1>
+        <ul id="wzdt3t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
         </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt3n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="sywzd" style="margin-right:auto;">
+      <div class="sywzdt">
+        <h1>二级建造师</h1>
+        <ul id="wzdt4t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt4n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="sygd jz">
   <div class="sygdt"> <span></span>
-    <h2>教学环境</h2>
+    <h2>课程大全</h2>
     <span></span> </div>
-  <div class="alzx">
+  <div class="alzx sykcdq">
     <div class="LeftBotton" onmousedown="r2.ISL_GoDown()" onmouseup="r2.ISL_StopDown()" onmouseout="r2.ISL_StopDown()"><</div>
     <div class="alzxc" id="alzx2">
       <div  class="ScrCont">
         <div id="alzx2List1" class="List1">
-          <ul>
-          <volist name="envs" id="vo">
-            <li><a href="__APP__/env/" target="_blank" title="{$vo.name}"><img src="{$vo.image|imgsrc=270,270}" alt="{$vo.name}"/><b></b></a><h2>{$vo.name}</h2></li>
-          </volist>
-          </ul>
+          <dl>
+            <dt><img src="images/kc1.jpg" alt="当前标题"/><b></b></dt>
+            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
+          </dl>
+          <dl>
+            <dt><img src="images/kc2.jpg" alt="当前标题"/><b></b></dt>
+            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
+          </dl>
+          <dl>
+            <dt><img src="images/kc3.jpg" alt="当前标题"/><b></b></dt>
+            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
+          </dl>
         </div>
         <div id="alzx2List2" class="List2"></div>
       </div>
@@ -114,14 +267,159 @@
     <div class="RightBotton" onmousedown="r2.ISL_GoUp()" onmouseup="r2.ISL_StopUp()" onmouseout="r2.ISL_StopUp()">></div>
   </div>
 </div>
+<div class="sywz">
+  <div class="jz">
+    <div class="sywzd">
+      <div class="sywzdt">
+        <h1>一级建造师</h1>
+        <ul id="wzdt5t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt5n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="sywzd" style="margin-right:auto;">
+      <div class="sywzdt">
+        <h1>二级建造师</h1>
+        <ul id="wzdt6t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt6n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public:about_block" />
+<div class="sywz">
+  <div class="jz">
+    <div class="sywzd">
+      <div class="sywzdt">
+        <h1>一级建造师</h1>
+        <ul id="wzdt7t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt7n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="sywzd" style="margin-right:auto;">
+      <div class="sywzdt">
+        <h1>二级建造师</h1>
+        <ul id="wzdt8t">
+          <li><a href="xklb.html">历年真题</a></li>
+          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        </ul>
+      </div>
+      <div class="sywzdn">
+        <div class="sywzdnl">
+          <img src="images/sywz1.jpg" /><b></b>
+        </div>
+        <div class="sywzdnr" id="wzdt8n">
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+          <ol>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
+            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <include file="Public:friendlink" />
 <include file="Public:footer" />
+<include file="Public:qqkefu" />
 <script type="text/javascript">
   var r1 = new Roll('alzx1',224);
     r1.init();
-  var r2 = new Roll('alzx2',224);
+  var r2 = new Roll('alzx2',253);
     r2.init();
-</script>
-<include file="Public:qqkefu" />
+</script> 
 </body>
 </html>
