@@ -11,7 +11,7 @@ class XuekuAction extends HomeAction
 		$where['status'] = 1;
 		$article = $model->where($where)->find();
 		if(!$article){
-			$this->notfound();
+			$this->category();
 		}
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
@@ -56,7 +56,10 @@ class XuekuAction extends HomeAction
 		$ssid = intval(array_pop($_GET['cates']));
 		
 		$top_cates = $model->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC')->select();
-		$sub_cates = $model->where(array('pid'=>$topid))->getField('id,cate_name,pid,pids');
+		if($topid){
+		    $sub_cates = $model->where(array('pid'=>$topid))->getField('id,cate_name,pid,pids');
+            $this->assign('sub_cates', $sub_cates);
+		}
 		if($sid){
 		  $sub_sub_cates = $model->where(array('pid'=>$sid))->getField('id,cate_name,pid,pids');
 		  $this->assign('sub_sub_cates', $sub_sub_cates);
@@ -72,7 +75,7 @@ class XuekuAction extends HomeAction
 		            $cate_ids[] = $ssc['id'];
 		        }
 		    }
-		}else{
+		}elseif($topid){
 		    $cate_ids[] = $topid;
 		    if(is_array($sub_cates)){
 		        foreach ($sub_cates as $ssc){
@@ -83,7 +86,7 @@ class XuekuAction extends HomeAction
 		
 		$where = array();
 		$where['status'] = 1;
-		$where['cate_id'] = array('in', $cate_ids);
+		if(!empty($cate_ids)) $where['cate_id'] = array('in', $cate_ids);
 		$article = D('Articles');
 		$count = $article->where($where)->count();
 		
@@ -92,7 +95,6 @@ class XuekuAction extends HomeAction
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
         $this->assign('cate_arr', $cate_arr);
 		$this->assign('topcates', $top_cates);
-        $this->assign('sub_cates', $sub_cates);
 		$this->assign('articles', $articles);
 		$this->assign('pager', $page->show());
 		$this->display('Xueku:category');
