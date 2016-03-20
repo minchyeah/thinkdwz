@@ -29,50 +29,88 @@ class XuekuAction extends HomeAction
 	    $this->assign('prev_page', $prev_page);
 	    $this->assign('next_page', $next_page);
 		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $current_category['catalog']);
-		$this->display('Article:index');
+		$this->assign('current_position', $this->_build_current_position($current_category));
+		$this->display('Xueku:index');
+	}
+	
+	private function _build_current_position($cate)
+	{
+	    $pstr = trim($cate['id'].','.$cate['pids'], ',');
+	    $str = '<a href="'.__APP__.'/xueku/cate-'.$pstr.'.html">'.$cate['cate_name'].'</a>>';
+	    if(!$cate['pids']){
+	        return $str;
+	    }else{
+	        $pids = explode(',', $cate['pids']);
+	        $cid = array_shift($pids);
+	        $str = $this->_build_current_position(D('ArticleCategory')->find($cid)).$str;
+	    }
+	    return $str;
 	}
 	
 	public function category()
 	{
 		$model = D('ArticleCategory');
-		$catalog = trim(strval($_GET['catalog']));
-		$current_category = $model->where(array('catalog'=>$catalog))->find();
-		$cate_id = $current_category['id'];
-
-		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
-		$cate_ids = array();
-		if ($sub_cates) {
-			$cate_ids = array_keys($sub_cates);
+		$cate_arr = $_GET['cates'];
+		$topid = intval(array_pop($_GET['cates']));
+		$sid = intval(array_pop($_GET['cates']));
+		$ssid = intval(array_pop($_GET['cates']));
+		
+		$top_cates = $model->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC')->select();
+		$sub_cates = $model->where(array('pid'=>$topid))->getField('id,cate_name,pid,pids');
+		if($sid){
+		  $sub_sub_cates = $model->where(array('pid'=>$sid))->getField('id,cate_name,pid,pids');
+		  $this->assign('sub_sub_cates', $sub_sub_cates);
 		}
-		$cate_ids[] = $cate_id;
+		
+		$cate_ids = array();
+		if ($ssid) {
+		    $cate_ids[] = $ssid;
+		}elseif($sid){
+		    $cate_ids[] = $sid;
+		    if(is_array($sub_sub_cates)){
+		        foreach ($sub_sub_cates as $ssc){
+		            $cate_ids[] = $ssc['id'];
+		        }
+		    }
+		}else{
+		    $cate_ids[] = $topid;
+		    if(is_array($sub_cates)){
+		        foreach ($sub_cates as $ssc){
+		            $cate_ids[] = $ssc['id'];
+		        }
+		    }
+		}
+		
 		$where = array();
 		$where['status'] = 1;
 		$where['cate_id'] = array('in', $cate_ids);
 		$article = D('Articles');
 		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/page-__PAGE__.html');
+		
+		$cates_str = implode(',', $cate_arr);
+		$page = $this->getPage($count, 10, __APP__.'/xueku/cate-'.$cates_str.'-page-__PAGE__.html');
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
+        $this->assign('cate_arr', $cate_arr);
+		$this->assign('topcates', $top_cates);
+        $this->assign('sub_cates', $sub_cates);
 		$this->assign('articles', $articles);
-		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $current_category['catalog']);
 		$this->assign('pager', $page->show());
-		$this->display('Article:category');
+		$this->display('Xueku:category');
 	}
-
-	public function page()
+	
+	public function _empty($name)
 	{
-		$code = trim(strval($_GET['code']));
-		$model = D('ArticlePage');
-		$page = $model->where(array('page_code'=>$code))->find();
-		$model->where(array('id'=>$page['id']))->setInc('visit_count');
-		$this->assign('page', $page);
-		$this->assign('current_nav', $code);
-		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
-		    $this->display('Article:'.$code);
-		}else{
-            $this->display('Article:page');
-		}
+        if(is_numeric($name)){
+            $_GET['id'] = intval($name);
+            return $this->index();
+        }
+        if('cate-' == substr($name, 0, 5)){
+            $arr = explode('-', $name);
+            $_GET['cates'] = explode(',', $arr[1]);
+            $_GET['page'] = $arr[3];
+            return $this->category();
+        }
+        $this->notfound();
 	}
 }
 ?>

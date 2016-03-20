@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
+  <div class="cbl">
+    <include file="Public:sidebar_newclass" />
+    <include file="Public:sidebar_static" />
+  </div>
+  <div class="xkn">
+    <div class="dqwz">
+      <h1>学库</h1>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/xueku/">学库</a></h3>
+    </div>
+    <div class="wzfl">
+      <dl>
+        <volist name="topcates" id="tvo">
+        <dt class="<if condition="in_array($tvo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$tvo.id}.html">{$tvo.cate_name}</a></dt>
+        </volist>
+        <dd class="clr"></dd>
+      </dl>
+      <notempty name="sub_cates">
+      <dl>
+        <volist name="sub_cates" id="svo">
+        <dt class="<if condition="in_array($svo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$svo.id},{$svo.pid}.html">{$svo.cate_name}</a></dt>
+        </volist>
+        <dd class="clr"></dd>
+      </dl>
+      </notempty>
+      <notempty name="sub_sub_cates">
+      <dl>
+        <volist name="sub_sub_cates" id="ssvo">
+        <dt class="<if condition="in_array($ssvo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$ssvo.id},{$ssvo.pids}.html">{$ssvo.cate_name}</a></dt>
+        </volist>
+        <dd class="clr"></dd>
+      </dl>
+      </notempty>
+    </div>
+    <div class="wzlb">
+    <volist name="articles" id="vo">
+      <dl>
+        <dt><b>»<a href="__APP__/xueku/{$vo.id}.html">{$vo.title}</a></b><span>{$vo.create_time|date="Y-m-d",###}</span></dt>
+        <dd><if condition="$vo['thumb']"><span><a href="__APP__/xueku/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></span></if>{$vo.content|stripContent|mb_substr=###,0,280}......</dd>
+      </dl>
+    </volist>
+    </div>
+    <div class="clr"></div>
+    <div class="sxy bs">{$pager}</div>
+  </div>
+</div>
+<include file="Public:about_block" />
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+</body>
+</html>
