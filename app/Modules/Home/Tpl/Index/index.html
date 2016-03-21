@@ -6,26 +6,9 @@
 <body>
 <include file="Public:header" />
 <include file="Public:header_nav" />
-
 <div class="sy1 jz">
-  <div class="wzgg bsbj"><a href="wznr.html" target="_blank" title="当前标题">一级建造师</a><a href="kcnr.html" target="_blank" class="wzggr">二级建造师</a><a href="wznr.html" target="_blank" title="当前标题">监理工程师</a><a href="kcnr.html" target="_blank" class="wzggr">安全工程师</a><a href="wznr.html" target="_blank" title="当前标题">一级消防工程师</a><a href="kcnr.html" target="_blank" class="wzggr">二级消防工程师</a><a href="wznr.html" target="_blank" title="当前标题">注册造价工程师</a><a href="kcnr.html" target="_blank" class="wzggr">学历/职称</a>
-  </div>
-  <div class="hdp">
-    <div class="slideBox" id="demo1">
-      <ul class="items">
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-      </ul>
-    </div>
-    <script type="text/javascript">
-	  jQuery(function($){
-		$('#demo1').slideBox();
-	  });
-	</script>
-    <div class="clr"></div>
-  </div>
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
 </div>
 <div class="youshi jz">
   <ul>
@@ -38,48 +21,29 @@
   </ul>
 </div>
 <div class="sykbxx jz">
+  <volist name="classes" id="clsvo">
   <dl>
-    <dt><a href="zxkbnr.html"><img src="images/kbxx1.jpg" /><b></b></a></dt>
+    <dt><a href="__APP__/course/cls-{$clsvo.id}.html"><img src="{$clsvo.image|imgsrc=327,219}" /><b></b></a></dt>
     <dd>
-      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
-      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
-      <h3>价格<b>￥:4800</b></h3>
-      <h3>课时<span>194</span></h3>
-      <h3>归属<span>一级建造师</span></h3>
-      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
+      <h1>{$clsvo.name}</h1>
+      <h2>{$clsvo.detail|stripContent|mb_substr=###,0,280}</h2>
+      <h3>价格<b>￥{$clsvo.price}</b></h3>
+      <h3>课时<span>{$clsvo.course_times}</span></h3>
+      <h3>归属<span>{$clsvo.course_name}</span></h3>
+      <h4 class="bsbj"><a href="__APP__/course/cls-{$clsvo.id}.html">查看/报名</a></h4>
     </dd>
   </dl>
-  <dl>
-    <dt><a href="zxkbnr.html"><img src="images/kbxx2.jpg" /><b></b></a></dt>
-    <dd>
-      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
-      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
-      <h3>价格<b>￥:4800</b></h3>
-      <h3>课时<span>194</span></h3>
-      <h3>归属<span>一级建造师</span></h3>
-      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
-    </dd>
-  </dl>
-  <dl>
-    <dt><a href="zxkbnr.html"><img src="images/kbxx3.jpg" /><b></b></a></dt>
-    <dd>
-      <h1>2月27巧学大型二级建造师公开课火热开课！</h1>
-      <h2>2016年2月27日（本周六）华夏优职免费大型二级建造师公开课火热开课！时间:2016.2.27 (本周六)上午10:00-12:00 下午：3:00-5:00地址：广西南宁市鲤湾路5号 盛源大厦602号南宁华夏优职2016年...</h2>
-      <h3>价格<b>￥:4800</b></h3>
-      <h3>课时<span>194</span></h3>
-      <h3>归属<span>一级建造师</span></h3>
-      <h4 class="bsbj"><a href="zxkbnr.html">查看/报名</a></h4>
-    </dd>
-  </dl>
+  </volist>
 </div>
 <div class="sywz">
   <div class="jz">
     <div class="sywzd">
       <div class="sywzdt">
-        <h1>一级建造师</h1>
+        <h1>{$xuekus[0]['cate_name']}</h1>
         <ul id="wzdt1t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+          <volist name="xuekus[0]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
@@ -87,33 +51,23 @@
           <img src="images/sywz1.jpg" /><b></b>
         </div>
         <div class="sywzdnr" id="wzdt1n">
+        <volist name="xuekus[0]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
     <div class="sywzd" style="margin-right:auto;">
       <div class="sywzdt">
-        <h1>二级建造师</h1>
+        <h1>{$xuekus[1]['cate_name']}</h1>
         <ul id="wzdt2t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+          <volist name="xuekus[1]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
@@ -121,24 +75,13 @@
           <img src="images/sywz1.jpg" /><b></b>
         </div>
         <div class="sywzdnr" id="wzdt2n">
+        <volist name="xuekus[1]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
@@ -154,11 +97,9 @@
       <div  class="ScrCont">
         <div id="alzx1List1" class="List1">
           <ul>
-            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls1.jpg" alt="当前标题"/><b></b></a><h2>著名画家：陈开宁</h2></li>
-            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls2.jpg" alt="当前标题"/><b></b></a><h2>油画导师：张晓晓</h2></li>
-            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls3.jpg" alt="当前标题"/><b></b></a><h2>自由画家：刘星</h2></li>
-            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls4.jpg" alt="当前标题"/><b></b></a><h2>素描导师：梁丽</h2></li>
-            <li><a href="msnr.html" target="_blank" title="当前标题"><img src="images/ls5.jpg" alt="当前标题"/><b></b></a><h2>素描导师：陈红</h2></li>
+            <volist name="teachers" id="teacher">
+            <li><a href="__APP__/faculty/{$teacher.id}.html" target="_blank" title="{$teacher.name}"><img src="{$teacher.image|imgsrc=188,188}" alt="{$teacher.name}"/><b></b></a><h2>著名画家：{$teacher.name}</h2></li>
+            </volist>
           </ul>
         </div>
         <div id="alzx1List2" class="List2"></div>
@@ -171,69 +112,49 @@
   <div class="jz">
     <div class="sywzd">
       <div class="sywzdt">
-        <h1>一级建造师</h1>
-        <ul id="wzdt3t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[2]['cate_name']}</h1>
+        <ul id="wzdt1t">
+          <volist name="xuekus[2]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt3n">
+        <div class="sywzdnr" id="wzdt1n">
+        <volist name="xuekus[2]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
     <div class="sywzd" style="margin-right:auto;">
       <div class="sywzdt">
-        <h1>二级建造师</h1>
-        <ul id="wzdt4t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[3]['cate_name']}</h1>
+        <ul id="wzdt2t">
+          <volist name="xuekus[3]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt4n">
+        <div class="sywzdnr" id="wzdt2n">
+        <volist name="xuekus[3]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
@@ -248,18 +169,12 @@
     <div class="alzxc" id="alzx2">
       <div  class="ScrCont">
         <div id="alzx2List1" class="List1">
+          <volist name="courses" id="cvo">
           <dl>
-            <dt><img src="images/kc1.jpg" alt="当前标题"/><b></b></dt>
-            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
+            <dt><img src="{$cvo.image|imgsrc=200,134}" alt="{$cvo.name}"/><b></b></dt>
+            <dd><h1>{$cvo.name}</h1><h4 class="bsbj"><a href="__APP__/course/{$cvo.id}.html" target="_blank" title="{$cvo.name}">查看详情</a></h4></dd>
           </dl>
-          <dl>
-            <dt><img src="images/kc2.jpg" alt="当前标题"/><b></b></dt>
-            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
-          </dl>
-          <dl>
-            <dt><img src="images/kc3.jpg" alt="当前标题"/><b></b></dt>
-            <dd><h1>一级建造师</h1><h4 class="bsbj"><a href="kcnr.html" target="_blank" title="当前标题">查看详情</a></h4></dd>
-          </dl>
+          </volist>
         </div>
         <div id="alzx2List2" class="List2"></div>
       </div>
@@ -271,69 +186,49 @@
   <div class="jz">
     <div class="sywzd">
       <div class="sywzdt">
-        <h1>一级建造师</h1>
-        <ul id="wzdt5t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[4]['cate_name']}</h1>
+        <ul id="wzdt1t">
+          <volist name="xuekus[4]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt5n">
+        <div class="sywzdnr" id="wzdt1n">
+        <volist name="xuekus[4]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
     <div class="sywzd" style="margin-right:auto;">
       <div class="sywzdt">
-        <h1>二级建造师</h1>
-        <ul id="wzdt6t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[5]['cate_name']}</h1>
+        <ul id="wzdt2t">
+          <volist name="xuekus[5]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt6n">
+        <div class="sywzdnr" id="wzdt2n">
+        <volist name="xuekus[5]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
@@ -344,69 +239,49 @@
   <div class="jz">
     <div class="sywzd">
       <div class="sywzdt">
-        <h1>一级建造师</h1>
-        <ul id="wzdt7t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[6]['cate_name']}</h1>
+        <ul id="wzdt1t">
+          <volist name="xuekus[6]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt7n">
+        <div class="sywzdnr" id="wzdt1n">
+        <volist name="xuekus[6]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>
     <div class="sywzd" style="margin-right:auto;">
       <div class="sywzdt">
-        <h1>二级建造师</h1>
-        <ul id="wzdt8t">
-          <li><a href="xklb.html">历年真题</a></li>
-          <li class="ztwdj"><a href="xklb.html">新品上架</a></li>
+        <h1>{$xuekus[7]['cate_name']}</h1>
+        <ul id="wzdt2t">
+          <volist name="xuekus[7]['subs']" id="svo">
+          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id}.html">{$svo.cate_name}</a></li>
+          </volist>
         </ul>
       </div>
       <div class="sywzdn">
         <div class="sywzdnl">
           <img src="images/sywz1.jpg" /><b></b>
         </div>
-        <div class="sywzdnr" id="wzdt8n">
+        <div class="sywzdnr" id="wzdt2n">
+        <volist name="xuekus[7]['subs']" id="svo">
           <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
+            <volist name="svo['articles']" id="ssvo">
+            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
+            </volist>
           </ol>
-          <ol>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2015年一级建造师工程经济考试真题及答案解析</a></li>
-            <li><a href="xknr.html" target="_blank" title="当前标题">2014年一级建造师工程经济考试真题及答案解析</a></li>
-          </ol>
+        </volist>
         </div>
       </div>
     </div>

@@ -1,10 +1,9 @@
   <div class="hdp">
     <div class="slideBox" id="NavSlideBox">
       <ul class="items">
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a><b></b></li>
+        <volist name="index_slider" id="idxsvo">
+        <li><a href="{$idxsvo.target}" title="{$idxsvo.title}" target="_blank"><img src="{$idxsvo.image}" alt="{$idxsvo.title}"></a><b></b></li>
+        </volist>
       </ul>
     </div>
     <script type="text/javascript">

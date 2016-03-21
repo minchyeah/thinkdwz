@@ -1,10 +1,5 @@
 <div class="wzgg bsbj">
-<a href="__APP__/wznr.html" target="_blank" title="当前标题">一级建造师</a>
-<a href="kcnr.html" target="_blank" class="wzggr">二级建造师</a>
-<a href="wznr.html" target="_blank" title="当前标题">监理工程师</a>
-<a href="kcnr.html" target="_blank" class="wzggr">安全工程师</a>
-<a href="wznr.html" target="_blank" title="当前标题">一级消防工程师</a>
-<a href="kcnr.html" target="_blank" class="wzggr">二级消防工程师</a>
-<a href="wznr.html" target="_blank" title="当前标题">注册造价工程师</a>
-<a href="kcnr.html" target="_blank" class="wzggr">学历/职称</a>
+<volist name="sidebar_classes" id="idxclsvo">
+<a href="__APP__/course/cls-{$idxclsvo.id}.html" target="_blank" class="<if condition="$i%2==0">wzggr</if>" title="{$idxclsvo.name}">{$idxclsvo.name}</a>
+</volist>
 </div>

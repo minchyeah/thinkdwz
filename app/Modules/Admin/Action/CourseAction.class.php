@@ -129,5 +129,71 @@ class CourseAction extends AdminAction
 			$this->dwzError('删除失败');
 		}
 	}
+	
+	public function cls()
+	{
+	    $model = D('CoursesClass');
+	    $where = '';
+	    $key = trim(strval($_REQUEST['search_key']));
+	    if($key){
+	        $where .= ' AND `name` LIKE "%'.$key.'%"';
+	    }
+	    $where = trim($where, ' AND');
+	    $totalCount = $model->where($where)->count();
+	    $currentPage = intval($_REQUEST['pageNum']);
+	    $currentPage = $currentPage ? $currentPage : 1;
+	    $numPerPage = 20;
+	    $rowOffset = ($currentPage-1) * $numPerPage;
+	    $list = $model->where($where)->order('sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+	    dump($list);
+	    $this->assign('list', $list);
+	    $this->assign('totalCount', $totalCount);
+	    $this->assign('numPerPage', $numPerPage);
+	    $this->assign('currentPage', $currentPage);
+	    $this->display('clslist');
+	}
+	
+	public function addcls()
+	{
+	    $courses = D('Courses')->field('id,name')->select();
+	    $this->assign('courses', $courses);
+	    $this->display('clsform');
+	}
+	
+	public function editcls()
+	{
+	    $courses = D('Courses')->field('id,name')->select();
+	    $this->assign('courses', $courses);
+	    
+	    $id = intval($_GET['id']);
+	    $cls = D('CoursesClass')->find($id);
+	    $this->assign('vo', $cls);
+	    $this->display('clsform');
+	}
+	
+	public function savecls()
+	{
+	    $model = D('CoursesClass');
+	    $data = $model->create();
+	    if(!$data){
+	        $this->error($model->getError());
+	    }
+	    $data['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($data['detail']));
+	    $model->startTrans();
+	    if (!$data['id']) {
+	        $data['dateline'] = time();
+	        $rs = $model->add($data);
+	    }else{
+	        $data['dateline'] = time();
+	        $rs = $model->save($data);
+	    }
+	    if(false !== $rs){
+	        $model->commit();
+	        $this->success('保存成功！');
+	    }else{
+	        $model->rollback();
+	        $this->error('保存失败！'.dump($data, false).$model->getDbError());
+	    }
+	}
 }
 ?>

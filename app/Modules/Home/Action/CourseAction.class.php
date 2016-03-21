@@ -33,8 +33,25 @@ class CourseAction extends HomeAction
 	    $course = M('Courses')->where(array('state'=>1))
 	                       ->where(array('id'=>$id))
 	                       ->find();
+	    $classes = M('CoursesClass')->where(array('course_id'=>$id))->order('dateline DESC')->select();
 	    $this->assign('course', $course);
+	    $this->assign('classes', $classes);
 		$this->display('Course:detail');
+	}
+	
+	public function clsdetail($id)
+	{
+	    $id = $id ? $id : intval($_GET['cls_id']);
+	    $classes = M('CoursesClass')->where(array('id'=>$id))->find();
+	    if(!is_array($classes) OR empty($classes)){
+	        $this->notfound();
+	    }
+
+	    $course = M('Courses')->where(array('id'=>$classes['course_id']))->find();
+	    
+	    $this->assign('course', $course);
+	    $this->assign('classes', $classes);
+	    $this->display('Course:clsdetail');
 	}
 
 	public function _empty($name)
@@ -42,6 +59,10 @@ class CourseAction extends HomeAction
 	    if('page-' == substr($name, 0, 5)){
 	        $_GET['page'] = substr($name, 5);
 	        return $this->index();
+	    }
+	    if('cls-' == substr($name, 0, 4)){
+	        $_GET['cls_id'] = substr($name, 4);
+	        return $this->clsdetail();
 	    }
 	    if (is_numeric($name)) {
 	        return $this->detail($name);

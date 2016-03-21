@@ -1,30 +1,19 @@
 <div class="pageContent">
-	<form method="post" id="ProductForm" action="{:U('Course/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+	<form method="post" id="ProductForm" action="{:U('Course/savecls')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="57">
 			<dl class="nowrap">
-				<dt>课程名称：</dt>
+				<dt>开班名称：</dt>
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
 			</dl>
 			<dl class="nowrap">
-				<dt>课时：</dt>
-				<dd><input class="required" type="text" size="10" name="course_times" value="{$vo.course_times}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>价格：</dt>
-				<dd><input class="required" type="text" size="10" name="price" value="{$vo.price}"/></dd>
-			</dl>
-			<dl class="nowrap">
-				<dt>图片：</dt>
+				<dt>选择课程：</dt>
 				<dd>
-				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" />
-				  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
-				  </if>
-				  <input name="imgfile" type="file" size="30" />
+				<select name="course_id">
+				    <volist name="courses" id="cvo">
+				    <option value="{$cvo.id}<eq name="cvo.id" value="$vo['course_id']">" selected="selected</eq>">{$cvo.name}</option>
+				    </volist>
+				</select>
 				</dd>
-			</dl>
-			<dl class="nowrap">
-			  <dt>课程说明：</dt>
-			  <dd><textarea name="desc" style="height:40px;width:600px;">{$vo.desc}</textarea></dd>
 			</dl>
 			<dl class="nowrap">
 			  <dt>视频代码：</dt>

@@ -2,20 +2,17 @@
   <div class="jz">
     <div class="nav">
       <ul>
-        <li class="xz"><a href="__APP__/">首页</a></li>
-        <li><a href="__APP__/course/">课程</a>
+        <li <if condition="$current_nav=='index'"> class="xz"</if>><a href="__APP__/">首页</a></li>
+        <li <if condition="$current_nav=='course'"> class="xz"</if>><a href="__APP__/course/">课程</a>
+          <if condition="!empty($topnav_courses)">
           <div class="drop_dwon">
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">一级建造师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">二级建造师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">监理工程师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">安全工程师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">一级消防工程师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">二级消防工程师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">注册造价工程师</a></div>
-            <div class="onemenulayout"><a href="kcnr.html" target="_blank">学历/职称</a></div>
+            <volist name="topnav_courses" id="tcurs">
+            <div class="onemenulayout"><a href="__APP__/course/{$tcurs.id}.html" target="_blank">{$tcurs.name}</a></div>
+            </volist>
           </div>
+          </if>
         </li>
-        <li><a href="__APP__/xueku/">学库&nbsp;v</a>
+        <li <if condition="$current_nav=='xueku'"> class="xz"</if>><a href="__APP__/xueku/">学库&nbsp;v</a>
           <if condition="!empty($topnav_xueku)">
           <div class="drop_dwon">
           	<volist name="topnav_xueku" id="txku">
@@ -24,8 +21,8 @@
           </div>
           </if>
         </li>
-        <li><a href="__APP__/faculty/">名师</a></li>
-        <li><a href="__APP__/service.html">服务</a></li>
+        <li <if condition="$current_nav=='faculty'"> class="xz"</if>><a href="__APP__/faculty/">名师</a></li>
+        <li> <if condition="$current_nav=='service'"> class="xz"</if><a href="__APP__/service.html">服务</a></li>
       </ul>
     </div>
   </div>

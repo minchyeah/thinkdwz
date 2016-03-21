@@ -2,6 +2,12 @@
 
 class XuekuAction extends HomeAction
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->assign('current_nav', 'xueku');
+    }
+    
 	public function index()
 	{
 		$id = intval($_GET['id']);

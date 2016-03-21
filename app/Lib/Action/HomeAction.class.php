@@ -54,8 +54,7 @@ class HomeAction extends CommonAction
 		$this->topnav();
 		$this->slider();
 		$this->sidebar_course();
-		$this->sidebar_jinbang();
-		$this->sidebar_tostu();
+		$this->sidebar_classes();
 	}
 	
 	protected function notfound($msg = '', $url = '')
@@ -82,11 +81,8 @@ class HomeAction extends CommonAction
 	
 	protected function topnav()
 	{
-	    $catalog = D('Cases')->field('id,name,type')->where(array('state'=>1,'type'=>'catalog'))->order('sort_order DESC, dateline DESC')->select();
-	    $this->assign('topnav_case_catalog', $catalog);
-	    
-	    $env = D('Env')->field('id,name,type')->where(array('state'=>1,'type'=>'catalog'))->order('sort_order DESC, dateline DESC')->select();
-	    $this->assign('topnav_env_catalog', $env);
+	    $courses = D('Courses')->field('id,name')->order('dateline desc')->limit(6)->select();
+	    $this->assign('topnav_courses', $courses);
 	    
 	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>0,'xueku'=>1))->order('sort_order ASC')->select();
 	    $this->assign('topnav_xueku', $xueku);
@@ -109,18 +105,18 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_course()
 	{
-	    $sidebar_course = M('Courses')->field('id,name,desc')->where(array('state'=>1))->order('sort_order DESC, dateline DESC')->select();
+	    $sidebar_course = M('Courses')->field('id,name,desc')->order('dateline DESC')->limit(8)->select();
 		$this->assign('sidebar_course', $sidebar_course);
 	}
 	
 	/**
 	 * 侧边栏致学生信
 	 */
-	protected function sidebar_tostu()
+	protected function sidebar_classes()
 	{
-	    $model = D('ArticlePage');
-	    $page = $model->field('thumb,content')->where(array('page_code'=>'tostu'))->find();
-		$this->assign('sidebar_tostu', $page);
+	    $model = D('CoursesClass');
+	    $page = $model->field('id,name')->order('dateline DESC')->limit(8)->select();
+		$this->assign('sidebar_classes', $page);
 	}
 	
 	/**
@@ -162,7 +158,7 @@ class HomeAction extends CommonAction
 	    $model = D('Slider');
 		$where = array();
 		$where['position'] = 'index';
-		$index_slider = $model->field('id,target,image')->where($where)->order('sort_order DESC')->select();
+		$index_slider = $model->field('id,target,image,title')->where($where)->order('sort_order DESC')->select();
 		$this->assign('index_slider', $index_slider);
 		unset($model,$index_slider);;
 	}
