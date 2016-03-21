@@ -132,7 +132,7 @@ class CourseAction extends AdminAction
 	
 	public function cls()
 	{
-	    $model = D('CoursesClass');
+	    $model = D('CourseClassView');
 	    $where = '';
 	    $key = trim(strval($_REQUEST['search_key']));
 	    if($key){
@@ -144,8 +144,7 @@ class CourseAction extends AdminAction
 	    $currentPage = $currentPage ? $currentPage : 1;
 	    $numPerPage = 20;
 	    $rowOffset = ($currentPage-1) * $numPerPage;
-	    $list = $model->where($where)->order('sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
-	    dump($list);
+	    $list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 	    $this->assign('list', $list);
 	    $this->assign('totalCount', $totalCount);
 	    $this->assign('numPerPage', $numPerPage);
