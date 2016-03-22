@@ -53,6 +53,7 @@ class HomeAction extends CommonAction
 		$this->assign('username', session('username'));
 		$this->topnav();
 		$this->slider();
+		$this->footerblock();
 		$this->sidebar_course();
 		$this->sidebar_classes();
 	}
@@ -84,7 +85,7 @@ class HomeAction extends CommonAction
 	    $courses = D('Courses')->field('id,name')->order('dateline desc')->limit(6)->select();
 	    $this->assign('topnav_courses', $courses);
 	    
-	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>0,'xueku'=>1))->order('sort_order ASC')->select();
+	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC')->select();
 	    $this->assign('topnav_xueku', $xueku);
 	}
 	
@@ -105,7 +106,7 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_course()
 	{
-	    $sidebar_course = M('Courses')->field('id,name,desc')->order('dateline DESC')->limit(8)->select();
+	    $sidebar_course = M('Courses')->field('id,name')->order('dateline DESC')->limit(8)->select();
 		$this->assign('sidebar_course', $sidebar_course);
 	}
 	
@@ -148,6 +149,17 @@ class HomeAction extends CommonAction
 	    $where['status'] = 1;
 	    $where['cate_id'] = array('in', $cate_ids);
 	    return D('Articles')->where($where)->limit($limit)->order('id DESC')->getField('id,title,cate_id');
+	}
+	
+	protected function footerblock()
+	{
+	    $model = D('Articles');
+	    $news = $model->where(array('cate_id'=>14))->limit(4)->order('id DESC')->getField('id,title,cate_id');
+	    $how = $model->where(array('cate_id'=>15))->limit(4)->order('id DESC')->getField('id,title,cate_id');
+	    $why = $model->where(array('cate_id'=>16))->limit(4)->order('id DESC')->getField('id,title,cate_id');
+	    $this->assign('footer_block_news', $news);
+	    $this->assign('footer_block_how', $how);
+	    $this->assign('footer_block_why', $why);
 	}
 	
 	/**

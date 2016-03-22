@@ -25,7 +25,7 @@ class ArticleAction extends AdminAction
     {
     	$html = $root ? '<ul class="tree expand">' : '<ul>';
     	foreach ($tree as $k=>$v){
-    		$aAttr = !$v['final'] ? '' : ' href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox"';
+    		$aAttr = !$v['final'] && $v['id'] == 1 ? '' : ' href="'.U('alist','cate_id='.$v['id']).'" target="ajax" rel="alistBox"';
     		$html .= '<li><a'.$aAttr.'>'.$v['cate_name'].'</a>';
     		if(!empty($v['subcates'])){
     			$html .= $this->buildCateTree($v['subcates']);
@@ -174,9 +174,11 @@ class ArticleAction extends AdminAction
     	if($data['pid']){
     	    $ppids = $model->where(array('id'=>$data['pid']))->getField('pids');
     		$data['pids'] = $data['pid'].','.$ppids;
+    	}else{
+    	    $data['pids'] = '';
     	}
     	$data['pids'] = trim($data['pids'], ',');
-    	if(strpos($data['pids'], ',')){
+    	if(count(explode(',', $data['pids'])) == 3){
     		$data['final'] = 1;
     	}
     	if (!$data['id']) {

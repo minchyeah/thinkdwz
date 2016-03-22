@@ -6,17 +6,20 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
 <div class="jz ny">
   <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
+    <include file="Public:sidebar_newclass" />
+    <include file="Public:sidebar_static" />
   </div>
   <div class="nyn">
     <div class="dqwz">
       <h1>{$current_category.cate_name}</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$current_category.catalog}/">{$current_category.cate_name}</a></span>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$current_category.catalog}/">{$current_category.cate_name}</a></h3>
     </div>
     <div class="wzlb">
     <volist name="articles" id="vo">
@@ -31,6 +34,7 @@
   </div>
   <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
 </body>

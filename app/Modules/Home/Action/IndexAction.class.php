@@ -26,7 +26,7 @@ class IndexAction extends HomeAction
 	private function xuekus()
 	{
 	    $XkModel = D('ArticleCategory');
-	    $xueku = $XkModel->field('id,cate_name')->where(array('pid'=>0,'xueku'=>1))->order('sort_order ASC')->limit(8)->select();
+	    $xueku = $XkModel->field('id,cate_name')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
 	    if(is_array($xueku)){
 	        foreach ($xueku as $k=>$xks){
 	            $sub_xueku = $XkModel->field('id,cate_name')->where(array('pid'=>$xks['id']))->order('sort_order ASC')->limit(2)->select();

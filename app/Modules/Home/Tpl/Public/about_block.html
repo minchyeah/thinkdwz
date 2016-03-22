@@ -1,30 +1,26 @@
 <div class="sige jz">
   <dl>
     <dt>为什么选择巧学</dt>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">关于巧学</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">招生简章</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">巧学优势</a></dd>
-    <dd><a href="wznr.html" target="_blank" title="当前标题">巧学学习保障</a></dd>
+    <volist name="footer_block_why" id="vo">
+    <dd><a href="__APP__/why/{$vo.id}.html" target="_blank" title="{$vo.title}">{$vo.title}</a></dd>
+    </volist>
   </dl>
   <dl>
     <dt>上课方式</dt>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">如何上课</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">课程开通时间</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">想退课怎么办</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">学员人数少，正常开班吗</a></dd>
+    <volist name="footer_block_how" id="vo">
+    <dd><a href="__APP__/how/{$vo.id}.html" target="_blank" title="{$vo.title}">{$vo.title}</a></dd>
+    </volist>
   </dl>
   <dl>
     <dt>巧学公告</dt>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">29期学员一级建造师领证通知</a></dd>
-    <dd><a href="wznr.html" target="_blank" title="当前标题">2016年新年放假通知</a></dd>
-    <dd><a href="__APP__/news/" target="_blank" title="当前标题">28期学员安全工程师领证通知</a></dd>
-    <dd><a href="wznr.html" target="_blank" title="当前标题">27期学员监理工程师领证通知</a></dd>
+    <volist name="footer_block_news" id="vo">
+    <dd><a href="__APP__/news/{$vo.id}.html" target="_blank" title="{$vo.title}">{$vo.title}</a></dd>
+    </volist>
   </dl>
   <dl style="border:none;">
     <dt>名企招聘</dt>
-    <dd><a href="__APP__/jobs/" target="_blank" title="当前标题">施工员（6名）</a></dd>
-    <dd><a href="__APP__/jobs/" target="_blank" title="当前标题">一级建造师（2名）</a></dd>
-    <dd><a href="__APP__/jobs/" target="_blank" title="当前标题">安全工程师（3名）</a></dd>
-    <dd><a href="__APP__/jobs/" target="_blank" title="当前标题">造价师（7名）</a></dd>
+    <volist name="footer_block_jobs" id="jvo">
+    <dd><a href="__APP__/jobs/{$vo.id}.html" target="_blank" title="{$vo.title}">{$vo.title}</a></dd>
+    </volist>
   </dl>
 </div>

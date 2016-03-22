@@ -6,17 +6,21 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:slider" />
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
 <div class="jz ny">
   <div class="cbl">
     <include file="Public:sidebar_course" />
     <include file="Public:sidebar_letter" />
     <include file="Public:sidebar_jinbang" />
   </div>
-  <div class="nyn">
+  <div class="xkn">
     <div class="dqwz">
       <h1>{$page.title}</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$page.page_code}.html">{$page.title}</a></span>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$page.page_code}.html">{$page.title}</a></h3>
     </div>
     <div class="wznr">
       <div class="wznrt">
@@ -35,15 +39,8 @@
   </div>
   <div class="clr"></div>
 </div>
+<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
-<script type="text/javascript">
-$(function(){
-	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
-	       $(this).attr('rel', $(this).attr('src').replace('_600x600', ''));
-	});
-	$(".group1").colorbox({rel:'group1'});
-});
-</script>
 </body>
 </html>
