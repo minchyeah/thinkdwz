@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<include file="Public:header_nav" />
+<div class="sy1 jz">
+  <include file="Public:topclasses" />
+  <include file="Public:slider" />
+</div>
+<div class="ny jz">
+  <div class="kclb">
+    <div class="dqwz">
+      <h1>名企招聘</h1>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/jobs/">名企招聘</a>><a href="">内容</a></h3>
+    </div>
+    <div class="zpnr">
+      <div class="zpnrt">
+        <h1>{$job.name}</h1>
+        <dl>
+          <dt>公司名称：</dt>
+          <dd>{$job.company}</dd>
+        </dl>
+        <ul>
+          <li>
+            <h4>招聘人数：</h4>
+            <span>{$job.number}人</span></li>
+          <volist name="job.others" id="joth">
+          <li>
+            <h4>{$joth.0}：</h4>
+            <span>{$joth.1}</span></li>
+          </volist>
+        </ul>
+        <dl>
+          <dt>工作地址：</dt>
+          <dd>{$job.address}</dd>
+        </dl>
+        <dl>
+          <dt>联系方式：</dt>
+          <dd class="bsbj"><b>{$job.contact}</b><a href="zxyd" class="but" rel="1">查看联系方式</a></dd>
+        </dl>
+      </div>
+      <div class="kcnrn">
+        <div class="kcnrnt">
+          <ul id="kcnrnts">
+            <li>职位描述</li>
+            <li class="ztwdj">公司介绍</li>
+          </ul>
+          <div class="fxd">
+            <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+            <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+          </div>
+        </div>
+        <div class="clr"></div>
+        <div class="kcnrnx" id="kcnrntx">
+          <ol>
+            <li class="wznr">
+              <div class="wznrzw">{$job.jobdesc|nl2br}</div>
+              <div class="clr"></div>
+            </li>
+          </ol>
+          <ol>
+            <li class="wznr">
+              <div class="wznrzw">{$job.compdesc|nl2br}</div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<include file="Public:about_block" />
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+<div id="faqbg"></div>
+<div class="faqdiv" name="zxyd" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li rel="yd">建筑工程制图员</li>
+    </ul>
+    <h5 class="close" rel="zxyd"></h5>
+  </div>
+  <div id="hydlx">
+    <h3>您好，查看联系方式请联系我们的老师！</h3>
+    <div class="cklxfs"> <span>联系QQ：</span><b><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1564154666&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1564154666:47 &amp;r=0.22914223582483828" alt="点击这里">李老师</a></b> <span>联系电话：</span><b>0771-3925845</b> </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<div class="pageContent">
+<form method="post" action="{:U('Jobs/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+  <div class="pageFormContent" layoutH="55">
+	<div class="unit">
+	  <label>招聘单位：</label>
+	  <input name="company" value="{$vo.company}" class="required" size="50" />
+	</div>
+	<div class="unit">
+	  <label>岗位名称：</label>
+	  <input name="name" value="{$vo.name}" class="required" size="50" />
+	</div>
+	<div class="unit">
+	  <label>招聘人数：</label>
+	  <input name="number" value="{$vo.number}" class="required" size="30" />
+	</div>
+	<div class="unit">
+	  <label>联系方式：</label>
+	  <input name="contact" value="{$vo.contact}" class="required" size="30" />
+	</div>
+	<div class="unit">
+	  <label>工作地址：</label>
+	  <input name="address" value="{$vo.address}" class="required" size="30" />
+	</div>
+	<div class="unit">
+	  <label>显示状态：</label>
+	  <select name="state">
+	    <option value="1<eq name="vo.state" value="1">" selected="selected</eq>">显示</option>
+	    <option value="0<eq name="vo.state" value="0">" selected="selected</eq>">不显示</option>
+	  </select>
+	</div>
+	<div class="unit">
+	  <label>其它要求：</label>
+	  <textarea name="others" style="height:120px;width:400px;">{$vo.jobdesc}</textarea>
+	  <textarea style="height:100px;width:360px; margin-left:20px; padding: 10px;" readonly="readonly" >
+每行一条信息，如下：
+学历要求：大专
+专业要求：大专
+职位要求：园林/景观设计
+工作地址：南宁盘岭路6号金凯苑
+福利待遇：周末双休，加班补助
+XXXXXX: YYYYYYY
+	  </textarea>
+	</div>
+	<div class="unit">
+	  <label>职位描述：</label>
+	  <textarea name="jobdesc" style="height:120px;width:800px;">{$vo.jobdesc}</textarea>
+	</div>
+	<div class="unit">
+	  <label>公司介绍：</label>
+	  <textarea name="compdesc" style="height:120px;width:800px;">{$vo.compdesc}</textarea>
+	</div>
+  </div>
+  <div class="formBar">
+	<ul>
+		<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+		<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+	</ul>
+  </div>
+  <input type="hidden" name="id" value="{$vo.id}">
+</form>
+</div>

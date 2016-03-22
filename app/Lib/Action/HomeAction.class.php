@@ -160,6 +160,8 @@ class HomeAction extends CommonAction
 	    $this->assign('footer_block_news', $news);
 	    $this->assign('footer_block_how', $how);
 	    $this->assign('footer_block_why', $why);
+	    $jobs = D('Jobs')->where(array('state'=>1))->limit(4)->order('dateline DESC')->getField('id,name,number');
+	    $this->assign('footer_block_jobs', $jobs);
 	}
 	
 	/**
