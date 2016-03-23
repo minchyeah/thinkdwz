@@ -2,7 +2,7 @@
 <div class="faqdiv" name="zxyd" style="display:none;">
   <div id="hydlt">
     <ul>
-      <li rel="yd">2月27巧学大型二级建造师公开课火热开课！</li>
+      <li rel="yd">{$course.name}</li>
     </ul>
     <h5 class="close" rel="zxyd"></h5>
   </div>
@@ -34,7 +34,9 @@
         <h4>验证码：</h4>
         <h5><span>
           <input name="textfield" type="text" id="textfield" size="50" value=""/>
-          <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
+          <a href="###">看不清，换一张</a></span>
+          <img src="{:U('Index/captcha','background=F6F6F6')}" onclick="this.src='{:U('Index/captcha','background=F6F6F6')}?'+Math.random()" />
+          </h5>
         <h6>输入有错误!</h6>
       </li>
       <li class="dltj huangs">

@@ -9,9 +9,10 @@
 		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="50">编号</th>
 		<th width="150">报名课程</th>
+		<th width="150">报名班级</th>
 		<th width="100">联系人</th>
 		<th width="120">联系电话</th>
-		<th width="120">联系地址</th>
+		<th width="120">联系QQ</th>
 		<th width="80">报名时间</th>
 		<th width="80">操作</th>
 	  </tr>
@@ -21,10 +22,11 @@
 	  <tr target="sid_article" rel="{$vo['id']}">
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo.id}</td>
-		<td>{$vo.course_name}({$vo.age}岁)</td>
+		<td>{$vo.course_name}</td>
+		<td>{$vo.class_name}</td>
 		<td>{$vo.contact}</td>
 		<td>{$vo.phone}</td>
-		<td>{$vo.address}</td>
+		<td>{$vo.qq}</td>
 		<td>{$vo.dateline|date="Y-m-d",###}</td>
 		<td>
 		  <a href="__URL__/deleteorder/id/{$vo['id']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>

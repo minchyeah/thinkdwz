@@ -81,6 +81,9 @@ class CourseAction extends HomeAction
 	    if($_POST['address'] == '请输入您的联系地址...'){
 	        $_POST['address'] = '';
 	    }
+	    if($_POST['qq'] == '请输入您的联系QQ...'){
+	        $_POST['qq'] = '';
+	    }
 	    if($_POST['captcha'] == ''){
 	        $this->error('请输入验证码');
 	    }
@@ -103,10 +106,10 @@ class CourseAction extends HomeAction
 	        $model->commit();
 	        $data['dateline'] = date('Y-m-d H:i', $data['dateline']);
 	        $this->mailorder($data);
-	        $this->success('预订成功！');
+	        $this->success('报名成功！');
 	    }else{
 	        $model->rollback();
-	        $this->error('预订失败！');
+	        $this->error('报名失败！');
 	    }
 	}
 
@@ -120,19 +123,21 @@ class CourseAction extends HomeAction
 	        <table class="table" width="100%">
                 <thead>
             	  <tr style="text-align:left;">
-            		<th>预订课程</th>
+            		<th>报名课程</th>
+            		<th>报名班级</th>
             		<th>联系人</th>
             		<th>联系电话</th>
-            		<th>联系地址</th>
+            		<th>联系QQ</th>
             		<th>预订时间</th>
             	  </tr>
                 </thead>
                 <tbody>
             	  <tr style="text-align:left;">
             		<td>{$data['course_name']}</td>
+            		<td>{$data['class_name']}</td>
             		<td>{$data['contact']}</td>
             		<td>{$data['phone']}</td>
-            		<td>{$data['address']}</td>
+            		<td>{$data['qq']}</td>
             		<td>{$data['dateline']}</td>
             	  </volist>
                 </tbody>
