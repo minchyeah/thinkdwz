@@ -106,8 +106,10 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_course()
 	{
-	    $sidebar_course = M('Courses')->field('id,name')->order('dateline DESC')->limit(8)->select();
-		$this->assign('sidebar_course', $sidebar_course);
+	    $ads = D('Advertise')->field('id,params,html')->order('start_time DESC')->limit(8)->select();
+	    $this->assign('sidebar_course_ads', $ads);
+// 	    $sidebar_course = M('Courses')->field('id,name')->order('dateline DESC')->limit(8)->select();
+// 		$this->assign('sidebar_course', $sidebar_course);
 	}
 	
 	/**

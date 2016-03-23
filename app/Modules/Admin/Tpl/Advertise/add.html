@@ -2,6 +2,7 @@
 	<div class="layoutBox">
 	  <form method="post" action="{:U('Advertise/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
 		<div class="pageFormContent" layoutH="55">
+			<!-- 
 			<div class="unit">
 				<label style="text-align:right;">广告位置：</label>
 				<select name="position" class="required">
@@ -15,20 +16,23 @@
 				<label style="text-align:right;">上传图片/Flash：</label>
 				<input type="file" name="img">
 			</div>
+			 -->
 			<div class="unit">
-				<label style="text-align:right;">图片/Flash地址：</label>
-				<input type="text" size="40" name="imgurl" value="{$params.file}"/>
+				<label style="text-align:right;">文字内容：</label>
+				<input type="text" size="40" name="params" value="{$vo.params}"/>
 			</div>
 			<div class="unit">
 				<label style="text-align:right;">链接地址：</label>
-				<input type="text" name="link" size="40" value="{$params.link}">
+				<input type="text" name="html" size="40" value="{$vo.html}">
 			</div>
+			<!-- 
 			<div class="unit">
 				<label style="text-align:right;">宽度：</label>
 				<input type="text" name="width" size="5" value="{$params.width}">
 				<label style="text-align:right;">高度：</label>
 				<input type="text" name="height" size="5" value="{$params.height}">
 			</div>
+			 -->
 		</div>
 		<div class="formBar">
 			<ul>
@@ -36,6 +40,7 @@
 				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
 			</ul>
 		</div>
+		<input type="hidden" name="position" value="index"/>
 		<input type="hidden" name="id" value="{$vo.id}"/>
 	  </form>
 	</div>

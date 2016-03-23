@@ -59,42 +59,42 @@ class AdvertiseAction extends AdminAction
 		if (false === $model->create()) {
 			$this->error($model->getError());
 		}
-		if(!empty($_FILES['img']['name'])){
-			import("ORG.Net.UploadFile");
-			$upload = new UploadFile();
-			$upload->maxSize  = 1048576 * 4; //4M
-			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg', 'swf');
-			$upload->savePath =  DATA_PATH.'upload/ad/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz1234567890'), 20, 1).'/';
-			if(!is_dir($upload->savePath)) {
-				mkdir($upload->savePath,0777,true);
-			}
-			$upload->saveRule = 'uniqid';
-			$upload->uploadReplace = false;
-			if(!$upload->upload()) {
-				$this->error($upload->getErrorMsg());
-			}else{
-				$imgs = $upload->getUploadFileInfo();
-				$file = str_replace(DATA_PATH, '', $imgs[0]['savepath'].$imgs[0]['savename']);
-			}
-		}else{
-			if($_POST['imgurl']){
-				$file = trim(strval($_POST['imgurl']));
-			}else{
-				$this->error('请选择上传图片(Flash)或填写图片(Flash)地址');
-			}
-		}
-		$adtype = $this->getadtype($file);
-		if(!in_array($adtype, array('image', 'flash'))){
-			$this->error('请选择上传图片(Flash)或填写图片(Flash)地址');
-		}
-		$params = array();
-		$params['width'] = intval($_REQUEST['width']);
-		$params['height'] = intval($_REQUEST['height']);
-		$params['link'] = trim(strval($_REQUEST['link']));
-		$params['type'] = $adtype;
-		$params['file'] = $file;
-		$model->params = json_encode($params);
-		$model->html = $this->_buildHtml($params);
+// 		if(!empty($_FILES['img']['name'])){
+// 			import("ORG.Net.UploadFile");
+// 			$upload = new UploadFile();
+// 			$upload->maxSize  = 1048576 * 4; //4M
+// 			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg', 'swf');
+// 			$upload->savePath =  DATA_PATH.'upload/ad/'.substr(str_shuffle('abcdefghijklmnopqrstuvwxyz1234567890'), 20, 1).'/';
+// 			if(!is_dir($upload->savePath)) {
+// 				mkdir($upload->savePath,0777,true);
+// 			}
+// 			$upload->saveRule = 'uniqid';
+// 			$upload->uploadReplace = false;
+// 			if(!$upload->upload()) {
+// 				$this->error($upload->getErrorMsg());
+// 			}else{
+// 				$imgs = $upload->getUploadFileInfo();
+// 				$file = str_replace(DATA_PATH, '', $imgs[0]['savepath'].$imgs[0]['savename']);
+// 			}
+// 		}else{
+// 			if($_POST['imgurl']){
+// 				$file = trim(strval($_POST['imgurl']));
+// 			}else{
+// 				$this->error('请选择上传图片(Flash)或填写图片(Flash)地址');
+// 			}
+// 		}
+// 		$adtype = $this->getadtype($file);
+// 		if(!in_array($adtype, array('image', 'flash'))){
+// 			$this->error('请选择上传图片(Flash)或填写图片(Flash)地址');
+// 		}
+// 		$params = array();
+// 		$params['width'] = intval($_REQUEST['width']);
+// 		$params['height'] = intval($_REQUEST['height']);
+// 		$params['link'] = trim(strval($_REQUEST['link']));
+// 		$params['type'] = $adtype;
+// 		$params['file'] = $file;
+// 		$model->params = json_encode($params);
+// 		$model->html = $this->_buildHtml($params);
 		$model->start_time = time();
 		$model->end_time = 0;
 		

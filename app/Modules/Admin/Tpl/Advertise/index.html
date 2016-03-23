@@ -12,22 +12,19 @@
 	  <tr>
 		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="40">编号</th>
-		<th>广告位置</th>
-		<th>广告类型</th>
-		<th>预览</th>
+		<th>标题</th>
+		<th>链接</th>
 		<th width="100">操作</th>
 	  </tr>
     </thead>
     <tbody>
 	  <volist id="vo" name="list">
-	  <php>$params = json_decode($vo['params'], true)</php>
 	  <tr target="sid_article" rel="{$vo['id']}">
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
-		<td>{$positions[$vo['position']]}</td>
-		<td><eq name="params.type" value="flash">Flash<else />图片</eq></td>
-		<td><eq name="params.type" value="flash">Flash广告请点预览查看<else /><img src="{$params.file|imgsrc=###,360,100}" /></eq></td>
-		<td><a href="__URL__/preview/id/{$vo.id}" target="_blank"><span>预览</span></a>&nbsp;|&nbsp;<a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+		<td>{$vo['params']}</td>
+		<td>{$vo['html']}</td>
+		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>
     </tbody>
