@@ -11,32 +11,181 @@
   <include file="Public:topclasses" />
   <include file="Public:slider" />
 </div>
-<div class="jz ny">
-  <div class="cbl">
-    <include file="Public:sidebar_newclass" />
-    <include file="Public:sidebar_static" />
-  </div>
-  <div class="xkn">
+<div class="ny jz">
+  <div class="kclb">
     <div class="dqwz">
-      <h1>{$page.title}</h1>
-      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$page.page_code}.html">{$page.title}</a></h3>
+      <h1>服务</h1>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/service.html">服务</a></h3>
     </div>
-    <div class="wznr">
-      <div class="wznrt">
-        <h1>{$page.title}</h1>
-      </div>
-      <notempty name="page.video">
-      <div class="nysp">
-        <div class="nyspk">
-          <div class="nyspem">{$page.video}</div>
-        </div>
-      </div>
-      </notempty>
-      <div class="wznrzw">{$page.content}</div>
+    <div class="lxwm">
+    <div class="lxwml">
+      <dl>
+        <dt>名称</dt>
+        <dd>南宁巧学教育咨询有限公司</dd>
+      </dl>
+      <dl>
+        <dt>地址</dt>
+        <dd>民族大道92号新城国际1902</dd>
+      </dl>
+      <dl>
+        <dt>详细</dt>
+        <dd>
+        	<div class="wznrzw">{$page.content}</div>
+    	</dd>
+      </dl>
+    </div>
+    <div class="lxwmr">
+    <form id="messageform" action="__APP__/msgboard/save" method="post">
+    <div class="lyk">
+      <ol>
+        <li>
+          <h4>标题：</h4>
+          <h5>
+            <input name="name" type="text" id="name" size="50" value="标题..." onfocus="if(this.value=='标题...')this.value='';" onblur="if(this.value=='')this.value='标题...';"/>
+          </h5>
+          <h6></h6>
+        </li>
+        <li>
+          <h4>电话：</h4>
+          <h5>
+            <input name="mobile" type="text" id="mobile" size="50" value="电话..." onfocus="if(this.value=='电话...')this.value='';" onblur="if(this.value=='')this.value='电话...';"/>
+          </h5>
+          <h6></h6>
+        </li>
+        <li>
+          <h4>QQ：</h4>
+          <h5>
+            <input name="email" type="text" id="email" size="50" value="QQ..." onfocus="if(this.value=='QQ...')this.value='';" onblur="if(this.value=='')this.value='QQ...';"/>
+          </h5>
+          <h6></h6>
+        </li>
+        <li>
+          <h4>地址：</h4>
+          <h5>
+            <input name="address" type="text" id="address" size="50" value="地址..." onfocus="if(this.value=='地址...')this.value='';" onblur="if(this.value=='')this.value='地址...';"/>
+          </h5>
+          <h6></h6>
+        </li>
+        <li class="wzy">
+          <h4>内容：</h4>
+          <h5>
+            <textarea name="content" cols="" rows="" ></textarea>
+          </h5>
+          <h6></h6>
+        </li>
+        <li class="yzm">
+          <h4>验证码：</h4>
+          <h5><span>
+            <input name="captcha" type="text" id="textfield" size="50" value=""/>
+            <a href="###" onclick="$('img#captchaImage').attr('src','{:U('Index/captcha','background=F6F6F6')}?'+Math.random())">看不清，换一张</a></span> <img  id="captchaImage" src="{:U('Index/captcha','background=F6F6F6')}" onclick="this.src='{:U('Index/captcha','background=F6F6F6')}?'+Math.random()" /></h5>
+          <h6></h6>
+        </li>
+        <li class="dltj bsbj">
+          <h3>
+            <a href="###" onclick="return submitOrder()">提交</a>
+          </h3>
+        </li>
+      </ol></div>
+      </form>
+      <script type="text/javascript">
+		function submitOrder()
+		{
+			  $form = $("#messageform");
+			  $.post($form.attr('action'),$form.serialize(),function(rs){
+				  $form[0].reset();
+				  alert(rs.info);
+				  if(rs.status){
+					  window.location.href=window.location.href;
+				  }
+			  });
+			  return false;
+		}
+	  </script>
       <div class="clr"></div>
+      <div class="ditu">
+        <div style="width:580px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> 
+        <script type="text/javascript">
+    function initMap(){
+        createMap();
+        setMapEvent();
+        addMapControl();
+        addMarker();
+    }
+    function createMap(){
+        var map = new BMap.Map("dituContent");
+        var point = new BMap.Point(108.372950,22.818503);
+        map.centerAndZoom(point,17);
+        window.map = map;
+    }
+    function setMapEvent(){
+        map.enableDragging();
+        map.disableScrollWheelZoom();
+        map.enableDoubleClickZoom();
+        map.enableKeyboard();
+    }
+    function addMapControl(){
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+                }
+    var markerArr = [{title:"&nbsp;&nbsp;巧学教育&nbsp;&nbsp;",content:"民族大道92号新城国际1902",point:"108.372950|22.818503",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+		 ];
+
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    initMap();
+</script>
+      </div>
     </div>
   </div>
-  <div class="clr"></div>
+  </div>
 </div>
 <include file="Public:about_block" />
 <include file="Public:footer" />

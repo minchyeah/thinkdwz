@@ -7,16 +7,16 @@ class MsgboardAction extends AdminAction
 	public function save()
 	{
 		$model = D('Msgboard');
-		if($_POST['name'] == '请输入您的姓名...'){
+		if($_POST['name'] == '标题...'){
 		    $_POST['name'] = '';
 		}
-		if($_POST['mobile'] == '请输入您的电话...'){
+		if($_POST['mobile'] == '电话...'){
 		    $_POST['mobile'] = '';
 		}
-		if($_POST['address'] == '请输入您的地址...'){
+		if($_POST['address'] == '地址...'){
 		    $_POST['address'] = '';
 		}
-		if($_POST['email'] == '请输入您的Email...'){
+		if($_POST['email'] == 'QQ...'){
 		    $_POST['email'] = '';
 		}
 		if($_POST['captcha'] == ''){
