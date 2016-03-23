@@ -115,8 +115,8 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_classes()
 	{
-	    $model = D('CoursesClass');
-	    $page = $model->field('id,name')->order('dateline DESC')->limit(8)->select();
+	    $model = D('CourseClassView');
+	    $page = $model->field('id,name,image,thumb,course_id,course_name')->order('dateline DESC')->limit(3)->select();
 		$this->assign('sidebar_classes', $page);
 	}
 	

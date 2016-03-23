@@ -1,18 +1,10 @@
 	<div class="zxkb">
       <h1>最新开班</h1>
+      <volist name="sidebar_classes" id="scvo">
       <dl>
-        <dt>2月27巧学大型二级建造师 公开课火热开课！</dt>
-        <dd class="zxkbt"><img src="images/kbxx1.jpg" /></dd>
-        <dd class="zxkban bsbj"><a href="zxkbnr.html">查看报名</a></dd>
+        <dt>{$scvo.name}</dt>
+        <dd class="zxkbt"><img src="{$scvo.image|imgsrc=108,72}" /></dd>
+        <dd class="zxkban bsbj"><a href="__APP__/course/cls-{$scvo.id}.html">查看报名</a></dd>
       </dl>
-      <dl>
-        <dt>2月27巧学大型二级建造师 公开课火热开课！</dt>
-        <dd class="zxkbt"><img src="images/kbxx2.jpg" /></dd>
-        <dd class="zxkban bsbj"><a href="zxkbnr.html">查看报名</a></dd>
-      </dl>
-      <dl>
-        <dt>2月27巧学大型二级建造师 公开课火热开课！</dt>
-        <dd class="zxkbt"><img src="images/kbxx3.jpg" /></dd>
-        <dd class="zxkban bsbj"><a href="zxkbnr.html">查看报名</a></dd>
-      </dl>
+      </volist>
     </div>
