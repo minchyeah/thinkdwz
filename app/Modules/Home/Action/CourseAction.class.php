@@ -42,14 +42,10 @@ class CourseAction extends HomeAction
 	public function clsdetail($id)
 	{
 	    $id = $id ? $id : intval($_GET['cls_id']);
-	    $classes = M('CoursesClass')->where(array('id'=>$id))->find();
+	    $classes = D('CourseClassView')->where(array('id'=>$id))->find();
 	    if(!is_array($classes) OR empty($classes)){
 	        $this->notfound();
 	    }
-
-	    $course = M('Courses')->where(array('id'=>$classes['course_id']))->find();
-	    
-	    $this->assign('course', $course);
 	    $this->assign('classes', $classes);
 	    $this->display('Course:clsdetail');
 	}

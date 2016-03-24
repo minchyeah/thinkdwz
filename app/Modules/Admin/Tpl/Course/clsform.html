@@ -6,6 +6,23 @@
 				<dd><input class="required" name="name" type="text" size="50" value="{$vo.name}"/></dd>
 			</dl>
 			<dl class="nowrap">
+				<dt>课时：</dt>
+				<dd><input class="required" type="text" size="10" name="course_times" value="{$vo.course_times}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>价格：</dt>
+				<dd><input class="required" type="text" size="10" name="price" value="{$vo.price}"/></dd>
+			</dl>
+			<dl class="nowrap">
+				<dt>图片：</dt>
+				<dd>
+				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" />
+				  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
+				  </if>
+				  <input name="imgfile" type="file" size="30" />
+				</dd>
+			</dl>
+			<dl class="nowrap">
 				<dt>选择课程：</dt>
 				<dd>
 				<select name="course_id">

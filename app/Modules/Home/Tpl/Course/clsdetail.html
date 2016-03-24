@@ -15,17 +15,17 @@
   <div class="kclb">
     <div class="dqwz">
       <h1>课程</h1>
-      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a>><a href="__APP__/course/{$course.id}.html">{$course.name}</a>><a href="">开班信息</a></h3>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/course/">课程</a>><a href="__APP__/course/{$classes.course_id}.html">{$classes.course_name}</a>><a href="">开班信息</a></h3>
     </div>
     <div class="kcnr">
       <div class="kcnrt">
-        <div class="kcnrtl"><img src="{$course.image|imgsrc=327,219}" alt="{$classes.name}" /><b></b></div>
+        <div class="kcnrtl"><img src="{$classes.image|imgsrc=327,219}" alt="{$classes.name}" /><b></b></div>
         <div class="kcnrtr">
           <h1>{$classes.name}</h1>
           <ul>
-            <li>价格<b>￥{$course.price}</b></li>
-            <li>课时<span>{$course.course_times}</span></li>
-            <li>归属<span>{$course.name}</span></li>
+            <li>价格<b>￥{$classes.price}</b></li>
+            <li>课时<span>{$classes.times}</span></li>
+            <li>归属<span>{$classes.course_name}</span></li>
           </ul>
           <h4 class="bsbj"><a href="zxyd" class="but" rel="1">在线报名</a></h4>
         </div>
@@ -68,7 +68,7 @@
 <form id="orderform" action="__APP__/course/order" method="post">
   <div id="hydlt">
     <ul>
-      <li rel="yd">{$course.name}</li>
+      <li rel="yd">{$classes.name}</li>
     </ul>
     <h5 class="close" rel="zxyd"></h5>
   </div>
@@ -112,8 +112,8 @@
       </li>
     </ol>
   </div>
-  <input type="hidden" name="course_id" value="{$course.id}"/>
-  <input type="hidden" name="course_name" value="{$course.name}"/>
+  <input type="hidden" name="course_id" value="{$classes.course_id}"/>
+  <input type="hidden" name="course_name" value="{$classes.course_name}"/>
   <input type="hidden" name="class_id" value="{$classes.id}"/>
   <input type="hidden" name="class_name" value="{$classes.name}"/>
 </form>

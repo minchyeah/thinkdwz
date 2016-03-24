@@ -11,6 +11,8 @@
 		<th width="100">形象图片</th>
 		<th width="60">名称</th>
 		<th width="120">课程</th>
+		<th width="60">价格</th>
+		<th width="60">课时</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
@@ -22,6 +24,8 @@
 		<td><if condition="$vo.image"><img src="{$vo.image|imgsrc=###,100,100}" /></if></td>
 		<td>{$vo.name}</td>
 		<td>{$vo.course_name}</td>
+		<td>{$vo.price}</td>
+		<td>{$vo.times}</td>
 		<td>
 		  <a href="__URL__/editcls/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>
 		  <a href="__URL__/deletecls/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>

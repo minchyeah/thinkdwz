@@ -39,11 +39,47 @@ class MsgboardAction extends AdminAction
 		}
 		if(false !== $rs){
 			$model->commit();
+	        $data['dateline'] = date('Y-m-d H:i', $data['dateline']);
+	        $this->mailorder($data);
 			$this->success('留言保存成功！');
 		}else{
 			$model->rollback();
 			$this->error('保存失败！'.dump($data, false).$model->getDbError());
 		}
+	}
+	
+	private function mailorder($data)
+	{
+	    $tomail = C('notify_email');
+	    $subject = '您有新的留言!';
+	    $body = <<<BODY
+	    <body>
+	        <h2>您有新的留言</h2>
+	        <table class="table" width="100%">
+                <thead>
+            	  <tr style="text-align:left;">
+            		<th>标题</th>
+            		<th>电话</th>
+            		<th>QQ</th>
+            		<th>地址 <th>
+            		<th>内容</th>
+            		<th>时间</th>
+            	  </tr>
+                </thead>
+                <tbody>
+            	  <tr style="text-align:left;">
+            		<td>{$data['name']}</td>
+            		<td>{$data['mobile']}</td>
+            		<td>{$data['email']}</td>
+            		<td>{$data['address']}</td>
+            		<td>{$data['content']}</td>
+            		<td>{$data['dateline']}</td>
+            	  </volist>
+                </tbody>
+              </table>
+	    </body>
+BODY;
+	    $this->sendmail($tomail, $subject, $body);
 	}
 
 }

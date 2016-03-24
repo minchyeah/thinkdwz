@@ -173,6 +173,13 @@ class CourseAction extends AdminAction
 	public function savecls()
 	{
 	    $model = D('CoursesClass');
+	    if ($_FILES['imgfile']['name']) {
+	        $image = $this->saveImage($_FILES['imgfile']);
+	        if ($image) {
+	            $_POST['image'] = $image;
+	        }
+	    }
+	    $_POST['sort_order'] = intval($_POST['sort_order']);
 	    $data = $model->create();
 	    if(!$data){
 	        $this->error($model->getError());
