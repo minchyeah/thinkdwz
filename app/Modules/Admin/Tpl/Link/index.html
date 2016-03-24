@@ -14,8 +14,6 @@
 		<th>编号</th>
 		<th>网站名称</th>
 		<th>链接地址</th>
-		<th>链接类型</th>
-		<th>网站LOGO</th>
 		<th>操作</th>
 	  </tr>
     </thead>
@@ -26,8 +24,6 @@
 		<td>{$vo['id']}</td>
 		<td>{$vo.sitename}</td>
 		<td>{$vo.address}</td>
-		<td>{$linktype[$vo['category']]}</td>
-		<td><if condition="$vo['logo']"><img src="{$vo.logo}" /></if></td>
 		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="500" height="250" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>
