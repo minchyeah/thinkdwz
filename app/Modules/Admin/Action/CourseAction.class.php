@@ -16,7 +16,7 @@ class CourseAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
@@ -154,14 +154,14 @@ class CourseAction extends AdminAction
 	
 	public function addcls()
 	{
-	    $courses = D('Courses')->field('id,name')->select();
+	    $courses = D('Courses')->field('id,name')->order('sort_order ASC, dateline DESC')->select();
 	    $this->assign('courses', $courses);
 	    $this->display('clsform');
 	}
 	
 	public function editcls()
 	{
-	    $courses = D('Courses')->field('id,name')->select();
+	    $courses = D('Courses')->field('id,name')->order('sort_order ASC, dateline DESC')->select();
 	    $this->assign('courses', $courses);
 	    
 	    $id = intval($_GET['id']);

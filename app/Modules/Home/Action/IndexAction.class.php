@@ -4,21 +4,21 @@ class IndexAction extends HomeAction
 {
 	public function index()
 	{
-	    $courses = M('Courses')->field('id,name,image,desc')->where(array('state'=>1))->limit(8)->order('sort_order DESC, dateline DESC')->select();
+	    $courses = M('Courses')->field('id,name,image,desc')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
 	    $this->assign('courses', $courses);
 	    
-	    $teachers = M('Teacher')->field('id,name,subject,image')->where(array('state'=>1))->limit(8)->order('sort_order DESC, dateline DESC')->select();
+	    $teachers = M('Teacher')->field('id,name,subject,image')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
 	    $this->assign('teachers', $teachers);
 	    
-	    $class = D('CourseClassView')->limit(3)->order('dateline DESC')->limit(3)->select();
+	    $class = D('CourseClassView')->order('dateline DESC')->limit(3)->select();
 	    $this->assign('classes', $class);
 
 	    $this->assign('xuekus', $this->xuekus());
 	    
 	    $this->links();
-	    $page_feature = D('ArticlePage')->field('thumb,content')->where(array('page_code'=>'feature'))->find();
-	    $this->assign('page_feature', $page_feature);
-	    $this->assign('news_list', $this->getArticleList('news', 10));
+// 	    $page_feature = D('ArticlePage')->field('thumb,content')->where(array('page_code'=>'feature'))->find();
+// 	    $this->assign('page_feature', $page_feature);
+// 	    $this->assign('news_list', $this->getArticleList('news', 10));
 	    $this->assign('current_nav', 'index');
 		$this->display('Index:index');
 	}

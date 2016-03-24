@@ -82,10 +82,10 @@ class HomeAction extends CommonAction
 	
 	protected function topnav()
 	{
-	    $courses = D('Courses')->field('id,name')->order('dateline desc')->limit(6)->select();
+	    $courses = D('Courses')->field('id,name')->order('sort_order ASC, dateline DESC')->limit(8)->select();
 	    $this->assign('topnav_courses', $courses);
 	    
-	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC')->select();
+	    $xueku = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
 	    $this->assign('topnav_xueku', $xueku);
 	}
 	
