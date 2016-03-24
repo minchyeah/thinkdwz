@@ -43,7 +43,7 @@ class XuekuAction extends HomeAction
 	{
 	    $pstr = trim($cate['id'].','.$cate['pids'], ',');
 	    $str = '<a href="'.__APP__.'/xueku/cate-'.$pstr.'.html">'.$cate['cate_name'].'</a>>';
-	    if(!$cate['pids']){
+	    if(!$cate['pids'] OR 1 == $cate['pids']){
 	        return $str;
 	    }else{
 	        $pids = explode(',', $cate['pids']);
@@ -62,35 +62,26 @@ class XuekuAction extends HomeAction
 		$sid = intval(array_pop($_GET['cates']));
 		$ssid = intval(array_pop($_GET['cates']));
 		
-		$top_cates = $model->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC')->select();
+        $current_cate_id = intval($cate_arr[0]);
+        if(0 == $current_cate_id){
+            $current_cate_id = 1;
+        }
+		$current_category = D('ArticleCategory')->find($current_cate_id);
+		
+		$top_cates = $model->field('id,cate_name,pid,pids')->where(array('pid'=>1))->order('sort_order ASC')->select();
 		if($topid){
-		    $sub_cates = $model->where(array('pid'=>$topid))->getField('id,cate_name,pid,pids');
+		    $sub_cates = $model->where(array('pid'=>$topid))->order('sort_order ASC')->getField('id,cate_name,pid,pids');
             $this->assign('sub_cates', $sub_cates);
 		}
 		if($sid){
-		  $sub_sub_cates = $model->where(array('pid'=>$sid))->getField('id,cate_name,pid,pids');
+		  $sub_sub_cates = $model->where(array('pid'=>$sid))->order('sort_order ASC')->getField('id,cate_name,pid,pids');
 		  $this->assign('sub_sub_cates', $sub_sub_cates);
 		}
-		
-		$cate_ids = array();
-		if ($ssid) {
-		    $cate_ids[] = $ssid;
-		}elseif($sid){
-		    $cate_ids[] = $sid;
-		    if(is_array($sub_sub_cates)){
-		        foreach ($sub_sub_cates as $ssc){
-		            $cate_ids[] = $ssc['id'];
-		        }
-		    }
-		}elseif($topid){
-		    $cate_ids[] = $topid;
-		    if(is_array($sub_cates)){
-		        foreach ($sub_cates as $ssc){
-		            $cate_ids[] = $ssc['id'];
-		        }
-		    }
+		$cids = $model->where("FIND_IN_SET({$current_cate_id},pids)")->getField('id,pids');
+		$cate_ids = array($current_cate_id);
+		if(is_array($cids)){
+		  $cate_ids = array_merge($cate_ids, array_keys($cids));
 		}
-		
 		$where = array();
 		$where['status'] = 1;
 		if(!empty($cate_ids)) $where['cate_id'] = array('in', $cate_ids);
@@ -103,6 +94,7 @@ class XuekuAction extends HomeAction
         $this->assign('cate_arr', $cate_arr);
 		$this->assign('topcates', $top_cates);
 		$this->assign('articles', $articles);
+		$this->assign('current_position', $this->_build_current_position($current_category));
 		$this->assign('pager', $page->show());
 		$this->display('Xueku:category');
 	}

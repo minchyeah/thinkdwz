@@ -19,19 +19,19 @@
   <div class="xkn">
     <div class="dqwz">
       <h1>学库</h1>
-      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/xueku/">学库</a></h3>
+      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/xueku/">学库</a>>{$current_position|substr=###,0,-1}</h3>
     </div>
     <div class="wzfl">
       <dl>
         <volist name="topcates" id="tvo">
-        <dt class="<if condition="in_array($tvo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$tvo.id}.html">{$tvo.cate_name}</a></dt>
+        <dt class="<if condition="in_array($tvo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$tvo.id},{$tvo.pids}.html">{$tvo.cate_name}</a></dt>
         </volist>
         <dd class="clr"></dd>
       </dl>
       <notempty name="sub_cates">
       <dl>
         <volist name="sub_cates" id="svo">
-        <dt class="<if condition="in_array($svo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$svo.id},{$svo.pid}.html">{$svo.cate_name}</a></dt>
+        <dt class="<if condition="in_array($svo['id'],$cate_arr)">xz</if>"><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></dt>
         </volist>
         <dd class="clr"></dd>
       </dl>

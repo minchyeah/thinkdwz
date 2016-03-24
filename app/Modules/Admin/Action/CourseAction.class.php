@@ -194,5 +194,23 @@ class CourseAction extends AdminAction
 	        $this->error('保存失败！'.dump($data, false).$model->getDbError());
 	    }
 	}
+	
+	public function deletecls()
+	{
+	    $model = D('CoursesClass');
+	    $model->startTrans();
+	    $id = intval($_REQUEST['id']);
+	    $where = array();
+	    $where['id'] = $id;
+	    $orgStore = $model->find($id);
+	    $rs = $model->where($where)->delete();
+	    if($rs){
+	        $model->commit();
+	        $this->dwzSuccess('删除成功');
+	    }else{
+	        $model->rollback();
+	        $this->dwzError('删除失败');
+	    }
+	}
 }
 ?>

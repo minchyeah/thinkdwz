@@ -26,10 +26,10 @@ class IndexAction extends HomeAction
 	private function xuekus()
 	{
 	    $XkModel = D('ArticleCategory');
-	    $xueku = $XkModel->field('id,cate_name')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
+	    $xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
 	    if(is_array($xueku)){
 	        foreach ($xueku as $k=>$xks){
-	            $sub_xueku = $XkModel->field('id,cate_name')->where(array('pid'=>$xks['id']))->order('sort_order ASC')->limit(2)->select();
+	            $sub_xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>$xks['id']))->order('sort_order ASC')->limit(2)->select();
 	            if(is_array($sub_xueku)){
 	                foreach ($sub_xueku as $j=>$sxk){
 	                    $sub_xueku[$j]['articles'] = $this->getXkArticles($sxk['id']);
@@ -53,7 +53,7 @@ class IndexAction extends HomeAction
 	        $ids = array($id);
 	    }
 	    $idstr = implode(',', $ids);
-	    $articles = D('Articles')->field('id,title,status')->where('cate_id IN ('.$idstr.')')->limit(7)->select();
+	    $articles = D('Articles')->field('id,title,status')->where('cate_id IN ('.$idstr.')')->order('id DESC')->limit(7)->select();
 	    return $articles;
 	}
 }
