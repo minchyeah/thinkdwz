@@ -97,8 +97,8 @@ class HomeAction extends CommonAction
 		$model = D('Links');
 		$friendlinks = $model->where(array('category'=>'friendlink'))->order('sort_order ASC')->select();
 		$this->assign('friendlinks', $friendlinks);
-		$businesslinks = $model->where(array('category'=>'business'))->order('sort_order ASC')->select();
-		$this->assign('businesslinks', $businesslinks);
+// 		$businesslinks = $model->where(array('category'=>'business'))->order('sort_order ASC')->select();
+// 		$this->assign('businesslinks', $businesslinks);
 	}
 	
 	/**
@@ -156,9 +156,9 @@ class HomeAction extends CommonAction
 	protected function footerblock()
 	{
 	    $model = D('Articles');
-	    $news = $model->where(array('cate_id'=>14))->limit(4)->order('id DESC')->getField('id,title,cate_id');
-	    $how = $model->where(array('cate_id'=>15))->limit(4)->order('id DESC')->getField('id,title,cate_id');
-	    $why = $model->where(array('cate_id'=>16))->limit(4)->order('id DESC')->getField('id,title,cate_id');
+	    $news = $model->where(array('cate_id'=>14))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
+	    $how = $model->where(array('cate_id'=>15))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
+	    $why = $model->where(array('cate_id'=>16))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
 	    $this->assign('footer_block_news', $news);
 	    $this->assign('footer_block_how', $how);
 	    $this->assign('footer_block_why', $why);

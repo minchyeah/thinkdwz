@@ -79,9 +79,9 @@ class ArticleAction extends AdminAction
     	if(!$data){
     		$this->error($model->getError());
     	}
+    	$data['create_time'] = time();
+    	$data['user_id'] = intval(session('admin_id'));
     	if (!$data['id']) {
-    		$data['create_time'] = time();
-    		$data['user_id'] = intval(session('admin_id'));
     		$rs = $model->add($data);
     	}else{
     		$rs = $model->save($data);

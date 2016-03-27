@@ -25,6 +25,8 @@ class JobsAction extends HomeAction
 	    $contact = substr($job['contact'], 0, 3).'****'.substr($job['contact'], -4, 4);
 	    $job['contact'] = $contact;
 	    $job['others'] = $this->_others($job['others']);
+	    $contactqq = explode('|', array_shift(explode(',', $this->get('settings')['kefuqq'])));
+	    $this->assign('contactqq', $contactqq);
 	    $this->assign('job', $job);
 	    $this->display('Jobs:detail');
 	}
