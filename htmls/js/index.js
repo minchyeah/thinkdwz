@@ -99,21 +99,6 @@ function scrollNews(obj){
 	$self.css({"margin-top":"0px"}).find("li:first").appendTo($self); 
 	}) 
 } 
-/*移入向上渐出*/
-$(function(){
-		move(".cplb dl");
-	});
-	function move(name){
-	$(name).hover(function(){
-			var $lefty =$(this);
-			var move = $lefty.outerHeight()-$lefty.find("dd").height();
-			$lefty.find("dd[name='title']").stop(true,false).animate({ top:parseInt(move)},200);//children
-		},function(){
-			var $lefty =$(this);
-			var move = 139;
-			$lefty.find("dd[name='title']").stop(true,false).animate({ top: parseInt(move) },200);
-		});
-}
 /*鼠标横向滑动*/
 jQuery(function ($) {
     // -----------------------------------------------------------------------------------
@@ -372,8 +357,8 @@ function leftScroll() {
     var leftNum = parseInt(left);
     if (leftNum < 0) {
         var picCount = $("#mixSlideshow").children("li").length;
-        var picIndex = Math.abs(leftNum) / 233;
-        $("#mixSlideshow").animate({ "margin-left": (leftNum + 233) + "px" }, 300, function () { 
+        var picIndex = Math.abs(leftNum) / 327;
+        $("#mixSlideshow").animate({ "margin-left": (leftNum + 327) + "px" }, 300, function () { 
 	})
         $("#mixSlideshowIndex").html(picIndex + "&nbsp;/&nbsp;" + picCount)
     }
@@ -383,10 +368,10 @@ function rightScroll() {
     right = right.replace("px", "");
     var rightNum = parseInt(right);
     var picCount = $("#mixSlideshow").children("li").length;
-    if ((rightNum-233) > -(picCount * 233)) {
+    if ((rightNum-327) > -(picCount * 327)) {
         var picIndex;
-        picIndex = Math.abs(rightNum) / 233 + 2;
-        $("#mixSlideshow").animate({ "margin-left": (rightNum - 233) + "px" }, 300, function () {
+        picIndex = Math.abs(rightNum) / 327 + 2;
+        $("#mixSlideshow").animate({ "margin-left": (rightNum - 327) + "px" }, 300, function () {
         })
         $("#mixSlideshowIndex").html(picIndex + "&nbsp;/&nbsp;" + picCount)
     }
