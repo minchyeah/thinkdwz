@@ -13,8 +13,8 @@
   <div class="btzr">
     <div class="dianh">{$settings.company_phone}</div>
     <div class="soso">
-      <form id="form1" name="form1" method="post" action="">
-        <input id="name_txt" name="name_txt" type="text" class="wzysr" value="请输入您要搜索的课程/老师/关键词" onfocus="if(this.value=='请输入您要搜索的课程/老师/关键词')this.value='';" onblur="if(this.value=='')this.value='请输入您要搜索的课程/老师/关键词';">
+      <form method="get" action="__APP__/search/">
+        <input name="key" type="text" class="wzysr" value="{$think.get.key|default='请输入您要搜索的关键词'}" onfocus="if(this.value=='请输入您要搜索的关键词')this.value='';" onblur="if(this.value=='')this.value='请输入您要搜索的关键词';">
         <input class="sousan" type="submit" value="">
       </form>
       热门搜索： 监理工程师培训&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全工程师培训 </div>
