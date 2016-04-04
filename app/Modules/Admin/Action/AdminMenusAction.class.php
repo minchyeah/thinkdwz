@@ -8,7 +8,7 @@ class AdminMenusAction extends AdminAction
     	$totalCount = $model->count();
     	$currentPage = intval($_REQUEST['pageNum']);
     	$currentPage = $currentPage ? $currentPage : 1;
-    	$numPerPage = 20;
+    	$numPerPage = 30;
     	$rowOffset = ($currentPage-1) * $numPerPage;
     	$menus = $model->order('pid ASC,sort_order ASC')->limit($rowOffset . ',' . $numPerPage)->select();
     	

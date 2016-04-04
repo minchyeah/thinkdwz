@@ -1,28 +1,27 @@
-<div class="dh">
-  <div class="jz">
+<div class="bt">
+  <div class="btbj jz"><a href="__APP__/"></a></div>
+  <div class="dh">
     <div class="nav">
       <ul>
-        <li <if condition="$current_nav=='index'"> class="xz"</if>><a href="__APP__/">首页</a></li>
-        <li <if condition="$current_nav=='course'"> class="xz"</if>><a href="__APP__/course/">课程</a>
-          <if condition="!empty($topnav_courses)">
+        <li <if condition="$current_nav=='index'"> class="xz"</if>><a href="__APP__/">首&nbsp;&nbsp;页</b></a></li>
+        <li <if condition="$current_nav=='about'"> class="xz"</if>><a href="__APP__/about.html">关于我们</a></li>
+        <li <if condition="$current_nav=='school'"> class="xz"</if>><a href="__APP__/school/">招生院校</a></li>
+        <li <if condition="$current_nav=='news'"> class="xz"</if>><a href="__APP__/news/">网站公告</a></li>
+        <li <if condition="$current_nav=='major'"> class="xz"</if>><a href="__APP__/major/">专业介绍</a>
           <div class="drop_dwon">
-            <volist name="topnav_courses" id="tcurs">
-            <div class="onemenulayout"><a href="__APP__/course/{$tcurs.id}.html" target="_blank">{$tcurs.name}</a></div>
-            </volist>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">工程大类</a></div>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">经管大类</a></div>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">艺术大类</a></div>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">文史大类</a></div>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">农林大类</a></div>
+            <div class="onemenulayout"><a href="zylb.html" target="_blank">医学大类</a></div>
           </div>
-          </if>
         </li>
-        <li <if condition="$current_nav=='xueku'"> class="xz"</if>><a href="__APP__/xueku/">学库&nbsp;v</a>
-          <if condition="!empty($topnav_xueku)">
-          <div class="drop_dwon">
-          	<volist name="topnav_xueku" id="txku">
-            <div class="onemenulayout"><a href="__APP__/xueku/cate-{$txku.id}.html" target="_blank">{$txku.cate_name}</a></div>
-            </volist>
-          </div>
-          </if>
-        </li>
-        <li <if condition="$current_nav=='faculty'"> class="xz"</if>><a href="__APP__/faculty/">名师</a></li>
-        <li <if condition="$current_nav=='service'"> class="xz"</if>><a href="__APP__/service.html">服务</a></li>
+        <li <if condition="$current_nav=='webucation'"> class="xz"</if>><a href="__APP__/webucation/">网络教育</a></li>
+        <li <if condition="$current_nav=='material'"> class="xz"</if>><a href="__APP__/material/">成考资料</a></li>
+        <li <if condition="$current_nav=='guide'"> class="xz"</if>><a href="__APP__/guide/">报名指南</a></li>
+        <li <if condition="$current_nav=='signup'"> class="xz"</if>><a href="__APP__/signup/">网上报名</a></li>
+        <li <if condition="$current_nav=='contact'"> class="xz"</if> style="background:none;"><a href="__APP__/contact.html">联系我们</a></li>
       </ul>
     </div>
   </div>

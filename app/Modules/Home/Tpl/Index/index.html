@@ -3,298 +3,355 @@
 <head>
 <include file="Public:header_meta" />
 </head>
+
 <body>
-<include file="Public:header" />
 <include file="Public:header_nav" />
-<div class="sy1 jz">
-  <include file="Public:topclasses" />
-  <include file="Public:slider" />
-</div>
-<div class="youshi jz">
-  <ul>
-    <li style="background-image:url(images/kejian.jpg);"><b>课件</b>最优质的课件</li>
-    <li style="background-image:url(images/moshi.jpg);"><b>模式</b>最先进的模式</li>
-    <li style="background-image:url(images/mingshi.jpg);"><b>名师</b>最权威的名师</li>
-    <li style="background-image:url(images/fuwu.jpg);"><b>服务</b>最完善的服务</li>
-    <li style="background-image:url(images/jingzun.jpg);"><b>精准</b>最精准的答疑</li>
-    <li style="background-image:url(images/banci.jpg); border:none;"><b>班次</b>最科学的班次</li>
-  </ul>
-</div>
-<div class="sykbxx jz">
-  <volist name="classes" id="clsvo">
-  <dl>
-    <dt><a href="__APP__/course/cls-{$clsvo.id}.html"><img src="{$clsvo.image|imgsrc=327,219}" /><b></b></a></dt>
-    <dd>
-      <h1>{$clsvo.name}</h1>
-      <h2>{$clsvo.detail|stripContent|mb_substr=###,0,280}</h2>
-      <h3>价格<b>￥{$clsvo.price}</b></h3>
-      <h3>课时<span>{$clsvo.times}</span></h3>
-      <h3>归属<span>{$clsvo.course_name}</span></h3>
-      <h4 class="bsbj"><a href="__APP__/course/cls-{$clsvo.id}.html">查看/报名</a></h4>
-    </dd>
-  </dl>
-  </volist>
-</div>
-<div class="sywz">
-  <div class="jz">
-    <div class="sywzd">
-      <div class="sywzdt">
-        <h1>{$xuekus[0]['cate_name']}</h1>
-        <ul id="wzdt1t">
-          <volist name="xuekus[0]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz1.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt1n">
-        <volist name="xuekus[0]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-    <div class="sywzd" style="margin-right:auto;">
-      <div class="sywzdt">
-        <h1>{$xuekus[1]['cate_name']}</h1>
-        <ul id="wzdt2t">
-          <volist name="xuekus[1]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz2.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt2n">
-        <volist name="xuekus[1]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="sygd jz">
-  <div class="sygdt"> <span></span>
-    <h2>名师团队</h2>
-    <span></span> </div>
-  <div class="alzx">
-    <div class="LeftBotton" onmousedown="r1.ISL_GoDown()" onmouseup="r1.ISL_StopDown()" onmouseout="r1.ISL_StopDown()"><</div>
-    <div class="alzxc" id="alzx1">
-      <div  class="ScrCont">
-        <div id="alzx1List1" class="List1">
-          <ul>
-            <volist name="teachers" id="teacher">
-            <li><a href="__APP__/faculty/{$teacher.id}.html" target="_blank" title="{$teacher.name}"><img src="{$teacher.image|imgsrc=188,188}" alt="{$teacher.name}"/><b></b></a><h2>{$teacher.name}老师</h2></li>
-            </volist>
+<div class="jz">
+  <div class="sy1">
+    <div class="hdp">
+      <div class="sylkhdp">
+        <div class="slideBox" id="demo1">
+          <ul class="items">
+            <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a></li>
+            <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a></li>
+            <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a></li>
+            <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/hdp1.jpg" alt="当前名称"></a></li>
           </ul>
         </div>
-        <div id="alzx1List2" class="List2"></div>
-      </div>
-    </div>
-    <div class="RightBotton" onmousedown="r1.ISL_GoUp()" onmouseup="r1.ISL_StopUp()" onmouseout="r1.ISL_StopUp()">></div>
-  </div>
-</div>
-<div class="sywz">
-  <div class="jz">
-    <div class="sywzd">
-      <div class="sywzdt">
-        <h1>{$xuekus[2]['cate_name']}</h1>
-        <ul id="wzdt3t">
-          <volist name="xuekus[2]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz3.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt3n">
-        <volist name="xuekus[2]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-    <div class="sywzd" style="margin-right:auto;">
-      <div class="sywzdt">
-        <h1>{$xuekus[3]['cate_name']}</h1>
-        <ul id="wzdt4t">
-          <volist name="xuekus[3]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz4.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt4n">
-        <volist name="xuekus[3]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="sygd jz">
-  <div class="sygdt"> <span></span>
-    <h2>课程大全</h2>
-    <span></span> </div>
-  <div class="alzx sykcdq">
-    <div class="LeftBotton" onmousedown="r2.ISL_GoDown()" onmouseup="r2.ISL_StopDown()" onmouseout="r2.ISL_StopDown()"><</div>
-    <div class="alzxc" id="alzx2">
-      <div  class="ScrCont">
-        <div id="alzx2List1" class="List1">
-          <volist name="courses" id="cvo">
-          <dl>
-            <dt><img src="{$cvo.image|imgsrc=200,134}" alt="{$cvo.name}"/><b></b></dt>
-            <dd><h1>{$cvo.name}</h1><h4 class="bsbj"><a href="__APP__/course/{$cvo.id}.html" target="_blank" title="{$cvo.name}">查看详情</a></h4></dd>
-          </dl>
-          </volist>
-        </div>
-        <div id="alzx2List2" class="List2"></div>
-      </div>
-    </div>
-    <div class="RightBotton" onmousedown="r2.ISL_GoUp()" onmouseup="r2.ISL_StopUp()" onmouseout="r2.ISL_StopUp()">></div>
-  </div>
-</div>
-<div class="sywz">
-  <div class="jz">
-    <div class="sywzd">
-      <div class="sywzdt">
-        <h1>{$xuekus[4]['cate_name']}</h1>
-        <ul id="wzdt5t">
-          <volist name="xuekus[4]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz5.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt5n">
-        <volist name="xuekus[4]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-    <div class="sywzd" style="margin-right:auto;">
-      <div class="sywzdt">
-        <h1>{$xuekus[5]['cate_name']}</h1>
-        <ul id="wzdt6t">
-          <volist name="xuekus[5]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz6.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt6n">
-        <volist name="xuekus[5]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<include file="Public:about_block" />
-<div class="sywz">
-  <div class="jz">
-    <div class="sywzd">
-      <div class="sywzdt">
-        <h1>{$xuekus[6]['cate_name']}</h1>
-        <ul id="wzdt7t">
-          <volist name="xuekus[6]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz7.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt7n">
-        <volist name="xuekus[6]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-    <div class="sywzd" style="margin-right:auto;">
-      <div class="sywzdt">
-        <h1>{$xuekus[7]['cate_name']}</h1>
-        <ul id="wzdt8t">
-          <volist name="xuekus[7]['subs']" id="svo">
-          <li <if condition="$i!=1"> class="ztwdj"</if>><a href="__APP__/xueku/cate-{$svo.id},{$svo.pids}.html">{$svo.cate_name}</a></li>
-          </volist>
-        </ul>
-      </div>
-      <div class="sywzdn">
-        <div class="sywzdnl">
-          <img src="images/sywz8.jpg" /><b></b>
-        </div>
-        <div class="sywzdnr" id="wzdt8n">
-        <volist name="xuekus[7]['subs']" id="svo">
-          <ol>
-            <volist name="svo['articles']" id="ssvo">
-            <li><a href="__APP__/xueku/{$ssvo.id}.html" target="_blank" title="{$ssvo.title}">{$ssvo.title}</a></li>
-            </volist>
-          </ol>
-        </volist>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<include file="Public:friendlink" />
-<include file="Public:footer" />
-<include file="Public:qqkefu" />
-<script type="text/javascript">
-  var r1 = new Roll('alzx1',224);
-    r1.init();
-  var r2 = new Roll('alzx2',253);
-    r2.init();
+        <script type="text/javascript">
+  jQuery(function($){
+	$('#demo1').slideBox();
+  });
 </script> 
+      </div>
+    </div>
+    <include file="Public:sidebar_static" />
+  </div>
+  <div class="sy2g">
+    <div class="sy2gl">
+      <div class="sygt">
+        <h5></h5>
+        <h2>招生简章</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy2gln">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015年湖南中医药大学成人高等教育招生简</a></li>
+          <li><a href="wznr.html" target="_blank">2015年桂林理工大学成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西教育学院函授（脱产）招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西中医药大学成人高等教育招生简</a></li>
+          <li><a href="wznr.html" target="_blank">2015年桂林电子科技大学成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西医科大学成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西大学成人高等教育函授招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">广西经济管理干部学院2014年成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年桂林电子科技大学成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西大学成人高等教育函授招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西教育学院函授（脱产）招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西中医药大学成人高等教育招生简</a></li>
+          <li><a href="wznr.html" target="_blank">2015年桂林电子科技大学成人高等教育招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015年广西医科大学成人高等教育招生简章</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy2gr">
+      <div class="sygt">
+        <h5></h5>
+        <h2>招生热线</h2>
+      </div>
+      <div class="syzsrx">
+        <ul>
+          <li>报名咨询电话：15607711688</li>
+          <li>联系人：张老师</li>
+          <li>各教学点分布区域：<a href="wsbm.hmtl">南宁市</a>|<a href="wsbm.hmtl">钦州市</a>|<a href="wsbm.hmtl">百色市</a>|<a href="wsbm.hmtl">桂林市</a>|<a href="wsbm.hmtl">柳州市</a>|<a href="wsbm.hmtl">贵港市</a>|<a href="wsbm.hmtl">北海市</a>|<a href="wsbm.hmtl">河池市</a>|<a href="wsbm.hmtl">崇左市</a>|<a href="wsbm.hmtl">防城港</a>|<a href="wsbm.hmtl">玉林市</a>|<a href="wsbm.hmtl">贺州市</a>|<a href="wsbm.hmtl">来宾市</a>|<a href="wsbm.hmtl">桂平市</a>|<a href="wsbm.hmtl">平南县</a></li>
+          <li>地址：广西壮族自治区南宁市大学东路100号</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sy2g">
+    <div class="sy2gl">
+      <div class="syzyjs">
+        <h3>专业介绍</h3>
+        <dl class="syzyjsqs">
+          <dt class="qsbj"><a href="zylb.html">工程大类</a></dt>
+          <dd><a href="zylb.html" target="_blank">土木工程</a><a href="zylb.html" target="_blank">建筑工程管理</a><a href="zylb.html" target="_blank">工业设计</a><a href="zylb.html" target="_blank">电子信息工程</a><a href="zylb.html" target="_blank">焊接技术及自动化</a><a href="zylb.html" target="_blank">机电一体化技术</a><a href="zylb.html" target="_blank">无机非金属材料工程技术</a><a href="zylb.html" target="_blank">汽车运用技术</a><a href="zylb.html" target="_blank">计算机网络与安全管理</a><a href="zylb.html" target="_blank">食品科学与工程</a></dd>
+        </dl>
+        <dl class="syzyjsls">
+          <dt class="lsbj"><a href="zylb.html">经管大类</a></dt>
+          <dd><a href="zylb.html" target="_blank">土木工程</a><a href="zylb.html" target="_blank">建筑工程管理</a><a href="zylb.html" target="_blank">工业设计</a><a href="zylb.html" target="_blank">电子信息工程</a><a href="zylb.html" target="_blank">焊接技术及自动化</a><a href="zylb.html" target="_blank">机电一体化技术</a><a href="zylb.html" target="_blank">无机非金属材料工程技术</a><a href="zylb.html" target="_blank">汽车运用技术</a><a href="zylb.html" target="_blank">计算机网络与安全管理</a><a href="zylb.html" target="_blank">食品科学与工程</a></dd>
+        </dl>
+        <dl class="syzyjsqs">
+          <dt class="qsbj"><a href="zylb.html">艺术大类</a></dt>
+          <dd><a href="zylb.html" target="_blank">土木工程</a><a href="zylb.html" target="_blank">建筑工程管理</a><a href="zylb.html" target="_blank">工业设计</a><a href="zylb.html" target="_blank">电子信息工程</a><a href="zylb.html" target="_blank">焊接技术及自动化</a><a href="zylb.html" target="_blank">机电一体化技术</a><a href="zylb.html" target="_blank">无机非金属材料工程技术</a><a href="zylb.html" target="_blank">汽车运用技术</a><a href="zylb.html" target="_blank">计算机网络与安全管理</a><a href="zylb.html" target="_blank">食品科学与工程</a></dd>
+        </dl>
+        <dl class="syzyjsls">
+          <dt class="lsbj"><a href="zylb.html">文史大类</a></dt>
+          <dd><a href="zylb.html" target="_blank">土木工程</a><a href="zylb.html" target="_blank">建筑工程管理</a><a href="zylb.html" target="_blank">工业设计</a><a href="zylb.html" target="_blank">电子信息工程</a><a href="zylb.html" target="_blank">焊接技术及自动化</a><a href="zylb.html" target="_blank">机电一体化技术</a><a href="zylb.html" target="_blank">无机非金属材料工程技术</a><a href="zylb.html" target="_blank">汽车运用技术</a><a href="zylb.html" target="_blank">计算机网络与安全管理</a><a href="zylb.html" target="_blank">食品科学与工程</a></dd>
+        </dl>
+        <dl class="syzyjsqs">
+          <dt class="qsbj"><a href="zylb.html">农林大类</a></dt>
+          <dd><a href="zylb.html" target="_blank">土木工程</a><a href="zylb.html" target="_blank">建筑工程管理</a><a href="zylb.html" target="_blank">工业设计</a><a href="zylb.html" target="_blank">电子信息工程</a><a href="zylb.html" target="_blank">焊接技术及自动化</a><a href="zylb.html" target="_blank">机电一体化技术</a><a href="zylb.html" target="_blank">无机非金属材料工程技术</a><a href="zylb.html" target="_blank">汽车运用技术</a><a href="zylb.html" target="_blank">计算机网络与安全管理</a><a href="zylb.html" target="_blank">食品科学与工程</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="sy2gr">
+      <div class="sygt">
+        <h5></h5>
+        <h2>最新报名</h2>
+      </div>
+      <div class="syzxbm">
+        <ul>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院</h4>
+            <h4>函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦**</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院广西师范学院</h4>
+            <h4>函授数学与函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦**</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院</h4>
+            <h4>函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦**</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院广西师范学院</h4>
+            <h4>函授数学与函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦**</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院</h4>
+            <h4>函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦**</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+          <li>
+            <h3>黄**</h3>
+            <h4>广西师范学院广西师范学院</h4>
+            <h4>函授数学与函授数学与..</h4>
+          </li>
+          <li>
+            <h3>麦展豪</h3>
+            <h4>广西民族大学</h4>
+            <h4>函授大专本科..</h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sytjxx">
+    <div class="sytjxxl">推荐学校</div>
+    <div class="syszll" id="content">
+      <div id="sections" class="container">
+        <div id="horizontal">
+          <div class="slyWrap example1">
+            <div class="sly" data-options='{ "horizontal": 1, "itemNav": "smart", "dragContent": 1, "startAt": 0, "scrollBy": 1 }'>
+              <ul class="big bs" data-items="30">
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp1.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学1</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp2.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学2</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp3.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学3</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp1.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学1</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp2.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学2</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp3.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学3</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp1.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学1</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp2.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学2</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp3.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学3</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp1.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学1</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp2.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学2</a></span></li>
+                <li><a href="zsnr.html" title="当前标题"><img src="images/cp3.jpg" alt="当前标题" /></a><b></b><span><a href="zsnr.html">广西大学3</a></span></li>
+              </ul>
+            </div>
+            <div class="scrollbar">
+              <div class="handle"></div>
+              <div class="sytjxxgd qsbj"><a href="cplb.html">更多&nbsp;&nbsp;+</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="sy6g">
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>网络教育</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy6glb">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015博大网络远程教育招生公告</a></li>
+          <li><a href="wznr.html" target="_blank">广西七大名校成考函授专科/本科招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015南宁博大全体员工素质培训大会圆满成功</a></li>
+          <li><a href="wznr.html" target="_blank">函授、网教（高升专/专升本），选择多任性！</a></li>
+          <li><a href="wznr.html" target="_blank">全区网络教育工作会议在梧州隆重举行</a></li>
+          <li><a href="wznr.html" target="_blank">成考落榜：明年参加成考VS现在报名网教</a></li>
+          <li><a href="wznr.html" target="_blank">学历提升哪家强，函授网教找博大</a></li>
+          <li><a href="wznr.html" target="_blank">博大人力公司顺利完成扶绥县自来水厂2014年博大人力公司顺利完成扶绥县自来水厂2014年</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>成人高考</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy6glb">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015博大网络远程教育招生公告</a></li>
+          <li><a href="wznr.html" target="_blank">广西七大名校成考函授专科/本科招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015南宁博大全体员工素质培训大会圆满成功</a></li>
+          <li><a href="wznr.html" target="_blank">函授、网教（高升专/专升本），选择多任性！</a></li>
+          <li><a href="wznr.html" target="_blank">全区网络教育工作会议在梧州隆重举行</a></li>
+          <li><a href="wznr.html" target="_blank">成考落榜：明年参加成考VS现在报名网教</a></li>
+          <li><a href="wznr.html" target="_blank">学历提升哪家强，函授网教找博大</a></li>
+          <li><a href="wznr.html" target="_blank">博大人力公司顺利完成扶绥县自来水厂2014年博大人力公司顺利完成扶绥县自来水厂2014年</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>报名指南</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy6glb">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015博大网络远程教育招生公告</a></li>
+          <li><a href="wznr.html" target="_blank">广西七大名校成考函授专科/本科招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015南宁博大全体员工素质培训大会圆满成功</a></li>
+          <li><a href="wznr.html" target="_blank">函授、网教（高升专/专升本），选择多任性！</a></li>
+          <li><a href="wznr.html" target="_blank">全区网络教育工作会议在梧州隆重举行</a></li>
+          <li><a href="wznr.html" target="_blank">成考落榜：明年参加成考VS现在报名网教</a></li>
+          <li><a href="wznr.html" target="_blank">学历提升哪家强，函授网教找博大</a></li>
+          <li><a href="wznr.html" target="_blank">博大人力公司顺利完成扶绥县自来水厂2014年博大人力公司顺利完成扶绥县自来水厂2014年</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>历年考试</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy6glb">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015博大网络远程教育招生公告</a></li>
+          <li><a href="wznr.html" target="_blank">广西七大名校成考函授专科/本科招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015南宁博大全体员工素质培训大会圆满成功</a></li>
+          <li><a href="wznr.html" target="_blank">函授、网教（高升专/专升本），选择多任性！</a></li>
+          <li><a href="wznr.html" target="_blank">全区网络教育工作会议在梧州隆重举行</a></li>
+          <li><a href="wznr.html" target="_blank">成考落榜：明年参加成考VS现在报名网教</a></li>
+          <li><a href="wznr.html" target="_blank">学历提升哪家强，函授网教找博大</a></li>
+          <li><a href="wznr.html" target="_blank">博大人力公司顺利完成扶绥县自来水厂2014年博大人力公司顺利完成扶绥县自来水厂2014年</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>资格证书报考资讯</h2>
+        <a href="wzlb.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sy6glb">
+        <ul>
+          <li><a href="wznr.html" target="_blank">2015博大网络远程教育招生公告</a></li>
+          <li><a href="wznr.html" target="_blank">广西七大名校成考函授专科/本科招生简章</a></li>
+          <li><a href="wznr.html" target="_blank">2015南宁博大全体员工素质培训大会圆满成功</a></li>
+          <li><a href="wznr.html" target="_blank">函授、网教（高升专/专升本），选择多任性！</a></li>
+          <li><a href="wznr.html" target="_blank">全区网络教育工作会议在梧州隆重举行</a></li>
+          <li><a href="wznr.html" target="_blank">成考落榜：明年参加成考VS现在报名网教</a></li>
+          <li><a href="wznr.html" target="_blank">学历提升哪家强，函授网教找博大</a></li>
+          <li><a href="wznr.html" target="_blank">博大人力公司顺利完成扶绥县自来水厂2014年博大人力公司顺利完成扶绥县自来水厂2014年</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sy6gd">
+      <div class="sygt">
+        <h5></h5>
+        <h2>证书展示</h2>
+        <a href="alzs.html">更多&nbsp;&nbsp;+</a> </div>
+      <div class="sytpq">
+        <div class="sytpqs">
+          <ul id="mixSlideshow">
+            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs1.jpg" alt="当前标题" /></a><b></b></li>
+            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs2.jpg" alt="当前标题" /></a><b></b></li>
+            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs1.jpg" alt="当前标题" /></a><b></b></li>
+            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs2.jpg" alt="当前标题" /></a><b></b></li>
+          </ul>
+        </div>
+        <div class="sytpqx">
+          <div class="sytpql" onclick="leftScroll()" ><<<</div>
+          <div class="sytpqc" id="mixSlideshowIndex"></div>
+          <div class="sytpqr" onclick="rightScroll()" >>>></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="yqlj">
+    <div class="sygt">
+      <h5></h5>
+      <h2>友情链接</h2>
+    </div>
+    <div class="yqljn"> <a href="http://www.liluokj.com" target="_blank">立络科技</a><a href="#" target="_blank">网媒网</a><a href="#" target="_blank">陌上花摄影</a><a href="#" target="_blank">China新世界传播 </a><a href="#" target="_blank">立络科技</a><a href="#">网媒网</a><a href="#">陌上花摄影</a><a href="http://www.liluokj.com" target="_blank">立络科技</a><a href="#" target="_blank">网媒网</a><a href="#" target="_blank">陌上花摄影</a><a href="#" target="_blank">China新世界传播 </a><a href="#" target="_blank">立络科技</a><a href="#">网媒网</a><a href="#">陌上花摄影</a><a href="http://www.liluokj.com" target="_blank">立络科技</a><a href="#" target="_blank">网媒网</a><a href="#" target="_blank">陌上花摄影</a><a href="#" target="_blank">China新世界传播 </a><a href="#" target="_blank">立络科技</a><a href="#">网媒网</a><a href="#">陌上花摄影</a>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="httd"><a href="/admin/" target="_blank">后台链接</a></div>
+  <div class="bq">©2015   LiLuoKJ.com All Rights Reserved.&nbsp;&nbsp;&nbsp;咨询热线：0771-3909183<br />
+    欢迎您：本站第<b class="ziys">999</b>位访问者</div>
+</div>
+<!--QQ客服-->
+<div class='SonlineBox' id='SonlineBox' style='top:-600px;'>
+  <div class='openTrigger' style='display:none' title='展开'></div>
+  <div class='contentBox'>
+    <div class='closeTrigger'></div>
+    <div class='titleBox'><span>客服中心</span></div>
+    <div class='listBox'></div>
+    <div class='gglxfs ziys'>
+      <dl>
+        <dt>咨询热线</dt>
+        <dd>0771-3949356</dd>
+        <dt>蒙老师</dt>
+        <dd>18577037968</dd>
+      </dl>
+    </div>
+    <div class="kfdd"></div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$("body").Sonline({
+		Position:"right",//left或right
+		Top:200,//顶部距离，默认200px
+		Effect:true, //滚动或者固定两种方式，布尔值：true或false
+		DefaultsOpen:true, //默认展开：true,默认收缩：false
+		Qqlist:"1564154666|蒙老师,81635191|张老师,715085658|谢老师" //多个QQ用','隔开，QQ和客服名用'|'隔开
+	});
+})
+</script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 			    <notempty name="vo['subs']">
 			    <ul>
 			      <volist name="vo['subs']" id="svo">
-					<li><a href="main.html?dwzid=tab_{$vo.id}" target="navTab" rel="tab_{$vo.id}">{$svo.title}</a></li>
+					<li><a href="main.html?dwzid=tab_{$vo.id}" target="navTab" rel="tab_{$vo.id}">{$svo.title}{$vo['action_name']}</a></li>
 				  </volist>
 			    </ul>
 			    </notempty>

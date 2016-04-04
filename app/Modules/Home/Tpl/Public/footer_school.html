@@ -1,0 +1,43 @@
+  <div class="clr"></div>
+  <div class="syxfhz">
+    <div class="alzx bs">
+      <div class="LeftBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"><</div>
+      <div id="ISL_Cont">
+        <div  class="ScrCont">
+          <div id="List1" class="djsb">
+            <ul>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
+              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
+            </ul>
+          </div>
+          <div id="List2"></div>
+        </div>
+      </div>
+      <div class="RightBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()">></div>
+      <script language="javascript" type="text/javascript"> 
+		var Speed = 10;
+		var Space = 5;
+		var PageWidth = 344; 
+		var fill = 0;
+		var MoveLock = false; 
+		var MoveTimeObj; 
+		var Comp = 0; 
+		var AutoPlayObj = null; 
+		GetObj("List2").innerHTML = GetObj("List1").innerHTML; 
+		GetObj('ISL_Cont').scrollLeft = fill; 
+		GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);} 
+		GetObj("ISL_Cont").onmouseout = function(){AutoPlay();} 
+		AutoPlay(); 
+	  </script> 
+    </div>
+  </div>
