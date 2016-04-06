@@ -51,5 +51,13 @@
 <include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
+<script type="text/javascript">
+$(function(){
+	$('.wznrzw img').addClass('group1 cboxElement').each(function(){
+	       $(this).attr('rel', $(this).attr('src').replace('_600x600', ''));
+	});
+	$(".group1").colorbox({rel:'group1'});
+});
+</script>
 </body>
 </html>
