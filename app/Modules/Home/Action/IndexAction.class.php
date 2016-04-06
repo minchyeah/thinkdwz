@@ -53,7 +53,7 @@ class IndexAction extends HomeAction
 	        $ids = array($id);
 	    }
 	    $idstr = implode(',', $ids);
-	    $articles = D('Articles')->field('id,title,status')->where('cate_id IN ('.$idstr.')')->order('id DESC')->limit(7)->select();
+	    $articles = D('Articles')->field('id,title,status')->where('cate_id IN ('.$idstr.')')->order('create_time DESC')->limit(7)->select();
 	    return $articles;
 	}
 }

@@ -47,7 +47,7 @@ class ArticleAction extends AdminAction
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('create_time DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);

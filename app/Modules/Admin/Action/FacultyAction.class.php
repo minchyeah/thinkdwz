@@ -16,7 +16,7 @@ class FacultyAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
@@ -72,14 +72,14 @@ class FacultyAction extends AdminAction
                 $_POST['image'] = $image;
 			}
 		}
-		$_POST['sort_order'] = 0;
+		$_POST['sort_order'] = intval($_POST['sort_order']);
 		$data = $model->create();
 		if(!$data){
 			$this->error($model->getError());
 		}
+		$data['dateline'] = time();
 		$model->startTrans();
 		if (!$data['id']) {
-			$data['dateline'] = time();
 			$rs = $model->add($data);
 		}else{
 			$rs = $model->save($data);

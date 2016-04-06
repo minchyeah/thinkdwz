@@ -19,7 +19,7 @@ class FacultyAction extends HomeAction
 	    $total_count = intval($total['count']);
 	    
 	    $pager = $this->getPage($total_count, 10, __APP__.'/faculty/page-__PAGE__.html');
-	    $volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
+	    $volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
 
 	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
