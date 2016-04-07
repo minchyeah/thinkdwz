@@ -177,8 +177,8 @@ class ArticleAction extends AdminAction
     	}else{
     	    $data['pids'] = '';
     	}
-    	$data['pids'] = trim($data['pids'], ',');
-    	if(count(explode(',', $data['pids'])) == 3){
+    	$data['pids'] = trim(trim($data['pids'], ','));
+    	if(strlen($data['pids'])>0 && count(explode(',', $data['pids'])) == 1){
     		$data['final'] = 1;
     	}
     	if (!$data['id']) {

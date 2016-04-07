@@ -3,6 +3,7 @@
 	<input type="hidden" name="search_key" value="{$_REQUEST['search_key']}">
 </form>
 <div class="pageContent">
+  <!-- 
   <div class="panelBar">
     <ul class="toolBar">
       <li style="padding:0 20px;">
@@ -13,14 +14,14 @@
       </li>
     </ul>
   </div>
-  <table class="list" width="100%" layoutH="53">
+   -->
+  <table class="list" width="100%" layoutH="26">
     <thead>
 	  <tr>
 		<th width="20"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="30">编号</th>
-		<th width="300">作品图片</th>
-		<th width="200">作品名称</th>
-		<th width="200">分类名称</th>
+		<th width="300">证书图片</th>
+		<th width="200">证书名称</th>
 		<!--<th width="60">排序</th>-->
 		<th width="80">操作</th>
 	  </tr>
@@ -32,7 +33,6 @@
 		<td>{$vo['id']}</td>
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,200,200}" /></if></td>
 		<td>{$vo.name}</td>
-		<td>{$catalog[$vo['cid']]}</td>
 		<!--<td>{$vo.sort_order}</td>-->
 		<td>
 		  <a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>

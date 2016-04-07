@@ -81,9 +81,9 @@ class CaseAction extends AdminAction
 		if(!$data){
 			$this->error($model->getError());
 		}
+		$data['dateline'] = time();
 		$model->startTrans();
 		if (!$data['id']) {
-			$data['dateline'] = time();
 			$rs = $model->add($data);
 		}else{
 			$rs = $model->save($data);

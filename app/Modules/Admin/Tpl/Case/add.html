@@ -11,6 +11,7 @@
 				  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if>
 				  <input class="<if condition="!$vo['image']">required</if>" name="imgfile" type="file" size="30" /></dd>
 			</dl>
+			<!-- 
 			<dl class="nowrap">
 				<dt>选择分类：</dt>
 				<dd>
@@ -21,7 +22,6 @@
 					</select>
 				</dd>
 			</dl>
-			<!-- 
 			<dl class="nowrap">
 				<dt>排序：</dt>
 				<dd><input name="sort_order" type="text" size="10" value="{$vo.sort_order}"/></dd>
