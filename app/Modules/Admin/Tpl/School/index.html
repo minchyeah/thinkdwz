@@ -4,34 +4,17 @@
 	<input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
 </form>
 <div class="pageContent">
-  <div class="panelBar">
-    <ul class="toolBar">
-      <if condition="$location_id">
-      <li><a class="add" href="__URL__/add/location_id/{$location_id}/tid/{$Think.request.tid}" target="navTab" rel="storeform"><span>新增</span></a></li>
-      </if>
-      <li style="padding:0 20px;">
-      <form method="get" action="{:U('Store/index')}" onsubmit="return navTabSearch(this);">
-        <span>店名或地址：</span><input name="search_key" value="{$_REQUEST['search_key']}"><input type="submit" value="查 找"/>
-        <input type="hidden" name="pageNum" value="1" />
-        <input type="hidden" name="location_id" value="{$_REQUEST['location_id']}">
-      </form>
-      </li>
-    </ul>
-  </div>
-  <table class="list" width="100%" layoutH="53">
+  <table class="list" width="100%" layoutH="27">
     <thead>
 	  <tr>
-		<th><input type="checkbox" group="id" class="checkboxCtrl"></th>
-		<th width="30">编号</th>
-		<th width="100">形象图片</th>
-		<th width="60">名称</th>
-		<th width="120">地址</th>
-		<th width="60">电话</th>
-		<th width="60">营业时间</th>
-		<th width="80">起送条件</th>
-		<th width="80">送餐区域</th>
-		<th width="80">送餐范围</th>
-		<th>备注</th>
+		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="60">编号</th>
+		<th width="120">LOGO</th>
+		<th width="120">名称</th>
+		<th width="100">联系人</th>
+		<th width="100">电话</th>
+		<th width="100">QQ</th>
+		<th>地址</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
@@ -42,15 +25,11 @@
 		<td>{$vo['id']}</td>
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" /></if></td>
 		<td>{$vo.name}</td>
+		<td>{$vo.contact}</td>
+		<td>{$vo.phone}</td>
+		<td>{$vo.qq}</td>
 		<td>{$vo.address}</td>
-		<td>{$vo.telphone}</td>
-		<td>{$vo.shop_hours}</td>
-		<td>{$vo.sendup_prices}</td>
-		<td>{$vo.locations|ids2str=$locations,array('id','title')}</td>
-		<td>{$vo.scope}</td>
-		<td>{$vo.remark}</td>
 		<td>
-		  <a href="{:U('StoreMenus/index','store_id='.$vo['id'])}" target="navTab" rel="storemenu_{$vo.id}" class="btnInfo" title="({$vo.name})菜谱列表">菜谱列表</a>
 		  <a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="storeform" class="btnEdit" title="编辑">编辑</a>
 		  <a href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
 		</td>
