@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header_nav" />
+<div class="jz">
+  <div class="nr">
+    <div class="sygt">
+      <h5></h5>
+      <h2>{$current_category.cate_name}</h2>
+      <h4>当前位置：<a href="__APP__/">首页</a>><a href="zylb.html">专业介绍</a></h4>
+    </div>
+    <div class="zylb">
+      <h3>专业介绍：</h3><a href="zylb.html">工程大类</a>|<a href="zylb.html">经管大类</a>|<a href="zylb.html">艺术大类</a>|<a href="zylb.html">文史大类</a>|<a href="zylb.html">农林大类</a>|<a href="zylb.html">医学大类</a>
+      <div class="clr"></div>
+    </div>
+    <div class="wzlb">
+      <volist name="articles" id="vo">
+        <dl>
+          <dt><b>»<a href="__APP__/{$current_category.catalog}/{$vo.id}.html">{$vo.title}</a></b><span>{$vo.create_time|date="Y-m-d",###}</span></dt>
+          <dd><if condition="$vo['thumb']"><span><a href="__APP__/{$current_category.catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></span></if>{$vo.content|stripContent|mb_substr=###,0,280}......</dd>
+        </dl>
+      </volist>
+	</div>
+	<div class="clr"></div>
+	<div class="sxy bs">{$pager}</div>
+	<div class="clr"></div>    
+  </div>
+  <div class="cbl">
+    <include file="Public:sidebar_static" />
+    <include file="Public:sidebar_signup" />
+    <include file="Public:sidebar_cases" />
+  </div>
+  <include file="Public:footer_school" />
+  <include file="Public:footer" />
+</div>
+<include file="Public:qqkefu" />
+</body>
+</html>

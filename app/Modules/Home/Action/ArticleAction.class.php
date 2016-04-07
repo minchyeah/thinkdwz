@@ -56,7 +56,11 @@ class ArticleAction extends HomeAction
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $current_category['catalog']);
 		$this->assign('pager', $page->show());
-		$this->display('Article:category');
+		if(file_exists(THEME_PATH.'/Article/'.$catalog.'.html')){
+		    $this->display('Article:'.$catalog);
+		}else{
+            $this->display('Article:category');
+		}
 	}
 
 	public function page()
