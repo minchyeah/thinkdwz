@@ -16,7 +16,7 @@ class SignupAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC,dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
@@ -71,15 +71,14 @@ class SignupAction extends AdminAction
 				$_POST['image'] = $image;
 			}
 		}
-		$_POST['recommend'] = intval($_POST['recommend']);
 		$_POST['sort_order'] = intval($_POST['sort_order']);
 		$data = $model->create();
 		if(!$data){
 			$this->error($model->getError());
 		}
+		$data['dateline'] = time();
 		$model->startTrans();
 		if (!$data['id']) {
-			$data['dateline'] = time();
 			$rs = $model->add($data);
 		}else{
 			$rs = $model->save($data);
@@ -95,41 +94,55 @@ class SignupAction extends AdminAction
 	
 	public function area()
 	{
+		$sid = intval(strval($_REQUEST['sid']));
+		if(!$sid){
+		    $this->error('参数异常');
+		}
+		$where = array('signup_id'=>$sid);
 		$model = D('SignupArea');
-		$totalCount = $model->count();
+		$totalCount = $model->where($where)->count();
 		$currentPage = intval($_REQUEST['pageNum']);
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->order('sort_order ASC,id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC,id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
 		$this->assign('numPerPage', $numPerPage);
 		$this->assign('currentPage', $currentPage);
+		$this->assign('signup', D('Signup')->find($sid));
 		$this->display();
 	}
 	
 	public function addarea()
 	{
-		$this->display();
+	    $sid = intval($_REQUEST['sid']);
+		$this->assign('signup', D('Signup')->find($sid));
+		$this->display('areaform');
 	}
 	
 	public function editarea()
 	{
 		$id =  intval($_GET['id']);
 		$model = D('SignupArea');
-		$this->assign('vo', $model->find($id));
-		$this->display('addarea');
+		$area = $model->find($id);
+		$this->assign('vo', $area);
+		
+		$this->assign('signup', D('Signup')->find($area['signup_id']));
+		
+		$this->display('areaform');
 	}
 	
 	public function savearea()
 	{
 		$model = D('SignupArea');
+		$_POST['sort_order'] = intval($_POST['sort_order']);
 		$data = $model->create();
 		if(!$data){
 			$this->error($model->getError());
 		}
+		$data['dateline'] = time();
 		if (!$data['id']) {
 			$rs = $model->add();
 		}else{
@@ -138,7 +151,7 @@ class SignupAction extends AdminAction
 		if(false !== $rs){
 			$this->success('保存成功！');
 		}else{
-			$this->error('保存失败！'.dump($data, false).$model->getDbError());
+			$this->error('保存失败！'.$model->getDbError());
 		}
 	}
 
@@ -170,30 +183,32 @@ class SignupAction extends AdminAction
 	 */
 	public function level()
 	{
-		$model = D('SignupLevel');
-		$where = '';
-		$key = trim(strval($_REQUEST['search_key']));
-		if($key){
-			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		$sid = intval(strval($_REQUEST['sid']));
+		if(!$sid){
+		    $this->error('参数异常');
 		}
-		$where = trim($where, ' AND');
+		$where = array('signup_id'=>$sid);
+		$model = D('SignupLevel');
 		$totalCount = $model->where($where)->count();
 		$currentPage = intval($_REQUEST['pageNum']);
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC,dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
 		$this->assign('numPerPage', $numPerPage);
 		$this->assign('currentPage', $currentPage);
+		$this->assign('signup', D('Signup')->find($sid));
 		$this->display();
 	}
 	
-	public function addleval()
+	public function addlevel()
 	{
-		$this->display();
+	    $sid = intval($_REQUEST['sid']);
+		$this->assign('signup', D('Signup')->find($sid));
+		$this->display('levelform');
 	}
 	
 	/**
@@ -201,8 +216,14 @@ class SignupAction extends AdminAction
 	 */
 	public function editlevel()
 	{
+		$id =  intval($_GET['id']);
 		$model = D('SignupLevel');
-		$this->display();
+		$level = $model->find($id);
+		$this->assign('vo', $level);
+		
+		$this->assign('signup', D('Signup')->find($level['signup_id']));
+		
+		$this->display('levelform');
 	}
 	
 	/**
@@ -211,28 +232,25 @@ class SignupAction extends AdminAction
 	public function savelevel()
 	{
 		$model = D('SignupLevel');
-		$location_id = intval($_REQUEST['location_id']);
-		$where = '';
-		$location_id && $where = 'FIND_IN_SET('.$location_id.',`locations`)';
-		$key = trim(strval($_REQUEST['search_key']));
-		if($key){
-			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+		$_POST['sort_order'] = intval($_POST['sort_order']);
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
 		}
-		$where = trim($where, ' AND');
-		$totalCount = $model->where($where)->count();
-		$currentPage = intval($_REQUEST['pageNum']);
-		$currentPage = $currentPage ? $currentPage : 1;
-		$numPerPage = 20;
-		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
-		
-		$this->assign('list', $list);
-		$this->assign('totalCount', $totalCount);
-		$this->assign('numPerPage', $numPerPage);
-		$this->assign('currentPage', $currentPage);
-		$this->assign('location_id', $location_id);
-		$this->assign('locations', F('locations'));
-		$this->display();
+		$data['dateline'] = time();
+		$model->startTrans();
+		if (!$data['id']) {
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$model->commit();
+			$this->success('保存成功！');
+		}else{
+			$model->rollback();
+			$this->error('保存失败！'.$model->getDbError());
+		}
 	}
 	
 	public function deletelevel()
@@ -241,11 +259,8 @@ class SignupAction extends AdminAction
 		$id = intval($_REQUEST['id']);
 		$where = array();
 		$where['id'] = $id;
-		$data = $model->where($where)->find();
 		$rs = $model->where($where)->delete();
 		if($rs){
-			$store = D('Stores');
-			$rs = $store->where(array('id'=>$data['store_id']))->setDec('rating', $store->stars[$data['rate']]);
 			$this->dwzSuccess('删除成功');
 		}else{
 			$this->dwzError('删除失败');
