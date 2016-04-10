@@ -8,7 +8,7 @@ class SignupAction extends AdminAction
 		$where = '';
 		$key = trim(strval($_REQUEST['search_key']));
 		if($key){
-			$where .= ' AND ( `name` LIKE "%'.$key.'%" OR `address` LIKE "%'.$key.'%" )';
+			$where .= ' AND ( `name` LIKE "%'.$key.'%")';
 		}
 		$where = trim($where, ' AND');
 		$totalCount = $model->where($where)->count();
@@ -37,13 +37,9 @@ class SignupAction extends AdminAction
 		$id = intval($_REQUEST['id']);
 		$where = array();
 		$where['id'] = $id;
-		$orgStore = $model->find($id);
-		$dids = explode(',', $orgStore['locations']);
-		foreach ($dids as $v){
-			$lid = intval($v);
-			$lid && $model->where(array('id'=>$lid))->setDec('store_count');
-		}
 		$rs = $model->where($where)->delete();
+		D('SignupLevel')->where(array('signup_id'=>$id))->delete();
+		D('SignupArea')->where(array('signup_id'=>$id))->delete();
 		if($rs){
 			$model->commit();
 			$this->dwzSuccess('删除成功');
@@ -105,7 +101,7 @@ class SignupAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('sort_order ASC,id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC,dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
@@ -144,9 +140,9 @@ class SignupAction extends AdminAction
 		}
 		$data['dateline'] = time();
 		if (!$data['id']) {
-			$rs = $model->add();
+			$rs = $model->add($data);
 		}else{
-			$rs = $model->save();
+			$rs = $model->save($data);
 		}
 		if(false !== $rs){
 			$this->success('保存成功！');
@@ -226,9 +222,6 @@ class SignupAction extends AdminAction
 		$this->display('levelform');
 	}
 	
-	/**
-	 * 评论
-	 */
 	public function savelevel()
 	{
 		$model = D('SignupLevel');
