@@ -5,11 +5,11 @@
       </div>
       <div class="syzxbm">
         <ul>
-        <volist name="volist" id="vo">
+        <volist name="sidebar_orders" id="sovo">
           <li>
-            <h3>{$vo.contact}</h3>
-            <h4>{$vo.school}</h4>
-            <h4>{$vo.major}</h4>
+            <h3>{$sovo.contact|hidename}</h3>
+            <h4>{$sovo.school}</h4>
+            <h4>{$sovo.first_major}</h4>
           </li>
         </volist>
         </ul>

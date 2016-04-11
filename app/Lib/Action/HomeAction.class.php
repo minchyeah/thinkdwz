@@ -117,7 +117,7 @@ class HomeAction extends CommonAction
 	 */
 	protected function sidebar_orders()
 	{
-	    $orders = D('SignupOrders')->field('id,contact,school,major')->order('dateline DESC')->limit(18)->select();
+	    $orders = D('SignupOrders')->field('id,contact,school,first_major')->order('dateline DESC')->limit(18)->select();
 	    $this->assign('sidebar_orders', $orders);
 	}
 	

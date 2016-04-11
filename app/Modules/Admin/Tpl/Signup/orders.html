@@ -1,0 +1,44 @@
+<form id="pagerForm" method="post" action="{:U('Signup/orders')}">
+	<input type="hidden" name="pageNum" value="1" />
+	<input type="hidden" name="search_key" value="{$_REQUEST['search_key']}">
+</form>
+<div class="pageContent">
+  <table class="list" width="100%" layoutH="27">
+    <thead>
+	  <tr>
+		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="50">编号</th>
+		<th width="150">学校</th>
+		<th width="150">专业</th>
+		<th width="150">考点</th>
+		<th width="100">联系人</th>
+		<th width="100">联系电话</th>
+		<th width="100">联系QQ</th>
+		<th width="80">报名时间</th>
+		<th width="80">操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo.id}</td>
+		<td>{$vo.school}</td>
+		<td>{$vo.level} - {$vo.first_major}</td>
+		<td>{$vo.city} - {$vo.area}</td>
+		<td>{$vo.contact}</td>
+		<td>{$vo.mobile}</td>
+		<td>{$vo.qq}</td>
+		<td>{$vo.dateline|date="Y-m-d",###}</td>
+		<td>
+		  <a href="__URL__/orderdetail/id/{$vo['id']}" target="navTab" rel="orderdetail" class="btnInfo" title="报名详细信息">报名详细信息</a>
+		  <a href="__URL__/deleteorder/id/{$vo['id']}" target="ajaxTodo" title="确实要删这条记录吗？" class="btnDel">删除</a>
+		</td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" targetType="navTab" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
+</div>

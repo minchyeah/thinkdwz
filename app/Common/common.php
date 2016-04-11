@@ -109,3 +109,9 @@ function showStar($score = 0)
 	}
 	return $str;
 }
+function hidename($name)
+{
+    $first = mb_substr($name, 0, 1, 'utf-8');
+//     $str = str_pad($first, mb_strlen($name, 'utf-8'), '*', STR_PAD_RIGHT);
+    return $first.'**';
+}

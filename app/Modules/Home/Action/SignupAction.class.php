@@ -10,90 +10,64 @@ class SignupAction extends HomeAction
     
 	public function index()
 	{
-	    $id = intval($_GET['id']);
-	    if($id){
-	        return $this->detail();
-	    }
-	    $products = M('Courses');
-	    $where = array('state'=>1);
-	    $total = $products->field('COUNT(1) count')->where($where)->find();
-	    $total_count = intval($total['count']);
-	    
-	    $pager = $this->getPage($total_count, 9, __APP__.'/course/page-__PAGE__.html');
-	    $volist = $products->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
-	    
-	    $this->assign('pager', $pager->show());
-	    $this->assign('volist', $volist);
+	    $this->assign('signup_data', $this->_build_signup_data());
 	    $this->display('Signup:index');
 	}
 	
-	public function detail($id=0)
+	private function _build_signup_data()
 	{
-	    $id = $id ? $id : intval($_GET['id']);
-	    $course = M('Courses')->where(array('state'=>1))
-	                       ->where(array('id'=>$id))
-	                       ->find();
-	    $classes = M('CoursesClass')->where(array('course_id'=>$id))->order('dateline DESC')->select();
-	    $this->assign('course', $course);
-	    $this->assign('classes', $classes);
-		$this->display('Course:detail');
-	}
-	
-	public function clsdetail($id)
-	{
-	    $id = $id ? $id : intval($_GET['cls_id']);
-	    $classes = D('CourseClassView')->where(array('id'=>$id))->find();
-	    if(!is_array($classes) OR empty($classes)){
-	        $this->notfound();
+	    $LevelModel = D('SignupLevel');
+	    $level = $LevelModel->field('signup_id,level,first_major,second_major')->order('sort_order ASC,dateline DESC')->select();
+	    if(!is_array($level)){
+	        $level = array();
 	    }
-	    $this->assign('classes', $classes);
-	    $this->display('Course:clsdetail');
-	}
-
-	public function _empty($name)
-	{
-	    if('page-' == substr($name, 0, 5)){
-	        $_GET['page'] = substr($name, 5);
-	        return $this->index();
+	    foreach ($level as $k=>$v){
+	        $v['first_major'] = explode(',', trim(trim(str_replace('，', ',', $v['first_major']), ',')));
+	        $v['second_major'] = explode(',', trim(trim(str_replace('，', ',', $v['second_major']), ',')));
+	        $levels[$v['signup_id']][] = $v;
 	    }
-	    if('cls-' == substr($name, 0, 4)){
-	        $_GET['cls_id'] = substr($name, 4);
-	        return $this->clsdetail();
+	    
+	    $AreaModel = D('SignupArea');
+	    $area = $AreaModel->field('signup_id,city,area')->order('sort_order ASC,dateline DESC')->select();
+	    if(!is_array($area)){
+	        $area = array();
 	    }
-	    if (is_numeric($name)) {
-	        return $this->detail($name);
+	    foreach ($area as $ak=>$av){
+	        $av['area'] = explode(',', trim(trim(str_replace('，', ',', $av['area']), ',')));
+	        $areas[$av['signup_id']][] = $av;
 	    }
+	    
+	    $SignupModel = D('Signup');
+	    $signups = $SignupModel->field('id,name')->order('sort_order ASC,dateline DESC')->select();
+	    if(!is_array($signups)){
+	        $signups = array();
+	    }
+	    foreach ($signups as $key=>$val){
+	        $val['levels'] = $levels[$val['id']];
+	        $val['areas'] = $areas[$val['id']];
+	        $signups[$key] = $val;
+	    }
+	    return $signups;
 	}
 
 	public function order()
 	{
-	    $model = D('Order');
-	    if($_POST['contact'] == '请输入您的姓名...'){
-	        $_POST['contact'] = '';
-	    }
-	    if($_POST['phone'] == '请输入您的联系电话...'){
-	        $_POST['phone'] = '';
-	    }
-	    if($_POST['address'] == '请输入您的联系地址...'){
-	        $_POST['address'] = '';
-	    }
-	    if($_POST['qq'] == '请输入您的联系QQ...'){
-	        $_POST['qq'] = '';
-	    }
-	    if($_POST['captcha'] == ''){
-	        $this->error('请输入验证码');
-	    }
-	    if(!$this->checkCaptcha()){
-	        $this->error('验证码错误');
-	    }
+// 	    if($_POST['captcha'] == ''){
+// 	        $this->error('请输入验证码');
+// 	    }
+// 	    if(!$this->checkCaptcha()){
+// 	        $this->error('验证码错误');
+// 	    }
+	    $model = D('SignupOrders');
+	    $_POST['is_buy'] = !isset($_POST['is_buy']) ? '否' : $_POST['is_buy'];
 	    $_POST['ip'] = get_client_ip();
 	    $data = $model->create();
 	    if(!$data){
 	        $this->error($model->getError());
 	    }
+	    $data['dateline'] = time();
 	    $model->startTrans();
 	    if (!$data['id']) {
-	        $data['dateline'] = time();
 	        $rs = $model->add($data);
 	    }else{
 	        $rs = $model->save($data);
@@ -102,37 +76,45 @@ class SignupAction extends HomeAction
 	        $model->commit();
 	        $data['dateline'] = date('Y-m-d H:i', $data['dateline']);
 	        $this->mailorder($data);
+	        $this->assign('signup', $data);
 	        $this->success('报名成功！');
 	    }else{
 	        $model->rollback();
 	        $this->error('报名失败！');
 	    }
 	}
+	
+	protected function success()
+	{
+	    $this->display('Signup:success');
+	}
 
 	private function mailorder($data)
 	{
 	    $tomail = C('notify_email');
-	    $subject = '您有新的课程预订!';
+	    $subject = '您有新的报名信息!';
 	    $body = <<<BODY
 	    <body>
-	        <h2>您有新的课程预订</h2>
+	        <h2>您有新的报名信息</h2>
 	        <table class="table" width="100%">
                 <thead>
             	  <tr style="text-align:left;">
-            		<th>报名课程</th>
-            		<th>报名班级</th>
+            		<th>学校</th>
+            		<th>专业</th>
+            		<th>考点</th>
             		<th>联系人</th>
             		<th>联系电话</th>
             		<th>联系QQ</th>
-            		<th>预订时间</th>
+            		<th>报名时间</th>
             	  </tr>
                 </thead>
                 <tbody>
             	  <tr style="text-align:left;">
-            		<td>{$data['course_name']}</td>
-            		<td>{$data['class_name']}</td>
+            		<td>{$data['school']}</td>
+            		<td>{$data['level']} - {$data['first_major']}</td>
+            		<td>{$data['city']} - {$data['area']}</td>
             		<td>{$data['contact']}</td>
-            		<td>{$data['phone']}</td>
+            		<td>{$data['mobile']}</td>
             		<td>{$data['qq']}</td>
             		<td>{$data['dateline']}</td>
             	  </volist>

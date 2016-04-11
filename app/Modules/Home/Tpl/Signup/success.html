@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header_nav" />
+<div class="jz">
+  <div class="nr">
+    <div class="sygt">
+      <h5></h5>
+      <h2>网上报名</h2>
+      <h4>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/signup/">网上报名</a>><a href="">报名结果</a></h4>
+    </div>
+    <div class="wsbm">
+        <div class="wsbmk">
+          <dl>
+            <dt><h2>姓名</h2><h4>{$signup.contact}</h4><b>√</b></dt>
+            <dt><h2>QQ号码</h2><h4>{$signup.qq}</h4><b>√</b></dt>
+            <dt><h2>手机</h2><h4>{$signup.mobile}</h4><b>√</b></dt>
+            <dt><h2>资料</h2><h4>已审核</h4><b>√</b></dt>
+            <dt><h2>报名状态</h2><h4 class="hs">已通过</h4></dt>
+          </dl>
+          <h5>恭喜同学！您的报名已成功，请等待老师与您联系。</h5>
+          <div class="clr"></div>
+        </div>
+        <div class="wsbmwzk">1· 报名成功后三个工作日内，老师会与您联系。<br />
+2· 我们是一家正规的机构，报名的同学比较多，如三个工作日内未收到老师的联系，请主动与我们联系。 <br />
+3· 若发现报考信息有错误请及时与在线老师联系修改。</div>
+        
+        
+      </div>
+      <div class="clr"></div>   
+  </div>
+  <div class="cbl">
+    <include file="Public:sidebar_static" />
+    <include file="Public:sidebar_signup" />
+    <include file="Public:sidebar_cases" />
+  </div>
+  <include file="Public:footer_school" />
+  <include file="Public:footer" />
+</div>
+<include file="Public:qqkefu" />
+<script type="text/javascript">
+var signupData = "{$signup_data|json_encode}";
+function SignupFormSubmit()
+{
+}
+</script>
+</body>
+</html>
