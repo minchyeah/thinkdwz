@@ -53,9 +53,9 @@ class HomeAction extends CommonAction
 		$this->assign('username', session('username'));
 		$this->topnav();
 		$this->slider();
-		$this->footerblock();
-		$this->sidebar_course();
-		$this->sidebar_classes();
+		$this->footerschool();
+		$this->sidebar_cases();
+		$this->sidebar_orders();
 	}
 	
 	protected function notfound($msg = '', $url = '')
@@ -113,13 +113,22 @@ class HomeAction extends CommonAction
 	}
 	
 	/**
+	 * 侧边栏课程
+	 */
+	protected function sidebar_orders()
+	{
+	    $orders = D('SignupOrders')->field('id,contact,school,major')->order('dateline DESC')->limit(18)->select();
+	    $this->assign('sidebar_orders', $orders);
+	}
+	
+	/**
 	 * 侧边栏致学生信
 	 */
-	protected function sidebar_classes()
+	protected function sidebar_cases()
 	{
-	    $model = D('CourseClassView');
-	    $page = $model->field('id,name,image,thumb,course_id,course_name')->order('dateline DESC')->limit(3)->select();
-		$this->assign('sidebar_classes', $page);
+	    $model = D('Cases');
+	    $page = $model->field('id,name,image')->order('sort_order ASC,dateline DESC')->limit(4)->select();
+		$this->assign('sidebar_cases', $page);
 	}
 	
 	/**
@@ -153,17 +162,11 @@ class HomeAction extends CommonAction
 	    return D('Articles')->where($where)->limit($limit)->order('id DESC')->getField('id,title,cate_id');
 	}
 	
-	protected function footerblock()
+	protected function footerschool()
 	{
-	    $model = D('Articles');
-	    $news = $model->where(array('cate_id'=>14))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
-	    $how = $model->where(array('cate_id'=>15))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
-	    $why = $model->where(array('cate_id'=>16))->limit(4)->order('create_time DESC')->getField('id,title,cate_id');
-	    $this->assign('footer_block_news', $news);
-	    $this->assign('footer_block_how', $how);
-	    $this->assign('footer_block_why', $why);
-	    $jobs = D('Jobs')->where(array('state'=>1))->limit(4)->order('dateline DESC')->getField('id,name,number');
-	    $this->assign('footer_block_jobs', $jobs);
+	    $model = D('School');
+	    $school = $model->field('id,name,image')->limit(8)->order('sort_order ASC, dateline DESC')->select();
+	    $this->assign('footer_school', $school);
 	}
 	
 	/**

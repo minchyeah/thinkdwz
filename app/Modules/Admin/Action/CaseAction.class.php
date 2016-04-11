@@ -16,13 +16,13 @@ class CaseAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);
 		$this->assign('numPerPage', $numPerPage);
 		$this->assign('currentPage', $currentPage);
-		$this->assign('catalog', $model->where("type='catalog'")->order('sort_order DESC, dateline DESC')->getField('id,name'));
+		$this->assign('catalog', $model->where("type='catalog'")->order('sort_order ASC, dateline DESC')->getField('id,name'));
 		$this->display();
 	}
 	
@@ -30,7 +30,7 @@ class CaseAction extends AdminAction
 	{
 	    $model = D('Cases');
 	    $where = "type='catalog'";
-	    $catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+	    $catalog = $model->where($where)->order('sort_order ASC, dateline DESC')->select();
 	    
 	    $this->assign('catalog', $catalog);
 		$this->display();
@@ -61,7 +61,7 @@ class CaseAction extends AdminAction
 		$this->assign('vo', $case);
 
 		$where = "type='catalog'";
-		$catalog = $model->where($where)->order('sort_order DESC, dateline DESC')->select();
+		$catalog = $model->where($where)->order('sort_order ASC, dateline DESC')->select();
 		$this->assign('catalog', $catalog);
 		
 		$this->display('add');
@@ -144,7 +144,7 @@ class CaseAction extends AdminAction
 		$currentPage = $currentPage ? $currentPage : 1;
 		$numPerPage = 20;
 		$rowOffset = ($currentPage-1) * $numPerPage;
-		$list = $model->where($where)->order('sort_order DESC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+		$list = $model->where($where)->order('sort_order ASC, dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
 		
 		$this->assign('list', $list);
 		$this->assign('totalCount', $totalCount);

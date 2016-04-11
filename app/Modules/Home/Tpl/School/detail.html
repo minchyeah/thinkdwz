@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header_nav" />
+<div class="jz">
+  <div class="nr">
+    <div class="sygt">
+      <h5></h5>
+      <h2>招生院校</h2>
+      <h4>当前位置：<a href=__APP__/>首页</a>><a href="__APP__/school/">招生院校</a></h4>
+    </div>
+    <div class="szllnr">
+      <div class="szllnrt"><img src="{$school.image|imgsrc=260,260}" class="group3" rel="{$school.image}" title="{$school.title}" /><b></b></div>
+      <dl>
+        <dt>
+          <h1>{$school.name}</h1>
+        <dd><b>联系人：</b>{$school.contact}</dd>
+        <dd><b>联系电话：</b>{$school.phone}</dd>
+        <dd><b>联系QQ：</b><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$school.qq}@qq.com&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$school.qq}:47 &amp;r=0.22914223582483828" alt="点击这里"></a></dd>
+        <dd><b>学校地址：</b>{$school.address}</dd>
+      </dl>
+    </div>
+    <div class="wznr">
+      <notempty name="school.video">
+      	<div class="nysp">
+	        <div class="nyspk">
+	          <div class="nyspem">{$school.video}</div>
+	        </div>
+      	</div>
+      </notempty>
+      <div class="clr"></div>
+      <div class="wznrzw">{$school.content}</div>
+      <div class="clr"></div>
+    </div>
+    
+	<div class="sxp">
+      <if condition="is_array($prev_page)">
+      <span>上一篇：<a href="__APP__/school/{$prev_page.id}.html">{$prev_page.name}</a></span>
+      <else />
+      <span>上一篇：<a href="javascript:;">没有了...</a></span>
+      </if>
+      <if condition="is_array($next_page)">
+      <b>下一篇：<a href="__APP__/school/{$next_page.id}.html">{$next_page.name}</a></b>
+      <else />
+      <b>下一篇：<a href="javascript:;">没有了...</a></b>
+      </if>
+    </div>
+	<div class="clr"></div>    
+  </div>
+  <div class="cbl">
+    <include file="Public:sidebar_static" />
+    <include file="Public:sidebar_signup" />
+    <include file="Public:sidebar_cases" />
+  </div>
+  <include file="Public:footer_school" />
+  <include file="Public:footer" />
+</div>
+<include file="Public:qqkefu" />
+</body>
+</html>

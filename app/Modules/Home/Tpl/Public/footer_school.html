@@ -6,18 +6,9 @@
         <div  class="ScrCont">
           <div id="List1" class="djsb">
             <ul>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp1.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西大学</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp2.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西科学院</a></span></li>
-              <li><a href="zsnr.html" target="_blank" title="当前名称"><img src="images/cp3.jpg" alt="当前名称"/></a><b></b><span class="bs"><a href="zsyx.html" target="_blank">广西财经学院</a></span></li>
+            <volist name="footer_school" id="svo">
+              <li><a href="__APP__/school/{$svo.id}.html" target="_blank" title="{$svo.name}"><img src="{$svo.image|imgsrc=160,120}" alt="{$svo.name}"/></a><b></b><span class="bs"><a href="__APP__/school/{$svo.id}.html" target="_blank">{$svo.name}</a></span></li>
+            </volist>
             </ul>
           </div>
           <div id="List2"></div>

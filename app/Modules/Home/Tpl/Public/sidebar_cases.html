@@ -2,14 +2,13 @@
       <div class="sygt">
         <h5></h5>
         <h2>证书展示</h2>
-        <a href="alzs.html">更多&nbsp;&nbsp;+</a> </div>
+        <a href="__APP__/cases/">更多&nbsp;&nbsp;+</a> </div>
       <div class="sytpq">
         <div class="sytpqs">
           <ul id="mixSlideshow">
-            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs1.jpg" alt="当前标题" /></a><b></b></li>
-            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs2.jpg" alt="当前标题" /></a><b></b></li>
-            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs1.jpg" alt="当前标题" /></a><b></b></li>
-            <li><a href="alzs.html" target="_blank" title="当前标题"><img src="images/zs2.jpg" alt="当前标题" /></a><b></b></li>
+          <volist name="sidebar_cases" id="cvo">
+            <li><a href="__APP__/cases/" target="_blank" title="{$cvo.name}"><img src="{$cvo.image|imgsrc=203,153}" alt="{$cvo.name}" /></a><b></b></li>
+          </volist>
           </ul>
         </div>
         <div class="sytpqx">

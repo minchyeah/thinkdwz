@@ -11,17 +11,13 @@ class CasesAction extends HomeAction
 	public function index()
 	{
 	    $model = M('Cases');
-	    $where = array('state'=>1,'type'=>'catalog');
+	    $where = array('state'=>1,'type'=>'case');
 	    $total = $model->field('COUNT(1) count')->where($where)->find();
 	    $total_count = intval($total['count']);
 	    $pager = $this->getPage($total_count, 12, __APP__.'/cases/page-__PAGE__.html');
 	    
 	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
-	    if(is_array($volist)){
-	        foreach ($volist as $k=>$v){
-	           $volist[$k]['cases'] = $model->where(array('state'=>1,'type'=>'case','cid'=>$v['id']))->limit(0, 10)->order('dateline DESC')->select();
-	        }
-	    }
+
 	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
 		$this->display('Cases:cases_list');
@@ -36,7 +32,7 @@ class CasesAction extends HomeAction
 	    $total_count = intval($total['count']);
 	    $pager = $this->getPage($total_count, 12, __APP__.'/cases/p-'.$cid.'-__PAGE__.html');
 	     
-	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
+	    $volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
 	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
 	    $this->assign('current_type', $model->find($cid));
