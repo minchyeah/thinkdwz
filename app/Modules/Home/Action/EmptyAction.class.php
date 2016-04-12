@@ -18,7 +18,9 @@ class EmptyAction extends HomeAction
     		if('page-' == substr($name, 0, 5)){
     		    $_GET['page'] = substr($name, 5);
     		}elseif('cate-' == substr($name, 0, 5)){
-    		    $_GET['cate_id'] = substr($name, 5);
+    			$args = explode('-', $name);
+    			$_GET['cate_id'] = intval($args[1]);
+    			$_GET['page'] = intval($args[3]);
     		}
     		return A('Article')->category();
     	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact'))){

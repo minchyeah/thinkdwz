@@ -9,12 +9,9 @@
         <li <if condition="$current_nav=='news'"> class="xz"</if>><a href="__APP__/news/">网站公告</a></li>
         <li <if condition="$current_nav=='major'"> class="xz"</if>><a href="__APP__/major/">专业介绍</a>
           <div class="drop_dwon">
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">工程大类</a></div>
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">经管大类</a></div>
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">艺术大类</a></div>
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">文史大类</a></div>
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">农林大类</a></div>
-            <div class="onemenulayout"><a href="zylb.html" target="_blank">医学大类</a></div>
+            <volist name="topnav_major" id="vvo">
+            <div class="onemenulayout"><a href="__APP__/major/cate-{$vvo.id}.html" target="_blank">{$vvo.cate_name}</a></div>
+            </volist>
           </div>
         </li>
         <li <if condition="$current_nav=='webucation'"> class="xz"</if>><a href="__APP__/webucation/">网络教育</a></li>

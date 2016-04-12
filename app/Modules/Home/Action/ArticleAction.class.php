@@ -37,8 +37,13 @@ class ArticleAction extends HomeAction
 	{
 		$model = D('ArticleCategory');
 		$catalog = trim(strval($_GET['catalog']));
-		$current_category = $model->where(array('catalog'=>$catalog))->find();
-		$cate_id = $current_category['id'];
+		$cate_id = intval($_GET['cate_id']);
+		if($cate_id){
+			$current_category = $model->find($cate_id);
+		}else{
+			$current_category = $model->where(array('catalog'=>$catalog))->find();
+			$cate_id = $current_category['id'];
+		}
 		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
 		$cate_ids = array();
 		if ($sub_cates) {
@@ -50,17 +55,35 @@ class ArticleAction extends HomeAction
 		$where['cate_id'] = array('in', $cate_ids);
 		$article = D('Articles');
 		$count = $article->where($where)->count();
-		$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/page-__PAGE__.html');
+		if($catalog == $current_category['catalog']){
+			$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/page-__PAGE__.html');
+		}else{
+			$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/cate-'.$current_category['id'].'-page-__PAGE__.html');
+		}
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $current_category['catalog']);
+		$this->assign('current_nav', $catalog);
+		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
 		$this->assign('pager', $page->show());
 		if(file_exists(THEME_PATH.'/Article/'.$catalog.'.html')){
-		    $this->display('Article:'.$catalog);
+			$this->display('Article:'.$catalog);
 		}else{
-            $this->display('Article:category');
+			$this->display('Article:category');
 		}
+	}
+
+	private function _build_current_position($cate, $catalog)
+	{
+		$str = '<a href="'.__APP__.'/'.$catalog.'/cate-'.$cate['id'].'.html">'.$cate['cate_name'].'</a>>';
+		if(!$cate['pids']){
+			return $str;
+		}else{
+			$pids = explode(',', $cate['pids']);
+			$cid = array_shift($pids);
+			$str = $this->_build_current_position(D('ArticleCategory')->field('id,cate_name')->find($cid), $catalog).$str;
+		}
+		return $str;
 	}
 
 	public function page()
@@ -74,7 +97,7 @@ class ArticleAction extends HomeAction
 		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
 		    $this->display('Article:'.$code);
 		}else{
-            $this->display('Article:page');
+			$this->display('Article:page');
 		}
 	}
 }

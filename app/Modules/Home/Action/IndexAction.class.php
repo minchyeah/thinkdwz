@@ -56,16 +56,5 @@ class IndexAction extends HomeAction
 	    $articles = D('Articles')->field('id,title,status')->where('cate_id IN ('.$idstr.')')->order('id DESC')->limit(7)->select();
 	    return $articles;
 	}
-	
-	public function signup()
-	{
-	    $this->assign('current_nav', 'signup');
-	    $this->display('Index:signup');
-	}
-	
-	public function dosignup()
-	{
-	    ;
-	}
 }
 ?>
