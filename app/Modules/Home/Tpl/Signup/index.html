@@ -197,6 +197,76 @@ var MyRule = {
 		chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
 		mobile: /^(13|14|15|18)[0-9]{9}$/,
 	};
+$("select#school").change(function(){
+	var val = $(this).val();
+	$.each(signupData, function(index,item){
+		if(item.name == val){
+			$("select#level").html('');
+			$.each(item.levels, function(idx,it){
+				$('<option value="'+it.level+'">'+it.level+'</option>').appendTo("select#level");
+				if(idx==0){
+					$("select#first_major").html('');
+					$.each(it.first_major, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#first_major");
+					});
+					$("select#second_major").html('');
+					$.each(it.second_major, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#second_major");
+					});
+				}
+			});
+			$("select#city").html('');
+			$.each(item.areas, function(idx,it){
+				$('<option value="'+it.city+'">'+it.city+'</option>').appendTo("select#city");
+				if(idx==0){
+					$("select#area").html('');
+					$.each(it.area, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#area");
+					});
+				}
+			});
+		}
+	});
+});
+
+$("select#level").change(function(){
+	var school = $("select#school").val();
+	var val = $(this).val();
+	$("select#first_major").html('');
+	$("select#second_major").html('');
+	$.each(signupData, function(index,item){
+		if(item.name == school){
+			$.each(item.levels, function(idx,it){
+				if(it.level==val){
+					$.each(it.first_major, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#first_major");
+					});
+					$.each(it.second_major, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#second_major");
+					});
+				}
+			});
+		}
+	});
+});
+
+$("select#city").change(function(){
+	var school = $("select#school").val();
+	var val = $(this).val();
+	$("select#area").html('');
+	$.each(signupData, function(index,item){
+		if(item.name == school){
+			$.each(item.areas, function(idx,it){
+				if(it.city==val){
+					$.each(it.area, function(i,t){
+						$('<option value="'+t+'">'+t+'</option>').appendTo("select#area");
+					});
+				}
+			});
+		}
+	});
+});
+
 $("input", "#signupform").blur(function(){
 	var $input = $(this);
 	var $b = $input.parent().next('b');
