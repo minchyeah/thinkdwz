@@ -11,12 +11,14 @@
     <div class="sygt">
       <h5></h5>
       <h2>{$current_category.cate_name}</h2>
-      <h4>当前位置：<a href="__APP__/">首页</a>><a href="zylb.html">专业介绍</a></h4>
+      <h4>当前位置：<a href="__APP__/">首页</a>>{$current_position|substr=###,0,-1}</h4>
     </div>
+    <notempty name="sub_cates">
     <div class="zylb">
-      <h3>专业介绍：</h3><a href="zylb.html">工程大类</a>|<a href="zylb.html">经管大类</a>|<a href="zylb.html">艺术大类</a>|<a href="zylb.html">文史大类</a>|<a href="zylb.html">农林大类</a>|<a href="zylb.html">医学大类</a>
+      <h3>专业介绍：</h3><volist name="sub_cates" id="svo"><a href="__APP__/major/cate-{$key}.html">{$svo}</a>|</volist>
       <div class="clr"></div>
     </div>
+    </notempty>
     <div class="wzlb">
       <volist name="articles" id="vo">
         <dl>

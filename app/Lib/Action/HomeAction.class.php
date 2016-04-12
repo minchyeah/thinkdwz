@@ -196,7 +196,12 @@ class HomeAction extends CommonAction
 	
 	protected function visit_count()
 	{
-		cookie('visit_count');
-		$this->assign('visit_count', $visit_count);
+	    $model = D('Settings');
+	    $row = $model->where(array('skey'=>'visit_count'))->find();
+	    if(!session('visit_count')){
+            session('visit_count', $row['svalue'], 86400);
+	        $model->where(array('skey'=>'visit_count'))->setInc('svalue');
+	    }
+		$this->assign('visit_count', $row['svalue']);
 	}
 }

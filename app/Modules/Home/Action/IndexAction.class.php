@@ -12,12 +12,17 @@ class IndexAction extends HomeAction
 		$class = D('CourseClassView')->order('dateline DESC')->limit(3)->select();
 		$this->assign('classes', $class);
 		
-		$this->assign('xuekus', $this->xuekus());
+		$this->assign('majors', $this->xuekus());
 		
 		$this->links();
 		// $page_feature = D('ArticlePage')->field('thumb,content')->where(array('page_code'=>'feature'))->find();
 		// $this->assign('page_feature', $page_feature);
-		// $this->assign('news_list', $this->getArticleList('news', 10));
+		$this->assign('recruit_list', $this->getArticleList('recruit', 14));
+		$this->assign('webucation_list', $this->getArticleList('webucation', 8));
+		$this->assign('chengrengaokao_list', $this->getArticleList('chengrengaokao', 8));
+		$this->assign('guide_list', $this->getArticleList('guide', 8));
+		$this->assign('liniankaoshi_list', $this->getArticleList('liniankaoshi', 8));
+		$this->assign('zsnews_list', $this->getArticleList('zsnews', 8));
 		$this->assign('current_nav', 'index');
 		$this->display('Index:index');
 	}
@@ -25,16 +30,10 @@ class IndexAction extends HomeAction
 	private function xuekus()
 	{
 		$XkModel = D('ArticleCategory');
-		$xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
+		$xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>7))->order('sort_order ASC')->limit(5)->select();
 		if(is_array($xueku)){
 			foreach($xueku as $k=>$xks){
-				$sub_xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>$xks['id']))->order('sort_order ASC')->limit(2)->select();
-				if(is_array($sub_xueku)){
-					foreach($sub_xueku as $j=>$sxk){
-						$sub_xueku[$j]['articles'] = $this->getXkArticles($sxk['id']);
-					}
-				}
-				$xueku[$k]['subs'] = $sub_xueku;
+				$xueku[$k]['articles'] = $this->getXkArticles($xks['id']);
 			}
 		}
 		return $xueku;
@@ -52,7 +51,7 @@ class IndexAction extends HomeAction
 			$ids = array($id);
 		}
 		$idstr = implode(',', $ids);
-		$articles = D('Articles')->field('id,title,status')->where('cate_id IN (' . $idstr . ')')->order('id DESC')->limit(7)->select();
+		$articles = D('Articles')->field('id,title,status')->where('cate_id IN (' . $idstr . ')')->order('id DESC')->limit(10)->select();
 		return $articles;
 	}
 }

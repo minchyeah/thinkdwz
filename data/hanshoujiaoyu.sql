@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
   `login_time` int(10) unsigned NOT NULL DEFAULT '0',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `account` (`account`) USING BTREE
+  KEY `account` (`account`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -61,7 +61,7 @@ CREATE TABLE `admin_menus` (
   `display` tinyint(1) NOT NULL DEFAULT '1',
   `remark` varchar(500) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
-  KEY `pid` (`pid`) USING BTREE
+  KEY `pid` (`pid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -83,7 +83,7 @@ CREATE TABLE `advertise` (
   `start_time` int(10) unsigned NOT NULL DEFAULT '0',
   `end_time` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `position` (`position`) USING BTREE
+  KEY `position` (`position`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -109,7 +109,7 @@ CREATE TABLE `article_category` (
   `final` tinyint(1) NOT NULL DEFAULT '0',
   `deletable` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `code` (`catalog`) USING BTREE
+  KEY `code` (`catalog`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -135,7 +135,7 @@ CREATE TABLE `article_page` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0',
   `visit_count` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `page_code` (`page_code`) USING BTREE
+  KEY `page_code` (`page_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -166,9 +166,9 @@ CREATE TABLE `articles` (
   `source` varchar(60) NOT NULL DEFAULT '',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `cate_id` (`cate_id`) USING BTREE,
-  KEY `user_id` (`user_id`) USING BTREE,
-  KEY `status` (`status`) USING BTREE
+  KEY `cate_id` (`cate_id`),
+  KEY `user_id` (`user_id`),
+  KEY `status` (`status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -222,7 +222,7 @@ CREATE TABLE `course_orders` (
   `address` varchar(255) NOT NULL DEFAULT '',
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `course_id` (`course_id`) USING BTREE
+  KEY `course_id` (`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -291,7 +291,7 @@ CREATE TABLE `links` (
   `category` varchar(20) NOT NULL DEFAULT '',
   `sort_order` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `category` (`category`) USING BTREE
+  KEY `category` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -315,8 +315,8 @@ CREATE TABLE `msgboard` (
   `ip` varchar(15) NOT NULL DEFAULT '',
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `store_id` (`name`) USING BTREE,
-  KEY `user_id` (`email`) USING BTREE
+  KEY `store_id` (`name`),
+  KEY `user_id` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -339,7 +339,7 @@ CREATE TABLE `product_orders` (
   `address` varchar(255) NOT NULL DEFAULT '',
   `dateline` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `product_id` (`product_id`) USING BTREE
+  KEY `product_id` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -508,7 +508,7 @@ CREATE TABLE `signup_orders` (
   `ip` varchar(20) NOT NULL DEFAULT '',
   `phone` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
-  KEY `school` (`school`) USING BTREE
+  KEY `school` (`school`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -530,7 +530,7 @@ CREATE TABLE `slider` (
   `position` varchar(20) NOT NULL DEFAULT '',
   `sort_order` smallint(5) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `position` (`position`) USING BTREE
+  KEY `position` (`position`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -586,8 +586,8 @@ CREATE TABLE `users` (
   `login_ip` varchar(64) NOT NULL DEFAULT '',
   `login_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`) USING BTREE,
-  KEY `email` (`email`) USING BTREE
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------

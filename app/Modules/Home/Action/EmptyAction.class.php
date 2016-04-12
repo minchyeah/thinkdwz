@@ -9,7 +9,7 @@ class EmptyAction extends HomeAction
 	
     public function _empty($name)
     {
-        if (in_array(strtolower(MODULE_NAME), array('major','webucation','news','material','guide','recruit'))){
+        if (in_array(strtolower(MODULE_NAME), array('major','webucation','news','material','guide','recruit','liniankaoshi','zsnews','chengrengaokao'))){
     		$_GET['catalog'] = strtolower(MODULE_NAME);
     		if(is_numeric($name)){
     		    $_GET['id'] = intval($name);

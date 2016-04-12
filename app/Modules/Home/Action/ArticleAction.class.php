@@ -30,6 +30,7 @@ class ArticleAction extends HomeAction
 	    $this->assign('next_page', $next_page);
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $current_category['catalog']);
+		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
 		$this->display('Article:index');
 	}
 	
@@ -65,6 +66,7 @@ class ArticleAction extends HomeAction
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $catalog);
 		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
+		$this->assign('sub_cates', $sub_cates);
 		$this->assign('pager', $page->show());
 		if(file_exists(THEME_PATH.'/Article/'.$catalog.'.html')){
 			$this->display('Article:'.$catalog);
@@ -73,15 +75,16 @@ class ArticleAction extends HomeAction
 		}
 	}
 
-	private function _build_current_position($cate, $catalog)
+	private function _build_current_position($cate)
 	{
-		$str = '<a href="'.__APP__.'/'.$catalog.'/cate-'.$cate['id'].'.html">'.$cate['cate_name'].'</a>>';
 		if(!$cate['pids']){
-			return $str;
+			$str = '<a href="'.__APP__.'/'.$cate['catalog'].'/">'.$cate['cate_name'].'</a>>';
 		}else{
 			$pids = explode(',', $cate['pids']);
+			$topcate = D('ArticleCategory')->field('id,cate_name,catalog,pid,pids')->find(end($pids));
 			$cid = array_shift($pids);
-			$str = $this->_build_current_position(D('ArticleCategory')->field('id,cate_name')->find($cid), $catalog).$str;
+			$str = '<a href="'.__APP__.'/'.$topcate['catalog'].'/cate-'.$cate['id'].'.html">'.$cate['cate_name'].'</a>>';
+			$str = $this->_build_current_position(D('ArticleCategory')->field('id,cate_name,catalog,pid,pids')->find($cid)).$str;
 		}
 		return $str;
 	}
