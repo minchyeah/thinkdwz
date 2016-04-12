@@ -199,27 +199,27 @@ var MyRule = {
 	};
 $("select#school").change(function(){
 	var val = $(this).val();
+	$("select#level").html('');
+	$("select#first_major").html('');
+	$("select#second_major").html('');
+	$("select#city").html('');
+	$("select#area").html('');
 	$.each(signupData, function(index,item){
 		if(item.name == val){
-			$("select#level").html('');
 			$.each(item.levels, function(idx,it){
 				$('<option value="'+it.level+'">'+it.level+'</option>').appendTo("select#level");
 				if(idx==0){
-					$("select#first_major").html('');
 					$.each(it.first_major, function(i,t){
 						$('<option value="'+t+'">'+t+'</option>').appendTo("select#first_major");
 					});
-					$("select#second_major").html('');
 					$.each(it.second_major, function(i,t){
 						$('<option value="'+t+'">'+t+'</option>').appendTo("select#second_major");
 					});
 				}
 			});
-			$("select#city").html('');
 			$.each(item.areas, function(idx,it){
 				$('<option value="'+it.city+'">'+it.city+'</option>').appendTo("select#city");
 				if(idx==0){
-					$("select#area").html('');
 					$.each(it.area, function(i,t){
 						$('<option value="'+t+'">'+t+'</option>').appendTo("select#area");
 					});
