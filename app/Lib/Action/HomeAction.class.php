@@ -56,6 +56,7 @@ class HomeAction extends CommonAction
 		$this->footerschool();
 		$this->sidebar_cases();
 		$this->sidebar_orders();
+		$this->visit_count();
 	}
 	
 	protected function notfound($msg = '', $url = '')
@@ -191,5 +192,11 @@ class HomeAction extends CommonAction
 	    $page = new Page($count, $perPage, '', $url);
 	    $page->setConfig('theme', '%upPage% %prePage% %linkPage% %nextPage% %downPage%');
 	    return $page;
+	}
+	
+	protected function visit_count()
+	{
+		cookie('visit_count');
+		$this->assign('visit_count', $visit_count);
 	}
 }
