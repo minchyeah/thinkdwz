@@ -125,7 +125,7 @@ class HomeAction extends CommonAction
 	protected function sidebar_cases()
 	{
 	    $model = D('Cases');
-	    $page = $model->field('id,name,image')->order('sort_order ASC,dateline DESC')->limit(4)->select();
+	    $page = $model->field('id,name,image')->order('sort_order ASC,dateline DESC')->limit(999)->select();
 		$this->assign('sidebar_cases', $page);
 	}
 	

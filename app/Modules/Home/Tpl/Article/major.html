@@ -22,8 +22,8 @@
     <div class="wzlb">
       <volist name="articles" id="vo">
         <dl>
-          <dt><b>»<a href="__APP__/{$current_category.catalog}/{$vo.id}.html">{$vo.title}</a></b><span>{$vo.create_time|date="Y-m-d",###}</span></dt>
-          <dd><if condition="$vo['thumb']"><span><a href="__APP__/{$current_category.catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></span></if>{$vo.content|stripContent|mb_substr=###,0,280}......</dd>
+          <dt><b>»<a href="__APP__/{$current_catalog}/{$vo.id}.html">{$vo.title}</a></b><span>{$vo.create_time|date="Y-m-d",###}</span></dt>
+          <dd><if condition="$vo['thumb']"><span><a href="__APP__/{$current_catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></span></if>{$vo.content|stripContent|mb_substr=###,0,280}......</dd>
         </dl>
       </volist>
 	</div>

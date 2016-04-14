@@ -30,12 +30,12 @@
 	</div>
 	<div class="sxp">
       <if condition="is_array($prev_page)">
-      <span>上一篇：<a href="__APP__/{$current_category.catalog}/{$prev_page.id}.html">{$prev_page.title}</a></span>
+      <span>上一篇：<a href="__APP__/{$current_catalog}/{$prev_page.id}.html">{$prev_page.title}</a></span>
       <else />
       <span>上一篇：<a href="javascript:;">没有了...</a></span>
       </if>
       <if condition="is_array($next_page)">
-      <b>下一篇：<a href="__APP__/{$current_category.catalog}/{$next_page.id}.html">{$next_page.title}</a></b>
+      <b>下一篇：<a href="__APP__/{$current_catalog}/{$next_page.id}.html">{$next_page.title}</a></b>
       <else />
       <b>下一篇：<a href="javascript:;">没有了...</a></b>
       </if>

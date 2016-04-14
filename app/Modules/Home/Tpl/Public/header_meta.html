@@ -8,7 +8,11 @@
 <link href="{$static_url}/css/ty.css" rel="stylesheet" type="text/css" />
 <link href="{$static_url}/css/colorbox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="{$static_url}/js/jquery.js"></script>
+<if condition="$current_nav=='index'">
 <script type="text/javascript" src="{$static_url}/js/index.js"></script>
+<else />
+<script type="text/javascript" src="{$static_url}/js/ty.js"></script>
+</if>
 <script type="text/javascript" src="{$static_url}/js/qqkf.js"></script>
 <script type="text/javascript" src="{$static_url}/js/colorbox.js"></script>
 <script type="text/javascript" src="{$static_url}/js/min.js"></script>

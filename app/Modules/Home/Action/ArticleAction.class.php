@@ -15,6 +15,7 @@ class ArticleAction extends HomeAction
 		}
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
+		$current_catalog = $this->_get_catalog($current_category);
 
 		$next_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
                 		->where("id<{$article['id']}")
@@ -30,7 +31,8 @@ class ArticleAction extends HomeAction
 	    $this->assign('next_page', $next_page);
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $current_category['catalog']);
-		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
+		$this->assign('current_catalog', $current_catalog);
+		$this->assign('current_position', $this->_build_current_position($current_category));
 		$this->display('Article:index');
 	}
 	
@@ -45,6 +47,7 @@ class ArticleAction extends HomeAction
 			$current_category = $model->where(array('catalog'=>$catalog))->find();
 			$cate_id = $current_category['id'];
 		}
+		$current_catalog = $this->_get_catalog($current_category);
 		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
 		$cate_ids = array();
 		if ($sub_cates) {
@@ -64,7 +67,8 @@ class ArticleAction extends HomeAction
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $catalog);
+		$this->assign('current_nav', $current_catalog);
+		$this->assign('current_catalog', $current_catalog);
 		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
 		$this->assign('sub_cates', $sub_cates);
 		$this->assign('pager', $page->show());
@@ -73,6 +77,18 @@ class ArticleAction extends HomeAction
 		}else{
 			$this->display('Article:category');
 		}
+	}
+	
+	private function _get_catalog($cate)
+	{
+	    if(!$cate['pids']){
+	        $catalog = $cate['catalog'];
+	    }else{
+	        $pids = explode(',', $cate['pids']);
+	        $topcate = D('ArticleCategory')->field('id,cate_name,catalog,pid,pids')->find(end($pids));
+	        $catalog = $topcate['catalog'];
+	    }
+	    return $catalog;
 	}
 
 	private function _build_current_position($cate)
