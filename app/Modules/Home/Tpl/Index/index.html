@@ -62,7 +62,7 @@
         <php> $idx = 0 </php>
         <volist name="majors" id="mvo">
         <dl class="<if condition="$idx%2">syzyjsls<else />syzyjsqs</if>">
-          <dt class="qsbj"><a href="__APP__/major/cate-{$mvo.id}.html">{$mvo.cate_name}</a></dt>
+          <dt class="<if condition="$idx%2">lsbj<else />qsbj</if>"><a href="__APP__/major/cate-{$mvo.id}.html">{$mvo.cate_name}</a></dt>
           <dd><volist name="mvo.articles" id="msvo"><a href="__APP__/major/{$msvo.id}.html" target="_blank">{$msvo.title}</a></volist></dd>
         </dl>
         <php>$idx +=1; </php>
