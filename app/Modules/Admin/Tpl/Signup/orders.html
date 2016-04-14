@@ -8,9 +8,9 @@
 	  <tr>
 		<th width="30"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="50">编号</th>
-		<th width="150">学校</th>
+		<th width="120">学校</th>
 		<th width="150">专业</th>
-		<th width="150">考点</th>
+		<th width="120">考点</th>
 		<th width="100">联系人</th>
 		<th width="100">联系电话</th>
 		<th width="100">联系QQ</th>
@@ -24,7 +24,7 @@
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo.id}</td>
 		<td>{$vo.school}</td>
-		<td>{$vo.level} - {$vo.first_major}</td>
+		<td>{$vo.level}<br />1.{$vo.first_major}<br />2.{$vo.second_major}</td>
 		<td>{$vo.city} - {$vo.area}</td>
 		<td>{$vo.contact}</td>
 		<td>{$vo.mobile}</td>

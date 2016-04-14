@@ -125,7 +125,7 @@ class HomeAction extends CommonAction
 	protected function sidebar_cases()
 	{
 	    $model = D('Cases');
-	    $page = $model->field('id,name,image')->order('sort_order ASC,dateline DESC')->limit(999)->select();
+	    $page = $model->field('id,name,image')->where(array('type'=>'case'))->order('sort_order ASC,dateline DESC')->limit(999)->select();
 		$this->assign('sidebar_cases', $page);
 	}
 	
@@ -157,7 +157,7 @@ class HomeAction extends CommonAction
 	    $where = array();
 	    $where['status'] = 1;
 	    $where['cate_id'] = array('in', $cate_ids);
-	    return D('Articles')->where($where)->limit($limit)->order('id DESC')->getField('id,title,cate_id');
+	    return D('Articles')->where($where)->limit($limit)->order('create_time DESC')->getField('id,title,cate_id');
 	}
 	
 	protected function footerschool()

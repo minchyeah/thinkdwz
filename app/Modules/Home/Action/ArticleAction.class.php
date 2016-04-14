@@ -18,12 +18,12 @@ class ArticleAction extends HomeAction
 		$current_catalog = $this->_get_catalog($current_category);
 
 		$next_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
-                		->where("id<{$article['id']}")
-                		->order('id DESC')
+                		->where("create_time<{$article['create_time']}")
+                		->order('create_time DESC')
                 		->find();
 		$prev_page = $model->field('id,title')->where(array('state'=>1))->where(array('cate_id'=>$article['cate_id']))
-                		->where("id>{$article['id']}")
-                		->order('id ASC')
+                		->where("create_time>{$article['create_time']}")
+                		->order('create_time ASC')
                 		->find();
 		
 		$this->assign('article', $article);
@@ -64,7 +64,7 @@ class ArticleAction extends HomeAction
 		}else{
 			$page = $this->getPage($count, 10, __APP__.'/'.$catalog.'/cate-'.$current_category['id'].'-page-__PAGE__.html');
 		}
-		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('id DESC')->getField('id,title,cate_id,content,thumb,create_time');
+		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('create_time DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
 		$this->assign('current_nav', $current_catalog);

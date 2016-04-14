@@ -42,6 +42,9 @@ class SettingAction extends AdminAction
 		$config['notify_email'] = trim($_POST['notify_email']);
 		$config['kefuqq'] = trim($_POST['kefuqq']);
 		$config['stat_code'] = trim($_POST['stat_code']);
+		$config['visit_count'] = trim($_POST['visit_count']);
+		$config['contact_name'] = trim($_POST['contact_name']);
+		$config['contact_mobile'] = trim($_POST['contact_mobile']);
 		$this->updateconfig($config);
 	}
 	/**

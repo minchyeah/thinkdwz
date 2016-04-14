@@ -19,14 +19,14 @@
           <h3>请仔细选择理想专业<span><b>*</b>为必填项</span></h3>
           <dl>
             <dt><h2>报考院校</h2><h4>
-              <select name="school" id="school">
+              <select name="school" id="school" class="check">
                 <volist name="signup_data" id="vo">
              	<option value="{$vo.name}">{$vo.name}</option>
              	</volist>
               </select></h4><b>*</b>
             </dt>
             <dt><h2>报读层次</h2><h4>
-                <select name="level" id="level">
+                <select name="level" id="level" class="check">
                     <volist name="signup_data.0.levels" id="lvo">
                     <option value="{$lvo.level}">{$lvo.level}</option>
                     </volist>
@@ -34,14 +34,14 @@
                 </h4><b>*</b>
             </dt>
             <dt><h2>第一专业</h2><h4>
-                <select name="first_major" id="first_major">
+                <select name="first_major" id="first_major" class="check">
                     <volist name="signup_data.0.levels.0.first_major" id="fvo">
                     <option value="{$fvo}">{$fvo}</option>
                     </volist>
                 </select></h4><b>*</b>
             </dt>
             <dt><h2>第二专业</h2><h4>
-                <select name="second_major" id="second_major">
+                <select name="second_major" id="second_major" class="check">
                     <volist name="signup_data.0.levels.0.second_major" id="svo">
                     <option value="{$svo}">{$svo}</option>
                     </volist>
@@ -56,14 +56,14 @@
           <h3>请选择考试点<span><b>*</b>为必填项</span></h3>
           <dl>
             <dt><h2>城市</h2><h4>
-                <select name="city" id="city">
+                <select name="city" id="city" class="check">
                 	<volist name="signup_data.0.areas" id="avo">
                     <option value="{$avo.city}">{$avo.city}</option>
                     </volist>
                 </select></h4><b>*</b>
             </dt>
             <dt><h2>考试点</h2><h4>
-            	<select name="area" id="area">
+            	<select name="area" id="area" class="check">
             		<volist name="signup_data.0.areas.0.area" id="a0vo">
                     <option value="{$a0vo}">{$a0vo}</option>
                     </volist>
@@ -75,9 +75,9 @@
         <div class="wsbmk">
           <h3>请选择考试点<span><b>*</b>为必填项</span></h3>
           <dl>
-            <dd><h2>姓名</h2><h4><input type="text" name="contact" /></h4><b>*</b></dd>
+            <dd><h2>姓名</h2><h4><input type="text" name="contact" class="check"/></h4><b>*</b></dd>
             <dd><h2>性别</h2><h4><span><input type="radio" name="gender" value="男" checked />男</span> <span><input type="radio" name="gender" value="女"/>女</span></h4><b></b></dd>
-            <dd><h2>身份证号码</h2><h4><input type="text" name="idcard" /></h4><b>*</b></dd>
+            <dd><h2>身份证号码</h2><h4><input type="text" name="idcard" /></h4><b></b></dd>
             <dd><h2>民族</h2><h4>
             	<select name="minzu" id="minzu">
                   <option value="汉族">汉族</option>
@@ -136,28 +136,28 @@
 				  <option value="门巴族">门巴族</option>
 				  <option value="珞巴族">珞巴族</option>
 				  <option value="基诺族">基诺族</option>
-                </select></h4><b>*</b>
+                </select></h4><b></b>
             </dd>
-            <dd><h2>当前学历</h2><h4><input type="text" name="xueli" /></h4><b>*</b></dd>
-            <dd><h2>原毕业学校</h2><h4><input type="text" name="org_school" /></h4><b>*</b>
+            <dd><h2>当前学历</h2><h4><input type="text" name="xueli" /></h4><b></b></dd>
+            <dd><h2>原毕业学校</h2><h4><input type="text" name="org_school" /></h4><b></b>
             </dd>
-            <dd><h2>籍贯</h2><h4><input type="text" name="jiguan" /></h4><b>*</b></dd>
-            <dd><h2>原专业</h2><h4><input type="text" name="org_major" /></h4><b>*</b></dd>
-            <dd><h2>工作单位</h2><h4><input type="text" name="company" /></h4><b>*</b></dd>
+            <dd><h2>籍贯</h2><h4><input type="text" name="jiguan" /></h4><b></b></dd>
+            <dd><h2>原专业</h2><h4><input type="text" name="org_major" /></h4><b></b></dd>
+            <dd><h2>工作单位</h2><h4><input type="text" name="company" /></h4><b></b></dd>
             <dd><h2>政治面貌</h2><h4>
             	<select name="mianmao" id=""mianmao"">
                     <option value="群众">群众</option>
                     <option value="共青团员">共青团员</option>
                     <option value="中共党员">中共党员</option>
                     <option value="其他民主党派">其他民主党派</option>
-                </select></h4><b>*</b>
+                </select></h4><b></b>
             </dd>
-            <dd><h2>QQ号码</h2><h4><input type="text" name="qq" /></h4><b>*</b>
+            <dd><h2>QQ号码</h2><h4><input type="text" name="qq" data-rule="number" class="check"/></h4><b>*</b>
             </dd>
-            <dd><h2>移动电话</h2><h4><input type="text" name="mobile" /></h4><b>*</b></dd>
-            <dd><h2>紧急联系人电话</h2><h4><input type="text" name="phone" /></h4><b>*</b></dd>
-            <dd><h2>邮政编码</h2><h4><input type="text" name="zipcode" /></h4><b>*</b></dd>
-            <dt><h2>通讯详址</h2><h4><input type="text" name="address" /></h4><b>*</b></dt>
+            <dd><h2>移动电话</h2><h4><input type="text" name="mobile" data-rule="mobile" class="check"/></h4><b>*</b></dd>
+            <dd><h2>紧急联系人电话</h2><h4><input type="text" name="phone" /></h4><b></b></dd>
+            <dd><h2>邮政编码</h2><h4><input type="text" name="zipcode" /></h4><b></b></dd>
+            <dt><h2>通讯详址</h2><h4><input type="text" name="address" /></h4><b></b></dt>
             <dd><h2>职务及职称</h2><h4><select name="zhiwu" id="zhiwu">
                     <option value="不便分类的其他从业人员">不便分类的其他从业人员</option>
                     <option value="国家机关、党群组织、企业、事业单位负责人">国家机关、党群组织、企业、事业单位负责人</option>
@@ -167,7 +167,7 @@
                     <option value="商业、服务业人员">商业、服务业人员</option>
                     <option value="农、林、牧、渔、水利业生产人员">农、林、牧、渔、水利业生产人员</option>
                     <option value="生产、运输设备操作人员及有关人员">生产、运输设备操作人员及有关人员</option>
-                </select></h4><b>*</b>
+                </select></h4><b></b>
             </dd>
           </dl>
           <div class="clr"></div>
@@ -195,7 +195,7 @@ var MyRule = {
 		required: /\S+/,
 		number: /^\d+$/,
 		chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
-		mobile: /^(13|14|15|18)[0-9]{9}$/,
+		mobile: /^(12|13|14|15|16|17|18|19)[0-9]{9}$/,
 	};
 $("select#school").change(function(){
 	var val = $(this).val();
@@ -267,29 +267,41 @@ $("select#city").change(function(){
 	});
 });
 
-$("input", "#signupform").blur(function(){
+$("input.check", "#signupform").blur(function(){
 	var $input = $(this);
 	var $b = $input.parent().next('b');
 	var reg = new RegExp(/\S+/);
+	$b.text("√");
 	if(!reg.test($input.val())){
 		$b.text("×");
-	}else{
-		$b.text("√");
+	}
+	var rule = $input.data().rule;
+	var crule = MyRule[rule] || rule;
+	var creg = new RegExp(crule);
+	if(!creg.test($input.val())){
+		$flag = false;
+		$b.text("×");
 	}
 });
 function SignupFormSubmit()
 {
 	var $form = $("#signupform");
 	var $flag = true;
-	$("input", $form).add("select", $form).each(function(i){
+	$("input.check", $form).add("select.check", $form).each(function(i){
 		var $input = $(this);
 		var $b = $input.parent().next('b');
+		$b.text("√");
 		var reg = new RegExp(/\S+/);
 		if(!reg.test($input.val())){
 			$flag = false;
 			$b.text("×");
-		}else{
-			$b.text("√");
+		}
+		var rule = $input.data().rule;
+		var crule = MyRule[rule] || rule;
+		var creg = new RegExp(crule);
+		if(!creg.test($input.val())){
+			$flag = false;
+			$b.text("×");
 		}
 	});
 	$flag && $form.submit();
