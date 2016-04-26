@@ -19,8 +19,8 @@
           <dt><a href="__APP__/school/{$vo.id}.html"><img src="{$vo.image|imgsrc=213,165}" /></a><b></b></dt>
           <dd name="title">
             <h1>{$vo.name}</h1>
-            <h2>{$vo.name}</h2>
-            <h3><a href="__APP__/school/{$vo.id}.html">【报名】</a><a href="__APP__/school/{$vo.id}.html">【详情】</a></h3>
+            <h2>{$vo.content|stripContent}</h2>
+            <h3><a href="__APP__/signup/">【报名】</a><a href="__APP__/school/{$vo.id}.html">【详情】</a></h3>
           </dd>
         </dl>
         </volist>

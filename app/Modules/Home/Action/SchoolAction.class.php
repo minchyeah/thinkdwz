@@ -16,7 +16,7 @@ class SchoolAction extends HomeAction
 	    $total_count = intval($total['count']);
 	    $pager = $this->getPage($total_count, 12, __APP__.'/school/page-__PAGE__.html');
 	    
-	    $volist = $model->field('id,name,image')->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
+	    $volist = $model->field('id,name,image,content')->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
 
 	    $this->assign('pager', $pager->show());
 	    $this->assign('volist', $volist);
