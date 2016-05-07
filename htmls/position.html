@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>小区管家乐购</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/position.css">
+	</head>
+<body>
+<div id="aside_container"></div>
+<div id="section_container">
+    <!--定位-->
+    <section id="pos-loading" class="active">
+        <figure class="loading">
+            <img src="image/loadingpos.png" alt="">
+            <p class="cor-9 ptxt">定位中</p>
+        </figure>
+    </section>
+    <section id="city-loading">
+        <p class="city-desc bg-gray ">已开通城市</p>
+        <ul class="city-list">
+            <li>深圳市</li>
+        </ul>
+    </section>
+    <section id="position_section"  >
+        <header>
+             <nav class="left"><a href="javascript:window.history.back(-1);"><i class="icon undo"></i></a></nav>            <h1 class="title">请选择您方便的取货点</h1>
+            <!--
+            <nav class="right">
+            <a data-target="section" data-icon="search" href="#search_section"></a>
+            </nav>
+            -->
+        </header>
+        <div class="pos-get">
+            <p class="getpos btn-getpos"></p>
+          <!--  <p class="pos-resultdesc cor-9 displayhidden">定位失败或者该小区没有开通取货点</p>-->
+        </div>
+        <div class="pos-search">
+            <ul class="citylist">
+                <li>定位中...</li>
+            </ul>
+            <input type="text" class="input-search input" placeholder="搜索小区或者取货点" />
+            <i class="ic-searchs"></i>
+            <span class="button btn-green btn-search">搜索</span>
+        </div>
+        <div class="pos-showlist">
+            <div class="empty">
+                <img src="image/position.png" alt="">
+                <p class="cor-9">您可以手动搜索小区或者取货点</p>
+            </div>
+            <ul class="sel-list list">
+            </ul>
+            <ul class="search-list list">
+            </ul>
+        </div>
+		<div class="pos-footer"><span class="button btn-green btn-set">设置为常用取货点</span></div>
+	</section>
+</div>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=77e58981d5a0c79a85de254394a4d4ad&plugin=AMap.CitySearch"></script>
+<!-- lib -->
+<script type="text/javascript" src="js/lib/zepto.js?v=16"></script>
+<!--- app -->
+<script type="text/javascript" src="js/app/config.js?v=16"></script>
+<script type="text/javascript" src="js/gjapi/api.js?v=16"></script><script type="text/javascript" src="js/module/main.js?v=16"></script>
+<script type="text/javascript" src="js/app/position.js?v=16"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name=$store['name'].$settings['site_name'];
+$seo_keywords=$store['name'].','.$settings['seo_keywords'];
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="zbk">
+  <div class="dmy">
+    <div class="dmyl">
+      <include file="storeinfo" />
+      <div class="dmyx">
+        <div id="dmycdt">
+          <ul>
+            <li>全部</li>
+            <volist name="menus" id="vo">
+            <li class="ztwdj">{$cates[$key]}</li>
+            </volist>
+          </ul>
+        </div>
+        <div id="dmycdn">
+          <ol>
+          <volist name="menus" id="vo">
+            <li class="dmycdnfl">{$cates[$key]}</li>
+            <volist name="vo" id="svo">
+            <li class="menulist"><a href="javascript:;" id="li_menu_{$svo.id}" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i class="seltxt">选择</i></h3>
+              <if condition="$svo.image && $svo.remark">
+              <dl style="display:none;">
+                <dt>{$svo.name}</dt>
+                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1 cboxElement" rel="{$svo.image|imgsrc}" title="{$svo.name}" /><b></b></span>
+                  <h4>{$svo.remark}</h4>
+                  <div class="clr"></div>
+                </dd>
+                <dd class="dmycdtc"></dd>
+              </dl>
+              </if>
+              </a>
+            </li>
+            </volist>
+          </volist>
+          </ol>
+          <volist name="menus" id="vo">
+          <ol>
+            <li class="dmycdnfl">{$cates[$key]}</li>
+            <volist name="vo" id="svo">
+            <li class="menulist"><a href="javascript:;" id="li_menu_{$svo.id}" data-id="{$svo.id}" data-name="{$svo.name}" data-price="{$svo.price}">
+              <h3><span>{$svo.name}</span><b>￥{$svo.price}</b><i class="seltxt">选择</i></h3>
+              <if condition="$svo.image && $svo.remark">
+              <dl style="display:none;">
+                <dt>{$svo.name}</dt>
+                <dd> <span><img src="{$svo.image|imgsrc=200,150}" class="group1 cboxElement" rel="{$svo.image|imgsrc}" title="{$svo.name}" alt="{$svo.name}" /><b></b></span>
+                  <h4>{$svo.remark}</h4>
+                  <div class="clr"></div>
+                </dd>
+                <dd class="dmycdtc"></dd>
+              </dl>
+              </if>
+              </a>
+            </li>
+            </volist>
+          </ol>
+          </volist>
+        </div>
+      </div>
+    </div>
+    <div class="dmyr">
+      <div class="jsq">
+        <h2>菜单</h2>
+        <div class="jsqn" id="MyMenus" data-empty="<h6>请点击左侧菜品，我会帮你记下来 ：D</h6>"> 
+          <h6>请点击左侧菜品，我会帮你记下来 ：D</h6>
+        </div>
+        <h3 class="hs">需订餐请拨打左侧外卖电话<a href="javascript:void(0);" id="ClearMyMenus">清空菜单</a></h3>
+      </div>
+      <div class="dmyrxts">小提示：<br />
+        1. 订餐请拨打外卖电话<br />
+        2. 不要饿到自己！订餐建议提早40分钟<br />
+        3. 您可以使用小条，保存订餐记录至我的主页<br />
+        4. 2013价格变动频繁，如信息不符请告诉我们<br />
+        5. 订餐时，不妨说是在周边网上看到的 
+      </div>
+      <include file="sidebar_comment" />
+      <div class="zxpj">
+        <h2>猜你感兴趣的店面</h2>
+        <div class="dmycpk cngxq">
+        <volist name="enjoy_stores" id="vo">
+          <a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank">{$vo.name}</a>
+        </volist>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".group1").colorbox({rel:'group1'});
+	$("li.menulist a").mouseover(function(){
+		$("dl", this).show();
+	}).mouseout(function(){
+		$("dl", this).hide();
+	});
+	$("li.menulist a").click(function(){
+		var data = $(this).data();
+		var me = $("dl#menu_"+data.id, "#MyMenus");
+		if(me.length){
+			MenuInc(data.id, data.price)
+			return false;
+		}
+		$("#li_menu_"+data.id+" .seltxt").text("已选");
+		var dl = '<dl id="menu_'+data.id+'">'
+			  +'<dt>'+data.name+'</dt>'
+			  +'<dd><b onclick="MenuDesc('+data.id+','+data.price+')"></b><span class="count">1</span>份<b class="jsqj" onclick="MenuInc('+data.id+','+data.price+')"></b></dd>'
+			  +'<dd class="jsqjg">￥<span class="price">'+data.price+'</span><b onclick="MenuDel('+data.id+','+data.price+')"></b></dd>'
+			  +'</dl>';
+		if($("span#total_price", "#MyMenus").length){
+			$("div#MyMenus").prepend(dl);
+			var $total = $("span#total_price", "#MyMenus");
+			$total.text(parseFloat($total.text()) + data.price);
+		}else{
+			var total = '<h4>合计：<b>￥<span id="total_price">'+data.price+'</span></b></h4>';
+			$("div#MyMenus").html(dl+total);
+		}
+		return false;
+	});
+	$("a#ClearMyMenus").click(function(){
+		$("div#MyMenus").html($("div#MyMenus").data().empty);
+		$(".seltxt").text("选择");
+		return false;
+	});
+});
+function MenuInc(id, price){
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	$count.text(parseInt($count.text()) + 1);
+	var $price = $("dl#menu_"+id+" span.price", "#MyMenus");
+	$price.text(parseFloat($price.text()) + price);
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) + price);
+}
+function MenuDesc(id, price){
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	var cnt = parseInt($count.text());
+	if(cnt == 1){
+		return;
+	}
+	$count.text(parseInt($count.text()) - 1);
+	var $price = $("dl#menu_"+id+" span.price", "#MyMenus");
+	$price.text(parseFloat($price.text()) - price);
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) - price);
+}
+function MenuDel(id, price){
+	$("#li_menu_"+id+" .seltxt").text("选择");
+	var $count = $("dl#menu_"+id+" span.count", "#MyMenus");
+	var cnt = parseInt($count.text());
+	var $total = $("span#total_price", "#MyMenus");
+	$total.text(parseFloat($total.text()) - cnt*price);
+	$("dl#menu_"+id, "#MyMenus").remove();
+}
+</script>
+<include file="Public:footer" />
+<include file="Public:loginform" />
+<include file="Public:city_selbox" />
+<include file="Public:bshare" />
+<include file="rank" />
+<include file="error" />
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?php	return array ( 3 => array ( 'id' => '3', 'alias' => 'nn', 'title' => '南宁', ), 4 => array ( 'id' => '4', 'alias' => 'lz', 'title' => '柳州', ), 5 => array ( 'id' => '5', 'alias' => 'guangzhou', 'title' => '广州', ), 6 => array ( 'id' => '6', 'alias' => 'shen', 'title' => '深圳', ), );?>

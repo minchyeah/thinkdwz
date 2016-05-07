@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="zbk">
+  <div class="dmy">
+    <div class="dmyl">
+      <include file="storeinfo" />
+      <div class="dmyx">
+        <div class="dmpjt">
+          <b>客户评价</b>
+        </div>
+        <div class="dmpjx">
+          <div class="zxpjn">
+          <volist name="comments" id="vo">
+          <dl>
+            <dt><b>{$vo.username}</b>{$vo.dateline|date="Y-m-d",###}<span><php>for( $ri=0;$ri<$vo['rate'];$ri++){echo '★';}</php></span></dt>
+            <dd>{$vo.content}</dd>
+          </dl>
+          </volist>
+          <h3 class="bs"><a href="pl" class="but">我也评价</a><a href="/store/{$store.id}.html">返回菜单</a></h3>
+          </div>
+          <div class="fy bs">{$page}</div>
+        </div>
+      </div>
+    </div>
+    <div class="dmyr">
+      <div class="jsq dmyrxts">
+        <h2>小提示：</h2>
+        1. 订餐请拨打外卖电话<br />
+        2. 不要饿到自己！订餐建议提早40分钟<br />
+        3. 您可以使用小条，保存订餐记录至我的主页<br />
+        4. 2013价格变动频繁，如信息不符请告诉我们<br />
+        5. 订餐时，不妨说是在周边网上看到的 
+      </div>
+      <include file="sidebar_comment" />
+      <div class="zxpj">
+        <h2>猜你感兴趣的店面</h2>
+        <div class="dmycpk cngxq">
+        <volist name="enjoy_stores" id="vo">
+          <a href="{$city.alias|city_domain}/store/{$vo.id}.html" target="_blank">{$vo.name}</a>
+        </volist>
+        </div>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </div>
+</div>
+<include file="rank" />
+<include file="error" />
+<include file="Public:footer" />
+<include file="Public:loginform" />
+<include file="Public:city_selbox" />
+<include file="Public:bshare" />
+</body>
+</html>

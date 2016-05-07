@@ -1,0 +1,170 @@
+<!--登录框-->
+<div id="faqbg"></div>
+<div class="faqdiv" name="dlk" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li rel="dl">会员登录</li>
+      <li class="ztwdj" rel="zc">会员注册</li>
+    </ul>
+    <h5 class="close" rel="dlk"></h5>
+  </div>
+  <div id="hydlx">
+    <ol>
+    <form id="login_form" action="/user/dologin" method="post">
+      <li>
+        <h4>登录帐号：</h4>
+        <h5>
+          <input name="username" type="text" size="50" onblur="this.value=this.value==''?'请输入您的帐号...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="请输入您的帐号..."/>
+        </h5>
+        <h6 id="errfor_username"></h6>
+      </li>
+      <li>
+        <h4>登录密码：</h4>
+        <h5>
+          <input name="password" type="password" size="50" value=""/>
+        </h5>
+        <h6 id="errfor_password"></h6>
+      </li>
+      <li class="yzm">
+        <h4>验证码：</h4>
+        <h5><span>
+          <input name="captcha" type="text" size="50" />
+          </b> <a href="javascript:;" onclick="$('#login_captcha').attr('src','/user/captcha?sid=login_captcha&width=100&height=48&'+Math.random());return false;">看不清，换一张</a></span> <img id="login_captcha" src="/user/captcha?sid=login_captcha&width=100&height=48" /></h5>
+        <h6 id="errfor_captcha"></h6>
+      </li>
+      <li class="dltj huangs">
+        <h3>
+          <input class="zcdl" type="submit" value="&nbsp;">
+          <a href="__APP__/user/getpwd.html">找回密码</a></h3>
+      </li>
+      <li class="dlggw"><a href="javascript:;" onclick="return false;" target="_blank"><img src="images/ggw12.jpg" /></a></li>
+    </form>
+    </ol>
+    <ol>
+    <form id="signup_form" action="/user/dosignup" method="post">
+      <li>
+        <h4>注册帐号：</h4>
+        <h5>
+          <input name="username" type="text" size="50" onblur="this.value=this.value==''?'请输入注册帐号...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="请输入注册帐号..."/>
+        </h5>
+        <h6 id="errfor_username"></h6>
+      </li>
+      <li>
+        <h4>注册密码：</h4>
+        <h5>
+          <input name="password" type="password" size="50" value=""/>
+        </h5>
+        <h6 id="errfor_password"></h6>
+      </li>
+      <li>
+        <h4>确认密码：</h4>
+        <h5>
+          <input name="repassword" type="password" size="50" value=""/>
+        </h5>
+        <h6 id="errfor_repassword"></h6>
+      </li>
+      <li>
+        <h4>昵称：</h4>
+        <h5>
+          <input name="nickname" type="text" size="50" onblur="this.value=this.value==''?'如：小微...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="如：小微..."/>
+        </h5>
+        <h6 id="errfor_nickname"></h6>
+      </li>
+      <li>
+        <h4>绑定邮箱：</h4>
+        <h5>
+          <input name="email" type="text" size="50" onblur="this.value=this.value==''?'请输入您常用邮箱':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="请输入您常用邮箱"/>
+        </h5>
+        <h6 id="errfor_email"></h6>
+      </li>
+      <li class="yzm">
+        <h4>验证码：</h4>
+        <h5><span>
+          <input name="captcha" type="text" size="50" value=""/>
+          <a href="javascript:;" onclick="$('#signup_captcha').attr('src','/user/captcha?sid=signup_captcha&width=100&height=48&'+Math.random());return false;">看不清，换一张</a></span> <img id="signup_captcha" src="/user/captcha?sid=signup_captcha&width=100&height=48" /></h5>
+        <h6 id="errfor_captcha"></h6>
+      </li>
+      <li class="dltj hs">
+        <h3>
+          <input class="zczc" type="submit" value="&nbsp;">
+          如您已是会员，请<a href="javascript:;" onclick="return false;" rel="0" class="but">登录!</a></h3>
+      </li>
+    </form>
+    </ol>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$.ajaxSetup({
+		cache: false
+	});
+	$("#login_form input").focus(function(){
+		var $this = $(this);
+		$("#errfor_" + $this.attr('name'), "#login_form").html('');
+	});
+	$("#signup_form input").focus(function(){
+		var $this = $(this)
+		$("#errfor_" + $this.attr('name'), "#signup_form").html('');
+	});
+	$("#login_form").ajaxForm({dataType:'json',beforeSubmit:function(arr, $form, options){
+		var flag = true;
+		var $form = $form[0];
+		if($form.username.value == '请输入您的帐号...'){
+			flag = false;
+			$("#errfor_username", "#login_form").text('请输入用户名');
+		}
+		if($form.password.value == ''){
+			flag = false;
+			$("#errfor_password", "#login_form").text('请输入密码');
+		}
+		if($form.captcha.value == ''){
+			flag = false;
+			$("#errfor_captcha", "#login_form").text('请输入验证码');
+		}
+		return flag;
+	},success:function(rs){
+		alert(rs.info);
+		if(rs.status == 1){
+			window.location.reload();
+		}
+	}});
+	$("#signup_form").ajaxForm({dataType:'json',beforeSubmit:function(arr, $form, options){
+		var flag = true;
+		var $form = $form[0];
+		if($form.username.value == '请输入注册帐号...'){
+			flag = false;
+			$("#errfor_username", "#signup_form").text('请输入注册帐号');
+		}
+		if($form.password.value == ''){
+			flag = false;
+			$("#errfor_password", "#signup_form").text('请输入您的密码');
+		}
+		if($form.repassword.value == ''){
+			flag = false;
+			$("#errfor_repassword", "#signup_form").text('请再次输入您的密码');
+		}
+		if($form.password.value != $form.repassword.value){
+			flag = false;
+			$("#errfor_repassword", "#signup_form").text('两次输入的密码不一样');
+		}
+		if($form.nickname.value == '如：小微...'){
+			flag = false;
+			$("#errfor_nickname", "#signup_form").text('请输入您的昵称');
+		}
+		if($form.email.value == '请输入您常用邮箱'){
+			flag = false;
+			$("#errfor_email", "#signup_form").text('请输入您常用邮箱');
+		}
+		if($form.captcha.value == ''){
+			flag = false;
+			$("#errfor_captcha", "#signup_form").text('请输入验证码');
+		}
+		return flag;
+	},success:function(rs){
+		alert(rs.info);
+		if(rs.status == 1){
+			window.location.reload();
+		}
+	}});
+});
+</script>

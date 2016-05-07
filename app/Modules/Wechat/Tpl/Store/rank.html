@@ -1,0 +1,122 @@
+<!--评论-->
+<div class="faqdiv" name="pl" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li>为{$store.name}评价</li>
+    </ul>
+    <h5 class="close" rel="pl"></h5>
+  </div>
+  <form id="rank_form" action="/store/saveComment" method="post">
+  <div id="hydlx">
+    <ol>
+      <li>
+        <h4>给分：</h4>
+        <h5>
+          <div class="pxmr">★★★★★</div>
+          <div id="pxxz">
+            <ol>
+              <li></li>
+            </ol>
+            <ol>
+              <li>★<span>差</span></li>
+            </ol>
+            <ol>
+              <li>★★<span>还行</span></li>
+            </ol>
+            <ol>
+              <li>★★★<span>好</span></li>
+            </ol>
+            <ol>
+              <li>★★★★<span>很好</span></li>
+            </ol>
+            <ol>
+              <li>★★★★★<span>力挺</span></li>
+            </ol>
+          </div>
+          <div id="pxdj">
+            <ul>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            </ul>
+          </div>
+        </h5>
+        <h6 id="errfor_rank"></h6>
+      </li>
+      <li>
+        <h4>姓名：</h4>
+        <h5>
+          <input name="username" type="text" size="50" onblur="this.value=this.value==''?'您的姓名...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#797979';" value="{:cookie('username')}您的姓名..."/>
+        </h5>
+        <h6 id="errfor_username"></h6>
+      </li>
+      <li class="wzy">
+        <h4>内容：</h4>
+        <h5>
+          <textarea name="content"></textarea>
+        </h5>
+        <h6 id="errfor_content"></h6>
+      </li>
+      <li class="yzm">
+        <h4>验证码：</h4>
+        <h5><span>
+          <input name="captcha" type="text" size="50" value=""/>
+          </b> <a href="javascript:;" onclick="$('#rank_apatcha').attr('src','/store/captcha?sid=comment_captcha&width=100&height=48&'+Math.random());return false;">看不清，换一张</a></span> <img id="rank_apatcha" src="/store/captcha?sid=comment_captcha&width=100&height=48" /></h5>
+        <h6 id="errfor_captcha"></h6>
+      </li>
+      <li class="dltj hs">
+        <h3>
+          <input class="pjtj" type="submit" value="&nbsp;">
+          谢谢您的参与！ </h3>
+      </li>
+    </ol>
+  </div>
+  <input type="hidden" id="rank_score" name="rate" value="0">
+  <input type="hidden" id="score_id" name="store_id" value="{$store.id}">
+  </form>
+  <script type="text/javascript">
+	$(function(){
+		$("#hydlx h5 div#pxdj ul li").click(function(){
+			$("#rank_form input#rank_score").val($(this).index());
+			$("#errfor_rank", "#rank_form").text('');
+		});
+		$.ajaxSetup({
+			cache: false
+		});
+		$("#rank_form input").add("#rank_form textarea").focus(function(){
+			var $this = $(this);
+			$("#errfor_" + $this.attr('name'), "#rank_form").html('');
+		});
+		$("#rank_form").ajaxForm({dataType:'json',beforeSubmit:function(arr, $form, options){
+			var flag = true;
+			var $form = $form[0];
+			if($form.rank_score.value == '0'){
+				flag = false;
+				$("#errfor_rank", "#rank_form").text('请选择评分');
+			}
+			if($form.username.value == '您的姓名...'){
+				flag = false;
+				$("#errfor_username", "#rank_form").text('请输入您的姓名');
+			}
+			if($form.content.value == ''){
+				flag = false;
+				$("#errfor_content", "#rank_form").text('请输入内容');
+			}
+			if($form.captcha.value == ''){
+				flag = false;
+				$("#errfor_captcha", "#rank_form").text('请输入验证码');
+			}
+			return flag;
+		},success:function(rs){
+			alert(rs.info);
+			if(rs.status == 1){
+				window.location.reload();
+				$("#rank_form").reset();
+			}
+		}});
+	});
+  </script>
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name=$district['title'].$settings['site_name'];
+$seo_keywords=$district['title'].','.$settings['seo_keywords'];
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="jz sy">
+  <div class="syl">
+    {:W('Slider', array('type'=>'tmpl', 'position'=>'city_'.$city['id']))}
+    <div class="ggy"><b>想订餐？</b>周边网收录{$city.title}外卖{$settings.store_count}家。简单3步，先选择或搜索你的位置：</div>
+    <div class="fq mdf">
+      <dl>
+        <dt><a href="{$city.alias|city_domain}/{$district.alias}/">{$district.title}</a></dt>
+        <volist name="locations" id="vo">
+        <dd class="dfyfl">{$key}</dd>
+        <volist name="vo" id="svo">
+        <dd><a href="{$city.alias|city_domain}/{$district.alias}/{$svo.id}.html">{$svo.title}</a>{$svo.store_count}</dd>
+        </volist>
+        </volist>
+      </dl>
+      <div class="clr"></div>
+    </div>
+    {:W('Advertise', array('type'=>'district', 'position'=>'district_'.$district['id']))}
+  </div>
+  <div class="syr">
+    <div class="sysos heis">
+      <include file="Public:search_form" />
+      <include file="Public:history" />
+    </div>
+    <include file="Public:latest_store" />
+    <include file="Public:hot_foods" />
+    <include file="Public:sidebar_healthy" />
+    <include file="Public:businesslink" />
+    <include file="Public:friendlink" />
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:loginform" />
+<include file="Public:city_selbox" />
+<include file="Public:bshare" />
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- 省市选择框 -->
+<div class="faqdiv" name="qhcs" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li>切换城市</li>
+    </ul>
+    <h5 class="close" rel="qhcs"></h5>
+  </div>
+  <div class="qhcs">
+    <div id="qhcst">
+      <ul>
+        <volist name="cityboxTree" id="vo">
+        <li class="<neq name="i" value="1">ztwdj</neq>"><a href="javascript:;" onclick="return false;">{$vo.title}</a></li>
+        </volist>
+      </ul>
+      <div class="clr"></div>
+    </div>
+    <div id="qhcsb" class="heis">
+      <volist name="cityboxTree" id="vo">
+      <ol>
+        <volist name="vo.child" id="svo">
+        <li><a href="{$svo.alias|city_domain}">{$svo.title}</a></li>
+        </volist>
+      </ol>
+      </volist>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>

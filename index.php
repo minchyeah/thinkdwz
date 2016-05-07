@@ -1,6 +1,6 @@
 <?php
 //error_reporting(0);
-@set_time_limit(240);
+// @set_time_limit(240);
 //开启调试模式
 define("APP_DEBUG", true);
 //根目录

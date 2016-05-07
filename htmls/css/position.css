@@ -1,0 +1,144 @@
+.pos-get{
+	text-align: center;
+	margin:0 auto;
+
+}
+.getpos{
+	border-radius: 22.5px;
+	height:50px;
+	line-height: 45px;
+	width:100%;
+	margin:0 auto;
+}
+.pos-resultdesc{
+	height:30px;
+	margin:10px 0;
+	line-height: 30px;
+	padding-left:10px;
+}
+.pos-search{
+	position:relative;
+	padding:10px;
+	height:64px;
+	line-height:40px;
+	overflow: hidden;
+	float:left;
+	width: 100%;
+	background-color:#fff;
+	margin:10px 0;
+}
+.ic-searchs{position:absolute;top:11px;left:27%;width:38px;height:38px;border:none;background:#fff url(../image/search.png) no-repeat center center;background-size:70%;outline:none;}
+.btn-search{
+	position: absolute;
+	right:10px;
+	width:60px;
+	height:40px;
+	line-height:23px;
+}
+.search-ckd{
+	position: absolute;
+	top:25%;
+	right:10px;
+}
+.search-list{
+	margin-top:10px;
+}
+.citylist{
+	width:25%;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid #d5d5d5;
+	border-right:0;
+	float:left;
+	height:40px;
+	background-color: #fff;
+}
+.pos-search .input-search{
+	display: inline-block;
+	width:53%;
+	height:40px;
+	padding-left:40px;
+	background-color: #fff;
+	border: 1px solid #d5d5d5;
+	border-radius:0;
+}
+.pos-showlist{
+	width:100%;
+	clear: both;
+}
+.empty{
+	text-align: center;
+	line-height: 30px;
+	font-size:16px;
+	display: none;
+}
+.empty>img{
+	width:100%;
+	padding:30px 20px;
+}
+.item>img{
+/*	width:60px;
+	display: inline-block;*/
+}
+.area-desc{
+	display: inline-block;
+	vertical-align: top;
+	width:80%;
+}
+.area-desc>span{
+	display: block;
+	line-height:25px;
+	vertical-align: top;
+}
+
+/**定位中 */
+.loading{
+	padding:90px 50px;
+	text-align: center;
+	line-height: 40px;
+	font-size:18px;
+}
+.loading>img{
+	width: 100%;
+}
+.ptxt{
+	animation:'showtxt' 0.8s ease-in-out 1.5s infinite;
+	-webkit-animation:'showtxt' 0.8s ease-in-out 1.5s infinite;
+}
+@-webkit-keyframes 'showtxt'{
+	0%{
+		opacity:0.5;
+	}
+	50%{
+		opacity:1;
+	}
+	100%{
+		opacity:0.5;
+	}
+}
+/***开通城市***/
+
+.city-list>li,.city-desc{
+	height:50px;
+	line-height: 50px;
+	padding-left:10px;
+	border-bottom:1px solid #d5d5d5;
+}
+.city-list>li{
+	background-color: #fff;
+}
+.btn-set{
+	width:90%;
+	position: fixed;
+	bottom:20px;
+	left:5%;
+}
+
+.pos-footer{
+	width:100%;
+	height:70px;
+	position: fixed;
+	bottom:0;
+	background-color:#fff;
+	border-top:1px solid #d5d5d5;
+}

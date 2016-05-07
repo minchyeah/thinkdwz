@@ -1,0 +1,11 @@
+	  <h2>找外卖<b>Find takeaway</b></h2>
+      <form action="{$city.alias|city_domain}/search/" method="get">
+        <div class="sysosk"> <b></b>
+          <input name="key" type="text" size="50" onblur="this.value=this.value==''?'请输入餐馆名或地址...':this.value;this.style.color='#a50307';" onfocus="this.value='';this.style.color='#c4c4c4';" value="请输入餐馆名或地址..."/>
+          <b class="sysoskh"></b>
+        </div>
+        <div class="sysosa">
+          <a href="/store/append.html"></a>
+          <input type="submit" value="" />
+        </div>
+      </form>
