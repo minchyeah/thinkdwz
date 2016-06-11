@@ -15,7 +15,6 @@
 		<th>用户名</th>
 		<th>昵称</th>
 		<th>邮箱</th>
-		<th>城市</th>
 		<th>状态</th>
 		<th width="60">操作</th>
 	  </tr>
@@ -28,7 +27,6 @@
 		<td>{$vo.account}</td>
 		<td>{$vo.username}</td>
 		<td>{$vo.email}</td>
-		<td>{$cities[$vo['city_ids']]|default="超级管理员"}</td>
 		<td><eq name="vo.status" value="1"><span style="color:green;">启用</span><else /><span style="color:red;">禁用</span></eq></td>
 		<td>
 		  <a href="{:U('User/edit_admin','id='.$vo['id'])}" target="dialog" width="510" height="300" mask="true" maxable="false" class="btnEdit">编辑</a>

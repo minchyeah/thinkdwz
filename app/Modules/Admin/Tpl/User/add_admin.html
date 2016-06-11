@@ -21,24 +21,6 @@
 				<label class="tar">邮箱：</label>
 				<input name="email" type="text" class="required" value="{$vo.email}" size="25"/>
 			</div>
-			<neq name="vo.id" value="1">
-		    <div class="unit">
-		        <label class="tar">省份：</label>
-		        <select class="required combox" name="province" ref="w_combox_city" refUrl="__GROUP__/District/combox/pid/{value}.html">
-		          <option value="">请选择</option>
-		          <volist name="provinces" id="svo">
-		          <option value="{$svo.id}<eq name="svo.id" value="$province_id">" selected="selected</eq>">{$svo.title}</option>
-		          </volist>
-		        </select>
-		        <label class="tar" style="width:60px;">城市：</label>
-		        <select class="required combox" name="city_ids" id="w_combox_city">
-		          <option value="">请选择</option>
-		          <volist name="cities" id="svo">
-		          <option value="{$svo.id}<eq name="svo.id" value="$vo['city_ids']">" selected="selected</eq>">{$svo.title}</option>
-		          </volist>
-		        </select>
-		    </div>
-		    </neq>
 			<div class="unit">
 				<label class="tar">状态：</label>
 				<select class="required combox" name="status">
