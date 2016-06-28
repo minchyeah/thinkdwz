@@ -3,7 +3,7 @@
 /*版头*/
 .bt{
 	height:236px;
-	background:url(../images/bt.jpg) no-repeat center 0px #fff;
+	background:url(../images/bt.jpg) no-repeat center 0px;
 	display:block;
 }
 .btbj{
@@ -12,19 +12,19 @@
 }
 .bt a{
 	display:block;
-	margin:0 0 0 54px;
-	height:56px;
+	margin:0 0 0 96px;
+	height:114px;
 	width:450px;
 	cursor:pointer;
 }
 /*导航*/
 .dh{
-	height:40px;
-	background:#777;
+	height:40px
 }
 .nav{
 	width:985px;
 	margin:0 auto;
+	background:#1db079;
 	height:40px;
 	z-index:2;
 	position:relative;
@@ -70,8 +70,8 @@
 	font-weight: normal;
 }
 .nav ul li .onemenulayout a:hover {
-	background:#fff;
-	color:#000;
+	background:#1db079;
+	color:#fff;
 }
 .drop_dwon {
 	width:230px;
@@ -80,28 +80,31 @@
 	top:36px;
 	display:none;
 	z-index:3;
-	background:#1db079;
+	background:#fff;
 	padding:3px;
 	border-bottom:3px solid #055d3c;
 }
 .nav ul li a.currlayout,.nav ul li.xz a{
-	color:#fff;
+	color:#000;
 	z-index: 999;
 	position: relative;
-	background:#1db079;
+	background:#fff;
 	letter-spacing: 0px;
 }
-.nav a:link, .nav a:visited ,.nav ul li.xz a:link, .nav ul li.xz a:visited {
+.nav a:link, .nav a:visited {
 	color:#fff;
 }
+.nav ul li.xz a:link, .nav ul li.xz a:visited {
+	color:#000;
+}
 .nav .drop_dwon a:link, .nav .drop_dwon a:visited {
-	color:#fff;
+	color:#000;
 }
 .nav ul li.xz .drop_dwon a:hover{
 	color:#000;
 }
 .nav a:hover {
-	color:#fff;
+	color:#000;
 	text-decoration: none;
 }
 .nav a:active {
@@ -118,6 +121,32 @@
 	height:300px;
 	display:block;
 	float:left;
+}
+/*首页公告*/
+.sygg{
+	width:985px;
+	margin:0 auto;
+	height:30px;
+	line-height:30px;
+	border:1px solid #bcbcbc;
+	display:block;
+	overflow:hidden;
+	margin-bottom:19px;
+	border-top:none;
+	background:url(../image/xlb.jpg) no-repeat 17px 8px #fff;
+}
+.sygd{
+	padding-left:43px;
+}
+.sygg ul li{
+	height:30px;
+	overflow:hidden;
+}
+.ggw{
+	margin-top:15px;
+	width:985px;
+	overflow:hidden;
+	display:block;
 }
 /*幻灯片*/
 .sylkhdp {

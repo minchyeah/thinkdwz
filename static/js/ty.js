@@ -9,6 +9,7 @@ $(function(){
         $(this).children('.nav ul li a').removeClass(); 
 	})
 	showInTop();//向上滚动
+	sygd();//公告向上滚动
 })
  jQuery(function(){
 	$(".CategoryTree > ul > li").hover(function(){
@@ -82,7 +83,7 @@ $(document).ready(function(){
 });
 /*向上滚动*/
 function showInTop(){
-	var $obj = $(".syzxbm"); 
+	var $obj = $(".syzxbm");  
 	var scrollTimer; 
 	$obj.hover(function(){ 
 		clearInterval(scrollTimer); 
@@ -90,6 +91,24 @@ function showInTop(){
 		scrollTimer = setInterval(function(){ 
 		scrollNews($obj); 
 		}, 2000 ); 
+	}).trigger("mouseout"); 
+}
+function scrollNews(obj){ 
+	var $self = obj.find("ul:first"); 
+	var lineHeight = $self.find("li:first").height(); 
+	$self.animate({ "margin-top" : -lineHeight +"px" },600 , function(){ 
+	$self.css({"margin-top":"0px"}).find("li:first").appendTo($self); 
+	}) 
+} 
+function sygd(){
+	var $obj = $(".sygd");  
+	var scrollTimer; 
+	$obj.hover(function(){ 
+		clearInterval(scrollTimer); 
+	},function(){ 
+		scrollTimer = setInterval(function(){ 
+		scrollNews($obj); 
+		}, 5000 ); 
 	}).trigger("mouseout"); 
 }
 function scrollNews(obj){ 
