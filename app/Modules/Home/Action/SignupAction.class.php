@@ -52,6 +52,9 @@ class SignupAction extends HomeAction
 
 	public function order()
 	{
+	    if(!IS_POST){
+	        $this->error('非法操作');
+	    }
 // 	    if($_POST['captcha'] == ''){
 // 	        $this->error('请输入验证码');
 // 	    }
