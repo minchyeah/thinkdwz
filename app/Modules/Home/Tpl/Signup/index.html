@@ -172,7 +172,7 @@
           </dl>
           <div class="clr"></div>
           <h5>报名时填写的专业如不满意，尽快联系招生办在线老师QQ进行调剂</h5>
-          <h6><a href="javascript:;" onclick="SignupFormSubmit(); return false;"></a></h6>
+          <h6><a href="javascript:;" onclick="SignupFormSubmit(this); return false;"></a></h6>
           <div class="clr"></div>
         </div>
         <div class="wsbmwzk"><b>一、广西成教招考网声明：</b>1 广西成教招考网为考生免费提供报名与缴费服务，考生可自行决定是否选择广西成教招考网代考生报考所选学校函授点成人高考。 <br />2 考生在广西成教招考网填报信息资料并支付报名费的，即视为自愿委托广西成教招考网报名与缴费。<br />3 考生在广西成教招考网填报信息资料并支付报名费后，由广西成教招考网老师代考生在区考试院报名缴费，并通知考生现场确认、准考证打印与考试等事宜。<br />4 广西成教招考网严格按照自治区物价局、财政厅公布的以下收费标准收取报名费，除此之外不另行收取任何服务费用： （1）高升专100元；（2）高升本120元；（3）专升本100元。<br />5 选择广西成教招考网代报名并报名成功的学生即视为选择在我站公布的函授学习点上课学习（各校上课地点公布在"招考信息"栏目中） <b>二、考生信息填报注意事项：</b>1 学生按报名表所列各项填写信息，填写的内容必须准确、真实、完整，确认报名信息无误再按"提交"键； <br />2 如果报名成功，会出现"报名成功" 的提示页面，请认真阅读页面信息； <br />3 请咨询好专业，学费，上课地点等信息后再确定报名，广西成教招考网老师代考生报名、缴费后，考生如不能去现场确认的，考试费将在11月中旬退还。若需要更改报名信息的，请及时与QQ在线咨询老师联系。 <br />4 您提交信息确认报名成功后，请不要在他处重复报名，重复报名有可能会导致无法注册学籍的严重后果； <br />5 考生可以选择是否购买考前复习资料，购买的资料以快递的方式寄给考生。</div>        
@@ -283,7 +283,7 @@ $("input.check", "#signupform").blur(function(){
 		$b.text("×");
 	}
 });
-function SignupFormSubmit()
+function SignupFormSubmit(obj)
 {
 	var $form = $("#signupform");
 	var $flag = true;
@@ -304,8 +304,11 @@ function SignupFormSubmit()
 			$b.text("×");
 		}
 	});
-	$flag && $form.submit();
-	$form[0].reset();
+	if($flag){
+		$form.submit();
+		$form[0].reset();
+		$(obj).remove();
+	}
 }
 </script>
 </body>
