@@ -10,6 +10,9 @@ class SignupAction extends HomeAction
     
 	public function index()
 	{
+	    $token = rand_string(32);
+	    session('signup_token', $token);
+	    $this->assign('signup_token', $token);
 	    $this->assign('signup_data', $this->_build_signup_data());
 	    $this->display('Signup:index');
 	}
@@ -55,6 +58,11 @@ class SignupAction extends HomeAction
 	    if(!IS_POST){
 	        $this->error('非法操作');
 	    }
+	    $token = session('signup_token');
+	    if($token != $_POST['token']){
+	        $this->error('非法操作或表单已经过期');
+	    }
+	    session('signup_token', null);
 // 	    if($_POST['captcha'] == ''){
 // 	        $this->error('请输入验证码');
 // 	    }
