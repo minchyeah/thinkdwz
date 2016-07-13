@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录-管理中心</title>
-<script language="javascript" type="text/javascript" src="{$static_url}/js/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="{$static_url}/admin/js/jquery-1.7.2.min.js"></script>
 <style type="text/css">
 * {
 	margin: 0;
@@ -31,20 +31,20 @@ img {
 }
 
 .login_box_top {
-	background:	url({$static_url}/images/admin/login_box_top.gif)	no-repeat;
+	background:	url({$static_url}/admin/images/login_box_top.gif)	no-repeat;
 	width: 580px;
 	height: 13px;
 	overflow: hidden
 }
 
 .login_box_mid {
-	background:	url({$static_url}/images/admin/login_box_mid.gif)	repeat-y;
+	background:	url({$static_url}/admin/images/login_box_mid.gif)	repeat-y;
 	width: 580px;
 	height: 289px;
 }
 
 .login_box_bot {
-	background:	url({$static_url}/images/admin/login_box_bot.gif)	no-repeat;
+	background:	url({$static_url}/admin/images/login_box_bot.gif)	no-repeat;
 	width: 580px;
 	height: 13px;
 }
@@ -73,7 +73,7 @@ img {
 }
 
 .login_input {
-	background:	url({$static_url}/images/admin/login_input.gif) no-repeat;
+	background:	url({$static_url}/admin/images/login_input.gif) no-repeat;
 	height: 19px;
 	border: 1px solid #ccc;
 	padding: 2px 0px 2px 4px;
@@ -100,7 +100,7 @@ img {
 }
 
 .login_button {
-	background:	url({$static_url}/images/admin/login_button.gif) no-repeat;
+	background:	url({$static_url}/admin/images/login_button.gif) no-repeat;
 	width: 60px;
 	height: 28px;
 	border: none;
@@ -121,7 +121,7 @@ img#captcha_img{
 	  <div class="login_logo"></div>
 	  <div class="logo_content">
 		<div class="tit">
-		  <img src="{$static_url}/images/admin/guanli_center.gif" />
+		  <img src="{$static_url}/admin/images/guanli_center.gif" />
 		</div>
 		<form action="{:U('Public/checkLogin')}" method="post">
 		  <input type="hidden" name="forward" value="" />

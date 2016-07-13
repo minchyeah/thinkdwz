@@ -4,23 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title><notempty name="sitename">{$sitename} - </notempty>管理中心</title>
-<link href="{$static_url}/js/dwz/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="{$static_url}/js/dwz/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="{$static_url}/css/uploadfile.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{$static_url}/admin/js/dwz/default/style.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{$static_url}/admin/js/dwz/css/core.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{$static_url}/admin/css/uploadfile.css" rel="stylesheet" type="text/css" media="screen"/>
 <!--[if IE]>
-<link href="{$static_url}/js/dwz/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="{$static_url}/admin/js/dwz/css/ieHack.css" rel="stylesheet" type="text/css" media="screen"/>
 <![endif]-->
 <!--[if lte IE 9]>
-<script src="{$static_url}/js/speedup.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/speedup.js" type="text/javascript"></script>
 <![endif]-->
-<script src="{$static_url}/js/jquery-1.7.2.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.cookie.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.validate.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.bgiframe.js" type="text/javascript"></script>
-<script src="{$static_url}/js/xheditor/xheditor-1.1.14-zh-cn.min.js" type="text/javascript"></script>
-<script src="{$static_url}/js/jquery.uploadfile.min.js" type="text/javascript"></script>
-<script src="{$static_url}/js/dwz/dwz.min.js" type="text/javascript"></script>
-<script src="{$static_url}/js/dwz/dwz.regional.zh.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/jquery-1.7.2.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/jquery.validate.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/xheditor/xheditor-1.1.14-zh-cn.min.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/jquery.uploadfile.min.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/dwz/dwz.min.js" type="text/javascript"></script>
+<script src="{$static_url}/admin/js/dwz/dwz.regional.zh.js" type="text/javascript"></script>
 <script type="text/javascript">
 function dialogAjaxMenu(json){
 	json.statusCode = json.status;
@@ -57,7 +57,7 @@ function navTabAjaxMenu(json){
 	navTabAjaxDone(json);
 }
 $(function(){
-	DWZ.init("{$static_url}/js/dwz/dwz.frag.xml", {
+	DWZ.init("{$static_url}/admin/js/dwz/dwz.frag.xml", {
 		loginUrl:"login_dialog.html", loginTitle:"登录",	// 弹出登录对话框
 		//statusCode:{ok:200, error:300, timeout:301}, //【可选】
 		statusCode:{ok:1,error:0},
