@@ -9,7 +9,7 @@ class EmptyAction extends HomeAction
 	
     public function _empty($name)
     {
-        if (in_array(strtolower(MODULE_NAME), array('major','webucation','news','material','guide','recruit','liniankaoshi','zsnews','chengrengaokao'))){
+        if (in_array(strtolower(MODULE_NAME), array('news','activity'))){
     		$_GET['catalog'] = strtolower(MODULE_NAME);
     		if(is_numeric($name)){
     		    $_GET['id'] = intval($name);
@@ -23,7 +23,7 @@ class EmptyAction extends HomeAction
     			$_GET['page'] = intval($args[3]);
     		}
     		return A('Article')->category();
-    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact'))){
+    	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','honour','culture','welcome'))){
     		$_GET['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
     	}else {

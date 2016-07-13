@@ -1,42 +1,224 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<php>
+$site_name = $page['title'].'_'.$settings['site_name']
+</php>
 <include file="Public:header_meta" />
 </head>
 
 <body>
-<include file="Public:header_nav" />
-<div class="jz">
-  <div class="nr">
-    <div class="sygt">
-      <h5></h5>
-      <h2>联系我们</h2>
-      <h4>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/contact.html">联系我们</a>><a href="">内容</a></h4>
+<include file="Public:header" />
+<div class="dingt"></div>
+<include file="Public:slider" />
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>><a href="__APP__/welcome.html">走进晟禾</a>><a href="__APP__/contact.html">联系我们</a></dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">
+      <h2>《联系我们》</h2>
     </div>
-    <div class="wznr">
-        <div class="wznrt">
-          <h1>{$page.title}</h1>
-        </div>
-        <notempty name="page.video">
-        <div class="nysp">
-          <div class="nyspk">
-            <div class="nyspem">{$page.video}</div>
-          </div>
-        </div>
-        </notempty>
-        <div class="wznrzw">{$page.content}</div>
-        <div class="clr"></div>
-      </div>
-      <div class="clr"></div>   
   </div>
-  <div class="cbl">
-    <include file="Public:sidebar_static" />
-    <include file="Public:sidebar_signup" />
-    <include file="Public:sidebar_cases" />
-  </div>
-  <include file="Public:footer_school" />
-  <include file="Public:footer" />
 </div>
+<div class="jz">
+  <div class="ny">
+    <div class="lxwm">
+      <div class="lxwml">
+        <dl>
+          <dt>名称</dt>
+          <dd>南宁巧学教育咨询有限公司</dd>
+        </dl>
+        <dl>
+          <dt>地址</dt>
+          <dd>民族大道92号新城国际1902</dd>
+        </dl>
+        <dl>
+          <dt>详细</dt>
+          <dd>
+            <div class="wznrzw"> <img src="images/lxwm.jpg" title="guangggao" /> 咨询热线：0771-5380790<br/>
+              报名：13677716990（谢老师）   13481185866（尧老师）<br/>
+              QQ：2247818015   602062648</div>
+          </dd>
+        </dl>
+      </div>
+      <div class="lxwmr">
+        <div class="lyk">
+          <ol>
+            <li>
+              <h4>标题：</h4>
+              <h5>
+                <input name="textfield" type="text" id="textfield" size="50" value="标题..." onfocus="if(this.value=='标题...')this.value='';" onblur="if(this.value=='')this.value='标题...';"/>
+              </h5>
+              <h6>*</h6>
+            </li>
+            <li>
+              <h4>电话：</h4>
+              <h5>
+                <input name="textfield" type="text" id="textfield" size="50" value="电话..." onfocus="if(this.value=='电话...')this.value='';" onblur="if(this.value=='')this.value='电话...';"/>
+              </h5>
+              <h6>√</h6>
+            </li>
+            <li>
+              <h4>QQ：</h4>
+              <h5>
+                <input name="textfield" type="text" id="textfield" size="50" value="QQ..." onfocus="if(this.value=='QQ...')this.value='';" onblur="if(this.value=='')this.value='QQ...';"/>
+              </h5>
+              <h6>x</h6>
+            </li>
+            <li>
+              <h4>地址：</h4>
+              <h5>
+                <input name="textfield" type="text" id="textfield" size="50" value="地址..." onfocus="if(this.value=='地址...')this.value='';" onblur="if(this.value=='')this.value='地址...';"/>
+              </h5>
+              <h6>x</h6>
+            </li>
+            <li class="wzy">
+              <h4>内容：</h4>
+              <h5>
+                <textarea name="ly" cols="" rows="" ></textarea>
+              </h5>
+              <h6>*</h6>
+            </li>
+            <li class="yzm">
+              <h4>验证码：</h4>
+              <h5><span>
+                <input name="textfield" type="text" id="textfield" size="50" value=""/>
+                <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
+              <h6>*</h6>
+            </li>
+            <li class="dltj bs">
+              <h3> <a href="###">提交</a> </h3>
+            </li>
+          </ol>
+        </div>
+        <div class="clr"></div>
+        <div class="ditu">
+          <div style="width:580px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
+          <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> 
+          <script type="text/javascript">
+    function initMap(){
+        createMap();
+        setMapEvent();
+        addMapControl();
+        addMarker();
+    }
+    function createMap(){
+        var map = new BMap.Map("dituContent");
+        var point = new BMap.Point(108.372950,22.818503);
+        map.centerAndZoom(point,17);
+        window.map = map;
+    }
+    function setMapEvent(){
+        map.enableDragging();
+        map.disableScrollWheelZoom();
+        map.enableDoubleClickZoom();
+        map.enableKeyboard();
+    }
+    function addMapControl(){
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+                }
+    var markerArr = [{title:"&nbsp;&nbsp;巧学教育&nbsp;&nbsp;",content:"民族大道92号新城国际1902",point:"108.372950|22.818503",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+		 ];
+
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    initMap();
+</script> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
 <include file="Public:qqkefu" />
+
+<div id="faqbg"></div>
+<div class="faqdiv" name="zxyd" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li rel="yd">免费预约设计</li>
+    </ul>
+    <h5 class="close" rel="zxyd"></h5>
+  </div>
+  <div id="hydlx">
+    <h3>您好，您是第<b>16</b>位客户预约</h3>
+    <ol>
+      <li>
+        <h4>姓名：</h4>
+        <h5>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+        </h5>
+        <h6>输入有错误!</h6>
+      </li>
+      <li>
+        <h4>电话：</h4>
+        <h5>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+        </h5>
+        <h6>输入有错误!</h6>
+      </li>
+      <li class="dltj huangs">
+        <h3>
+          <input class="pjtj" type="submit" value="&nbsp;">
+        </h3>
+      </li>
+    </ol>
+    <h3>预约成功后我们的客服人员将在24小时内与您联系！</h3>
+    <h3>如有任何疑问，您也可以直接与我们的客服联系：<b>0771-5552570</b></h3>
+  </div>
+</div>
 </body>
 </html>

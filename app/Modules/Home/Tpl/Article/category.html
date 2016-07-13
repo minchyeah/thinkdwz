@@ -8,34 +8,53 @@ $site_name = $current_category['cate_name'].'_'.$settings['site_name']
 </head>
 
 <body>
-<include file="Public:header_nav" />
-<div class="jz">
-  <div class="nr">
-    <div class="sygt">
-      <h5></h5>
-      <h2>{$current_category.cate_name}</h2>
-      <h4>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/{$current_category.catalog}/">{$current_category.cate_name}</a></h4>
+<include file="Public:header" />
+<div class="dingt"></div>
+<include file="Public:slider" />
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>><a href="__APP__/{$current_category.catalog}/">{$current_category.cate_name}</a></dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">
+      <h2>《{$current_category.cate_name}》</h2>
     </div>
-    <div class="wzlb">
-      <volist name="articles" id="vo">
-        <dl>
-          <dt><b>»<a href="__APP__/{$current_category.catalog}/{$vo.id}.html">{$vo.title}</a></b><span>{$vo.create_time|date="Y-m-d",###}</span></dt>
-          <dd><if condition="$vo['thumb']"><span><a href="__APP__/{$current_category.catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></span></if>{$vo.content|stripContent|mb_substr=###,0,280}......</dd>
-        </dl>
-      </volist>
-      </div>
-      <div class="clr"></div>
-      <div class="sxy bs">{$pager}</div>
-      <div class="clr"></div>    
   </div>
-  <div class="cbl">
-    <include file="Public:sidebar_static" />
-    <include file="Public:sidebar_signup" />
-    <include file="Public:sidebar_cases" />
-  </div>
-  <include file="Public:footer_school" />
-  <include file="Public:footer" />
 </div>
+<div class="jz">
+  <div class="cbl">
+    <div class="cbln">
+      <div class="cblfl"> <a class="xz" href="wzlb.html"><b></b>
+        <h1>公司新闻</h1>
+        <span></span></a> <a href="wzlb.html"><b></b>
+        <h1>行业资讯</h1>
+        <span></span></a> <a href="wzlb.html"><b></b>
+        <h1>装修100问</h1>
+        <span></span></a> <a href="wzlb.html"><b></b>
+        <h1>施工安全</h1>
+        <span></span></a> 
+      </div>
+      <include file="Public:sidebar_activity" />
+    </div>
+  </div>
+  <div class="lny">
+    <div class="wzlb">
+    <volist name="articles" id="vo">
+      <dl>
+        <dt><a href="__APP__/{$current_category.catalog}/{$vo.id}.html">{$vo.title}</a></dt>
+        <dd><if condition="$vo['thumb']"><a href="__APP__/{$current_category.catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></if>{$vo.content|stripContent|mb_substr=###,0,280}...</dd>
+      </dl>
+    </volist>
+    </div>
+    <div class="clr"></div>
+    <div class="fy">{$pager}</div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
 <include file="Public:qqkefu" />
 </body>
 </html>
