@@ -84,7 +84,7 @@
 			var subStrs= new Array(); //定义一数组
 			var subQqlist = strs[i];
 			subStrs = subQqlist.split("|"); //字符分割
-			QqHtml = QqHtml+"<div class='QQList'><a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin="+subStrs[0]+"&site=qq&menu=yes'><img border='0' src='image/2.gif' alt='点击这里'><span>"+subStrs[1]+"</span></a></div>"
+			QqHtml = QqHtml+"<div class='QQList'><span>"+subStrs[1]+"：</span><a target='_blank' href='http://wpa.qq.com/msgrd?v=3&uin="+subStrs[0]+"&site=qq&menu=yes'><img border='0' src='http://wpa.qq.com/pa?p=2:"+subStrs[0]+":47 &amp;r=0.22914223582483828' alt='点击这里'></a></div>"
 		}
 		return QqHtml;
 	}
