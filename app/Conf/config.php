@@ -16,13 +16,13 @@ $config = array(
 	'TMPL_ACTION_ERROR'     => 'Public:error', // 默认错误跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS'   => 'Public:success', // 默认成功跳转对应的模板文件
 	'TMPL_PARSE_STRING' 	=> array( // 模板内容替换
-			' src="image' 	=> ' src="'.__ROOT__.'/static/image',
-			' href="css/' 	=> ' href="'.__ROOT__.'/static/css/',
-			' src="js/' 	=> ' src="'.__ROOT__.'/static/js/',
+			' src="image' 	=> ' src="'.__ROOT__.'/static/home/image',
+			' href="css/' 	=> ' href="'.__ROOT__.'/static/home/css/',
+			' src="js/' 	=> ' src="'.__ROOT__.'/static/home/js/',
 			' src="upload/' => ' src="'.__ROOT__.'/data/upload/',
 			' rel="upload/' => ' rel="'.__ROOT__.'/data/upload/',
 			'background-image:url(upload/' => 'background-image:url('.__ROOT__.'/data/upload/',
-			'background-image:url(image' => 'background-image:url('.__ROOT__.'/static/image',
+			'background-image:url(image' => 'background-image:url('.__ROOT__.'/static/home/image',
 		),
 	'URL_CASE_INSENSITIVE'  => true,   // 默认false 表示URL区分大小写 true则表示不区分大小写
 	'URL_MODEL'             => 2,       // URL访问模式,0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式，提供最好的用户体验和SEO支持
