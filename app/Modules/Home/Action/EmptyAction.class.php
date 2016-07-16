@@ -26,6 +26,9 @@ class EmptyAction extends HomeAction
     	}elseif (in_array(strtolower(MODULE_NAME), array('about','contact','honour','culture','welcome'))){
     		$_GET['code'] = strtolower(MODULE_NAME);
     		A('Article')->page();
+    	}elseif (in_array(strtolower(MODULE_NAME), array('designer','engineer'))){
+    		$_GET['code'] = strtolower(MODULE_NAME);
+    		A('Team')->index(strtolower(MODULE_NAME));
     	}else {
     		$this->notfound();
     	}

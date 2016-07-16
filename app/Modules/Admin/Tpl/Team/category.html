@@ -1,0 +1,80 @@
+<div id="article_category" class="pageContent" style="clear:none;">
+  {$category}
+</div>
+<script type="text/javascript">
+$(function(){
+	// 添加栏目
+	$("#categoryTree a span.add_cate", navTab.getCurrentPanel()).click(function(){
+		var data = $(this).parent().data();
+		var opt = {mask:true,maxable:false,minable:false,resizable:false};
+		$.pdialog.open("{:U('Team/addCategory')}"+"?id="+data.id, "dialogAddCate", "添加新栏目", opt);
+		return false;
+	});
+	// 编辑栏目
+	$("#categoryTree a span.edit_cate", navTab.getCurrentPanel()).click(function(){
+		var data = $(this).parent().data();
+		var opt = {mask:true,maxable:false,minable:false,resizable:false};
+		$.pdialog.open("{:U('Team/editCategory')}"+"?id="+data.id, "dialogAddCate", "编辑栏目", opt);
+		opt.param = data;
+		return false;
+	});
+	// 删除栏目
+	$("#categoryTree a span.delete_cate", navTab.getCurrentPanel()).click(function(){
+		var data = $(this).parent().data();
+        alertMsg.confirm("确定要删除该栏目吗？", {
+        	okCall: function(){
+            	ajaxTodo("{:U('Team/deleteCategory')}"+"?id="+data.id, function(rs){
+            		if(rs.status == DWZ.statusCode.ok){
+            			alertMsg.correct(rs.info);
+            			navTab.reload();
+            		}else{
+            			alertMsg.error(rs.info);
+            		}
+            	});
+        	}
+        });
+		return false;
+	});
+});
+</script>
+
+<style type="text/css">
+
+#article_category .tree li > div{
+	display: block;
+	clear:both;
+	width:100%;
+}
+#article_category #categoryTree div {
+    overflow: hidden;
+    display: inherit;
+    height: 25px;
+    line-height: 25px;
+}
+#article_category #categoryTree a, #article_category #categoryTree span {
+    display: inherit;
+    height: 24px;
+    line-height: 24px;
+}
+#article_category #categoryTree a{
+	border-bottom:1px solid #CCC;
+    *display: block;
+}
+#article_category #categoryTree a span{
+	display:block;
+	cursor:pointer;	
+}
+#article_category #categoryTree a span.cate_title{
+	float:left;
+}
+#article_category #categoryTree a span.cate_act{
+	float:right;
+	margin-right:10px;
+}
+#article_category #categoryTree a span.disable{
+	color: #DDD;
+}
+.tabsPage .tabsPageContent {
+	overflow:auto;
+}
+</style>

@@ -1,0 +1,36 @@
+<form id="pagerForm" onsubmit="return divSearch(this, 'alistBox');" method="post" action="{:U('Team/alist')}">
+	<input type="hidden" name="pageNum" value="1" />
+	<input type="hidden" name="cate_id" value="{$_REQUEST['cate_id']}">
+</form>
+<div class="pageContent">
+  <div class="panelBar">
+    <ul class="toolBar">
+      <li><a class="add" href="__URL__/add/cate_id/{$Think.request.cate_id}" target="navTab" rel="team_member_form" title="添加新文章"><span>新增</span></a></li>
+    </ul>
+  </div>
+  <table class="table" width="100%" layoutH="75">
+    <thead>
+	  <tr>
+		<th width="25"><input type="checkbox" group="id" class="checkboxCtrl"></th>
+		<th width="50">编号</th>
+		<th>标题</th>
+		<th width="30">状态</th>
+		<th width="80">操作</th>
+	  </tr>
+    </thead>
+    <tbody>
+	  <volist id="vo" name="list">
+	  <tr target="sid_article" rel="{$vo['id']}">
+		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
+		<td>{$vo['id']}</td>
+		<td>{$vo.title}</td>
+		<td>{$vo.status|getStatus}</td>
+		<td><a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="article_form" title="编辑文章"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
+	  </tr>
+	  </volist>
+    </tbody>
+  </table>
+  <div class="panelBar">
+    <div class="pagination" rel="alistBox" totalCount="{$totalCount}" numPerPage="{$numPerPage}" pageNumShown="10" currentPage="{$currentPage}"></div>
+  </div>
+</div>
