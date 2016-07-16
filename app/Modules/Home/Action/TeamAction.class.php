@@ -15,11 +15,11 @@ class TeamAction extends HomeAction
 			return $this->detail();
 		}
 		$where = array('state'=>1);
-		$total =  M('Teacher')->field('COUNT(1) count')->where($where)->find();
+		$total =  M('TeamMember')->field('COUNT(1) count')->where($where)->find();
 		$total_count = intval($total['count']);
 		
 		$pager = $this->getPage($total_count, 10, __APP__.'/'.$team.'/page-__PAGE__.html');
-		$volist =  M('Teacher')->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
+		$volist =  M('TeamMember')->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
 
 		$this->assign('pager', $pager->show());
 		$this->assign('volist', $volist);

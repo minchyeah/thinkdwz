@@ -2,27 +2,39 @@
 <form method="post" action="{:U('Team/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
   <div class="pageFormContent" layoutH="55">
 	<div class="unit">
-	  <label>文章标题：</label>
-	  <input name="title" value="{$vo.title}" class="required" size="50" />
+	  <label>姓名：</label>
+	  <input name="name" value="{$vo.name}" class="required" size="50" />
 	</div>
 	<div class="unit">
-	  <label>文章来源：</label>
-	  <input name="source" value="{$vo.source}" class="required" size="30" />
+	  <label>性别：</label>
+	  <input name="gender" type="radio" value="男<if condition="$vo['gender']=='男'">" checked="true</if>" class="required" size="50" /> 男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <input name="gender" type="radio" value="女<if condition="$vo['gender']=='女'">" checked="true</if>" class="required" size="50" /> 女
 	</div>
 	<div class="unit">
-	  <label>文章状态：</label>
-	  <select name="status">
-	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">显示</option>
-	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">不显示</option>
-	  </select>
+	  <label>头衔：</label>
+	  <input name="title" value="{$vo.title}" class="required" size="30" />
 	</div>
 	<div class="unit">
-	  <label>视频代码：</label>
-	  <textarea name="video" style="height:40px;width:600px;">{$vo.video}</textarea>
+	  <label>工龄：</label>
+	  <input name="team_age" value="{$vo.team_age}" class="required" size="30" />
 	</div>
 	<div class="unit">
-	  <label>文章内容：</label>
-	  <textarea class="editor" name="content" style="height:400px;width:800px;" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.content}</textarea>
+	  <label>风格：</label>
+	  <php>$case_styles = str2arr($settings['case_style']); $styles = str2arr($vo['style']);</php>
+	  <volist name="case_styles" id="svo">
+	    <input name="style[]" type="checkbox" value="{$svo}<if condition="in_array($svo, $styles)">" checked="true</if>">{$svo}&nbsp;&nbsp;
+	  </volist>
+	</div>
+	<div class="unit">
+	  <label>图片：</label>
+	  <if condition="$vo['image']"><img src="{$vo.image|imgsrc=###,100,100}" />
+	  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
+	  </if>
+	  <input name="imgfile" type="file" size="30" />
+	</div>
+	<div class="unit">
+	  <label>设计理念：</label>
+	  <textarea name="detail" style="height:60px;width:600px;">{$vo.detail}</textarea>
 	</div>
   </div>
   <div class="formBar">

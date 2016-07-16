@@ -1,14 +1,14 @@
 <div class="pageContent">
 	<div class="tabs" currentIndex="0" eventType="click">
 		<form method="post" action="{:U('Setting/save')}" class="pageForm required-validate" onsubmit="return validateCallback(this, navTabAjaxMenu)">
-		<!-- <div class="tabsHeader">
+		<div class="tabsHeader">
 			<div class="tabsHeaderContent">
 				<ul>
 					<li><a href="javascript:;"><span>基本设置</span></a></li>
 					<li><a href="javascript:;"><span>其它设置</span></a></li>
 				</ul>
 			</div>
-		</div> -->
+		</div>
 		<div class="tabsContent layoutBox" layoutH="38" style="position: relative;">
 		  <div>
 			<div class="pageFormContent">
@@ -55,6 +55,47 @@
 				<div class="unit">
 					<label class="tar">&nbsp;</label>
 					多个QQ用','隔开，QQ和客服名用'|'隔开
+				</div>
+			</div>
+			<div class="formBar">
+				<ul>
+					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">保 存</button></div></div></li>
+				</ul>
+			</div>
+		  </div>
+		  <div>
+			<div class="pageFormContent">
+				<div class="unit">
+					<label class="tar">风格：</label>
+					<textarea name="case_style" style="width:500px;height:60px;">{$case_style}</textarea>
+				</div>
+				<div class="unit">
+					<label class="tar">&nbsp;</label>
+					多个风格之间用','隔开
+				</div>
+				<div class="unit">
+					<label class="tar">户型：</label>
+					<textarea name="case_type" style="width:500px;height:60px;">{$case_type}</textarea>
+				</div>
+				<div class="unit">
+					<label class="tar">&nbsp;</label>
+					多个户型之间用','隔开
+				</div>
+				<div class="unit">
+					<label class="tar">面积：</label>
+					<textarea name="case_area" style="width:500px;height:60px;">{$case_area}</textarea>
+				</div>
+				<div class="unit">
+					<label class="tar">&nbsp;</label>
+					多个面积之间用','隔开
+				</div>
+				<div class="unit">
+					<label class="tar">预算：</label>
+					<textarea name="case_budget" style="width:500px;height:60px;">{$case_budget}</textarea>
+				</div>
+				<div class="unit">
+					<label class="tar">&nbsp;</label>
+					多个预算之间用','隔开
 				</div>
 			</div>
 			<div class="formBar">

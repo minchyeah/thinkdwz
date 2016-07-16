@@ -45,6 +45,10 @@ class SettingAction extends AdminAction
 		$config['visit_count'] = trim($_POST['visit_count']);
 		$config['contact_name'] = trim($_POST['contact_name']);
 		$config['contact_mobile'] = trim($_POST['contact_mobile']);
+		$config['case_style'] = trim($_POST['case_style']);
+		$config['case_type'] = trim($_POST['case_type']);
+		$config['case_area'] = trim($_POST['case_area']);
+		$config['case_budget'] = trim($_POST['case_budget']);
 		$this->updateconfig($config);
 	}
 	/**

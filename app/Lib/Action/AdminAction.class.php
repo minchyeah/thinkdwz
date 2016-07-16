@@ -15,6 +15,14 @@ class AdminAction extends CommonAction
 		$this->_privileges();
 		$this->assign('username', session('username'));
 		$this->assign('admin', session('admin'));
+		$settings = array();
+		$rs = D('Settings')->field('skey,svalue')->select();
+		if (is_array($rs)){
+			foreach ($rs as $k=>$v){
+				$settings[$v['skey']] = $v['svalue'];
+			}
+		}
+		$this->assign('settings', $settings);
 	}
 	
 	/**

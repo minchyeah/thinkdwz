@@ -115,3 +115,8 @@ function hidename($name)
 //     $str = str_pad($first, mb_strlen($name, 'utf-8'), '*', STR_PAD_RIGHT);
     return $first.'**';
 }
+function str2arr($str, $delimiter=',', $ext_delimiter = '，')
+{
+	$string = str_replace($ext_delimiter, $delimiter, $str);
+	return explode($delimiter, $string);
+}

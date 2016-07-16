@@ -47,7 +47,7 @@ class TeamAction extends AdminAction
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->where($where)->order('create_time DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -74,13 +74,18 @@ class TeamAction extends AdminAction
     public function save()
     {
     	$model = D('TeamMember');
-    	$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
+    	if ($_FILES['imgfile']['name']) {
+    		$image = $this->saveImage($_FILES['imgfile']);
+    		if ($image) {
+    			$_POST['image'] = $image;
+    		}
+    	}
+    	$_POST['style'] = implode(',', $_POST['style']);
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());
     	}
-    	$data['create_time'] = time();
-    	$data['user_id'] = intval(session('admin_id'));
+    	$data['dateline'] = time();
     	if (!$data['id']) {
     		$rs = $model->add($data);
     	}else{
