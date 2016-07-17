@@ -1,6 +1,10 @@
 <div class="pageContent">
-<form method="post" action="{:U('Case/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+<form method="post" id="CaseForm" action="{:U('Case/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
   <div class="pageFormContent" layoutH="55">
+	<div class="unit">
+	  <label>名称：</label>
+	  <input name="name" value="{$vo.name}" class="required" size="30" />
+	</div>
 	<div class="unit">
 	  <label>面积：</label>
 	  <input name="area" value="{$vo.area}" class="required" size="30" />
@@ -30,21 +34,45 @@
 	<div class="unit">
 	  <label>设计师：</label>
 	  <select name="designer">
-	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">显示</option>
-	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">不显示</option>
+	    <volist name="designers" id="dsvo">
+	    <option value="{$dsvo.id}<eq name="vo.designer" value="$dsvo['id']">" selected="selected</eq>">{$dsvo.name}</option>
+	    </volist>
 	  </select>
 	</div>
 	<div class="unit">
 	  <label>工程师：</label>
 	  <select name="engineer">
-	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">显示</option>
-	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">不显示</option>
+	    <volist name="engineers" id="esvo">
+	    <option value="{$esvo.id}<eq name="vo.engineer" value="$esvo['id']">" selected="selected</eq>">{$esvo.name}</option>
+	    </volist>
 	  </select>
 	</div>
 	<div class="unit">
 	  <label>介绍：</label>
-	  <textarea name="detail" style="height:60px;width:600px;">{$vo.content}</textarea>
+	  <textarea name="detail" style="height:60px;width:600px;">{$vo.detail}</textarea>
 	</div>
+	<div class="unit">
+		<label>展示图片：</label>
+		<div class="divider"></div>
+		  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" />
+		  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
+		  </if>
+		  <input class="<if condition="!$images[0]"></if>" name="imgfile" type="file" size="30" />
+	</div>
+			
+	<volist name="images" id="ivo">
+	<if condition="$i gt 1">
+	<php>$ij = $i-1;</php>
+	<div class="unit">
+		<label>&nbsp;</label>
+		<div class="divider"></div>
+		  <if condition="$images[$ij]"><img src="{$images[$ij]|imgsrc=###,100,100}" />
+		  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片"  href="javascript:;" class="delimg" data-imgidx="{$ij}">X</a></div>
+		  </if>
+		  <input name="imgfile{$ij}" type="file" size="30" />
+	</div>
+	</if>
+	</volist>
   </div>
   <div class="formBar">
 	<ul>
@@ -54,5 +82,28 @@
   </div>
   <input type="hidden" name="cate_id" value="{$vo.cate_id}">
   <input type="hidden" name="id" value="{$vo.id}">
+<input name="img0" type="hidden" value="{$images[0]}" />
+<volist name="images" id="ivo">
+<if condition="$i gt 1">
+<input name="img{$i-1}" type="hidden" value="{$ivo}" />
+</if>
+</volist>
 </form>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$("form#CaseForm .nowrap a.delimg").click(function(event){
+		if(!confirm("确定要删除该图片吗")){
+			return false;
+		}
+		var $this = $(this);
+		$form = $this.parents("form");
+		$form.find("input[name='img"+$this.data('imgidx')+"']").remove();
+		$parent = $this.parent();
+		$parent.siblings("img").remove();
+		$parent.remove();
+		return false;
+	});
+});
+</script>

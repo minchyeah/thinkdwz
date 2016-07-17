@@ -47,7 +47,7 @@ class CaseAction extends AdminAction
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->where($where)->order('create_time DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	 
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
@@ -58,6 +58,9 @@ class CaseAction extends AdminAction
     
     public function add()
     {
+    	$this->_team();
+    	$images = array_pad(array(), 12, '');
+    	$this->assign('images', $images);
     	$vo['cate_id'] = intval($_REQUEST['cate_id']);
     	$this->assign('vo', $vo);
     	$this->display();
@@ -65,15 +68,74 @@ class CaseAction extends AdminAction
     
     public function edit()
     {
+    	$this->_team();
     	$id =  intval($_REQUEST['id']);
     	$model = D('Cases');
-    	$this->assign('vo', $model->find($id));
+    	$vo = $model->find($id);
+		$images = json_decode($vo['images'], true);
+		$images = array_pad($images, 12, '');
+		$this->assign('images', $images);
+    	$this->assign('vo', $vo);
     	$this->display('add');
+    }
+    
+    private function _team()
+    {
+    	$dcids = array(22);
+    	$dsids = M('TeamCategory')->where(array('pid'=>22))->field('id')->select();
+    	if(is_array($dsids)){
+    		foreach ($dsids as $v){
+    			array_push($dcids, intval($v['id']));
+    		}
+    	}
+    	$where = array('cate_id'=>array('IN', $dcids));
+    	$designers = M('TeamMember')->field('id,name')->where($where)->select();
+    	
+    	$ecids = array(23);
+    	$esids = M('TeamCategory')->where(array('pid'=>23))->field('id')->select();
+    	if(is_array($esids)){
+    		foreach ($esids as $v){
+    			array_push($ecids, intval($v['id']));
+    		}
+    	}
+    	$where = array('cate_id'=>array('IN', $ecids));
+    	$engineers = M('TeamMember')->field('id,name')->where($where)->select();
+    	
+    	$this->assign('designers', $designers);
+    	$this->assign('engineers', $engineers);
     }
     
     public function save()
     {
     	$model = D('Cases');
+    	$_POST['style'] = implode(',', $_POST['style']);
+    	$images = array();
+    	if ($_FILES['imgfile']['name']) {
+    		$image = $this->saveImage($_FILES['imgfile']);
+    		if ($image) {
+    			$images[0] = $image;
+    		}
+    	}
+    	$images[0] = $images[0] ? $images[0] : $_POST['img0'];
+    	for ($i=1; $i<=7; $i++){
+    		$formName = 'imgfile'.$i;
+    		if ($_FILES[$formName]['name']) {
+    			$image = $this->saveImage($_FILES[$formName]);
+    			if ($image) {
+    				$images[$i] = $image;
+    			}else{
+    				$images[$i] = '';
+    			}
+    		}
+    		$images[$i] = $images[$i] ? $images[$i] : $_POST['img'.$i];
+    	}
+    	$saveimgs = array();
+    	foreach ($images as $img){
+    		if($img){
+    			$saveimgs[]  = $img;
+    		}
+    	}
+    	$_POST['images'] = json_encode($saveimgs);
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());

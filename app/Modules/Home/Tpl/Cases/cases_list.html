@@ -32,184 +32,46 @@
     <div class="ztfl">
       <dl>
         <dt>风格<span>STYLE</span></dt>
-        <dd><a href="#" class="xz">全部</a><a href="#">锐中式</a><a href="#">后现代</a><a href="#">欧陆经典</a><a href="#">北美风情</a><a href="#">地中海</a><a href="#">北欧生活</a><a href="#">玩乐主义</a><a href="#">简约主义</a><a href="#">东南亚风</a><a href="#">简约主义</a><a href="#">东南亚风1</a><a href="#">简约主义</a><a href="#">东南亚风</a></dd>
+        <dd><a href="#" class="xz">全部</a><php>$styles = str2arr($settings['case_style']);</php><volist name="styles" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>户型<span>TYPE</span></dt>
-        <dd><a href="#" class="xz">全部</a><a href="#">一居室</a><a href="#">两居室</a><a href="#">三居室</a><a href="#">四居室</a><a href="#">别墅</a><a href="#">五居室</a><a href="#">复式楼</a></dd>
+        <dd><a href="#" class="xz">全部</a><php>$types = str2arr($settings['case_type']);</php><volist name="types" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>面积<span>AREA</span></dt>
-        <dd><a href="#" class="xz">全部</a><a href="#">50～80平米</a><a href="#">80～100平米</a><a href="#">100～120平米</a><a href="#">120平米以上</a></dd>
+        <dd><a href="#" class="xz">全部</a><php>$areas = str2arr($settings['case_area']);</php><volist name="areas" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>预算<span>BUDGET</span></dt>
-        <dd><a href="#" class="xz">全部</a><a href="#">5万以下</a><a href="#">两居室</a><a href="#">三居室</a><a href="#">四居室</a><a href="#">别墅</a><a href="#">五居室</a><a href="#">复式楼</a></dd>
+        <dd><a href="#" class="xz">全部</a><php>$budgets = str2arr($settings['case_budget']);</php><volist name="budgets" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
       </dl>
       <div class="clr"></div>
     </div>
     <div class="ztlb">
       <div class="syztlb">
-        <ol>
+        <volist name="volist" id="vo">
+        <ol><php> $images = json_decode($vo['images'])</php>
           <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt1.jpg" alt="当前标题" /></a><b></b></h4>
+            <h4><a href="__APP__/cases/{$vo.id}.html" title="{$vo.name}"><img src="{$images.0|imgsrc=280,280}" alt="{$vo.name}" /></a><b></b></h4>
           </li>
           <li>
-            <h1>公园大地110平米现代简约风格</h1>
+            <h1>{$vo.name}</h1>
           </li>
           <li>
-            <h2>现代/三居/110㎡</h2>
+            <h2>{$vo.style}/{$vo.type}/{$vo.area}㎡</h2>
           </li>
           <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
+            <h3>{$vo.detail}...</h3>
           </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
+          <li class="jbian"><a href="__APP__/cases/{$vo.id}.html"><b></b>
             <h5>查看详情</h5>
             <span></span></a></li>
         </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt2.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt3.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt4.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt1.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt2.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt3.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/zt4.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
-        <ol>
-          <li>
-            <h4><a href="ztnr.html" title="当前标题"><img src="images/gc3.jpg" alt="当前标题" /></a><b></b></h4>
-          </li>
-          <li>
-            <h1>公园大地110平米现代简约风格</h1>
-          </li>
-          <li>
-            <h2>现代/三居/110㎡</h2>
-          </li>
-          <li>
-            <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
-          </li>
-          <li class="jbian"><a href="ztnr.html"><b></b>
-            <h5>查看详情</h5>
-            <span></span></a></li>
-        </ol>
+        </volist>
         <div class="clr"></div>
       </div>
-      <div class="fy"> <span><a href="#" title="上一页" class="syy"><b></b>
-        <h5></h5>
-        </a></span> <a href="###" class="xz">1</a> <a href="#">2</a> <a href="#">3</a> <span>......</span> <a href="#">9</a> <span><a href="#" title="下一页" class="xyy"><b></b>
-        <h5></h5>
-        </a></span> </div>
+      <div class="fy">{$pager}</div>
     </div>
   </div>
   <div class="clr"></div>

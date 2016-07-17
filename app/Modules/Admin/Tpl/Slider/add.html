@@ -21,6 +21,13 @@
 				<input type="text" name="target" size="50" value="{$vo.target}">
 			</div>
 			<div class="unit">
+				<label style="text-align:right;">展示位置：</label>
+				<select name="position">
+					<option value="index<eq name="vo.position" value="index">" selected="selected</eq>">首页</option>
+					<option value="innert<eq name="vo.position" value="innert">" selected="selected</eq>">内页</option>
+				</select>
+			</div>
+			<div class="unit">
 				<input type="hidden" name="position" value="index">
 				<label style="text-align:right;">排序：</label>
 				<input type="text" name="sort_order" size="5" value="{$vo.sort_order}">

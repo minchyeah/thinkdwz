@@ -6,29 +6,87 @@
 
 <body>
 <include file="Public:header" />
+<div class="dingt"></div>
 <include file="Public:slider" />
-<div class="jz ny">
-  <div class="cbl">
-    <include file="Public:sidebar_course" />
-    <include file="Public:sidebar_letter" />
-    <include file="Public:sidebar_jinbang" />
-  </div>
-  <div class="nyn">
-    <div class="dqwz">
-      <h1>作品欣赏</h1>
-      <span>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/cases/">作品欣赏</a>><a href="__APP__/cases/{$current_type.id}.html">{$current_type.name}</a></span>
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>><a href="__APP__/cases/">展厅</a>><if condition="is_array($case_category)"><a href="__APP__/cases/cate-{$case_category.id}.html">{$case_category.cate_name}</a>></if><a href="">内容</a></dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">c
+      <h2>《{$case_category.cate_name}》</h2>
     </div>
-    <div class="zpxs">
-      <volist name="volist" id="vo">
-      <dl>
-        <dt><img src="{$vo.image|imgsrc=270,270}" class="group1" rel="{$vo.image|imgsrc}" title="{$vo.name}" /><b></b></dt>
-        <dd>{$vo.name}</dd>
-      </dl>
-      </volist>
+  </div>
+</div>
+<div class="jz">
+  <div class="ny">
+    <div class="nrt">
+      <div class="nrtl">
+        <php>$images = json_decode($vo['images']);</php>
+        <div id="ztnrd">
+          <volist name="images" id="ivo">
+          <ol><li><img src="{$ivo|imgsrc=580,580}" class="group3" rel="{$ivo|imgsrc}" alt="{$vo.name}" /><b></b></li></ol>
+          </volist>
+        </div>
+        <div id="ztnrx">
+          <ul>
+            <volist name="images" id="ivo">
+            <li class="<if condition="$i gt 1">ztwdj</if>"><img src="{$ivo|imgsrc=100,100}" alt="{$vo.name}" /><b></b></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+      <div class="nrtr">
+        <div class="nrtrt">
+          <h1>{$vo.name}</h1>
+          <dl>
+            <dt>风格</dt><php>$styles = str2arr($vo['style'])</php>
+            <dd class="bs"><volist name="styles" id="ssvo"><a href="__APP__/cases/?style={$ssvo}" target="_blank">{$ssvo}</a></volist></dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>户型</dt>
+            <dd class="zttdl">{$vo.type}</dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>面积</dt>
+            <dd class="zttdl">{$vo.area}㎡</dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>价格</dt>
+            <dd class="zttdl">{$vo.price}万</dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>地址</dt>
+            <dd class="zttdl">{$vo.address}</dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>设计师</dt>
+            <dd class="zttdl"><a href="__APP__/designer/{$designer.id}.html" target="_blank"><img src="{$designer.image|imgsrc=100,100}" alt="{$designer.name}"><b></b><span>{$designer.name}</span></a></dd>
+          </dl>
+          <div class="clr"></div>
+          <dl>
+            <dt>工程师</dt>
+            <dd class="zttdl"><a href="__APP__/engineer/{$engineer.id}.html" target="_blank"><img src="{$engineer.image|imgsrc=100,100}" alt="{$engineer.name}"><b></b><span>{$engineer.name}</span></a></dd>
+          </dl>
+          <div class="clr"></div>
+        </div>
+        <div class="nrtrn">
+          <h3>作品介绍</h3>
+          <h2>{$vo.detail}</h2>
+            <div class="clr"></div>
+          </dl>
+        </div>
+      </div>
       <div class="clr"></div>
     </div>
-    <div class="clr"></div>
-    <div class="sxy bs">{$pager}</div>
   </div>
   <div class="clr"></div>
 </div>

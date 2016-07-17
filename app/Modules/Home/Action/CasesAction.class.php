@@ -10,8 +10,12 @@ class CasesAction extends HomeAction
 
 	public function index()
 	{
+		$cate_id = intval($_GET['cate_id']);
 		$model = M('Cases');
-		$where = array('state'=>1,'type'=>'case');
+		$where = array('state'=>1);
+		if($cate_id){
+			$where['cate_id'] = $cate_id;
+		}
 		$total = $model->field('COUNT(1) count')->where($where)->find();
 		$total_count = intval($total['count']);
 		$pager = $this->getPage($total_count, 12, __APP__ . '/cases/page-__PAGE__.html');
@@ -27,15 +31,12 @@ class CasesAction extends HomeAction
 	{
 		$cid = intval($id);
 		$model = M('Cases');
-		$where = array('state'=>1,'type'=>'case','cid'=>$cid);
-		$total = $model->field('COUNT(1) count')->where($where)->find();
-		$total_count = intval($total['count']);
-		$pager = $this->getPage($total_count, 12, __APP__ . '/cases/page-' . $cid . '-__PAGE__.html');
-		
-		$volist = $model->where($where)->limit($pager->firstRow, $pager->listRows)->order('sort_order ASC, dateline DESC')->select();
-		$this->assign('pager', $pager->show());
-		$this->assign('volist', $volist);
-		$this->assign('current_type', $model->find($cid));
+		$where = array();
+		$case = $model->field('*')->where($where)->find($id);
+		$this->assign('vo', $case);
+		$this->assign('case_category', M('CasesCategory')->find($case['cate_id']));
+		$this->assign('designer', M('TeamMember')->find($case['designer']));
+		$this->assign('engineer', M('TeamMember')->find($case['engineer']));
 		$this->display('Cases:index');
 	}
 
