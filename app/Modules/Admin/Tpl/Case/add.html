@@ -2,27 +2,48 @@
 <form method="post" action="{:U('Case/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
   <div class="pageFormContent" layoutH="55">
 	<div class="unit">
-	  <label>文章标题：</label>
-	  <input name="title" value="{$vo.title}" class="required" size="50" />
+	  <label>面积：</label>
+	  <input name="area" value="{$vo.area}" class="required" size="30" />
 	</div>
 	<div class="unit">
-	  <label>文章来源：</label>
-	  <input name="source" value="{$vo.source}" class="required" size="30" />
+	  <label>价格：</label>
+	  <input name="price" value="{$vo.price}" class="required" size="30" />
 	</div>
 	<div class="unit">
-	  <label>文章状态：</label>
-	  <select name="status">
+	  <label>地址：</label>
+	  <input name="address" value="{$vo.address}" class="required" size="50" />
+	</div>
+	<div class="unit">
+	  <label>户型：</label>
+	  <php>$case_types = str2arr($settings['case_type']); $types = str2arr($vo['type']);</php>
+	  <volist name="case_types" id="tvo">
+	    <input name="type" type="radio" value="{$tvo}<if condition="$tvo==$vo['type']">" checked="true</if>">{$tvo}&nbsp;&nbsp;
+	  </volist>
+	</div>
+	<div class="unit">
+	  <label>风格：</label>
+	  <php>$case_styles = str2arr($settings['case_style']); $styles = str2arr($vo['style']);</php>
+	  <volist name="case_styles" id="svo">
+	    <input name="style[]" type="checkbox" value="{$svo}<if condition="in_array($svo, $styles)">" checked="true</if>">{$svo}&nbsp;&nbsp;
+	  </volist>
+	</div>
+	<div class="unit">
+	  <label>设计师：</label>
+	  <select name="designer">
 	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">显示</option>
 	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">不显示</option>
 	  </select>
 	</div>
 	<div class="unit">
-	  <label>视频代码：</label>
-	  <textarea name="video" style="height:40px;width:600px;">{$vo.video}</textarea>
+	  <label>工程师：</label>
+	  <select name="engineer">
+	    <option value="1<eq name="vo.status" value="1">" selected="selected</eq>">显示</option>
+	    <option value="0<eq name="vo.status" value="0">" selected="selected</eq>">不显示</option>
+	  </select>
 	</div>
 	<div class="unit">
-	  <label>文章内容：</label>
-	  <textarea class="editor" name="content" style="height:400px;width:800px;" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.content}</textarea>
+	  <label>介绍：</label>
+	  <textarea name="detail" style="height:60px;width:600px;">{$vo.content}</textarea>
 	</div>
   </div>
   <div class="formBar">

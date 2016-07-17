@@ -39,7 +39,7 @@ class CaseAction extends AdminAction
     public function alist()
     {
     	$cate_id = intval($_REQUEST['cate_id']);
-    	$model = D('Case');
+    	$model = D('Cases');
     	$where = array();
     	$where['cate_id'] = $cate_id;
     	$totalCount = $model->where($where)->count();
@@ -66,21 +66,19 @@ class CaseAction extends AdminAction
     public function edit()
     {
     	$id =  intval($_REQUEST['id']);
-    	$model = D('Case');
+    	$model = D('Cases');
     	$this->assign('vo', $model->find($id));
     	$this->display('add');
     }
     
     public function save()
     {
-    	$model = D('Case');
-    	$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
+    	$model = D('Cases');
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());
     	}
-    	$data['create_time'] = time();
-    	$data['user_id'] = intval(session('admin_id'));
+    	$data['dateline'] = time();
     	if (!$data['id']) {
     		$rs = $model->add($data);
     	}else{

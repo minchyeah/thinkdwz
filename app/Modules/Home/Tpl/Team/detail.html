@@ -6,50 +6,120 @@
 
 <body>
 <include file="Public:header" />
-<include file="Public:header_nav" />
-<div class="sy1 jz">
-  <include file="Public:topclasses" />
-  <include file="Public:slider" />
-</div>
-<div class="ny jz">
-  <div class="cbl">
-    <include file="Public:sidebar_newclass" />
-    <include file="Public:sidebar_static" />
+<div class="dingt"></div>
+<include file="Public:slider" />
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>><a href="__APP__/{$_GET['catalog']}/">{$team_title}</a>><a href="">内容</a></dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">
+      <h2>《{$team_title}》</h2>
+    </div>
   </div>
-  <div class="xkn">
-    <div class="dqwz">
-      <h1>名师</h1>
-      <h3>当前位置：<a href="__APP__/">首页</a>><a href="__APP__/faculty/">名师</a>><a href="">内容</a></h3>
-    </div>
-    <div class="szllnr">
-      <div class="szllnrt"><img src="{$teacher.image|imgsrc=260,260}" class="group3" rel="{$teacher.image}" title="{$teacher.name}" /><b></b></div>
-      <dl>
-        <dt><h1>{$teacher.name}</h1>老师</dt>
-        <dd><b>科目：</b>{$teacher.subject}</dd>
-        <dd><b>头衔：</b>{$teacher.school}</dd>
-        <dd><b>教龄：</b>{$teacher.teach_age}年</dd>
-        <dd><b>性别：</b>{$teacher.gender}</dd>
-      </dl>
-    </div>
-    <div class="clr"></div>
-    <div class="wznr">
-      <if condition="!empty($teacher['video'])" >
-      <div class="nysp">
-        <div class="nyspk">
-          <div class="nyspem">
-            {$teacher.video}
-          </div>
+</div>
+<div class="jz">
+  <div class="ny">
+    <div class="nrt tdn">
+      <div class="nrtl">
+        <div id="ztnrd">
+          <ol>
+            <li><img src="{$vo.image|imgsrc=300,300}" class="group3" rel="{$vo.image|imgsrc}" alt="当前标题" /><b></b></li>
+          </ol>
         </div>
       </div>
-      </if>
-      <div class="wznrzw">{$teacher.detail}</div>
+      <div class="nrtr">
+        <div class="nrtrt">
+          <h1>{$vo.name}<span>{$vo.title}</span><span>经验：{$vo.team_age}年</span><span style="display:none;">作品：168个</span></h1>
+          <dl>
+            <dt>擅长风格</dt><php>$detail_styles = str2arr($vo['style'])</php>
+            <dd class="bs"><volist name="detail_styles" id="dsvo"><a href="javascript:;" target="_blank">{$dsvo}</a></volist></dd>
+          </dl>
+          <div class="clr"></div>
+        </div>
+        <div class="nrtrn">
+          <h3>设计理念</h3>
+          <h2>{$vo.detail}</h2>
+          <div class="clr"></div>
+        </div>
+        <div class="tdan"><a href="zxyd" class="but" rel="1"><b></b>
+          <h3>{$team_want}</h3>
+          <span></span></a><h4><span title="点赞！"></span><b>126</b>人气</h4></div>
+      </div>
       <div class="clr"></div>
+      <div class="tdzt">
+        <div class="tdztt">
+          <h2>优秀作品展示</h2>
+          <div class="fxdao"><div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+            <script> window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></div>
+        </div>
+        <div class="syztlb">
+          <volist name="cases" id="cvo">
+          <ol>
+            <li>
+              <h4><a href="ztnr.html" title="当前标题"><img src="images/zt1.jpg" alt="当前标题" /></a><b></b></h4>
+            </li>
+            <li>
+              <h1>公园大地110平米现代简约风格</h1>
+            </li>
+            <li>
+              <h2>现代/三居/110㎡</h2>
+            </li>
+            <li>
+              <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
+            </li>
+            <li class="jbian"><a href="ztnr.html"><b></b>
+              <h5>查看详情</h5>
+              <span></span></a></li>
+          </ol>
+          </volist>
+          <div class="clr"></div>
+          <div class="fy">{$pager}</div>
+        </div>
+      </div>
     </div>
-    <div class="sxp"> <span>上一篇：<if condition="$prev_page"><a href="__APP__/faculty/{$prev_page.id}.html">{$prev_page.name}</a><else /><a href="#">没有了...</a></if></span><b>下一篇：<if condition="$next_page"><a href="__APP__/faculty/{$next_page.id}.html">{$next_page.name}</a><else /><a href="#">没有了...</a></if></b> </div>
   </div>
+  <div class="clr"></div>
 </div>
-<include file="Public:about_block" />
 <include file="Public:footer" />
 <include file="Public:qqkefu" />
+<div id="faqbg"></div>
+<div class="faqdiv" name="zxyd" style="display:none;">
+  <div id="hydlt">
+    <ul>
+      <li rel="yd">免费预约设计</li>
+    </ul>
+    <h5 class="close" rel="zxyd"></h5>
+  </div>
+  <div id="hydlx">
+    <h3>您好，您是第<b>16</b>位客户预约</h3>
+    <ol>
+      <li>
+        <h4>姓名：</h4>
+        <h5>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+        </h5>
+        <h6>输入有错误!</h6>
+      </li>
+      <li>
+        <h4>电话：</h4>
+        <h5>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+        </h5>
+        <h6>输入有错误!</h6>
+      </li>
+      <li class="dltj huangs">
+        <h3>
+          <input class="pjtj" type="submit" value="&nbsp;">
+        </h3>
+      </li>
+    </ol>
+    <h3>预约成功后我们的客服人员将在24小时内与您联系！</h3>
+    <h3>如有任何疑问，您也可以直接与我们的客服联系：<b>0771-5552570</b></h3>
+  </div>
+</div>
 </body>
 </html>
