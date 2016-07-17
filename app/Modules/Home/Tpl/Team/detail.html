@@ -60,18 +60,18 @@
           <volist name="cases" id="cvo">
           <ol>
             <li>
-              <h4><a href="ztnr.html" title="当前标题"><img src="images/zt1.jpg" alt="当前标题" /></a><b></b></h4>
+              <h4><a href="__APP__/cases/{$cvo.id}.html" title="{$cvo.name}"><img src="{$cvo.thumb|imgsrc=300,300}" alt="{$cvo.name}" /></a><b></b></h4>
             </li>
             <li>
-              <h1>公园大地110平米现代简约风格</h1>
+              <h1>{$cvo.name}</h1>
             </li>
             <li>
-              <h2>现代/三居/110㎡</h2>
+              <h2>{$cvo.style}/{$cvo.type}/{$cvo.area}㎡</h2>
             </li>
             <li>
-              <h3>大气、更贴近于自然，居室有的不只是豪华大气，更多的是惬意、舒适、温馨的感觉...</h3>
+              <h3>{$cvo.detail}..</h3>
             </li>
-            <li class="jbian"><a href="ztnr.html"><b></b>
+            <li class="jbian"><a href="__APP__/cases/{$cvo.id}.html"><b></b>
               <h5>查看详情</h5>
               <span></span></a></li>
           </ol>

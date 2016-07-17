@@ -3,8 +3,14 @@ class IndexAction extends HomeAction
 {
 	public function index()
 	{
-		$courses = M('Courses')->field('id,name,image,desc')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
-		$this->assign('courses', $courses);
+		$cases_category = M('CasesCategory')->field('id,cate_name')->order('sort_order ASC')->limit(2)->select();
+		$this->assign('cases_category', $cases_category);
+		
+		$cases = M('Cases')->field('*')->order('dateline DESC')->limit(10)->select();
+		$this->assign('cases', $cases);
+		
+		$designers = M('TeamMember')->field('id,name,image,desc')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
+		$this->assign('designers', $designers);
 		
 		$teachers = M('Teacher')->field('id,name,subject,image')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
 		$this->assign('teachers', $teachers);

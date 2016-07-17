@@ -136,6 +136,7 @@ class CaseAction extends AdminAction
     		}
     	}
     	$_POST['images'] = json_encode($saveimgs);
+    	$_POST['thumb'] = $saveimgs[0];
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());
