@@ -33,22 +33,17 @@ class SettingAction extends AdminAction
 	/**
 	 * 更新配置项
 	 */
-    public function save(){
-		$config['site_name'] = trim($_POST['site_name']);
-		$config['seo_keywords'] = trim($_POST['seo_keywords']);
-		$config['seo_description'] = trim($_POST['seo_description']);
-		$config['footer_content'] = trim($_POST['footer_content']);
-		$config['company_phone'] = trim($_POST['company_phone']);
-		$config['notify_email'] = trim($_POST['notify_email']);
-		$config['kefuqq'] = trim($_POST['kefuqq']);
-		$config['stat_code'] = trim($_POST['stat_code']);
-		$config['visit_count'] = trim($_POST['visit_count']);
-		$config['contact_name'] = trim($_POST['contact_name']);
-		$config['contact_mobile'] = trim($_POST['contact_mobile']);
-		$config['case_style'] = trim($_POST['case_style']);
-		$config['case_type'] = trim($_POST['case_type']);
-		$config['case_area'] = trim($_POST['case_area']);
-		$config['case_budget'] = trim($_POST['case_budget']);
+	public function save(){
+		$keys = array('site_name', 'seo_keywords', 'seo_description', 'footer_content',
+				'company_phone', 'notify_email', 'kefuqq', 'stat_code', 'visit_count', 
+				'contact_name', 'contact_mobile', 'case_style', 'case_type', 'case_area', 'case_budget',
+				'company_name', 'company_address', 'icpbeian'
+			);
+		foreach ($_POST as $k=>$v){
+			if(in_array($k, $keys)){
+				$config[$k] = trim($v);
+			}
+		}
 		$this->updateconfig($config);
 	}
 	/**
