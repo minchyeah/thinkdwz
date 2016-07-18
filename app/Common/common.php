@@ -120,3 +120,11 @@ function str2arr($str, $delimiter=',', $ext_delimiter = '，')
 	$string = str_replace($ext_delimiter, $delimiter, $str);
 	return explode($delimiter, $string);
 }
+
+function get2uri($val='', $key='')
+{
+	$tmp = $_GET;
+	unset($tmp['_URL_']);
+	if($key) $tmp[$key] = $val;
+	return http_build_query($tmp);
+}

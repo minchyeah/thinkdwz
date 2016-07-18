@@ -32,19 +32,19 @@
     <div class="ztfl">
       <dl>
         <dt>风格<span>STYLE</span></dt>
-        <dd><a href="#" class="xz">全部</a><php>$styles = str2arr($settings['case_style']);</php><volist name="styles" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
+        <dd><a href="?{:get2uri('全部','style')}" class="<if condition="empty($_GET['style']) OR $_GET['style'] eq '全部'">xz</if>">全部</a><php>$styles = str2arr($settings['case_style']);</php><volist name="styles" id="svo"><a class="<if condition="$svo eq $_GET['style']">xz</if>" href="?{$svo|get2uri='style'}">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>户型<span>TYPE</span></dt>
-        <dd><a href="#" class="xz">全部</a><php>$types = str2arr($settings['case_type']);</php><volist name="types" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
+        <dd><a href="?{:get2uri('全部','type')}" class="<if condition="empty($_GET['type']) OR $_GET['type'] eq '全部'">xz</if>">全部</a><php>$types = str2arr($settings['case_type']);</php><volist name="types" id="svo"><a class="<if condition="$svo eq $_GET['type']">xz</if>" href="?{$svo|get2uri='type'}">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>面积<span>AREA</span></dt>
-        <dd><a href="#" class="xz">全部</a><php>$areas = str2arr($settings['case_area']);</php><volist name="areas" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
+        <dd><a href="?{:get2uri('全部','area')}" class="<if condition="empty($_GET['area']) OR $_GET['area'] eq '全部'">xz</if>">全部</a><php>$areas = str2arr($settings['case_area']);</php><volist name="areas" id="svo"><a class="<if condition="$svo eq $_GET['area']">xz</if>" href="?{$svo|get2uri='area'}">{$svo}</a></volist></dd>
       </dl>
       <dl>
         <dt>预算<span>BUDGET</span></dt>
-        <dd><a href="#" class="xz">全部</a><php>$budgets = str2arr($settings['case_budget']);</php><volist name="budgets" id="svo"><a href="javascript:;">{$svo}</a></volist></dd>
+        <dd><a href="?{:get2uri('全部','budget')}" class="<if condition="empty($_GET['budget']) OR $_GET['budget'] eq '全部'">xz</if>">全部</a><php>$budgets = str2arr($settings['case_budget']);</php><volist name="budgets" id="svo"><a class="<if condition="$svo eq $_GET['budget']">xz</if>" href="?{$svo|get2uri='budget'}">{$svo}</a></volist></dd>
       </dl>
       <div class="clr"></div>
     </div>
