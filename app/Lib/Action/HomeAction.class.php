@@ -51,7 +51,7 @@ class HomeAction extends CommonAction
 		$this->assign('settings', $settings);
 		$this->assign('user_id', session('user_id'));
 		$this->assign('username', session('username'));
-		$this->assign('pubnotice', $this->getArticleList('news', 20));
+		$this->assign('sidebar_activity', $this->getArticleList('news', 4));
 		$this->topnav();
 		$this->slider();
 		$this->footerschool();
@@ -166,7 +166,7 @@ class HomeAction extends CommonAction
 	    $where = array();
 	    $where['status'] = 1;
 	    $where['cate_id'] = array('in', $cate_ids);
-	    return D('Articles')->where($where)->limit($limit)->order('create_time DESC')->getField('id,title,cate_id');
+	    return D('Articles')->where($where)->limit($limit)->order('create_time DESC')->getField('id,title,cate_id,thumb,content');
 	}
 	
 	protected function footerschool()
@@ -183,9 +183,9 @@ class HomeAction extends CommonAction
 	{
 	    $model = D('Slider');
 		$where = array();
-		$where['position'] = 'index';
-		$index_slider = $model->field('id,target,image,title')->where($where)->order('sort_order DESC')->select();
-		$this->assign('index_slider', $index_slider);
+		$where['position'] = 'innert';
+		$innert_slider = $model->field('id,target,image,title')->where($where)->order('sort_order DESC')->select();
+		$this->assign('innert_slider', $innert_slider);
 		unset($model,$index_slider);;
 	}
 

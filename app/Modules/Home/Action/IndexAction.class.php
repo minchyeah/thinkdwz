@@ -21,23 +21,16 @@ class IndexAction extends HomeAction
 		$designers = M('TeamMember')->field('id,name,image,title')->where(array('cate_id'=>array('IN', $cids)))->limit(9)->order('sort_order ASC, dateline DESC')->select();
 		$this->assign('designers', $designers);
 		
-		$teachers = M('Teacher')->field('id,name,subject,image')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
-		$this->assign('teachers', $teachers);
+		$index_slider = D('Slider')->field('id,target,image,title')->where(array('position'=>'index'))->order('sort_order DESC')->select();
+		$this->assign('index_slider', $index_slider);
 		
-		$class = D('CourseClassView')->order('dateline DESC')->limit(3)->select();
-		$this->assign('classes', $class);
+		$index_engineer_slider = D('Slider')->field('id,target,image,title')->where(array('position'=>'index_engineer'))->order('sort_order DESC')->select();
+		$this->assign('index_engineer_slider', $index_engineer_slider);
 		
-		$this->assign('majors', $this->xuekus());
+		$this->assign('activity_list', $this->getArticleList('activity', 4));
 		
-		$this->links();
-		// $page_feature = D('ArticlePage')->field('thumb,content')->where(array('page_code'=>'feature'))->find();
-		// $this->assign('page_feature', $page_feature);
-		$this->assign('recruit_list', $this->getArticleList('recruit', 14));
-		$this->assign('webucation_list', $this->getArticleList('webucation', 8));
-		$this->assign('chengrengaokao_list', $this->getArticleList('chengrengaokao', 8));
-		$this->assign('guide_list', $this->getArticleList('guide', 8));
-		$this->assign('liniankaoshi_list', $this->getArticleList('liniankaoshi', 8));
-		$this->assign('zsnews_list', $this->getArticleList('zsnews', 8));
+		$this->assign('newslist', $this->xuekus());
+		
 		$this->assign('current_nav', 'index');
 		$this->display('Index:index');
 	}
@@ -45,16 +38,17 @@ class IndexAction extends HomeAction
 	private function xuekus()
 	{
 		$XkModel = D('ArticleCategory');
-		$xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>7))->order('sort_order ASC')->limit(5)->select();
+		$xueku = $XkModel->field('id,cate_name,pid,pids')->where(array('pid'=>1))->order('sort_order ASC')->limit(3)->select();
 		if(is_array($xueku)){
 			foreach($xueku as $k=>$xks){
-				$xueku[$k]['articles'] = $this->getXkArticles($xks['id']);
+				$xueku[$k]['articles'] = $this->getArticles($xks['id']);
 			}
 		}
+		
 		return $xueku;
 	}
 
-	private function getXkArticles($id)
+	private function getArticles($id)
 	{
 		$cids = D('ArticleCategory')->where(array('pid'=>$id))->getField('id,cate_name');
 		if(is_array($cids)){
@@ -66,7 +60,7 @@ class IndexAction extends HomeAction
 			$ids = array($id);
 		}
 		$idstr = implode(',', $ids);
-		$articles = D('Articles')->field('id,title,status')->where('cate_id IN (' . $idstr . ')')->order('id DESC')->limit(10)->select();
+		$articles = D('Articles')->field('id,title,thumb')->where('cate_id IN (' . $idstr . ')')->order('create_time DESC')->limit(5)->select();
 		return $articles;
 	}
 }

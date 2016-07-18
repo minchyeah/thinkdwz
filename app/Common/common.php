@@ -33,7 +33,7 @@ function imgsrc($file, $width = '', $height = '')
 			$imgfile = $file;
 		}
 	}
-	return empty($imgfile) ? __ROOT__.'/static/images/space.gif' : $imgfile;
+	return empty($imgfile) ? __ROOT__.'/static/home/images/space.gif' : $imgfile;
 }
 function getFirstImg($content)
 {

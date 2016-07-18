@@ -10,8 +10,12 @@
 <div class="hdp hqgd">
   <div class="hdpk"> <a id="prev" class="hdpkl hdpaniu" href="###"></a> <a id="next" class="hdpkr hdpaniu" href="###"></a></div>
   <div class="jshdp hqgd">
-    <div class="box01 hqgd"><span class="hqgd" style="background-image:url(images/hdp1.jpg); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/hdp1.jpg',sizingMethod='scale');"><a href="index.html" class="hqgd" target="_blank"></a></span><span class="hqgd" style="background-image:url(images/hdp2.jpg); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/hdp2.jpg',sizingMethod='scale');"><a href="index.html" class="hqgd" target="_blank"></a></span></div>
-    <div class="jsNav"><span class="trigger imgSelected">1</span><span class="trigger">2</span></div>
+    <div class="box01 hqgd">
+      <volist name="index_slider" id="isvo">
+      <span class="hqgd" style="background-image:url({$isvo.image}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{$isvo.image}',sizingMethod='scale');"><a href="{$isvo.target}" class="hqgd" target="_blank"></a></span>
+      </volist>
+    </div>
+    <div class="jsNav"><volist name="index_slider" id="isvo"><span class="trigger <if condition="$i eq 1">imgSelected</if>">1</span></volist></div>
   </div>
 </div>
 <div class="syzt jz">
@@ -110,9 +114,9 @@
   <div class="gchdp">
     <div class="slideBox" id="demo1">
       <ul class="items">
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/gc1.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题二" target="_blank"><img src="images/gc2.jpg" alt="当前名称"></a><b></b></li>
-        <li><a href="#" title="这里是测试标题一" target="_blank"><img src="images/gc3.jpg" alt="当前名称"></a><b></b></li>
+        <volist name="index_engineer_slider" id="iesvo">
+        <li><a href="{$iesvo.target}" title="{$iesvo.title}" target="_blank"><img src="{$iesvo.image}" alt="{$iesvo.title}"></a><b></b></li>
+        </volist>
       </ul>
     </div>
     <script type="text/javascript">
@@ -146,34 +150,15 @@
         <h1>广西装修公司</h1>
       </div>
       <div class="zxhdn">
+        <volist name="activity_list" id="avo">
         <dl>
-          <dt><a href="wznr.html" target="_blank" title="当前标题"><img src="images/zt1.jpg" alt="当前标题" /><b></b></a></dt>
+          <dt><a href="__APP__/activity/{$avo.id}.html" target="_blank" title="{$avo.title}"><img src="{$vo.thumb|imgsrc=###,100,100}" alt="{$avo.title}" /><b></b></a></dt>
           <dd>
-            <h1><a href="wznr.html" target="_blank">全包幸福到家，只需1万3实景整装</a></h1>
-            <h2>全新高品质实景整装系列，提倡"装修比买菜更简单"，省时省心的一站式装修，颠覆传统计价模式，按"净面积"计价...</h2>
+            <h1><a href="__APP__/activity/{$avo.id}.html" target="_blank">{$avo.title}</a></h1>
+            <h2>{$avo.content|stripContent|mb_substr=###,0,180}..</h2>
           </dd>
         </dl>
-        <dl>
-          <dt><a href="wznr.html" target="_blank" title="当前标题"><img src="images/zt2.jpg" alt="当前标题" /><b></b></a></dt>
-          <dd>
-            <h1><a href="wznr.html" target="_blank">全包幸福到家，只需1万3实景整装</a></h1>
-            <h2>全新高品质实景整装系列，提倡"装修比买菜更简单"，省时省心的一站式装修，颠覆传统计价模式，按"净面积"计价...</h2>
-          </dd>
-        </dl>
-        <dl>
-          <dt><a href="wznr.html" target="_blank" title="当前标题"><img src="images/zt3.jpg" alt="当前标题" /><b></b></a></dt>
-          <dd>
-            <h1><a href="wznr.html" target="_blank">全包幸福到家，只需1万3实景整装</a></h1>
-            <h2>全新高品质实景整装系列，提倡"装修比买菜更简单"，省时省心的一站式装修，颠覆传统计价模式，按"净面积"计价...</h2>
-          </dd>
-        </dl>
-        <dl>
-          <dt><a href="wznr.html" target="_blank" title="当前标题"><img src="images/zt4.jpg" alt="当前标题" /><b></b></a></dt>
-          <dd>
-            <h1><a href="wznr.html" target="_blank">全包幸福到家，只需1万只需1万只需1万只需1万只需1万只需1万只需1万3实景整装</a></h1>
-            <h2>全新高品质实景整装系列，提倡"装修比买菜更简单"，省时省心的一全新高品质实景整装系列，提倡"装修比买菜更简单"，省时省心的一站式装修，颠覆传统计价模式，按"净面积"计价...</h2>
-          </dd>
-        </dl>
+        </volist>
       </div>
     </div>
     <div class="clr"></div>
@@ -184,30 +169,14 @@
       <div class="pplmn"><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc1.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc2.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc3.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc1.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc2.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc3.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc1.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc2.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc3.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc2.jpg" alt="当前标题" /></a><a href="pplb.html" target="_blank" title="当前标题"><img src="images/gc3.jpg" alt="当前标题" /></a></div>
     </div>
     <div class="zxzx">
-      <dl style="border-left:none;">
-        <dt>公司新闻</dt>
-        <dd><a href="wznr.html" target="_blank">1装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">2装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">3装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">4装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">5装修消费需理智 遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张</a></dd>
+      <volist name="newslist" id="nvo">
+      <dl style="<if condition="$i eq 1">border-left:none;</if><if condition="$i eq 3">border-right:none;</if>">
+        <dt>{$nvo.cate_name}</dt>
+        <volist name="nvo.articles" id="avo">
+        <dd><a href="__APP__/news/{$avo.id}.html" target="_blank">{$avo.title}</a></dd>
+        </volist>
       </dl>
-      <dl>
-        <dt>行业资讯</dt>
-        <dd><a href="wznr.html" target="_blank">1装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">2装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">3装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">4装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">5装修消费需理智 遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张</a></dd>
-      </dl>
-      <dl style="border-right:none;">
-        <dt>装修100问</dt>
-        <dd><a href="wznr.html" target="_blank">1装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">2装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">3装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">4装修消费需理智 遭遇陷阱莫慌张</a></dd>
-        <dd><a href="wznr.html" target="_blank">5装修消费需理智 遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张遭遇陷阱莫慌张</a></dd>
-      </dl>
+      </volist>
       <div class="zxzxr">
         <h1>广西晟禾装饰有限公司</h1>
         <a href="__APP__/news/"><b></b>
