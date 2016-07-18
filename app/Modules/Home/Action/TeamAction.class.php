@@ -33,11 +33,27 @@ class TeamAction extends HomeAction
 			}
 		}
 		$where = array('state'=>1,'cate_id'=>array('IN', $cids));
-		$total =  M('TeamMember')->field('COUNT(1) count')->where($where)->find();
+		$style = trim($_GET['style']);
+		$settings = F('settings');
+		$where1 = '';
+		if( in_array($style, str2arr($settings['case_style'])) ){
+			$where1 = 'FIND_IN_SET("'.$style.'",`style`)';
+		}
+		$model = M('TeamMember');
+		
+		$model->field('COUNT(1) count')->where($where);
+		if($where1){
+			$model->where($where1);
+		}
+		$total = $model->find();
 		$total_count = intval($total['count']);
 		
 		$pager = $this->getPage($total_count, 18, __APP__.'/'.$team.'/page-__PAGE__.html');
-		$volist =  M('TeamMember')->where($where)->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
+		$model->where($where);
+		if($where1){
+			$model->where($where1);
+		}
+		$volist = $model->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
 		
 		$this->assign('pager', $pager->show());
 		$this->assign('volist', $volist);

@@ -33,9 +33,9 @@
       <dl>
         <dt>风格<span>STYLE</span></dt>
         <dd><php>$styles = str2arr($settings['case_style']);</php>
-        <a href="__URL__" class="xz">全部</a>
+        <a href="?style=全部" class="<if condition="empty($_GET['style']) OR $_GET['style'] eq '全部'">xz</if>">全部</a>
         <volist name="styles" id="svo">
-        <a href="?style={$svo}" >{$svo}</a>
+        <a class="<if condition="$svo eq $_GET['style']">xz</if>" href="?style={$svo}" >{$svo}</a>
         </volist>
         </dd>
       </dl>
