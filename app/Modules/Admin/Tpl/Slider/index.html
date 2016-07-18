@@ -28,7 +28,7 @@
 		<td><if condition="$vo['image']"><img src="{$vo.image|imgsrc=100,100}" /></if></td>
 		<td>{$vo.title}</td>
 		<td>{$vo.target}</td>
-		<td>{$vo.position}</td>
+		<td>{$position_map[$vo['position']]}</td>
 		<td><a href="__URL__/edit/id/{$vo.id}" target="dialog" width="520" height="300" mask="true" maxable="false"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}/dwzid/{$_GET['dwzid']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>

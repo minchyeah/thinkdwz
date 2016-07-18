@@ -23,12 +23,12 @@
 			<div class="unit">
 				<label style="text-align:right;">展示位置：</label>
 				<select name="position">
-					<option value="index<eq name="vo.position" value="index">" selected="selected</eq>">首页</option>
-					<option value="innert<eq name="vo.position" value="innert">" selected="selected</eq>">内页</option>
+					<option value="index<eq name="vo.position" value="index">" selected="selected</eq>">首页通栏</option>
+					<option value="index_engineer<eq name="vo.position" value="index_engineer">" selected="selected</eq>">首页工程团队</option>
+					<option value="innert<eq name="vo.position" value="innert">" selected="selected</eq>">内页通栏</option>
 				</select>
 			</div>
 			<div class="unit">
-				<input type="hidden" name="position" value="index">
 				<label style="text-align:right;">排序：</label>
 				<input type="text" name="sort_order" size="5" value="{$vo.sort_order}">
 			</div>

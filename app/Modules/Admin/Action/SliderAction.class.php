@@ -5,25 +5,16 @@
  */
 class SliderAction extends AdminAction
 {
+	protected $position_map = array(
+			'index'=>'首页通栏',
+			'index_engineer'=>'首页工程团队',
+			'innert'=>'内页通栏',
+		);
+	
 	public function _initialize()
 	{
 		parent::_initialize();
-		$model = D('District');
-		$where = array();
-		$where['type'] = array('in', array('city'));
-		$positions = array();
-		$rs = $model->where($where)->field('id,title,pid,type')->order('pid ASC')->select();
-		$cities = F('cities_id');
-		if($rs){
-			foreach ($rs as $k=>$v){
-				if('city'==$v['type']){
-					$positions['city_'.$v['id']] = $v['title'].'幻灯片';
-				}else{
-					$positions['district_'.$v['id']] = '('.$cities[$v['pid']]['title'].')'.$v['title'].'幻灯片';
-				}
-			}
-		}
-		$this->assign('positions', $positions);
+		$this->assign('position_map', $this->position_map);
 	}
 	
     public function index()
@@ -34,7 +25,7 @@ class SliderAction extends AdminAction
     	$currentPage = $currentPage ? $currentPage : 1;
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
-    	$list = $model->order('position ASC, id DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	$list = $model->order('position ASC, sort_order DESC')->limit($rowOffset . ',' . $numPerPage)->select();
     	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);

@@ -9,7 +9,16 @@ class IndexAction extends HomeAction
 		$cases = M('Cases')->field('*')->order('dateline DESC')->limit(10)->select();
 		$this->assign('cases', $cases);
 		
-		$designers = M('TeamMember')->field('id,name,image,desc')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
+		$cids = array(22);
+		
+		$sids = M('TeamCategory')->where(array('pid'=>22))->field('id')->select();
+		if(is_array($sids)){
+			foreach ($sids as $v){
+				array_push($cids, intval($v['id']));
+			}
+		}
+		
+		$designers = M('TeamMember')->field('id,name,image,title')->where(array('cate_id'=>array('IN', $cids)))->limit(9)->order('sort_order ASC, dateline DESC')->select();
 		$this->assign('designers', $designers);
 		
 		$teachers = M('Teacher')->field('id,name,subject,image')->where(array('state'=>1))->limit(12)->order('sort_order ASC, dateline DESC')->select();
