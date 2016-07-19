@@ -13,18 +13,26 @@
 	  <tr>
 		<th width="25"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="50">编号</th>
-		<th>标题</th>
-		<th width="30">状态</th>
+		<th>名称</th>
+		<th>地址</th>
+		<th>风格</th>
+		<th>面积</th>
+		<th>预算</th>
+		<th>户型</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
     <tbody>
 	  <volist id="vo" name="list">
-	  <tr target="sid_article" rel="{$vo['id']}">
+	  <tr target="sid_article" rel="{$vo['id']}" >
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
-		<td>{$vo.title}</td>
-		<td>{$vo.status|getStatus}</td>
+		<td>{$vo.name}</td>
+		<td>{$vo.address}</td>
+		<td>{$vo.style}</td>
+		<td>{$vo.area}平米</td>
+		<td>{$vo.price}万</td>
+		<td>{$vo.type}</td>
 		<td><a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="article_form" title="编辑文章"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>

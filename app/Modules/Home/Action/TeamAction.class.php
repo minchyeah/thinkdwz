@@ -68,13 +68,16 @@ class TeamAction extends HomeAction
 		$teacher = M('TeamMember')->where(array('state'=>1))
 							->where(array('id'=>$id))
 							->find();
-		$cases = M('cases')->field('*')->where(array($_GET['catalog']=>$id))
+		$total_case = M('Cases')->field('COUNT(1) count')->where(array($_GET['catalog']=>$id))->find();
+		$case_count = intval($total_case['count'])+$teacher['case_count'];
+		$cases = M('Cases')->field('*')->where(array($_GET['catalog']=>$id))
 							->order('dateline DESC')
 							->select();
 		$pager = '';
 		$this->assign('vo', $teacher);
 		$this->assign('pager', $pager);
 		$this->assign('cases', $cases);
+		$this->assign('case_count', $case_count);
 		$this->display('Team:detail');
 	}
 
@@ -86,6 +89,40 @@ class TeamAction extends HomeAction
 		}
 		if (is_numeric($name)) {
 			return $this->detail($name);
+		}
+	}
+
+	public function order()
+	{
+		if(!IS_POST){
+			$this->error('非法操作');
+		}
+		$contact = trim(strip_tags($_POST['contact']));
+		if(!$contact OR $contact == '您的姓名？'){
+			$this->error('请输入您姓名');
+		}
+		$phone = trim(strip_tags($_POST['phone']));
+		if(!$phone OR $phone == '您的联系号码？'){
+			$this->error('请输入您联系号码');
+		}
+		$model = D('TeamOrders');
+		$data = $model->create();
+		if(!$data){
+			$this->error($model->getError());
+		}
+		$data['dateline'] = time();
+		$model->startTrans();
+		if (!$data['id']) {
+			$rs = $model->add($data);
+		}else{
+			$rs = $model->save($data);
+		}
+		if(false !== $rs){
+			$model->commit();
+			$this->success('预约成功！');
+		}else{
+			$model->rollback();
+			$this->error('预约失败！');
 		}
 	}
 }

@@ -19,6 +19,14 @@
 	  <input name="team_age" value="{$vo.team_age}" class="required" size="30" />
 	</div>
 	<div class="unit">
+	  <label>点赞数：</label>
+	  <input name="zhan" value="{$vo.zhan}" class="required" size="30" />
+	</div>
+	<div class="unit">
+	  <label>作品数（预设）：</label>
+	  <input name="case_count" value="{$vo.case_count}" class="required" size="30" />
+	</div>
+	<div class="unit">
 	  <label>风格：</label>
 	  <php>$case_styles = str2arr($settings['case_style']); $styles = str2arr($vo['style']);</php>
 	  <volist name="case_styles" id="svo">

@@ -225,6 +225,41 @@ class TeamAction extends AdminAction
 		}else{
 			$this->dwzError('删除失败');
 		}
-    }
+	}
+	
+	public function orders()
+	{
+		$cate_id = intval($_REQUEST['cate_id']);
+    	$model = D('TeamOrders');
+    	$where = array();
+    	$where['cate_id'] = $cate_id;
+    	$totalCount = $model->where($where)->count();
+    	$currentPage = intval($_REQUEST['pageNum']);
+    	$currentPage = $currentPage ? $currentPage : 1;
+    	$numPerPage = 20;
+    	$rowOffset = ($currentPage-1) * $numPerPage;
+    	$list = $model->where($where)->order('dateline DESC')->limit($rowOffset . ',' . $numPerPage)->select();
+    	 
+    	$this->assign('list', $list);
+    	$this->assign('totalCount', $totalCount);
+    	$this->assign('numPerPage', $numPerPage);
+    	$this->assign('currentPage', $currentPage);
+    	$this->display();
+	}
+
+	public function deleteorder()
+	{
+		$id = intval($_REQUEST['id']);
+		$model = D('TeamOrders');
+		$where = array();
+		$where['id'] = $id;
+		$rs = $model->where($where)->delete();
+		if($rs){
+			$this->dwzSuccess('删除成功');
+		}else{
+			$this->dwzError('删除失败');
+		}
+	}
+
 }
 ?>
