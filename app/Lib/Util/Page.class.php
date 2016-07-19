@@ -36,18 +36,20 @@ class Page {
 	public $prePage = '';
 	//下一页地址
 	public $nextPage = '';
-	
+	// 第一页
 	public $firstPageHtml = '<a href="__URL__" >__TITLE__</a>';
-	
+	// 上一页
 	public $prevPageHtml = '<a href="__URL__" >__TITLE__</a>';
-	
+	// 下一页
 	public $nextPageHtml = '<a href="__URL__" >__TITLE__</a>';
-	
+	// 最后一页
 	public $lastPageHtml = '<a href="__URL__" >__TITLE__</a>';
-	
+	// 普通页
 	public $linkPageHtml = '<a href="__URL__" >__TITLE__</a>';
-	
+	// 当前页
 	public $currentPageHtml = '&nbsp;<span class="current">__TITLE__</span>';
+	// 省略号
+	public $penddingPageHtml = '<span>......</span>';
 
 	/**
 	 * 架构函数
@@ -223,17 +225,25 @@ class Page {
 		}
 		// << < > >>
 		if($this->nowPage-$this->rollPage > 1){
-			$theFirst   =   str_replace(array('__URL__', '__TITLE__'), array(str_replace('__PAGE__',1,$url), $this->config['first']), $this->firstPageHtml);
-			$prePage	=	'...';
+			$theFirst   =   str_replace(array('__URL__', '__TITLE__'), array(str_replace('__PAGE__',1,$url), 1), $this->firstPageHtml);
 		}else{
 			$theFirst   =   '';
+		}
+		if($this->nowPage-$this->rollPage > 2){
+			$prePage	=	$this->penddingPageHtml;
+		}else{
 			$prePage	=	'';
 		}
 		if($this->nowPage+$this->rollPage < $this->totalPages){
-			$theEnd   =   str_replace(array('__URL__', '__TITLE__'), array(str_replace('__PAGE__',$this->totalPages,$url), $this->config['last']), $this->lastPageHtml);
-			$nextPage	=	'...';
+			$theEnd   =   str_replace(array('__URL__', '__TITLE__'), array(str_replace('__PAGE__',$this->totalPages,$url), $this->totalPages), $this->lastPageHtml);
+			$nextPage	=	$this->penddingPageHtml;
 		}else{
 			$theEnd	 =   '';
+			$nextPage	=	'';
+		}
+		if($this->nowPage+$this->rollPage+1 < $this->totalPages){
+			$nextPage	=	$this->penddingPageHtml;
+		}else{
 			$nextPage	=	'';
 		}
 		// 1 2 3 4 5

@@ -71,7 +71,7 @@ class ArticleAction extends HomeAction
 		$this->assign('current_catalog', $current_catalog);
 		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
 		$this->assign('sub_cates', $sub_cates);
-		$this->assign('pager', $page->show());
+		$this->assign('pager', $page->render());
 		if(file_exists(THEME_PATH.'/Article/'.$catalog.'.html')){
 			$this->display('Article:'.$catalog);
 		}else{

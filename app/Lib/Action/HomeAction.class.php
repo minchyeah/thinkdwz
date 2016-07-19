@@ -199,7 +199,14 @@ class HomeAction extends CommonAction
 	{
 	    import('Util.Page', LIB_PATH);
 	    $page = new Page($count, $perPage, '', $url);
-	    $page->setConfig('theme', '<span>%upPage%<b></b><h5></h5></a></span> %prePage% %linkPage% %nextPage% %downPage%');
+	    $page->firstPageHtml = '<a href="__URL__">__TITLE__</a>';
+	    $page->lastPageHtml = '<a href="__URL__">__TITLE__</a>';
+	    $page->prevPageHtml = '<span><a href="__URL__" title="上一页" class="syy"><b></b><h5></h5></a></span>';
+	    $page->nextPageHtml = '<span><a href="__URL__" title="上一页" class="xyy"><b></b><h5></h5></a></span>';
+	    $page->currentPageHtml = '<a href="" class="xz">__TITLE__</a>';
+	    $page->setConfig('theme', '%upPage% %first% %prePage% %linkPage% %nextPage% %end% %downPage%');
+	    $page->setConfig('theme', '%upPage% %first% %prePage% %linkPage% %nextPage% %end% %downPage%');
+	    $page->setConfig('theme', '%upPage% %first% %prePage% %linkPage% %nextPage% %end% %downPage%');
 	    return $page;
 	}
 	

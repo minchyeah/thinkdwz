@@ -55,7 +55,7 @@ class TeamAction extends HomeAction
 		}
 		$volist = $model->limit($pager->firstRow, $pager->listRows)->order('dateline DESC')->select();
 		
-		$this->assign('pager', $pager->show());
+		$this->assign('pager', $pager->render());
 		$this->assign('volist', $volist);
 		$this->display('Team:list');
 	}

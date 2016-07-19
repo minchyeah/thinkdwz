@@ -48,7 +48,7 @@ class CasesAction extends HomeAction
 			$model->where($where_style);
 		}
 		$volist = $model->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
-		$this->assign('pager', $pager->show());
+		$this->assign('pager', $pager->render());
 		$this->assign('volist', $volist);
 		$this->display('Cases:cases_list');
 	}
