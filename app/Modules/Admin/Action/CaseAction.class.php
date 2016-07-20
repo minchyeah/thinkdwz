@@ -259,7 +259,7 @@ class CaseAction extends AdminAction
     	$id = intval($_REQUEST['id']);
     	if($id){
     		$model = D('CasesCategory');
-    		if(!$model->where(array('pid'=>$id))->count() || !D('Case')->where(array('cate_id'=>$id))->count()){
+    		if(!$model->where(array('pid'=>$id))->count() || !D('Cases')->where(array('cate_id'=>$id))->count()){
     			$rs = $model->where(array('id'=>$id))->delete();
     			false !== $rs && $this->success('删除成功');
     		}else{
@@ -272,12 +272,12 @@ class CaseAction extends AdminAction
     public function delete()
     {
     	$id = intval($_REQUEST['id']);
-		$model = D('Case');
+		$model = D('Cases');
 		$where = array();
 		$where['id'] = $id;
 		$rs = $model->where($where)->delete();
 		if($rs){
-			$this->dwzSuccess('删除成功','tab_9');
+			$this->dwzSuccess('删除成功','tab_20');
 		}else{
 			$this->dwzError('删除失败');
 		}
