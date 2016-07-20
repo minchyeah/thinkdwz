@@ -1,6 +1,5 @@
       <div class="cblfl">
-        <a class="xz" href="ztlb.html"><b></b><h1>装修案例00</h1><span></span></a>
-        <a href="ztlb.html"><b></b><h1>实景展厅</h1><span></span></a>
-        <a href="ztlb.html"><b></b><h1>现场工艺展厅</h1><span></span></a>
-        <a href="ztlb.html"><b></b><h1>工艺材料展厅</h1><span></span></a>
+        <volist name="sidebar_cases_nav" id="scvo">
+        <a class="<if condition="$scvo['id'] eq $current_cases_id">xz</if>" href="__APP__/cases/cate-{$scvo.id}.html"><b></b><h1>{$scvo.cate_name}</h1><span></span></a>
+        </volist>
       </div>

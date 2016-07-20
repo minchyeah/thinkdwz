@@ -6,6 +6,8 @@ class CasesAction extends HomeAction
 	{
 		parent::_initialize();
 		$this->assign('current_nav', 'cases');
+		$sidebar_nav = M('CasesCategory')->where(array('pid'=>0))->field('id,cate_name,pid')->order('sort_order ASC')->select();
+		$this->assign('sidebar_cases_nav', $sidebar_nav);
 	}
 
 	public function index()
@@ -50,6 +52,8 @@ class CasesAction extends HomeAction
 		$volist = $model->limit($pager->firstRow, $pager->listRows)->order('sort_order DESC, dateline DESC')->select();
 		$this->assign('pager', $pager->render());
 		$this->assign('volist', $volist);
+		$this->assign('current_category', M('CasesCategory')->find($cate_id));
+		$this->assign('current_cases_id', $cate_id);
 		$this->display('Cases:cases_list');
 	}
 
@@ -63,6 +67,7 @@ class CasesAction extends HomeAction
 		$this->assign('case_category', M('CasesCategory')->find($case['cate_id']));
 		$this->assign('designer', M('TeamMember')->find($case['designer']));
 		$this->assign('engineer', M('TeamMember')->find($case['engineer']));
+		$this->assign('current_cases_id', $case['cate_id']);
 		$this->display('Cases:index');
 	}
 

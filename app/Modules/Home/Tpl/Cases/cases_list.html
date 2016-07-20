@@ -12,12 +12,12 @@
   <div class="dqwzn">
     <dl>
       <dt><a href="__APP__/"></a></dt>
-      <dd>><a href="ztlb.html">展厅</a>><a href="ztlb.html">装修案例</a></dd>
+      <dd>><a href="__APP__/cases/">展厅</a><if condition="$current_category">><a href="__APP__/cases/cate-{$current_category.id}.html">{$current_category.cate_name}</a></if></dd>
     </dl>
     <span></span> </div>
   <div class="syztr">
     <div class="syztt bs">
-      <h2>《装修案例》</h2>
+      <h2>《{$current_category.cate_name|default="展厅"}》</h2>
     </div>
   </div>
 </div>
