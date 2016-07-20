@@ -1,6 +1,5 @@
-      <div class="cblfl"> <a class="xz" href="tdlb.html"><b></b>
-        <h1>首席设计师00</h1>
-        <span></span></a> <a href="tdlb.html"><b></b>
-        <h1>专家设计师qqq</h1>
-        <span></span></a>
+      <div class="cblfl">
+        <volist name="sidebar_team_nav" id="tnvo">
+        <a class="<if condition="$tnvo['id'] eq $current_team_cate_id">xz</if>" href="__APP__/{$_GET['catalog']}/cate-{$tnvo.id}.html"><b></b><h1>{$tnvo.cate_name}</h1><span></span></a>
+        </volist>
       </div>

@@ -16,6 +16,8 @@ class TeamAction extends HomeAction
 		$this->assign('current_nav', $team);
 		$this->assign('team_title', $this->map_title[$team]);
 		$this->assign('team_want', $this->map_want[$team]);
+		$team_nav = M('TeamCategory')->where(array('pid'=>$this->map_cid[$team]))->order()->select();
+		$this->assign('sidebar_team_nav', $team_nav);
 		$id = intval($_GET['id']);
 		if($id){
 			return $this->detail();
@@ -57,6 +59,7 @@ class TeamAction extends HomeAction
 		
 		$this->assign('pager', $pager->render());
 		$this->assign('volist', $volist);
+		$this->assign('current_team_cate_id', $cate_id);
 		$this->display('Team:list');
 	}
 	
