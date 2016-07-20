@@ -77,6 +77,7 @@ class TeamAction extends HomeAction
 		$this->assign('vo', $teacher);
 		$this->assign('pager', $pager);
 		$this->assign('cases', $cases);
+		$this->assign('current_nav', $_GET['catalog']);
 		$this->assign('case_count', $case_count);
 		$this->display('Team:detail');
 	}
