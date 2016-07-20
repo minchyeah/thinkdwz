@@ -96,19 +96,19 @@
   </div>
   <div id="hydlx">
     <h3>您好，您是第<b>{$vo['want_count']+1}</b>位客户预约</h3>
-    <form id="orderform" action="__APP__/team/order" method="post">
+    <form id="DetailOrderform" action="__APP__/team/order" method="post">
     <ol>
       <li>
         <h4>姓名：</h4>
         <h5>
-          <input name="contact" type="text" id="contact" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+          <input name="contact" type="text" data-rule="chinese" id="contact" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
         </h5>
         <h6></h6>
       </li>
       <li>
         <h4>电话：</h4>
         <h5>
-          <input name="phone" type="text" id="phone" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+          <input name="phone" type="text" data-rule="number" id="phone" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
         </h5>
         <h6></h6>
       </li>
@@ -123,20 +123,26 @@
     <input name="member_title" value="{$vo.title}" type="hidden" />
     </form>
     <h3>预约成功后我们的客服人员将在24小时内与您联系！</h3>
-    <h3>如有任何疑问，您也可以直接与我们的客服联系：<b>0771-5552570</b></h3>
+    <h3>如有任何疑问，您也可以直接与我们的客服联系：<b>0771-{$settings.company_phone}</b></h3>
   </div>
 </div>
 <script type="text/javascript">
 function submitOrder()
 {
-	  $form = $("#orderform");
-	  $.post($form.attr('action'),$form.serialize(),function(rs){
-		  alert(rs.info);
-		  if(rs.status){
-			  window.location.href=window.location.href;
-		  }
-	  });
-	  return false;
+	var MyRule = {
+		required: /\S+/,
+		number: /^\d+$/,
+		chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
+		mobile: /^(12|13|14|15|16|17|18|19)[0-9]{9}$/,
+	};
+	$form = $("#DetailOrderform");
+	$.post($form.attr('action'),$form.serialize(),function(rs){
+		alert(rs.info);
+		if(rs.status){
+			window.location.href=window.location.href;
+		}
+	});
+	return false;
 }
 </script>
 </body>

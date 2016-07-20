@@ -120,6 +120,7 @@ class TeamAction extends HomeAction
 		}
 		if(false !== $rs){
 			$model->commit();
+			M('TeamMember')->where(array('id'=>$data['member_id']))->setInc('want_count');
 			$this->success('预约成功！');
 		}else{
 			$model->rollback();
