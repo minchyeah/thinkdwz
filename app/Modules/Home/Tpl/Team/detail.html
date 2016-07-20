@@ -6,7 +6,7 @@
 
 <body>
 <include file="Public:header" />
-<div class="dingt"></div>
+<div class="dingt"><div class="logo"><a href="__APP__/" title="{$settings.site_name}"></a></div></div>
 <include file="Public:slider" />
 <div class="syzt jz dqwz">
   <div class="dqwzn">
@@ -33,7 +33,7 @@
       </div>
       <div class="nrtr">
         <div class="nrtrt">
-          <h1>{$vo.name}<span>{$vo.title}</span><span>经验：{$vo.team_age}年</span><span>作品：{$case_count}个</span></h1>
+          <h1>{$vo.name}<span>{$vo.title}</span><span>经验：{$vo.team_age}年</span><span style="display:none;">作品：168个</span></h1>
           <dl>
             <dt>擅长风格</dt><php>$detail_styles = str2arr($vo['style'])</php>
             <dd class="bs"><volist name="detail_styles" id="dsvo"><a href="javascript:;" target="_blank">{$dsvo}</a></volist></dd>
@@ -47,7 +47,7 @@
         </div>
         <div class="tdan"><a href="zxyd" class="but" rel="1"><b></b>
           <h3>{$team_want}</h3>
-          <span></span></a><h4><span title="点赞！"></span><b>{$vo.zhan}</b>人气</h4></div>
+          <span></span></a><h4><span title="点赞！"></span><b>126</b>人气</h4></div>
       </div>
       <div class="clr"></div>
       <div class="tdzt">
@@ -95,49 +95,31 @@
     <h5 class="close" rel="zxyd"></h5>
   </div>
   <div id="hydlx">
-    <h3>您好，您是第<b>{$vo['want_count']+1}</b>位客户预约</h3>
-    <form id="orderform" action="__APP__/team/order" method="post">
+    <h3>您好，您是第<b>16</b>位客户预约</h3>
     <ol>
       <li>
         <h4>姓名：</h4>
         <h5>
-          <input name="contact" type="text" id="contact" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
         </h5>
-        <h6></h6>
+        <h6>输入有错误!</h6>
       </li>
       <li>
         <h4>电话：</h4>
         <h5>
-          <input name="phone" type="text" id="phone" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+          <input name="textfield" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
         </h5>
-        <h6></h6>
+        <h6>输入有错误!</h6>
       </li>
       <li class="dltj huangs">
         <h3>
-          <input class="pjtj" type="submit" value="&nbsp;" onclick="return submitOrder()">
+          <input class="pjtj" type="submit" value="&nbsp;">
         </h3>
       </li>
     </ol>
-    <input name="member_id" value="{$vo.id}" type="hidden" />
-    <input name="member_name" value="{$vo.name}" type="hidden" />
-    <input name="member_title" value="{$vo.title}" type="hidden" />
-    </form>
     <h3>预约成功后我们的客服人员将在24小时内与您联系！</h3>
     <h3>如有任何疑问，您也可以直接与我们的客服联系：<b>0771-5552570</b></h3>
   </div>
 </div>
-<script type="text/javascript">
-function submitOrder()
-{
-	  $form = $("#orderform");
-	  $.post($form.attr('action'),$form.serialize(),function(rs){
-		  alert(rs.info);
-		  if(rs.status){
-			  window.location.href=window.location.href;
-		  }
-	  });
-	  return false;
-}
-</script>
 </body>
 </html>

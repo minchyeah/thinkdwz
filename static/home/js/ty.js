@@ -11,6 +11,11 @@ $(function(){
 	//首页内容判断高度
 	$(".hqgd").css("height", ($(window).height() - 184) + "px");
 	$(".hdpaniu").css("top", ($(window).height() * 0.25) + "px");
+	//手机导航
+	$('.btn-nav').on('click tap', function () {
+		$('.nav-content').toggleClass('showNav hideNav');
+		$(this).toggleClass('animated');
+	});
 })
  jQuery(function(){
 	$(".CategoryTree > ul > li").hover(function(){

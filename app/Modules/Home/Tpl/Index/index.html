@@ -6,51 +6,58 @@
 
 <body>
 <include file="Public:header" />
-<div class="dingt"></div>
+<div class="dingt">
+  <div class="logo"><a href="__APP__/" title="{$settings.site_name}"></a></div>
+</div>
 <div class="hdp hqgd">
   <div class="hdpk"> <a id="prev" class="hdpkl hdpaniu" href="###"></a> <a id="next" class="hdpkr hdpaniu" href="###"></a></div>
   <div class="jshdp hqgd">
     <div class="box01 hqgd">
-      <volist name="index_slider" id="isvo">
-      <span class="hqgd" style="background-image:url({$isvo.image}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{$isvo.image}',sizingMethod='scale');"><a href="{$isvo.target}" class="hqgd" target="_blank"></a></span>
-      </volist>
+      <volist name="index_slider" id="isvo"> <span class="hqgd" style="background-image:url({$isvo.image}); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{$isvo.image}',sizingMethod='scale');"><a href="{$isvo.target}" class="hqgd" target="_blank"></a></span> </volist>
     </div>
-    <div class="jsNav"><volist name="index_slider" id="isvo"><span class="trigger <if condition="$i eq 1">imgSelected</if>">1</span></volist></div>
+    <div class="jsNav">
+      <volist name="index_slider" id="isvo"><span class="trigger <if condition="$i eq 1">imgSelected
+        </if>
+        ">1</span></volist>
+    </div>
   </div>
 </div>
 <div class="syzt jz">
   <div class="syztl">
     <div class="syztan">
-      <volist name="cases_category" id="ccvo"><a href="__APP__/cases/cate-{$ccvo.id}.html"><b></b><h1>{$ccvo.cate_name}</h1><span></span></a>
-      </volist>
+      <volist name="cases_category" id="ccvo"><a href="__APP__/cases/cate-{$ccvo.id}.html"><b></b>
+        <h1>{$ccvo.cate_name}</h1>
+        <span></span></a> </volist>
     </div>
     <div id="syztd" class="syztlb">
       <volist name="cases" id="cvo">
-      <ol>
-        <li>
-          <h4><img src="{$cvo.thumb|imgsrc=600,600}" alt="{$cvo.name}" /><b></b></h4>
-        </li>
-        <li>
-          <h1>{$cvo.name}</h1>
-        </li>
-        <li>
-          <h2>{$cvo.style}/{$cvo.type}/{$cvo.area}㎡</h2>
-          <dl><php> $engineer = M('TeamMember')->find($cvo['engineer']);</php>
-            <dt><a href="__APP__/engineer/{$cvo.engineer}.html" target="_blank"><img src="{$engineer.image|imgsrc=100,100}" alt="{$engineer.name}" /><b></b></a></dt>
-            <dd>工程师</dd>
-          </dl>
-          <dl><php> $designer = M('TeamMember')->find($cvo['designer']);</php>
-            <dt><a href="__APP__/designer/{$cvo.designer}.html" target="_blank"><img src="{$designer.image|imgsrc=100,100}" alt="{$designer.name}" /></a><b></b></dt>
-            <dd>设计师</dd>
-          </dl>
-        </li>
-        <li>
-          <h3>{$cvo.detail}..</h3>
-        </li>
-        <li class="jbian"><a href="__APP__/cases/{$cvo.id}.html"><b></b>
-          <h5>查看详情</h5>
-          <span></span></a></li>
-      </ol>
+        <ol>
+          <li>
+            <h4><img src="{$cvo.thumb|imgsrc=600,600}" alt="{$cvo.name}" /><b></b></h4>
+          </li>
+          <li>
+            <h1>{$cvo.name}</h1>
+          </li>
+          <li>
+            <h2>{$cvo.style}/{$cvo.type}/{$cvo.area}㎡</h2>
+            <dl>
+              <php> $engineer = M('TeamMember')->find($cvo['engineer']);</php>
+              <dt><a href="__APP__/engineer/{$cvo.engineer}.html" target="_blank"><img src="{$engineer.image|imgsrc=100,100}" alt="{$engineer.name}" /><b></b></a></dt>
+              <dd>工程师</dd>
+            </dl>
+            <dl>
+              <php> $designer = M('TeamMember')->find($cvo['designer']);</php>
+              <dt><a href="__APP__/designer/{$cvo.designer}.html" target="_blank"><img src="{$designer.image|imgsrc=100,100}" alt="{$designer.name}" /></a><b></b></dt>
+              <dd>设计师</dd>
+            </dl>
+          </li>
+          <li>
+            <h3>{$cvo.detail}..</h3>
+          </li>
+          <li class="jbian"><a href="__APP__/cases/{$cvo.id}.html"><b></b>
+            <h5>查看详情</h5>
+            <span></span></a></li>
+        </ol>
       </volist>
     </div>
   </div>
@@ -64,7 +71,9 @@
     <div id="syztx">
       <ul>
         <volist name="cases" id="cvo">
-        <li class="<if condition="$i gt 1">ztwdj</if>"><img src="{$cvo.thumb|imgsrc=300,300}" alt="当前标题" /><b></b><span></span></li>
+          <li class="<if condition="$i gt 1">ztwdj
+            </if>
+            "><img src="{$cvo.thumb|imgsrc=300,300}" alt="当前标题" /><b></b><span></span></li>
         </volist>
       </ul>
     </div>
@@ -74,12 +83,12 @@
   <div class="sysjsn jz">
     <div class="sysjsnt bs" style="padding-left:470px;">
       <volist name="designers" id="dvo">
-      <if condition="$i lt 4">
-      <dl>
-        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
-        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
-      </dl>
-      </if>
+        <if condition="$i lt 4">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
       </volist>
     </div>
     <div class="sysjsnt bs" style="padding-left:56px;">
@@ -87,25 +96,64 @@
         <h1>专业装修设计师</h1>
         <a href="__APP__/designer/"><b></b>
         <h5>设计团队</h5>
-        <span></span></a>
-      </div>
+        <span></span></a> </div>
       <volist name="designers" id="dvo">
-      <if condition="$i gt 3 && $i lt 7">
-      <dl>
-        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
-        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
-      </dl>
-      </if>
+        <if condition="$i gt 3 && $i lt 7">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
       </volist>
     </div>
     <div class="sysjsnt bs" style="padding-left:560px;">
       <volist name="designers" id="dvo">
-      <if condition="$i gt 6">
-      <dl>
-        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
-        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
-      </dl>
-      </if>
+        <if condition="$i gt 6">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
+      </volist>
+    </div>
+  </div>
+</div>
+<!--手机版设计师-->
+<div class="sjbsysjs sysjs">
+  <div class="sysjsn jz">
+    <div class="sysjsnt bs">
+      <volist name="designers" id="dvo">
+        <if condition="$i lt 4">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
+      </volist>
+    </div>
+    <div class="sysjsnt bs">
+      <div class="sysjsntbt bs">
+        <h1>专业装修设计师</h1>
+        <a href="__APP__/designer/"><b></b>
+        <h5>设计团队</h5>
+        <span></span></a> </div>
+      <volist name="designers" id="dvo">
+        <if condition="$i gt 3 && $i lt 7">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
+      </volist>
+    </div>
+    <div class="sysjsnt bs">
+      <volist name="designers" id="dvo">
+        <if condition="$i gt 6">
+          <dl>
+            <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+            <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+          </dl>
+        </if>
       </volist>
     </div>
   </div>
@@ -115,7 +163,7 @@
     <div class="slideBox" id="demo1">
       <ul class="items">
         <volist name="index_engineer_slider" id="iesvo">
-        <li><a href="{$iesvo.target}" title="{$iesvo.title}" target="_blank"><img src="{$iesvo.image}" alt="{$iesvo.title}"></a><b></b></li>
+          <li><a href="{$iesvo.target}" title="{$iesvo.title}" target="_blank"><img src="{$iesvo.image}" alt="{$iesvo.title}"></a><b></b></li>
         </volist>
       </ul>
     </div>
@@ -151,13 +199,13 @@
       </div>
       <div class="zxhdn">
         <volist name="activity_list" id="avo">
-        <dl>
-          <dt><a href="__APP__/activity/{$avo.id}.html" target="_blank" title="{$avo.title}"><img src="{$vo.thumb|imgsrc=###,100,100}" alt="{$avo.title}" /><b></b></a></dt>
-          <dd>
-            <h1><a href="__APP__/activity/{$avo.id}.html" target="_blank">{$avo.title}</a></h1>
-            <h2>{$avo.content|stripContent|mb_substr=###,0,180}..</h2>
-          </dd>
-        </dl>
+          <dl>
+            <dt><a href="__APP__/activity/{$avo.id}.html" target="_blank" title="{$avo.title}"><img src="{$vo.thumb|imgsrc=###,100,100}" alt="{$avo.title}" /><b></b></a></dt>
+            <dd>
+              <h1><a href="__APP__/activity/{$avo.id}.html" target="_blank">{$avo.title}</a></h1>
+              <h2>{$avo.content|stripContent|mb_substr=###,0,180}..</h2>
+            </dd>
+          </dl>
         </volist>
       </div>
     </div>
@@ -170,12 +218,16 @@
     </div>
     <div class="zxzx">
       <volist name="newslist" id="nvo">
-      <dl style="<if condition="$i eq 1">border-left:none;</if><if condition="$i eq 3">border-right:none;</if>">
-        <dt>{$nvo.cate_name}</dt>
-        <volist name="nvo.articles" id="avo">
-        <dd><a href="__APP__/news/{$avo.id}.html" target="_blank">{$avo.title}</a></dd>
-        </volist>
-      </dl>
+        <dl style="<if condition="$i eq 1">
+          border-left:none;
+          </if>
+          <if condition="$i eq 3">border-right:none;</if>
+          ">
+          <dt>{$nvo.cate_name}</dt>
+          <volist name="nvo.articles" id="avo">
+            <dd><a href="__APP__/news/{$avo.id}.html" target="_blank">{$avo.title}</a></dd>
+          </volist>
+        </dl>
       </volist>
       <div class="zxzxr">
         <h1>广西晟禾装饰有限公司</h1>
@@ -186,7 +238,6 @@
     </div>
   </div>
 </div>
-<include file="Public:footer" />
-<include file="Public:qqkefu" />
+<include file="Public:footer" /> <include file="Public:qqkefu" />
 </body>
 </html>
