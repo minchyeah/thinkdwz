@@ -41,10 +41,12 @@ class ArticleAction extends HomeAction
 		$model = D('ArticleCategory');
 		$catalog = trim(strval($_GET['catalog']));
 		$cate_id = intval($_GET['cate_id']);
+		$current_category = $model->where(array('catalog'=>$catalog))->find();
+		$sidebar_cate_nav = $model->field('id,cate_name')->where(array('pid'=>$current_category['id']))->order('sort_order ASC')->select();
+		$this->assign('sidebar_cate_nav', $sidebar_cate_nav);
 		if($cate_id){
 			$current_category = $model->find($cate_id);
 		}else{
-			$current_category = $model->where(array('catalog'=>$catalog))->find();
 			$cate_id = $current_category['id'];
 		}
 		$current_catalog = $this->_get_catalog($current_category);
