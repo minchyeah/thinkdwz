@@ -13,18 +13,23 @@
       </ul>
     </div>
     <div class="bqtj">
+      <form id="orderform" action="__APP__/team/order" method="post">
       <dl>
         <dt><span>姓名</span>
-          <input name="textfield" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+          <input name="contact" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
           <b></b></dt>
         <dt><span>电话</span>
-          <input name="textfield" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+          <input name="phone" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
           <b></b></dt>
-        <dd><a href="###"><b></b>
+        <dd><a href="###" onclick="return submitFooterOrder()"><b></b>
           <h3>提交免费电话</h3>
           <span></span></a></dd>
-          <dd class="tjts">提交成功！</dd>
+          <dd id="resulttip" class="tjts"></dd>
       </dl>
+      <input name="member_id" value="0" type="hidden" />
+      <input name="member_name" value="" type="hidden" />
+      <input name="member_title" value="" type="hidden" />
+      </form>
     </div>
     <div class="clr"></div>
   </div>
@@ -34,3 +39,16 @@
   <h2><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=623198951&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:623198951:47 &amp;r=0.22914223582483828" alt="点击这里"></a></h2>
   <h3><a href="til:0771{$settings.company_phone}"><img src="image/dianhua.png" />{$settings.company_phone}</a></h3>
 </div>
+<script type="text/javascript">
+function submitFooterOrder()
+{
+	  $form = $("#orderform");
+	  $.post($form.attr('action'),$form.serialize(),function(rs){
+		  $form.find("dd#resulttip").text(rs.info);
+		  if(rs.status){
+			  $form.find("input").val('');
+		  }
+	  });
+	  return false;
+}
+</script>
