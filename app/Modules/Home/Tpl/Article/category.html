@@ -39,8 +39,8 @@ $site_name = $current_category['cate_name'].'_'.$settings['site_name']
     <div class="wzlb">
     <volist name="articles" id="vo">
       <dl>
-        <dt><a href="__APP__/{$current_category.catalog}/{$vo.id}.html">{$vo.title}</a></dt>
-        <dd><if condition="$vo['thumb']"><a href="__APP__/{$current_category.catalog}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></if>{$vo.content|stripContent|mb_substr=###,0,280}...</dd>
+        <dt><a href="__APP__/{$_GET['catalog']}/{$vo.id}.html">{$vo.title}</a></dt>
+        <dd><if condition="$vo['thumb']"><a href="__APP__/{$_GET['catalog']}/{$vo.id}.html"><img src="{$vo.thumb|imgsrc=###,80,80}" /></a></if>{$vo.content|stripContent|mb_substr=###,0,280}...</dd>
       </dl>
     </volist>
     </div>
