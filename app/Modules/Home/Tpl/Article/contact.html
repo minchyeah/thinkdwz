@@ -39,60 +39,82 @@ $site_name = $page['title'].'_'.$settings['site_name']
         <dl>
           <dt>详细</dt>
           <dd>
-            <div class="wznrzw"> <img src="images/lxwm.jpg" title="guangggao" /> 咨询热线：0771-{$settings.company_phone}</div>
+            <div class="wznrzw">{$page.content}</div>
           </dd>
         </dl>
       </div>
       <div class="lxwmr">
+        <form id="ContactOrderform" action="__APP__/msgboard/save" method="post">
         <div class="lyk">
           <ol>
             <li>
-              <h4>标题：</h4>
+              <h4>姓名：</h4>
               <h5>
-                <input name="textfield" type="text" id="textfield" size="50" value="标题..." onfocus="if(this.value=='标题...')this.value='';" onblur="if(this.value=='')this.value='标题...';"/>
+                <input name="name" type="text" id="textfield" size="50" />
               </h5>
-              <h6>*</h6>
+              <h6></h6>
             </li>
             <li>
               <h4>电话：</h4>
               <h5>
-                <input name="textfield" type="text" id="textfield" size="50" value="电话..." onfocus="if(this.value=='电话...')this.value='';" onblur="if(this.value=='')this.value='电话...';"/>
+                <input name="mobile" type="text" id="textfield" size="50" />
               </h5>
-              <h6>√</h6>
+              <h6></h6>
             </li>
             <li>
               <h4>QQ：</h4>
               <h5>
-                <input name="textfield" type="text" id="textfield" size="50" value="QQ..." onfocus="if(this.value=='QQ...')this.value='';" onblur="if(this.value=='')this.value='QQ...';"/>
+                <input name="email" type="text" id="textfield" size="50" />
               </h5>
-              <h6>x</h6>
+              <h6></h6>
             </li>
             <li>
               <h4>地址：</h4>
               <h5>
-                <input name="textfield" type="text" id="textfield" size="50" value="地址..." onfocus="if(this.value=='地址...')this.value='';" onblur="if(this.value=='')this.value='地址...';"/>
+                <input name="address" type="text" id="textfield" size="50" />
               </h5>
-              <h6>x</h6>
+              <h6></h6>
             </li>
             <li class="wzy">
               <h4>内容：</h4>
               <h5>
-                <textarea name="ly" cols="" rows="" ></textarea>
+                <textarea name="content" cols="" rows="" ></textarea>
               </h5>
-              <h6>*</h6>
+              <h6></h6>
             </li>
             <li class="yzm">
               <h4>验证码：</h4>
               <h5><span>
-                <input name="textfield" type="text" id="textfield" size="50" value=""/>
-                <a href="###">看不清，换一张</a></span> <img src="images/yzm.jpg" /></h5>
-              <h6>*</h6>
+                <input name="captcha" type="text" id="textfield" size="50" value=""/>
+                <a href="###" onclick="$('img#captchaImage').attr('src','{:U('Index/captcha','background=F6F6F6')}?'+Math.random())">看不清，换一张</a></span> <img id="captchaImage" src="{:U('Index/captcha','background=F6F6F6')}" onclick="this.src='{:U('Index/captcha','background=F6F6F6')}?'+Math.random()" /></h5>
+              <h6></h6>
             </li>
             <li class="dltj bs">
-              <h3> <a href="###">提交</a> </h3>
+              <h3> <a href="###" onclick="return submitContactOrder()">提交</a> </h3>
             </li>
           </ol>
         </div>
+        </form>
+        <script type="text/javascript">
+        function submitContactOrder()
+        {
+        	var MyRule = {
+        		required: /\S+/,
+        		number: /^\d+$/,
+        		chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
+        		mobile: /^(12|13|14|15|16|17|18|19)[0-9]{9}$/,
+        	};
+        	$form = $("#ContactOrderform");
+        	$.post($form.attr('action'),$form.serialize(),function(rs){
+        		alert(rs.info);
+        		if(rs.status){
+        			$form[0].reset();
+        			window.location.href=window.location.href;
+        		}
+        	});
+        	return false;
+        }
+        </script>
         <div class="clr"></div>
         <div class="ditu">
           <div style="width:580px;height:320px;border:#ccc solid 1px;" id="dituContent"></div>
