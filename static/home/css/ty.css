@@ -2765,6 +2765,7 @@ transition:margin-left .5s cubic-bezier(.19, 1, .22, 1), font-weight .5s cubic-b
  display: block;
  height: 100%;
  z-index:3;
+ overflow:hidden;
 }
 @keyframes showNav {
  from {
@@ -2848,11 +2849,11 @@ transition:margin-left .5s cubic-bezier(.19, 1, .22, 1), font-weight .5s cubic-b
  top: 20%;
 }
  .nav-item {
- margin:20px 22px;
+ margin:16px 8px;
  float:left;
- width:101px;
- height:30px;
- line-height:30px;
+ width:137px;
+ height:42px;
+ line-height:42px;
  font-size:16px;
  overflow:hidden;
 }
@@ -2870,16 +2871,16 @@ transition:margin-left .5s cubic-bezier(.19, 1, .22, 1), font-weight .5s cubic-b
  display:block;
  position: relative;
  width:101px;
- height:30px;
+ height:42px;
  margin:0 auto;
- background:url(../image/bjt.png) no-repeat 0 6px;
- padding-left:24px;
+ background:url(../image/bjt.png) no-repeat 9px 11px;
+ padding-left:36px;
 }
 .item-anchor:after {
   content: "";
   position: absolute;
   width: 0px;
-  height: 30px;
+  height: 42px;
   left: 0;
   bottom: 0;
   z-index:-1;
@@ -2890,8 +2891,8 @@ transition:margin-left .5s cubic-bezier(.19, 1, .22, 1), font-weight .5s cubic-b
   transition: all .4s ease;
   background: #730d1a;
 }
- .item-anchor:hover:after, .item-anchor:focus:after {
- width: 101px;
+ .item-anchor:hover:after, .item-anchor:focus:after, .sjdh .xz .item-anchor:after {
+ width: 100%;
  -webkit-transition: all .4s ease;
  -moz-transition: all .4s ease;
  -ms-transition: all .4s ease;
@@ -2978,10 +2979,16 @@ div.hdp{
 .syztlb{
 	display:none;
 }
+.syztr{
+	width:100%;
+}
 .syztt{
 	width:100%;
 	height:170px;
 	line-height:34px;
+}
+.syztt a h1{
+	line-height:42px;
 }
 .syztt h2{
 	margin-top:25px;
@@ -3000,12 +3007,12 @@ div.hdp{
 }
 .sjbsysjs{
 	display:block;
-	margin:20px 0;
+	margin:46px 0;
 }
 .sysjsnt dl{
 	width:100px;
 	height:100px;
-	margin-right:6px;
+	margin-right:10px;
 }
 .sysjsnt{
 	height:auto;
@@ -3042,17 +3049,17 @@ div.hdp{
 /*工程团队*/
 .gchdp, .slideBox, div.slideBox ul.items li{
 	width:100%;
-	height:159px;
+	height:240px;
 }
 .gchdp{
 	float:none;
 }
 div.slideBox ul.items li a img{
-	max-width: 318px;
-    max-height: 159px;
+	max-width: 480px;
+    max-height: 240px;
 }
 div.slideBox div.tips{
-	top:123px;
+	top:204px;
 }
 .gctd{
 	float:none;
@@ -3068,11 +3075,11 @@ div.slideBox div.tips{
 .zjsh{
 	width:100%;
 	float:none;
-	margin-top:0px;
+	margin-top:46px;
 }
 .zjshs{
 	width:100%;
-	height:214px;
+	height:196px;
 }
 .zjshs h2{
 	margin-top:22px;
@@ -3086,7 +3093,7 @@ div.slideBox div.tips{
 }
 .zjshs a{
 	margin-left:16px;
-	margin-top:26px;
+	margin-top:16px;
 }
 .zjshx, .zjshx img{
 	width:100%;
@@ -3308,5 +3315,12 @@ div.dqwz{
 }
 .faqdiv #hydlx ol li h6{
 	display:none;
+}
+.syzt .syztr{
+	display:block;
+}
+.ztlb .syztlb ol, .tdzt .syztlb ol{
+	float:none;
+	margin:0 auto;
 }
 }

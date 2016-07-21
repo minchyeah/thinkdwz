@@ -19,7 +19,7 @@
           <input name="contact" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
           <b></b></dt>
         <dt><span>电话</span>
-          <input name="phone" type="text" id="textfield" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+          <input name="phone" type="tel" id="textfield" size="15" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
           <b></b></dt>
         <dd><a href="###" onclick="return submitFooterOrder()"><b></b>
           <h3>提交免费电话</h3>
@@ -37,7 +37,7 @@
 <!--手机底部-->
 <div class="sjdb bs">
   <h2><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=623198951&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:623198951:47 &amp;r=0.22914223582483828" alt="点击这里"></a></h2>
-  <h3><a href="til:0771{$settings.company_phone}"><img src="image/dianhua.png" />{$settings.company_phone}</a></h3>
+  <h3><a href="tel:0771{$settings.company_phone}"><img src="image/dianhua.png" />{$settings.company_phone}</a></h3>
 </div>
 <script type="text/javascript">
 function submitFooterOrder()

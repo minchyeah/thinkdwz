@@ -110,6 +110,46 @@
     </div>
   </div>
 </div>
+<!--手机版设计师-->
+<div class="sjbsysjs sysjs">
+  <div class="sysjsn jz">
+    <div class="sysjsnt bs">
+      <div class="sysjsntbt bs">
+         <h1>专业装修设计师</h1>
+        <a href="__APP__/designer/"><b></b>
+        <h5>设计团队</h5>
+        <span></span></a> </div>
+      <volist name="designers" id="dvo">
+      <if condition="$i lt 4">
+      <dl>
+        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+      </dl>
+      </if>
+      </volist>
+    </div>
+    <div class="sysjsnt bs">
+      <volist name="designers" id="dvo">
+      <if condition="$i gt 3 && $i lt 7">
+      <dl>
+        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+      </dl>
+      </if>
+      </volist>
+    </div>
+    <div class="sysjsnt bs">
+      <volist name="designers" id="dvo">
+      <if condition="$i gt 6">
+      <dl>
+        <dt><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><img src="{$dvo.image|imgsrc=180,180}" /></a><b></b></dt>
+        <dd><a href="__APP__/designer/{$dvo.id}.html" target="_blank"><b>找TA设计</b><span>{$dvo.title}&nbsp;/&nbsp;{$dvo.name}</span></a></dd>
+      </dl>
+      </if>
+      </volist>
+    </div>
+  </div>
+</div>
 <div class="jz">
   <div class="gchdp">
     <div class="slideBox" id="demo1">
