@@ -13,6 +13,10 @@ class ArticleAction extends HomeAction
 		if(!$article){
 			$this->notfound();
 		}
+		$catalog = trim(strval($_GET['catalog']));
+		$current_category = D('ArticleCategory')->where(array('catalog'=>$catalog))->find();
+		$sidebar_cate_nav = D('ArticleCategory')->field('id,cate_name')->where(array('pid'=>$current_category['id']))->order('sort_order ASC')->select();
+		$this->assign('sidebar_cate_nav', $sidebar_cate_nav);
 		$model->where($where)->setInc('visit_count');
 		$current_category = D('ArticleCategory')->find($article['cate_id']);
 		$current_catalog = $this->_get_catalog($current_category);
