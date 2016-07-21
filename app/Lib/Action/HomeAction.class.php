@@ -199,6 +199,7 @@ class HomeAction extends CommonAction
 	{
 	    import('Util.Page', LIB_PATH);
 	    $page = new Page($count, $perPage, '', $url);
+	    $page->rollPage = 1;
 	    $page->firstPageHtml = '<a href="__URL__">__TITLE__</a>';
 	    $page->lastPageHtml = '<a href="__URL__">__TITLE__</a>';
 	    $page->prevPageHtml = '<span><a href="__URL__" title="上一页" class="syy"><b></b><h5></h5></a></span>';
