@@ -29,6 +29,9 @@ class IndexAction extends HomeAction
 		
 		$this->assign('activity_list', $this->getArticleList('activity', 4));
 		
+		$pparticles = D('Articles')->field('id,title,thumb')->where('cate_id = 10')->order('create_time DESC')->limit(16)->select();
+		$this->assign('pparticles', $pparticles);
+		
 		$this->assign('newslist', $this->xuekus());
 		
 		$this->assign('current_nav', 'index');

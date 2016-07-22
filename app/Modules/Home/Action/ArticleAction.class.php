@@ -54,7 +54,11 @@ class ArticleAction extends HomeAction
 			$cate_id = $current_category['id'];
 		}
 		$current_catalog = $this->_get_catalog($current_category);
-		$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
+		if(intval($_GET['cate_id']) == 0){
+			$sub_cates = $model->where(array('pid'=>$cate_id))->where('id<>10')->getField('id,cate_name');
+		}else{
+			$sub_cates = $model->where(array('pid'=>$cate_id))->getField('id,cate_name');
+		}
 		$cate_ids = array();
 		if ($sub_cates) {
 			$cate_ids = array_keys($sub_cates);

@@ -17,6 +17,8 @@ class CasesAction extends HomeAction
 		$where = array('state'=>1);
 		if($cate_id){
 			$where['cate_id'] = $cate_id;
+		}else{
+			$where['cate_id'] = array('neq', 23);;
 		}
 		$style = trim($_GET['style']);
 		if($style && $style != '全部'){
