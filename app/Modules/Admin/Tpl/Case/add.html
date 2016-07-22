@@ -5,6 +5,7 @@
 	  <label>名称：</label>
 	  <input name="name" value="{$vo.name}" class="required" size="30" />
 	</div>
+	<if condition="$vo['cate_id'] neq 23">
 	<div class="unit">
 	  <label>面积：</label>
 	  <input name="area" value="{$vo.area}" class="required" size="30" />
@@ -47,6 +48,7 @@
 	    </volist>
 	  </select>
 	</div>
+	</if>
 	<div class="unit">
 	  <label>介绍：</label>
 	  <textarea name="detail" style="height:60px;width:600px;">{$vo.detail}</textarea>

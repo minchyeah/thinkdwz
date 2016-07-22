@@ -109,6 +109,9 @@ class CaseAction extends AdminAction
     {
     	$model = D('Cases');
     	$_POST['style'] = implode(',', $_POST['style']);
+    	if(!$_POST['style']){
+    		$_POST['style'] = '';
+    	}
     	$images = array();
     	if ($_FILES['imgfile']['name']) {
     		$image = $this->saveImage($_FILES['imgfile']);

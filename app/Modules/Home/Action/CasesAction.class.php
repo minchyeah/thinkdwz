@@ -54,7 +54,11 @@ class CasesAction extends HomeAction
 		$this->assign('volist', $volist);
 		$this->assign('current_category', M('CasesCategory')->find($cate_id));
 		$this->assign('current_cases_id', $cate_id);
-		$this->display('Cases:cases_list');
+		if($cate_id == 23){
+			$this->display('Cases:cases_list_23');
+		}else{
+			$this->display('Cases:cases_list');
+		}
 	}
 
 	public function detail($id = 0)
@@ -68,7 +72,11 @@ class CasesAction extends HomeAction
 		$this->assign('designer', M('TeamMember')->find($case['designer']));
 		$this->assign('engineer', M('TeamMember')->find($case['engineer']));
 		$this->assign('current_cases_id', $case['cate_id']);
-		$this->display('Cases:index');
+		if($case['cate_id'] == 23){
+			$this->display('Cases:index_23');
+		}else{
+			$this->display('Cases:index');
+		}
 	}
 
 	public function _empty($name)
