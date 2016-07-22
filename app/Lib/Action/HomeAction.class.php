@@ -166,6 +166,7 @@ class HomeAction extends CommonAction
 	    $where = array();
 	    $where['status'] = 1;
 	    $where['cate_id'] = array('in', $cate_ids);
+	    $where['cate_id'] = array('neq', 10);
 	    return D('Articles')->where($where)->limit($limit)->order('create_time DESC')->getField('id,title,cate_id,thumb,content');
 	}
 	
