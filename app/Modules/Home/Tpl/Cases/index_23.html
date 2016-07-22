@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="dingt"><div class="logo"><a href="__APP__/" title="{$settings.site_name}"></a></div></div>
+<include file="Public:slider" />
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>><a href="__APP__/cases/">展厅</a>><if condition="is_array($case_category)"><a href="__APP__/cases/cate-{$case_category.id}.html">{$case_category.cate_name}</a>></if><a href="">内容</a></dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">c
+      <h2>《{$case_category.cate_name}》</h2>
+    </div>
+  </div>
+</div>
+<div class="jz">
+  <div class="ny">
+    <div class="nrt">
+      <div class="nrtl">
+        <php>$images = json_decode($vo['images']);</php>
+        <div id="ztnrd">
+          <volist name="images" id="ivo">
+          <ol><li><img src="{$ivo|imgsrc=580,580}" class="group3" rel="{$ivo|imgsrc}" alt="{$vo.name}" /><b></b></li></ol>
+          </volist>
+        </div>
+        <div id="ztnrx">
+          <ul>
+            <volist name="images" id="ivo">
+            <li class="<if condition="$i gt 1">ztwdj</if>"><img src="{$ivo|imgsrc=100,100}" alt="{$vo.name}" /><b></b></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+      <div class="nrtr">
+        <div class="nrtrt">
+          <h1>{$vo.name}</h1>
+        </div>
+        <div class="nrtrn">
+          <h3>作品介绍</h3>
+          <h2>{$vo.detail}</h2>
+            <div class="clr"></div>
+          </dl>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+</body>
+</html>
