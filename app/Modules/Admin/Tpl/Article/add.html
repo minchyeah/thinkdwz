@@ -1,5 +1,23 @@
 <div class="pageContent">
 <form method="post" action="{:U('Article/save')}" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, dialogAjaxMenu);">
+  <if condition="$vo['cate_id'] eq 10">
+  <div class="pageFormContent" layoutH="55">
+	<div class="unit">
+	  <label>品牌名称：</label>
+	  <input name="title" value="{$vo.title}" class="required" size="50" />
+	</div>
+	<div class="unit">
+	  <label>品牌图片：</label>
+	  <if condition="$vo.thumb"><img src="{$vo.thumb|imgsrc=###,100,100}" /></if>
+	  <input name="thumbfile" type="file" size="30" />
+	  <input name="thumb" type="hidden" value="{$vo.thumb}" />
+	</div>
+	<div class="unit">
+	  <label>品牌内容：</label>
+	  <textarea name="content" style="height:400px;width:800px;">{$vo.content}</textarea>
+	</div>
+  </div>
+  <else />
   <div class="pageFormContent" layoutH="55">
 	<div class="unit">
 	  <label>文章标题：</label>
@@ -25,6 +43,7 @@
 	  <textarea class="editor" name="content" style="height:400px;width:800px;" upImgUrl="__URL__/uploadEditorImage" upImgExt="jpg,jpeg,gif,png">{$vo.content}</textarea>
 	</div>
   </div>
+  </if>
   <div class="formBar">
 	<ul>
 		<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>

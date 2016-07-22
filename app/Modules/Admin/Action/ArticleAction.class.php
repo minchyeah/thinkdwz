@@ -74,7 +74,14 @@ class ArticleAction extends AdminAction
     public function save()
     {
     	$model = D('Articles');
-    	$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
+    	if ($_FILES['thumbfile']['name']) {
+    		$image = $this->saveImage($_FILES['thumbfile']);
+    		if ($image) {
+    			$_POST['thumb'] = $image;
+    		}
+    	}else{
+    		$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
+    	}
     	$data = $model->create();
     	if(!$data){
     		$this->error($model->getError());

@@ -80,6 +80,8 @@ class ArticleAction extends HomeAction
 		$this->assign('pager', $page->render());
 		if(file_exists(THEME_PATH.'/Article/'.$catalog.'.html')){
 			$this->display('Article:'.$catalog);
+		}if(file_exists(THEME_PATH.'/Article/category_'.$cate_id.'.html')){
+			$this->display('Article:category_'.$cate_id);
 		}else{
 			$this->display('Article:category');
 		}

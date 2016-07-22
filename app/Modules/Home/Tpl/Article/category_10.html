@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<php>
+$site_name = $current_category['cate_name'].'_'.$settings['site_name']
+</php>
+<include file="Public:header_meta" />
+</head>
+
+<body>
+<include file="Public:header" />
+<div class="dingt"><div class="logo"><a href="__APP__/" title="{$settings.site_name}"></a></div></div>
+<include file="Public:slider" />
+<div class="syzt jz dqwz">
+  <div class="dqwzn">
+    <dl>
+      <dt><a href="__APP__/"></a></dt>
+      <dd>{$current_position|substr=###,0,-1}</dd>
+    </dl>
+    <span></span> </div>
+  <div class="syztr">
+    <div class="syztt bs">
+      <h2>《{$current_category.cate_name}》</h2>
+    </div>
+  </div>
+</div>
+<div class="jz">
+  <div class="cbl">
+    <div class="cbln">
+      <div class="cblfl">
+        <volist name="sidebar_cate_nav" id="cnvo">
+        <a class="<if condition="$current_category['id'] eq $cnvo['id']">xz</if>" href="__APP__/{$_GET['catalog']}/cate-{$cnvo.id}.html"><b></b><h1>{$cnvo.cate_name}</h1><span></span></a>
+        </volist>
+      </div>
+      <include file="Public:sidebar_activity" />
+    </div>
+  </div>
+  <div class="lny">
+    <div class="pplb">
+      <table border="0" cellspacing="0" cellpadding="0">
+        <volist name="articles" id="vo">
+        <tr>
+          <if condition="$i%2 eq 1">
+          <td class="pplbtp"><img src="{$vo.thumb|imgsrc=###,310,310}" alt="{$vo.title}" /></td>
+          <td class="pplbwz" valign="middle"><h1>{$vo.title}</h1>{$vo.content|stripContent}</td>
+          <else />
+          <td class="pplbwz" valign="middle"><h1>{$vo.title}</h1>{$vo.content|stripContent}</td>
+          <td class="pplbtp"><img src="{$vo.thumb|imgsrc=###,310,310}" alt="{$vo.title}" /></td>
+          </if>
+        </tr>
+        </volist>
+      </table>
+    </div>
+    <div class="clr"></div>
+    <if condition="trim($pager)"><div class="fy">{$pager}</div></if>
+  </div>
+  <div class="clr"></div>
+</div>
+<include file="Public:footer" />
+<include file="Public:qqkefu" />
+</body>
+</html>
