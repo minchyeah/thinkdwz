@@ -79,6 +79,8 @@ class ArticleAction extends AdminAction
     		if ($image) {
     			$_POST['thumb'] = $image;
     		}
+    	}elseif($_POST['thumb']){
+    		$_POST['thumb'] = trim($_POST['thumb']);
     	}else{
     		$_POST['thumb'] = str_replace(__ROOT__.'/data/', '', getFirstImg($_POST['content']));
     	}
