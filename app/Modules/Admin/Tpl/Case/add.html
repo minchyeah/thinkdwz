@@ -59,7 +59,7 @@
 		  <if condition="$images[0]"><img src="{$images[0]|imgsrc=###,100,100}" />
 		  <div style="display:block;width:30px;text-align:center;float:left;line-height:100px;"><a style="line-height:30px;" title="删除图片" href="javascript:;" class="delimg" data-imgidx="0">X</a></div>
 		  </if>
-		  <input class="<if condition="!$images[0]"></if>" name="imgfile" type="file" size="30" />
+		  <input class="<if condition="!$images[0]"></if>" name="imgfile" type="file" size="30" /> 尺寸要求:正方形 
 	</div>
 			
 	<volist name="images" id="ivo">
