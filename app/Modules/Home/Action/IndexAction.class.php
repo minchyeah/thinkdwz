@@ -3,10 +3,10 @@ class IndexAction extends HomeAction
 {
 	public function index()
 	{
-		$cases_category = M('CasesCategory')->field('id,cate_name')->order('sort_order ASC')->limit(2)->select();
+		$cases_category = M('CasesCategory')->field('id,cate_name')->where(array('cate_id'=>array('neq', 23)))->order('sort_order ASC')->limit(2)->select();
 		$this->assign('cases_category', $cases_category);
 		
-		$cases = M('Cases')->field('*')->order('dateline DESC')->limit(10)->select();
+		$cases = M('Cases')->field('*')->where(array('cate_id'=>array('neq', 23)))->order('dateline DESC')->limit(10)->select();
 		$this->assign('cases', $cases);
 		
 		$cids = array(22);

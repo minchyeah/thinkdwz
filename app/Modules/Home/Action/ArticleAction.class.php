@@ -34,7 +34,7 @@ class ArticleAction extends HomeAction
 	    $this->assign('prev_page', $prev_page);
 	    $this->assign('next_page', $next_page);
 		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $current_category['catalog']);
+		$this->assign('current_nav', $catalog);
 		$this->assign('current_catalog', $current_catalog);
 		$this->assign('current_position', $this->_build_current_position($current_category));
 		$this->display('Article:index');
@@ -77,7 +77,7 @@ class ArticleAction extends HomeAction
 		$articles = $article->where($where)->limit($page->firstRow,$page->listRows)->order('create_time DESC')->getField('id,title,cate_id,content,thumb,create_time');
 		$this->assign('articles', $articles);
 		$this->assign('current_category', $current_category);
-		$this->assign('current_nav', $current_catalog);
+		$this->assign('current_nav', $catalog);
 		$this->assign('current_catalog', $current_catalog);
 		$this->assign('current_position', $this->_build_current_position($current_category, $catalog));
 		$this->assign('sub_cates', $sub_cates);
