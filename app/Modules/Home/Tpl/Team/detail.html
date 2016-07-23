@@ -47,7 +47,7 @@
         </div>
         <div class="tdan"><a href="zxyd" class="but" rel="1"><b></b>
           <h3>{$team_want}</h3>
-          <span></span></a><h4><span title="点赞！"></span><b>{$vo.zhan}</b>人气</h4></div>
+          <span></span></a><h4><span title="点赞！"></span><b>{$zhan_count}</b>人气</h4></div>
       </div>
       <div class="clr"></div>
       <div class="tdzt">
@@ -95,20 +95,20 @@
     <h5 class="close" rel="zxyd"></h5>
   </div>
   <div id="hydlx">
-    <h3>您好，您是第<b>{$vo['want_count']+1}</b>位客户预约</h3>
+    <h3>您好，您是第<b>{$order_count+1}</b>位客户预约</h3>
     <form id="DetailOrderform" action="__APP__/team/order" method="post">
     <ol>
       <li>
         <h4>姓名：</h4>
         <h5>
-          <input name="contact" type="text" data-rule="chinese" id="contact" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+          <input name="contact" class="check" type="text" data-rule="chinese" id="contact" size="50"/>
         </h5>
         <h6></h6>
       </li>
       <li>
-        <h4>电话：</h4>
+        <h4>手机：</h4>
         <h5>
-          <input name="phone" type="text" data-rule="number" id="phone" size="50" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+          <input name="phone" class="check" type="text" data-rule="mobile" id="phone" size="50"/>
         </h5>
         <h6></h6>
       </li>
@@ -127,21 +127,59 @@
   </div>
 </div>
 <script type="text/javascript">
+var MyRule = {
+	required: /\S+/,
+	number: /^\d+$/,
+	chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
+	mobile: /^(13|14|15|16|17|18|19)[0-9]{9}$/,
+};
+
+$("input.check", "#DetailOrderform").blur(function(){
+	var $input = $(this);
+	var $b = $input.parent().next('h6');
+	var reg = new RegExp(/\S+/);
+	$b.text("√");
+	if(!reg.test($input.val())){
+		$b.text("×");
+	}
+	var rule = $input.data().rule;
+	var crule = MyRule[rule] || rule;
+	var creg = new RegExp(crule);
+	if(!creg.test($input.val())){
+		$flag = false;
+		$b.text("×");
+	}
+});
 function submitOrder()
 {
-	var MyRule = {
-		required: /\S+/,
-		number: /^\d+$/,
-		chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
-		mobile: /^(12|13|14|15|16|17|18|19)[0-9]{9}$/,
-	};
 	$form = $("#DetailOrderform");
-	$.post($form.attr('action'),$form.serialize(),function(rs){
-		alert(rs.info);
-		if(rs.status){
-			window.location.href=window.location.href;
+	var $flag = true;
+	$("input.check", $form).add("select.check", $form).each(function(i){
+		var $input = $(this);
+		var $b = $input.parent().next('h6');
+		$b.text("√");
+		var reg = new RegExp(/\S+/);
+		if(!reg.test($input.val())){
+			$flag = false;
+			$b.text("×");
+		}
+		var rule = $input.data().rule;
+		var crule = MyRule[rule] || rule;
+		var creg = new RegExp(crule);
+		if(!creg.test($input.val())){
+			$flag = false;
+			$b.text("×");
 		}
 	});
+	if($flag){
+		$.post($form.attr('action'),$form.serialize(),function(rs){
+			alert(rs.info);
+			if(rs.status){
+				$form[0].reset();
+				window.location.href=window.location.href;
+			}
+		});
+	}
 	return false;
 }
 </script>

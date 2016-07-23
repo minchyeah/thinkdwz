@@ -80,6 +80,8 @@ class TeamAction extends AdminAction
     			$_POST['image'] = $image;
     		}
     	}
+    	$cate = D('TeamCategory')->where(array('id'=>intval($_POST['cate_id'])))->find();
+    	$_POST['title'] = $cate['cate_name'];
     	$_POST['style'] = implode(',', $_POST['style']);
     	$data = $model->create();
     	if(!$data){

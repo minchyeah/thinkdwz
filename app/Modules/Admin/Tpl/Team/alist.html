@@ -14,11 +14,9 @@
 		<th width="25"><input type="checkbox" group="id" class="checkboxCtrl"></th>
 		<th width="50">编号</th>
 		<th>姓名</th>
-		<th>照片</th>
-		<th>性别</th>
-		<th>头衔</th>
 		<th>工龄</th>
 		<th>风格</th>
+		<th>简介</th>
 		<th width="80">操作</th>
 	  </tr>
     </thead>
@@ -28,11 +26,9 @@
 		<td><input type="checkbox" name="id" value="{$vo['id']}" /></td>
 		<td>{$vo['id']}</td>
 		<td>{$vo.name}</td>
-		<td><img src="{$vo.image|imgsrc=60,60}" /></td>
-		<td>{$vo.gender}</td>
-		<td>{$vo.title}</td>
 		<td>{$vo.team_age}</td>
 		<td>{$vo.style}</td>
+		<td>{$vo.detail}</td>
 		<td><a href="__URL__/edit/id/{$vo.id}" target="navTab" rel="article_form" title="编辑团队成员"><span>编辑</span></a>&nbsp;|&nbsp;<a class="delete" href="__URL__/delete/id/{$vo['id']}" target="ajaxTodo" title="确实要删这条记录吗？"><span>删除</span></a></td>
 	  </tr>
 	  </volist>

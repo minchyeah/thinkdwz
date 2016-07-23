@@ -13,13 +13,13 @@
       </ul>
     </div>
     <div class="bqtj">
-      <form id="orderform" action="__APP__/team/order" method="post">
+      <form id="orderformfooter" action="__APP__/team/order" method="post">
       <dl>
         <dt><span>姓名</span>
-          <input name="contact" type="text" id="textfield" size="50" value="您的姓名？" onfocus="if(this.value=='您的姓名？')this.value='';" onblur="if(this.value=='')this.value='您的姓名？';"/>
+          <input name="contact" type="text" class="check" data-rule="chinese" data-msg="请正确输入您的姓名" size="50"/>
           <b></b></dt>
-        <dt><span>电话</span>
-          <input name="phone" type="tel" id="textfield" size="15" value="您的联系号码？" onfocus="if(this.value=='您的联系号码？')this.value='';" onblur="if(this.value=='')this.value='您的联系号码？';"/>
+        <dt><span>手机</span>
+          <input name="phone" type="text" class="check" data-rule="mobile" data-msg="请正确输入您的手机号" size="15"/>
           <b></b></dt>
         <dd><a href="###" onclick="return submitFooterOrder()"><b></b>
           <h3>提交免费电话</h3>
@@ -42,13 +42,41 @@
 <script type="text/javascript">
 function submitFooterOrder()
 {
-	  $form = $("#orderform");
-	  $.post($form.attr('action'),$form.serialize(),function(rs){
-		  $form.find("dd#resulttip").text(rs.info);
-		  if(rs.status){
-			  $form.find("input").val('');
-		  }
-	  });
-	  return false;
+	var MyRule = {
+			required: /\S+/,
+			number: /^\d+$/,
+			chinese: /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/,
+			mobile: /^(13|14|15|16|17|18|19)[0-9]{9}$/,
+		};
+	$form = $("#orderformfooter");
+	var $flag = true;
+	var $b = $('#resulttip', $form);
+	$("input.check", $form).add("select.check", $form).each(function(i){
+		var $input = $(this);
+		var reg = new RegExp(/\S+/);
+		if(!reg.test($input.val())){
+			$flag = false;
+			$b.text($input.data().msg);
+			return false;
+		}
+		var rule = $input.data().rule;
+		var crule = MyRule[rule] || rule;
+		var creg = new RegExp(crule);
+		if(!creg.test($input.val())){
+			$flag = false;
+			$b.text($input.data().msg);
+			return false;
+		}
+	});
+	if($flag){
+		$b.text("正在提交...");
+		$.post($form.attr('action'),$form.serialize(),function(rs){
+			$form.find("dd#resulttip").text(rs.info);
+			if(rs.status){
+				$form[0].reset();
+			}
+		});
+	}
+	return false;
 }
 </script>

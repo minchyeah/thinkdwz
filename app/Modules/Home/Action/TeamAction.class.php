@@ -50,7 +50,7 @@ class TeamAction extends HomeAction
 		$total = $model->find();
 		$total_count = intval($total['count']);
 		
-		$pager = $this->getPage($total_count, 18, __APP__.'/'.$team.'/page-__PAGE__.html');
+		$pager = $this->getPage($total_count, 9, __APP__.'/'.$team.'/page-__PAGE__.html');
 		$model->where($where);
 		if($where1){
 			$model->where($where1);
@@ -72,7 +72,10 @@ class TeamAction extends HomeAction
 							->where(array('id'=>$id))
 							->find();
 		$total_case = M('Cases')->field('COUNT(1) count')->where(array($_GET['catalog']=>$id))->find();
+		$total_order = M('TeamOrders')->field('COUNT(1) count')->where(array('member_id'=>$id))->find();
 		$case_count = intval($total_case['count'])+$teacher['case_count'];
+		$order_count = intval($total_order['count'])+$teacher['order_count'];
+		$zhan_count = intval($teacher['zhan'])+$teacher['zhan_count'];
 		$cases = M('Cases')->field('*')->where(array($_GET['catalog']=>$id))
 							->order('dateline DESC')
 							->select();
@@ -82,6 +85,8 @@ class TeamAction extends HomeAction
 		$this->assign('cases', $cases);
 		$this->assign('current_nav', $_GET['catalog']);
 		$this->assign('case_count', $case_count);
+		$this->assign('order_count', $order_count);
+		$this->assign('zhan_count', $zhan_count);
 		$this->display('Team:detail');
 	}
 
@@ -107,7 +112,7 @@ class TeamAction extends HomeAction
 		}
 		$phone = trim(strip_tags($_POST['phone']));
 		if(!$phone OR $phone == '您的联系号码？'){
-			$this->error('请输入您联系号码');
+			$this->error('请输入您手机号码');
 		}
 		$model = D('TeamOrders');
 		$data = $model->create();
