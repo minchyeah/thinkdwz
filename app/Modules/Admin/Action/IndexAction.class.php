@@ -9,15 +9,19 @@ class IndexAction extends AdminAction
     	$topMenus = $model->topMenus();
     	if(1 != $this->admin_id){
     		$tmp = array();
-    		foreach ($topMenus as $v){
-    			if($v['id'] != 2){
+    		$leftid = 0;
+    		foreach ($topMenus as $k=>$v){
+    			if($v['id'] == 1){
     				continue;
     			}else{
     				$tmp[] = $v;
+    				if(!$leftid){
+    					$leftid = $v['id'];
+    				}
     			}
     		}
     		$topMenus = $tmp;
-    		$this->assign('leftmenus', $model->leftMenus(2));
+    		$this->assign('leftmenus', $model->leftMenus($leftid));
     	}else{
     		$this->assign('leftmenus', $model->leftMenus(1));
     	}
