@@ -129,6 +129,8 @@ class TeamAction extends HomeAction
 		if(false !== $rs){
 			$model->commit();
 			M('TeamMember')->where(array('id'=>$data['member_id']))->setInc('want_count');
+			$data['dateline'] = date('Y-m-d H:i', $data['dateline']);
+			$this->mailorder($data);
 			$this->success('预约成功！');
 		}else{
 			$model->rollback();
@@ -141,18 +143,47 @@ class TeamAction extends HomeAction
 		if(!IS_POST){
 			$this->error('非法操作');
 		}
-		$last_zhan_time = session('last_zhan_time');
+		$member_id = intval($_POST['member_id']);
+		$last_zhan_time = session('last_zhan_time_'.$member_id);
 		if(time() - intval($last_zhan_time) < 600){
 			$this->error('10分钟内只能点赞一次');
 		}
-		$rs = M('TeamMember')->where(array('id'=>intval($_POST['member_id'])))->setInc('zhan');
+		$rs = M('TeamMember')->where(array('id'=>$member_id))->setInc('zhan');
 		if(false !== $rs){
-			$zhan = M('TeamMember')->where(array('id'=>intval($_POST['member_id'])))->getField('zhan');
-			session('last_zhan_time', time());
-			$this->success($zhan);
+			$tmb = M('TeamMember')->field('zhan,zhan_count')->where(array('id'=>$member_id))->find();
+			session('last_zhan_time_'.$member_id, time());
+			$this->success($tmb['zhan']+$tmb['zhan_count']);
 		}else{
 			$this->error('预约失败！');
 		}
+	}
+	
+	private function mailorder($data)
+	{
+		$tomail = C('notify_email');
+		$subject = '您有新的消息!';
+		$body = <<<BODY
+	    <body>
+	        <h2>您有新的课程预订</h2>
+	        <table class="table" width="100%">
+                <thead>
+            	  <tr style="text-align:left;">
+            		<th>联系人</th>
+            		<th>手机号码</th>
+            		<th>时间</th>
+            	  </tr>
+                </thead>
+                <tbody>
+            	  <tr style="text-align:left;">
+            		<td>{$data['contact']}</td>
+            		<td>{$data['phone']}</td>
+            		<td>{$data['dateline']}</td>
+            	  </volist>
+                </tbody>
+              </table>
+	    </body>
+BODY;
+		$this->sendmail($tomail, $subject, $body);
 	}
 }
 ?>
