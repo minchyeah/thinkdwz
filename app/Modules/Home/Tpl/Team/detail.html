@@ -47,7 +47,7 @@
         </div>
         <div class="tdan"><a href="zxyd" class="but" rel="1"><b></b>
           <h3>{$team_want}</h3>
-          <span></span></a><h4><span title="点赞！"></span><b>{$zhan_count}</b>人气</h4></div>
+          <span></span></a><h4><span title="点赞！" onclick="return dianzhan(this);" data-id="{$vo.id}"></span><b>{$zhan_count}</b>人气</h4></div>
       </div>
       <div class="clr"></div>
       <div class="tdzt">
@@ -180,6 +180,20 @@ function submitOrder()
 			}
 		});
 	}
+	return false;
+}
+
+function dianzhan(obj)
+{
+	$this = $(obj);
+	var data={'member_id':$this.data().id};
+	$.post("__APP__/team/zhan", data, function(rs){
+		if(rs.status){
+			$this.next('b').html(rs.info);
+		}else{
+			alert(rs.info);
+		}
+	});
 	return false;
 }
 </script>

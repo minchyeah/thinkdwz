@@ -135,5 +135,24 @@ class TeamAction extends HomeAction
 			$this->error('预约失败！');
 		}
 	}
+
+	public function zhan()
+	{
+		if(!IS_POST){
+			$this->error('非法操作');
+		}
+		$last_zhan_time = session('last_zhan_time');
+		if(time() - intval($last_zhan_time) < 600){
+			$this->error('10分钟内只能点赞一次');
+		}
+		$rs = M('TeamMember')->where(array('id'=>intval($_POST['member_id'])))->setInc('zhan');
+		if(false !== $rs){
+			$zhan = M('TeamMember')->where(array('id'=>intval($_POST['member_id'])))->getField('zhan');
+			session('last_zhan_time', time());
+			$this->success($zhan);
+		}else{
+			$this->error('预约失败！');
+		}
+	}
 }
 ?>
