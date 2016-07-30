@@ -15,7 +15,7 @@ $site_name = $page['title'].'_'.$settings['site_name']
   <div class="dqwzn">
     <dl>
       <dt><a href="__APP__/"></a></dt>
-      <dd>><a href="__APP__/{$page.page_code}.html">{$page.title}</a>><a href="">内容</a></dd>
+      <dd>><a href="__APP__/welcome/">走进晟禾</a>><a href="">{$page.title}</a></dd>
     </dl>
     <span></span> </div>
   <div class="syztr">
@@ -27,15 +27,10 @@ $site_name = $page['title'].'_'.$settings['site_name']
 <div class="jz">
   <div class="cbl">
     <div class="cbln">
-      <div class="cblfl"> <a class="xz" href="wzlb.html"><b></b>
-        <h1>公司新闻</h1>
-        <span></span></a> <a href="wzlb.html"><b></b>
-        <h1>行业资讯</h1>
-        <span></span></a> <a href="wzlb.html"><b></b>
-        <h1>装修100问</h1>
-        <span></span></a> <a href="wzlb.html"><b></b>
-        <h1>施工安全</h1>
-        <span></span></a>
+      <div class="cblfl">
+        <volist name="sidebar_cate_nav" id="cnvo">
+        <a class="<if condition="$current_category['id'] eq $cnvo['id']">xz</if>" href="__APP__/{$_GET['catalog']}/cate-{$cnvo.id}.html"><b></b><h1>{$cnvo.cate_name}</h1><span></span></a>
+        </volist>
       </div>
       <include file="Public:sidebar_activity" />
     </div>

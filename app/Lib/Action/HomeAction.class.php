@@ -84,16 +84,18 @@ class HomeAction extends CommonAction
 	
 	protected function topnav()
 	{
-		$cases = D('CasesCategory')->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC')->limit(8)->select();
+		$cases = D('CasesCategory')->field('id,cate_name,catalog')->where(array('pid'=>0))->order('sort_order ASC, id ASC')->limit(8)->select();
 		$this->assign('topnav_cases', $cases);
-		$designers = D('TeamCategory')->field('id,cate_name,catalog')->where(array('pid'=>22))->order('sort_order ASC')->limit(8)->select();
+		$designers = D('TeamCategory')->field('id,cate_name,catalog')->where(array('pid'=>22))->order('sort_order ASC, id ASC')->limit(8)->select();
 		$this->assign('topnav_designers', $designers);
-		$engineers = D('TeamCategory')->field('id,cate_name,catalog')->where(array('pid'=>23))->order('sort_order ASC')->limit(8)->select();
+		$engineers = D('TeamCategory')->field('id,cate_name,catalog')->where(array('pid'=>23))->order('sort_order ASC, id ASC')->limit(8)->select();
 		$this->assign('topnav_engineers', $engineers);
-		$news = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC')->limit(8)->select();
+		$news = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>1))->order('sort_order ASC, id ASC')->limit(8)->select();
 		$this->assign('topnav_news', $news);
-		$activity = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>7))->order('sort_order ASC')->limit(8)->select();
+		$activity = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>7))->order('sort_order ASC, id ASC')->limit(8)->select();
 		$this->assign('topnav_activity', $activity);
+		$welcome = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>23))->order('sort_order ASC, id ASC')->limit(8)->select();
+		$this->assign('topnav_welcome', $welcome);
 	}
 	
 	/**

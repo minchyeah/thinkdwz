@@ -2,7 +2,7 @@
 
 class ArticlePageAction extends AdminAction
 {
-    private function page($alias)
+    public function page($alias,$page_title = '')
     {
     	$model = D('ArticlePage');
     	$where = array();
@@ -12,7 +12,11 @@ class ArticlePageAction extends AdminAction
     		$vo['page_code'] = $alias;
     	}
     	$menu = D('AdminMenus')->where(array('action_name'=>$alias, 'module_name'=>'ArticlePage'))->find();
-    	$this->assign('page_title', $menu['title']);
+    	if($menu['title']){
+    		$this->assign('page_title', $menu['title']);
+    	}elseif($page_title){
+    		$this->assign('page_title', $page_title);
+    	}
     	$this->assign('vo', $vo);
     	$this->display('Article:page');
     }

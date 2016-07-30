@@ -46,8 +46,22 @@ class ArticleAction extends HomeAction
 		$catalog = trim(strval($_GET['catalog']));
 		$cate_id = intval($_GET['cate_id']);
 		$current_category = $model->where(array('catalog'=>$catalog))->find();
-		$sidebar_cate_nav = $model->field('id,cate_name')->where(array('pid'=>$current_category['id']))->order('sort_order ASC')->select();
+		$sidebar_cate_nav = $model->field('id,cate_name')->where(array('pid'=>$current_category['id']))->order('sort_order ASC, id ASC')->select();
 		$this->assign('sidebar_cate_nav', $sidebar_cate_nav);
+		if('welcome'==$catalog){
+			if(!$cate_id){
+				$tcate = D('ArticleCategory')->field('id,cate_name,catalog')->where(array('pid'=>23))->order('sort_order ASC, id ASC')->find();
+				$cate_id = $tcate['id'];
+			}
+			$current_category = $model->find($cate_id);
+			if($current_category['single_page'] == 1){
+				$this->assign('current_category', $current_category);
+				$this->assign('current_nav', $catalog);
+				$this->assign('current_catalog', $catalog);
+				$_GET['code'] = strtolower($current_category['catalog']);
+				return $this->page();
+			}
+		}
 		if($cate_id){
 			$current_category = $model->find($cate_id);
 		}else{
@@ -124,7 +138,7 @@ class ArticleAction extends HomeAction
 		$page = $model->where(array('page_code'=>$code))->find();
 		$model->where(array('id'=>$page['id']))->setInc('visit_count');
 		$this->assign('page', $page);
-		$this->assign('current_nav', $code);
+// 		$this->assign('current_nav', $code);
 		if(file_exists(THEME_PATH.'/Article/'.$code.'.html')){
 		    $this->display('Article:'.$code);
 		}else{

@@ -39,6 +39,10 @@ class ArticleAction extends AdminAction
     public function alist()
     {
     	$cate_id = intval($_REQUEST['cate_id']);
+    	$cate = D('ArticleCategory')->find($cate_id);
+    	if($cate['single_page']){
+    		return A('ArticlePage')->page($cate['catalog'], $cate['cate_name']);
+    	}
     	$model = D('Articles');
     	$where = array();
     	$where['cate_id'] = $cate_id;
@@ -48,7 +52,7 @@ class ArticleAction extends AdminAction
     	$numPerPage = 20;
     	$rowOffset = ($currentPage-1) * $numPerPage;
     	$list = $model->where($where)->order('create_time DESC')->limit($rowOffset . ',' . $numPerPage)->select();
-    	 
+    	
     	$this->assign('list', $list);
     	$this->assign('totalCount', $totalCount);
     	$this->assign('numPerPage', $numPerPage);
@@ -189,6 +193,9 @@ class ArticleAction extends AdminAction
     	$data['pids'] = trim(trim($data['pids'], ','));
     	if(strlen($data['pids'])>0 && count(explode(',', $data['pids'])) == 1){
     		$data['final'] = 1;
+    	}
+    	if($data['pid'] == 23){
+    		$data['single_page'] = 1;
     	}
     	if (!$data['id']) {
     		$rs = $model->add($data);
