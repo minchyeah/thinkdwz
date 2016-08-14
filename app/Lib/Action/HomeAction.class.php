@@ -51,6 +51,7 @@ class HomeAction extends CommonAction
 		$this->assign('settings', $settings);
 		$this->assign('user_id', session('user_id'));
 		$this->assign('username', session('username'));
+		$this->assign('first_kefuqq', substr($settings['kefuqq'], 0, strpos($settings['kefuqq'], '|')));
 		$this->assign('sidebar_activity', $this->getArticleList('activity', 3));
 		$this->topnav();
 		$this->slider();
