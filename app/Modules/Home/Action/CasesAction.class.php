@@ -45,7 +45,11 @@ class CasesAction extends HomeAction
 		}
 		$total = $model->find();
 		$total_count = intval($total['count']);
-		$pager = $this->getPage($total_count, 9, __APP__ . '/cases/page-__PAGE__.html');
+		if($cate_id){
+			$pager = $this->getPage($total_count, 9, __APP__ . '/cases/cate-'.$cate_id.'-page-__PAGE__.html');
+		}else{
+			$pager = $this->getPage($total_count, 9, __APP__ . '/cases/page-__PAGE__.html');
+		}
 		
 		$model->where($where);
 		if($where_style){
