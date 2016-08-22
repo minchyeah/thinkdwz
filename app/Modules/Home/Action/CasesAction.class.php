@@ -45,11 +45,18 @@ class CasesAction extends HomeAction
 		}
 		$total = $model->find();
 		$total_count = intval($total['count']);
+		$query_data = $_GET;
+		unset($query_data['cate_id'], $query_data['page'], $query_data['_URL_']);
+		$query_string = http_build_query($query_data);
 		if($cate_id){
-			$pager = $this->getPage($total_count, 9, __APP__ . '/cases/cate-'.$cate_id.'-page-__PAGE__.html');
+			$pager_url = __APP__ . '/cases/cate-'.$cate_id.'-page-__PAGE__.html';
 		}else{
-			$pager = $this->getPage($total_count, 9, __APP__ . '/cases/page-__PAGE__.html');
+			$pager_url = __APP__ . '/cases/page-__PAGE__.html';
 		}
+		if($query_string){
+			$pager_url = $pager_url.'?'.$query_string;
+		}
+		$pager = $this->getPage($total_count, 9, $pager_url);
 		
 		$model->where($where);
 		if($where_style){

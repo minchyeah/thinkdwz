@@ -124,7 +124,7 @@ function str2arr($str, $delimiter=',', $ext_delimiter = '，')
 function get2uri($val='', $key='')
 {
 	$tmp = $_GET;
-	unset($tmp['_URL_']);
+	unset($tmp['_URL_'],$tmp['cate_id'],$tmp['page']);
 	if($key) $tmp[$key] = $val;
 	return http_build_query($tmp);
 }
