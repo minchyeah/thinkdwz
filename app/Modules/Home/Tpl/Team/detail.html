@@ -36,7 +36,7 @@
           <h1>{$vo.name}<span>{$vo.title}</span><span>经验：{$vo.team_age}年</span><span>作品：{$case_count}个</span></h1>
           <dl>
             <dt>擅长风格</dt><php>$detail_styles = str2arr($vo['style'])</php>
-            <dd class="bs"><volist name="detail_styles" id="dsvo"><a href="javascript:;" target="_blank">{$dsvo}</a></volist></dd>
+            <dd class="bs"><volist name="detail_styles" id="dsvo"><a href="__APP__/designer/?style={$dsvo}" target="_blank">{$dsvo}</a></volist></dd>
           </dl>
           <div class="clr"></div>
         </div>
